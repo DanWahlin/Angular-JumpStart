@@ -30,7 +30,7 @@
             <div class="row card-container" [hidden]="listDisplayModeEnabled">
                 <div class="col-sm-6 col-md-4 col-lg-3" *ng-for="#customer of filteredCustomers">
                     <div class="card">
-                        <button class="btn close card-close" title="Delete Customer" (click)="deleteCustomer(customer.id)">&times;</button>
+                        <!--<button class="btn close card-close" title="Delete Customer" (click)="deleteCustomer(customer.id)">&times;</button>-->
                         <div class="card-header">
                             <a [router-link]="['/Orders',{id:customer.id}]" class="white">{{customer.firstName + ' ' + customer.lastName}} 
                                 <i class="icon-edit icon-white editIcon"></i></a>
@@ -73,7 +73,7 @@
                                 <tr *ng-for="#customer of filteredCustomers">
                                     <td><img src="images/{{ customer.gender | lowercase }}.png" 
                                              class="card-image" alt="Customer Image" /></td>
-                                    <td>{{ customer.firstName }}</td>
+                                    <td><a [router-link]="['/Orders',{id:customer.id}]">{{ customer.firstName }}</a></td>
                                     <td>{{ customer.lastName }}</td>
                                     <td>{{ customer.address }}</td>
                                     <td>{{ customer.city }}</td>
