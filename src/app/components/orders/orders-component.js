@@ -14,12 +14,16 @@ var router_1 = require('angular2/router');
 var data_service_1 = require('../../services/data-service');
 var OrdersComponent = (function () {
     function OrdersComponent(dataService) {
+        this.dataService = dataService;
         this.title = 'Orders';
-        //this.orders = dataService.getOrders();
     }
+    OrdersComponent.prototype.onInit = function () {
+        //Load orders here (hard-coded for now)
+    };
     OrdersComponent = __decorate([
         angular2_1.Component({
             selector: 'orders',
+            providers: [data_service_1.DataService],
             templateUrl: 'app/components/orders/orders-component.html',
             directives: [angular2_1.NgFor, router_1.RouterLink]
         }), 

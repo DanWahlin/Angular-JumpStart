@@ -1,12 +1,12 @@
 import { bootstrap, bind, FORM_PROVIDERS } from 'angular2/angular2';
-import { ROUTER_BINDINGS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
-import { HTTP_BINDINGS } from 'angular2/http';
+import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
+import { HTTP_PROVIDERS } from 'angular2/http';
 import { AppComponent } from './components/app/app-component';
 
 bootstrap(AppComponent, [
-    ROUTER_BINDINGS,
+    ROUTER_PROVIDERS,
     FORM_PROVIDERS,
-    HTTP_BINDINGS,
+    HTTP_PROVIDERS,
     bind(LocationStrategy).toClass(HashLocationStrategy)
 ]).then(
     success => console.log('AppComponent bootstrapped!'),

@@ -32,7 +32,7 @@
                     <div class="card">
                         <button class="btn close card-close" title="Delete Customer" (click)="deleteCustomer(customer.id)">&times;</button>
                         <div class="card-header">
-                            <a href="#" class="white">{{customer.firstName + ' ' + customer.lastName}} 
+                            <a [router-link]="['/Orders',{id:customer.id}]" class="white">{{customer.firstName + ' ' + customer.lastName}} 
                                 <i class="icon-edit icon-white editIcon"></i></a>
                         </div>
                         <div class="card-body">

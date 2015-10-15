@@ -10,23 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
+var router_1 = require('angular2/router');
 var data_service_1 = require('../../services/data-service');
 var sorter_1 = require('../../utils/sorter');
 var filter_textbox_component_1 = require('../filter-textbox/filter-textbox-component');
 var sortby_directive_1 = require('../../directives/sortby/sortby-directive');
 var currency_pipe_1 = require('../../pipes/currency-pipe');
 var CustomersComponent = (function () {
-    function CustomersComponent(_dataService) {
+    function CustomersComponent(dataService) {
+        this.dataService = dataService;
+    }
+    CustomersComponent.prototype.onInit = function () {
         var _this = this;
-        this._dataService = _dataService;
         this.title = 'Customers';
         this.filterText = 'Filter Customers:';
         this.listDisplayModeEnabled = false;
         this.customers = this.filteredCustomers = [];
-        _dataService.customers
+        this.dataService.customers
             .subscribe(function (customers) { return _this.customers = _this.filteredCustomers = customers; });
         this.sorter = new sorter_1.Sorter();
-    }
+    };
     CustomersComponent.prototype.changeDisplayMode = function (mode) {
         //Removed DisplayMode enum due to error in 42...will look into it later
         switch (mode) {
@@ -71,7 +74,7 @@ var CustomersComponent = (function () {
             selector: 'customers',
             providers: [data_service_1.DataService],
             templateUrl: 'app/components/customers/customers-component.html',
-            directives: [angular2_1.NgFor, filter_textbox_component_1.FilterTextboxComponent, sortby_directive_1.SortByDirective],
+            directives: [router_1.RouterLink, angular2_1.NgFor, filter_textbox_component_1.FilterTextboxComponent, sortby_directive_1.SortByDirective],
             pipes: [currency_pipe_1.CurrencyPipe]
         }), 
         __metadata('design:paramtypes', [data_service_1.DataService])

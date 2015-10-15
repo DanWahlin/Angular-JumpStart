@@ -1,4 +1,5 @@
 import { Component, View, NgFor } from 'angular2/angular2';
+import { RouterLink } from 'angular2/router';
 import { ObservableWrapper } from 'angular2/src/core/facade/async';
 import { DataService } from '../../services/data-service';
 import { Sorter } from '../../utils/sorter';
@@ -10,7 +11,7 @@ import { CurrencyPipe } from '../../pipes/currency-pipe';
   selector: 'customers', 
   providers: [DataService],
   templateUrl: 'app/components/customers/customers-component.html',
-  directives: [NgFor, FilterTextboxComponent, SortByDirective],
+  directives: [RouterLink, NgFor, FilterTextboxComponent, SortByDirective],
   pipes: [CurrencyPipe]
 })
 export class CustomersComponent {
@@ -22,14 +23,18 @@ export class CustomersComponent {
   filteredCustomers: any[];
   sorter: Sorter;
 
-  constructor(private _dataService: DataService) {
+  constructor(private dataService: DataService) {
+    
+  }
+  
+  onInit() {
     this.title = 'Customers';
     this.filterText = 'Filter Customers:';
     this.listDisplayModeEnabled = false;
     this.customers = this.filteredCustomers = [];
 
-    _dataService.customers
-       .subscribe(customers => this.customers = this.filteredCustomers = customers);
+    this.dataService.customers
+        .subscribe(customers => this.customers = this.filteredCustomers = customers);
 
     this.sorter = new Sorter();
   }

@@ -4,6 +4,7 @@ import { DataService } from '../../services/data-service';
 
 @Component({ 
   selector: 'orders',
+  providers: [DataService],
   templateUrl: 'app/components/orders/orders-component.html',
   directives: [NgFor, RouterLink]
 })
@@ -11,7 +12,11 @@ export class OrdersComponent {
 	
 	title: string = 'Orders';
 	
-    constructor(dataService: DataService) {
-      //this.orders = dataService.getOrders();
+    constructor(private dataService: DataService) {
+
+    }
+    
+    onInit() {
+      //Load orders here (hard-coded for now)
     }
 }
