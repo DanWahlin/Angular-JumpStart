@@ -46,6 +46,10 @@ th {
     text-shadow: none;
 }
 
+.navbar .nav > .toolbar-item > a.active {
+    color: #E03930;
+}
+
 .toolbar-item a {
   cursor: pointer;
 }
