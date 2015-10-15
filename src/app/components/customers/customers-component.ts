@@ -1,4 +1,4 @@
-import { Component, View, NgFor } from 'angular2/angular2';
+import { Component, View, NgFor, NgClass } from 'angular2/angular2';
 import { RouterLink } from 'angular2/router';
 import { ObservableWrapper } from 'angular2/src/core/facade/async';
 import { DataService } from '../../services/data-service';
@@ -11,7 +11,7 @@ import { CurrencyPipe } from '../../pipes/currency-pipe';
   selector: 'customers', 
   providers: [DataService],
   templateUrl: 'app/components/customers/customers-component.html',
-  directives: [RouterLink, NgFor, FilterTextboxComponent, SortByDirective],
+  directives: [RouterLink, NgFor, FilterTextboxComponent, SortByDirective, NgClass],
   pipes: [CurrencyPipe]
 })
 export class CustomersComponent {

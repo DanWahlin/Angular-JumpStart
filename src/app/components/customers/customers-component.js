@@ -74,7 +74,7 @@ var CustomersComponent = (function () {
             selector: 'customers',
             providers: [data_service_1.DataService],
             templateUrl: 'app/components/customers/customers-component.html',
-            directives: [router_1.RouterLink, angular2_1.NgFor, filter_textbox_component_1.FilterTextboxComponent, sortby_directive_1.SortByDirective],
+            directives: [router_1.RouterLink, angular2_1.NgFor, filter_textbox_component_1.FilterTextboxComponent, sortby_directive_1.SortByDirective, angular2_1.NgClass],
             pipes: [currency_pipe_1.CurrencyPipe]
         }), 
         __metadata('design:paramtypes', [data_service_1.DataService])
