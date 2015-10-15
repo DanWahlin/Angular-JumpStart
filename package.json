@@ -1,0 +1,13 @@
+{
+  "name": "angular2-starter",
+  "author": "Dan Wahlin",
+  "version": "0.5.0",
+  "scripts": {
+    "tsc": "tsc --project src --watch",
+    "start": "live-server --open=src"
+  },
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.42",
+    "systemjs": "0.19.4"
+  }
+}

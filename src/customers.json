@@ -1,0 +1,132 @@
+[
+      {
+            "id": 1,
+            "firstName": "Ted",
+            "lastName": "James",
+            "gender": "male",
+            "address": "1234 Anywhere St.",
+            "city": "Phoenix",
+            "state": {
+                "abbreviation": "AZ",
+                "name": "Arizona"
+            },
+            "orderTotal": 40.99
+      },
+      {
+            "id": 2,
+            "firstName": "Michelle",
+            "lastName": "Thompson",
+            "gender": "female",
+            "address": "345 Cedar Point Ave.",
+            "city": "Los Angelos",
+            "state": {
+                "abbreviation": "CA",
+                "name": "California"
+            },
+            "orderTotal": 89.99
+      },
+      {
+            "id": 3,
+            "firstName": "Zed",
+            "lastName": "Bishop",
+            "gender": "male",
+            "address": "1822 Long Bay Dr.",
+            "city": "Las Vegas",
+            "state": {
+                "abbreviation": "NV",
+                "name": "Nevada"
+            },
+            "orderTotal": 29.99
+      },
+      {
+            "id": 4,
+            "firstName": "Tina",
+            "lastName": "Adams",
+            "gender": "female",
+            "address": "79455 Pinetop Way",
+            "city": "Seattle",
+            "state": {
+                "abbreviation": "WA",
+                "name": "Washington"
+            },
+            "orderTotal": 15.99
+      },
+      {
+            "id": 5,
+            "firstName": "Igor",
+            "lastName": "Minar",
+            "gender": "male",
+            "address": "576 Crescent Blvd.",
+            "city": "Chandler",
+            "state": {
+                "abbreviation": "AZ",
+                "name": "Arizona"
+            },
+            "orderTotal": 29.99
+      },
+      {
+            "id": 6,
+            "firstName": "Brad",
+            "lastName": "Green",
+            "gender": "male",
+            "address": "9874 Center St.",
+            "city": "Mountain View",
+            "state": {
+                "abbreviation": "CA",
+                "name": "California"
+            },
+            "orderTotal": 49.99
+      },
+      {
+            "id": 7,
+            "firstName": "Misko",
+            "lastName": "Hevery",
+            "gender": "male",
+            "address": "9812 Builtway Appt #1",
+            "city": "Mountain View",
+            "state": {
+                "abbreviation": "CA",
+                "name": "California"
+            },
+            "orderTotal": 19.99
+      },
+      {
+            "id": 8,
+            "firstName": "Heedy",
+            "lastName": "Wahlin",
+            "gender": "female",
+            "address": "4651 Tuvo St.",
+            "city": "Chandler",
+            "state": {
+                "abbreviation": "AZ",
+                "name": "Arizona"
+            },
+            "orderTotal": 9.99
+      },
+      {
+            "id": 9,
+            "firstName": "John",
+            "lastName": "Papa",
+            "gender": "male",
+            "address": "66 Ray St.",
+            "city": "Orlando",
+            "state": {
+                "abbreviation": "FL",
+                "name": "Florida"
+            },
+            "orderTotal": 149.99
+      },
+      {
+            "id": 9,
+            "firstName": "Tonya",
+            "lastName": "Smith",
+            "gender": "female",
+            "address": "1455 Chandler Blvd.",
+            "city": "Atlanta",
+            "state": {
+                "abbreviation": "GA",
+                "name": "Georgia"
+            },
+            "orderTotal": 299.99
+      }
+]

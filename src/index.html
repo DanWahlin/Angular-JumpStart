@@ -1,0 +1,72 @@
+<!--
+   Angular 2 Starter
+   Dan Wahlin
+
+   @DanWahlin
+   http://weblogs.asp.net/dwahlin
+   http://github.com/danwahlin
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/src/"></base>
+    <title>Angular 2 TypeScript App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Angular 2 Starter">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="navbar navbar-inner navbar-fixed-top">
+        <nav class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <img src="images/people.png" alt="logo">
+              <span class="app-title">Customer Manager</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <app>
+            Loading...
+        </app>
+        <br /><br />
+    </main>
+
+    <footer>
+        <div class="navbar navbar-fixed-bottom">
+            <div class="navbar-inner footer">
+                <div class="container">
+                    <footer>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!--Created by <a href="http://twitter.com/DanWahlin" target="_blank">Dan Wahlin</a>-->
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+    <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="../node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="../node_modules/angular2/bundles/router.dev.js"></script>
+    <script>
+        System.config({
+            packages: {'app': {defaultExtension: 'js'}}
+        });
+        System.import('app/bootstrap').catch(console.log.bind(console));
+    </script>
+</body>
+</html>
