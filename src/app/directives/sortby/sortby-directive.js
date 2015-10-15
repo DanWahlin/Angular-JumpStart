@@ -24,7 +24,7 @@ var SortByDirective = (function () {
     SortByDirective = __decorate([
         angular2_1.Directive({
             selector: '[sort-by]',
-            events: ['sorted']
+            outputs: ['sorted']
         }), 
         __metadata('design:paramtypes', [angular2_1.ElementRef])
     ], SortByDirective);

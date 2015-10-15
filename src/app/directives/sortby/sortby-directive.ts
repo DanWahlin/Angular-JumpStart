@@ -2,7 +2,7 @@ import { Directive, ElementRef, EventEmitter } from 'angular2/angular2';
 
 @Directive({
   selector: '[sort-by]',
-  events: ['sorted']
+  outputs: ['sorted']
 })
 export class SortByDirective {
 	
