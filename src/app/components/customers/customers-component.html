@@ -78,7 +78,7 @@
                                     <td>{{ customer.address }}</td>
                                     <td>{{ customer.city }}</td>
                                     <td>{{ customer.state.name }}</td>
-                                    <td>{{ customer.orderTotal }}</td>
+                                    <td>{{ customer.orderTotal | currency }}</td>
                                 </tr>
                                 <tr [hidden]="filteredCustomers.length">
                                     <td>&nbsp;</td>
