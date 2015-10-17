@@ -26,10 +26,6 @@ Simply clone the project or download and extract the .zip to get started.
 
 ## Running the Application
 
-1. Install global pre-requisites `npm install typescript live-server -g`
-
 1. Run `npm install` to install app dependencies
 
-1. Run `npm run tsc` to start the TypeScript compiler and watch for changes
-
-1. Run `npm start` to start the server and launch the app
+1. Run `npm start` to start the server and launch the app. The TypeScript compiler and watch for changes.

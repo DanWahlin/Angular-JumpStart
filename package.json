@@ -4,10 +4,16 @@
   "version": "0.5.0",
   "scripts": {
     "tsc": "tsc --project src --watch",
-    "start": "live-server --open=src"
+    "start": "npm-run-all --parallel tsc live",
+    "live": "live-server --open=src"
   },
   "dependencies": {
     "angular2": "^2.0.0-alpha.44",
     "systemjs": "0.19.4"
+  },
+  "devDependencies": {
+    "live-server": "0.8.1",
+    "npm-run-all": "1.2.11",
+    "typescript": "1.6.2"
   }
 }
