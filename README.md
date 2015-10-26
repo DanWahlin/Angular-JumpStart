@@ -6,7 +6,7 @@ The goal of this starter app is to provide
 a simple way to get started with Angular 2 while also showing key Angular 2 features. The sample
 relies on System.js to load TypeScript modules and the required scripts used in the application.
 
-The sample is based on Angular Alpha 42.
+The sample is based on Angular Alpha 44.
 
 Simply clone the project or download and extract the .zip to get started.
 
@@ -32,4 +32,4 @@ Simply clone the project or download and extract the .zip to get started.
 
 1. Run `npm run tsc` to start the TypeScript compiler and watch for changes
 
-1. Run `npm start` to start the server and launch the app
+1. Run `npm start` in a separate terminal window to start the server and launch the app
