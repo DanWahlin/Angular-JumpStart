@@ -1,4 +1,4 @@
-# Angular 2 JumpStart (with TypeScript)
+# Angular 2 JumpStart with TypeScript
 
 Work in progress!
 
