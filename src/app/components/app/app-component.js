@@ -17,8 +17,8 @@ var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
-        angular2_1.Component({ selector: 'app' }),
-        angular2_1.View({
+        angular2_1.Component({
+            selector: 'app',
             template: "<router-outlet></router-outlet>",
             directives: [router_1.ROUTER_DIRECTIVES],
         }),

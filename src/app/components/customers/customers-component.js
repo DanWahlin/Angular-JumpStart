@@ -15,7 +15,7 @@ var data_service_1 = require('../../services/data-service');
 var sorter_1 = require('../../utils/sorter');
 var filter_textbox_component_1 = require('../filter-textbox/filter-textbox-component');
 var sortby_directive_1 = require('../../directives/sortby/sortby-directive');
-var currency_pipe_1 = require('../../pipes/currency-pipe');
+var capitalize_pipe_1 = require('../../pipes/capitalize-pipe');
 var CustomersComponent = (function () {
     function CustomersComponent(dataService) {
         this.dataService = dataService;
@@ -75,7 +75,7 @@ var CustomersComponent = (function () {
             providers: [data_service_1.DataService],
             templateUrl: 'app/components/customers/customers-component.html',
             directives: [router_1.RouterLink, angular2_1.NgFor, filter_textbox_component_1.FilterTextboxComponent, sortby_directive_1.SortByDirective, angular2_1.NgClass],
-            pipes: [currency_pipe_1.CurrencyPipe]
+            pipes: [capitalize_pipe_1.CapitalizePipe]
         }), 
         __metadata('design:paramtypes', [data_service_1.DataService])
     ], CustomersComponent);

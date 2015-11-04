@@ -1,8 +1,8 @@
 [
       {
             "id": 1,
-            "firstName": "Ted",
-            "lastName": "James",
+            "firstName": "ted",
+            "lastName": "james",
             "gender": "male",
             "address": "1234 Anywhere St.",
             "city": "Phoenix",

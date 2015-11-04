@@ -5,14 +5,14 @@ import { DataService } from '../../services/data-service';
 import { Sorter } from '../../utils/sorter';
 import { FilterTextboxComponent } from '../filter-textbox/filter-textbox-component';
 import { SortByDirective } from '../../directives/sortby/sortby-directive';
-import { CurrencyPipe } from '../../pipes/currency-pipe';
+import { CapitalizePipe } from '../../pipes/capitalize-pipe';
 
 @Component({ 
   selector: 'customers', 
   providers: [DataService],
   templateUrl: 'app/components/customers/customers-component.html',
   directives: [RouterLink, NgFor, FilterTextboxComponent, SortByDirective, NgClass],
-  pipes: [CurrencyPipe]
+  pipes: [CapitalizePipe]
 })
 export class CustomersComponent {
 

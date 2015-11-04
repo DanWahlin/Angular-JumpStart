@@ -10,20 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-var CurrencyPipe = (function () {
-    function CurrencyPipe() {
+var CapitalizePipe = (function () {
+    function CapitalizePipe() {
     }
-    CurrencyPipe.prototype.transform = function (value) {
-        if (value && !isNaN(value)) {
-            return '$' + parseFloat(value).toFixed(2);
+    CapitalizePipe.prototype.transform = function (value) {
+        if (value) {
+            return value.charAt(0).toUpperCase() + value.slice(1);
         }
-        return '$0.00';
+        return value;
     };
-    CurrencyPipe = __decorate([
-        angular2_1.Pipe({ name: 'currency' }), 
+    CapitalizePipe = __decorate([
+        angular2_1.Pipe({ name: 'capitalize' }), 
         __metadata('design:paramtypes', [])
-    ], CurrencyPipe);
-    return CurrencyPipe;
+    ], CapitalizePipe);
+    return CapitalizePipe;
 })();
-exports.CurrencyPipe = CurrencyPipe;
-//# sourceMappingURL=currency-pipe.js.map
+exports.CapitalizePipe = CapitalizePipe;
+//# sourceMappingURL=capitalize-pipe.js.map
