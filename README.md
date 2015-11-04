@@ -11,15 +11,15 @@ The sample is based on Angular Alpha 45.
 Simply clone the project or download and extract the .zip to get started. Here are a few
 screenshots from the app:
 
-<img height="250" src="src/images/screenshots/cards.png" border="0" />
+<img width="400" src="src/images/screenshots/cards.png" border="0" />
 
 <br />
 
-<img height="250" src="src/images/screenshots/grid.png" border="0" />
+<img width="400" src="src/images/screenshots/grid.png" border="0" />
 
 <br />
 
-<img height="250" src="src/images/screenshots/orders.png" border="0" />
+<img width="400" src="src/images/screenshots/orders.png" border="0" />
 
 ## Angular 2 Concepts Covered
 
