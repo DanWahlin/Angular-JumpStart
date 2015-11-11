@@ -9,5 +9,8 @@
   "dependencies": {
     "angular2": "^2.0.0-alpha.45",
     "systemjs": "^0.19.5"
+  }, "devDependencies": {
+    "typescript": "^1.6.2",
+    "live-server": "^0.8.2"
   }
 }
