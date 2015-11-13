@@ -31,15 +31,7 @@ var CustomersComponent = (function () {
         this.sorter = new sorter_1.Sorter();
     };
     CustomersComponent.prototype.changeDisplayMode = function (mode) {
-        var displayMode = DisplayMode[mode];
-        switch (displayMode) {
-            case DisplayMode.Card:
-                this.listDisplayModeEnabled = false;
-                break;
-            case DisplayMode.List:
-                this.listDisplayModeEnabled = true;
-                break;
-        }
+        this.listDisplayModeEnabled = (mode === 'List');
     };
     CustomersComponent.prototype.filterChanged = function (data) {
         if (data) {
@@ -82,9 +74,4 @@ var CustomersComponent = (function () {
     return CustomersComponent;
 })();
 exports.CustomersComponent = CustomersComponent;
-(function (DisplayMode) {
-    DisplayMode[DisplayMode["Card"] = 0] = "Card";
-    DisplayMode[DisplayMode["List"] = 1] = "List";
-})(exports.DisplayMode || (exports.DisplayMode = {}));
-var DisplayMode = exports.DisplayMode;
 //# sourceMappingURL=customers-component.js.map

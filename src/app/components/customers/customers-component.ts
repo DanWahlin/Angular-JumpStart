@@ -37,15 +37,7 @@ export class CustomersComponent {
   }
 
   changeDisplayMode(mode: string) {
-      let displayMode: DisplayMode = DisplayMode[mode];
-      switch (displayMode) {
-          case DisplayMode.Card:
-              this.listDisplayModeEnabled = false;
-              break;
-          case DisplayMode.List:
-              this.listDisplayModeEnabled = true;
-              break;
-      }
+      this.listDisplayModeEnabled = (mode === 'List');
   }
 
   filterChanged(data: string) {
@@ -79,7 +71,5 @@ export class CustomersComponent {
   }
 
 }
-
-export enum DisplayMode { Card, List }
 
 
