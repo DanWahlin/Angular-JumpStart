@@ -1,9 +1,7 @@
-import { Component, View, EventEmitter, FORM_DIRECTIVES } from 'angular2/angular2';
+import { Component, Output, View, EventEmitter, FORM_DIRECTIVES } from 'angular2/angular2';
 
 @Component({
   selector: 'filter-textbox',
-  outputs: ['changed'],
-  inputs: ['text'],
   template: `
     <form>
          Filter:
@@ -16,13 +14,11 @@ import { Component, View, EventEmitter, FORM_DIRECTIVES } from 'angular2/angular
 })
 export class FilterTextboxComponent {
 
-	model: { filter: string };
-	changed: EventEmitter<string>;
-	
-    constructor() {
-      this.model = { filter: null };
-      this.changed = new EventEmitter();
-    }
+  
+    model: { filter: string } = { filter: null };
+    
+    @Output()
+    changed: EventEmitter<string> = new EventEmitter();
 
     filterChanged(event: any) {
         event.preventDefault();

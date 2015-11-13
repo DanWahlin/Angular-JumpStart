@@ -19,11 +19,13 @@ var FilterTextboxComponent = (function () {
         event.preventDefault();
         this.changed.next(this.model.filter); //Raise changed event
     };
+    __decorate([
+        angular2_1.Output(), 
+        __metadata('design:type', angular2_1.EventEmitter)
+    ], FilterTextboxComponent.prototype, "changed");
     FilterTextboxComponent = __decorate([
         angular2_1.Component({
             selector: 'filter-textbox',
-            outputs: ['changed'],
-            inputs: ['text'],
             template: "\n    <form>\n         Filter:\n         <input type=\"text\" \n                [(ng-model)]=\"model.filter\" \n                (keyup)=\"filterChanged($event)\"  />\n    </form>\n  ",
             directives: [angular2_1.FORM_DIRECTIVES]
         }), 

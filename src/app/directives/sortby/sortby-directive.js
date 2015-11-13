@@ -13,6 +13,7 @@ var angular2_1 = require('angular2/angular2');
 var SortByDirective = (function () {
     function SortByDirective(el) {
         var _this = this;
+        this.sorted = new angular2_1.EventEmitter();
         this.sortProperty = el.nativeElement.getAttribute('sort-by');
         el.nativeElement.addEventListener('click', function (event) { return _this.elementClicked(event); });
         this.sorted = new angular2_1.EventEmitter();
@@ -21,10 +22,13 @@ var SortByDirective = (function () {
         event.preventDefault();
         this.sorted.next(this.sortProperty); //Raise clicked event
     };
+    __decorate([
+        angular2_1.Output(), 
+        __metadata('design:type', angular2_1.EventEmitter)
+    ], SortByDirective.prototype, "sorted");
     SortByDirective = __decorate([
         angular2_1.Directive({
-            selector: '[sort-by]',
-            outputs: ['sorted']
+            selector: '[sort-by]'
         }), 
         __metadata('design:paramtypes', [angular2_1.ElementRef])
     ], SortByDirective);
