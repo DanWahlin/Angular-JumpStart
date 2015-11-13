@@ -11,12 +11,12 @@
                 <div class="navbar">
                     <ul class="nav navbar-nav">
                         <li class="toolbar-item">
-                            <a (click)="changeDisplayMode('Card')" [ng-class]="{active: !listDisplayModeEnabled}">
+                            <a (click)="changeDisplayMode('Card')" [class.active]="!listDisplayModeEnabled">
                                 <span class="glyphicon glyphicon-th-large"></span> Card View
                             </a>
                         </li>
                         <li class="toolbar-item">
-                            <a (click)="changeDisplayMode('List')" [ng-class]="{active: listDisplayModeEnabled}">
+                            <a (click)="changeDisplayMode('List')" [class.active]="listDisplayModeEnabled" class=">
                                 <span class="glyphicon glyphicon-align-justify"></span> List View
                             </a>
                         </li>

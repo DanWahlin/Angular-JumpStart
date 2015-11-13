@@ -40,14 +40,14 @@ th {
 }
 
 .navbar .nav > li.toolbar-item > a {
-    color: black;
+    color: #9E9E9E;
     font-weight:bold;
     -webkit-text-shadow: none;
     text-shadow: none;
 }
 
 .navbar .nav > .toolbar-item > a.active {
-    color: #027FF4;
+    color: #000;
 }
 
 .toolbar-item a {
