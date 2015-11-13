@@ -31,12 +31,12 @@ var CustomersComponent = (function () {
         this.sorter = new sorter_1.Sorter();
     };
     CustomersComponent.prototype.changeDisplayMode = function (mode) {
-        //Removed DisplayMode enum due to error in 42...will look into it later
-        switch (mode) {
-            case 'Card':
+        var displayMode = DisplayMode[mode];
+        switch (displayMode) {
+            case DisplayMode.Card:
                 this.listDisplayModeEnabled = false;
                 break;
-            case 'List':
+            case DisplayMode.List:
                 this.listDisplayModeEnabled = true;
                 break;
         }

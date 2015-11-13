@@ -11,11 +11,11 @@ export class SortByDirective {
 	
     constructor(el: ElementRef) {
       this.sortProperty = el.nativeElement.getAttribute('sort-by');
-      el.nativeElement.addEventListener('click', (event) => this.elementClicked(event));
+      el.nativeElement.addEventListener('click', (event: any) => this.elementClicked(event));
       this.sorted = new EventEmitter();
     }
 
-    elementClicked(event) {
+    elementClicked(event: any) {
         event.preventDefault();
         this.sorted.next(this.sortProperty); //Raise clicked event
     }

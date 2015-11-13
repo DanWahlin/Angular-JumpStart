@@ -16,14 +16,15 @@ import { Component, View, EventEmitter, FORM_DIRECTIVES } from 'angular2/angular
 })
 export class FilterTextboxComponent {
 
-	model = { filter: null };
+	model: { filter: string };
 	changed: EventEmitter<string>;
 	
     constructor() {
+      this.model = { filter: null };
       this.changed = new EventEmitter();
     }
 
-    filterChanged(event) {
+    filterChanged(event: any) {
         event.preventDefault();
         this.changed.next(this.model.filter); //Raise changed event
     }

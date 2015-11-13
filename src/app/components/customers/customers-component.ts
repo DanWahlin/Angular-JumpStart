@@ -1,6 +1,5 @@
 import { Component, View, NgFor, NgClass } from 'angular2/angular2';
 import { RouterLink } from 'angular2/router';
-import { ObservableWrapper } from 'angular2/src/core/facade/async';
 import { DataService } from '../../services/data-service';
 import { Sorter } from '../../utils/sorter';
 import { FilterTextboxComponent } from '../filter-textbox/filter-textbox-component';
@@ -23,9 +22,7 @@ export class CustomersComponent {
   filteredCustomers: any[];
   sorter: Sorter;
 
-  constructor(private dataService: DataService) {
-    
-  }
+  constructor(private dataService: DataService) { }
   
   onInit() {
     this.title = 'Customers';
@@ -34,18 +31,18 @@ export class CustomersComponent {
     this.customers = this.filteredCustomers = [];
 
     this.dataService.customers
-        .subscribe(customers => this.customers = this.filteredCustomers = customers);
+        .subscribe((customers:any[]) => this.customers = this.filteredCustomers = customers);
 
     this.sorter = new Sorter();
   }
 
-  changeDisplayMode(mode) {
-      //Removed DisplayMode enum due to error in 42...will look into it later
-      switch (mode) {
-          case 'Card':
+  changeDisplayMode(mode: string) {
+      let displayMode: DisplayMode = DisplayMode[mode];
+      switch (displayMode) {
+          case DisplayMode.Card:
               this.listDisplayModeEnabled = false;
               break;
-          case 'List':
+          case DisplayMode.List:
               this.listDisplayModeEnabled = true;
               break;
       }
