@@ -7,7 +7,7 @@ import { Directive, ElementRef, EventEmitter } from 'angular2/angular2';
 export class SortByDirective {
 	
 	sortProperty: string;
-	sorted: EventEmitter;
+	sorted: EventEmitter<string>;
 	
     constructor(el: ElementRef) {
       this.sortProperty = el.nativeElement.getAttribute('sort-by');

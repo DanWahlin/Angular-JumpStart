@@ -17,7 +17,7 @@ import { Component, View, EventEmitter, FORM_DIRECTIVES } from 'angular2/angular
 export class FilterTextboxComponent {
 
 	model = { filter: null };
-	changed: EventEmitter;
+	changed: EventEmitter<string>;
 	
     constructor() {
       this.changed = new EventEmitter();
