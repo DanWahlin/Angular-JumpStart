@@ -28,11 +28,11 @@
         </div>
         <div class="container">
             <div class="row card-container" [hidden]="listDisplayModeEnabled">
-                <div class="col-sm-6 col-md-4 col-lg-3" *ng-for="#customer of filteredCustomers">
+                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="#customer of filteredCustomers">
                     <div class="card">
                         <!--<button class="btn close card-close" title="Delete Customer" (click)="deleteCustomer(customer.id)">&times;</button>-->
                         <div class="card-header">
-                            <a [router-link]="['/Orders',{id:customer.id}]" class="white">{{customer.firstName | capitalize }} {{ customer.lastName | capitalize }} 
+                            <a [routerLink]="['Orders',{id:customer.id}]" class="white">{{customer.firstName | capitalize }} {{ customer.lastName | capitalize }} 
                                 <i class="icon-edit icon-white editIcon"></i></a>
                         </div>
                         <div class="card-body">
@@ -70,10 +70,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ng-for="#customer of filteredCustomers">
+                                <tr *ngFor="#customer of filteredCustomers">
                                     <td><img src="images/{{ customer.gender | lowercase }}.png" 
                                              class="card-image" alt="Customer Image" /></td>
-                                    <td><a [router-link]="['/Orders',{id:customer.id}]">{{ customer.firstName | capitalize }}</a></td>
+                                    <td><a [routerLink]="['Orders',{id:customer.id}]">{{ customer.firstName | capitalize }}</a></td>
                                     <td>{{ customer.lastName | capitalize }}</td>
                                     <td>{{ customer.address }}</td>
                                     <td>{{ customer.city }}</td>
@@ -82,7 +82,7 @@
                                 </tr>
                                 <tr [hidden]="filteredCustomers.length">
                                     <td>&nbsp;</td>
-                                    <td colspan="4">No Records Found</td>
+                                    <td colspan="6">No Records Found</td>
                                 </tr>
                             </tbody>
                         </table>

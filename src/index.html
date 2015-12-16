@@ -49,7 +49,7 @@
                     <footer>
                         <div class="row">
                             <div class="col-md-12">
-                                <!--Created by <a href="http://twitter.com/DanWahlin" target="_blank">Dan Wahlin</a>-->
+                                Created by <a href="http://twitter.com/DanWahlin" target="_blank">Dan Wahlin</a>
                             </div>
                         </div>
                     </footer>
@@ -58,15 +58,30 @@
         </div>
     </footer>
 
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
-    <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
-    <script src="../node_modules/angular2/bundles/http.dev.js"></script>
-    <script src="../node_modules/angular2/bundles/router.dev.js"></script>
+   <!--<script src="https://code.angularjs.org/2.0.0-beta.0/angular2-polyfills.js"></script>
+   <script src="https://code.angularjs.org/tools/system.js"></script>
+   <script src="https://code.angularjs.org/2.0.0-beta.0/Rx.js"></script>
+   <script src="https://code.angularjs.org/2.0.0-beta.0/angular2.dev.js"></script>
+   <script src="https://code.angularjs.org/2.0.0-beta.0/router.dev.js"></script>-->
+   
+   <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+   <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
+   <script src="/node_modules/systemjs/dist/system.src.js"></script>
+   <script src="/node_modules/rxjs/bundles/Rx.js"></script>
+   <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+   <script src="/node_modules/angular2/bundles/router.dev.js"></script>
+   
     <script>
-        System.config({
-            packages: {'app': {defaultExtension: 'js'}}
-        });
-        System.import('app/bootstrap').catch(console.log.bind(console));
+        
+      System.config({
+        baseURL: '/node_modules',
+        defaultJSExtensions: true,
+        warnings: true
+      });
+      
+      System.import('./app/bootstrap')
+            .then(null, console.error.bind(console));
+            
     </script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-//Based on https://github.com/thelgevold/angular-2-samples/blob/master/components/grid/sorter.ts
 export class Sorter {
 
 	property: string = null;

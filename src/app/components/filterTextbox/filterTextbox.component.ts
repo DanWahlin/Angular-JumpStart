@@ -1,4 +1,5 @@
-import { Component, Output, View, EventEmitter, FORM_DIRECTIVES } from 'angular2/angular2';
+import { Component, Output, EventEmitter } from 'angular2/core';
+import { FORM_DIRECTIVES } from 'angular2/common';
 
 @Component({
   selector: 'filter-textbox',
@@ -6,7 +7,7 @@ import { Component, Output, View, EventEmitter, FORM_DIRECTIVES } from 'angular2
     <form>
          Filter:
          <input type="text" 
-                [(ng-model)]="model.filter" 
+                [(ngModel)]="model.filter" 
                 (keyup)="filterChanged($event)"  />
     </form>
   `,

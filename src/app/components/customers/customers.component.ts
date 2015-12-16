@@ -1,16 +1,18 @@
-import { Component, View, NgFor, NgClass } from 'angular2/angular2';
+import { Component } from 'angular2/core';
+import { CORE_DIRECTIVES } from 'angular2/common';
 import { RouterLink } from 'angular2/router';
-import { DataService } from '../../services/data-service';
+//import { Observable } from 'rxjs/Observable';
+import { DataService } from '../../services/data.service';
 import { Sorter } from '../../utils/sorter';
-import { FilterTextboxComponent } from '../filter-textbox/filter-textbox-component';
-import { SortByDirective } from '../../directives/sortby/sortby-directive';
-import { CapitalizePipe } from '../../pipes/capitalize-pipe';
+import { FilterTextboxComponent } from '../filterTextbox/filterTextbox.component';
+import { SortByDirective } from '../../directives/sortby.directive';
+import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 
 @Component({ 
   selector: 'customers', 
   providers: [DataService],
-  templateUrl: 'app/components/customers/customers-component.html',
-  directives: [RouterLink, NgFor, FilterTextboxComponent, SortByDirective, NgClass],
+  templateUrl: 'app/components/customers/customers.component.html',
+  directives: [CORE_DIRECTIVES, RouterLink, FilterTextboxComponent, SortByDirective],
   pipes: [CapitalizePipe]
 })
 export class CustomersComponent {
@@ -18,20 +20,21 @@ export class CustomersComponent {
   title: string;
   filterText: string;
   listDisplayModeEnabled: boolean;
-  customers: any[];
-  filteredCustomers: any[];
+  customers: any[] = [];
+  filteredCustomers: any[] = [];
   sorter: Sorter;
 
   constructor(private dataService: DataService) { }
   
-  onInit() {
+  ngOnInit() {
     this.title = 'Customers';
     this.filterText = 'Filter Customers:';
     this.listDisplayModeEnabled = false;
-    this.customers = this.filteredCustomers = [];
 
-    this.dataService.customers
-        .subscribe((customers:any[]) => this.customers = this.filteredCustomers = customers);
+    this.dataService.getCustomers()
+        .subscribe((customers:any[]) => {
+          this.customers = this.filteredCustomers = customers;
+        });
 
     this.sorter = new Sorter();
   }
@@ -41,7 +44,7 @@ export class CustomersComponent {
   }
 
   filterChanged(data: string) {
-    if (data) {
+    if (data && this.customers) {
         data = data.toUpperCase();
         let props = ['firstName', 'lastName', 'address', 'city', 'orderTotal'];
         let filtered = this.customers.filter(item => {

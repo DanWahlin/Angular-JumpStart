@@ -18,6 +18,8 @@ node_modules
 **/bower_packages
 **/jspm_packages
 **/typings
+src/app/**/*.js
+src/app/**/*.js.map
 
 
 

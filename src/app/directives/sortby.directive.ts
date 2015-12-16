@@ -1,4 +1,4 @@
-import { Directive, Output, ElementRef, EventEmitter } from 'angular2/angular2';
+import { Directive, Output, ElementRef, EventEmitter } from 'angular2/core';
 
 @Directive({
   selector: '[sort-by]'
