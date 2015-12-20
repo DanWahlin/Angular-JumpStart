@@ -34,8 +34,6 @@ screenshots from the app:
 
 ## Running the Application
 
-1. Install global pre-requisites `npm install typescript live-server -g`
-
 1. Run `npm install` to install app dependencies
 
 1. Run `npm run tsc` to start the TypeScript compiler (it will watch for changes to .ts files)
