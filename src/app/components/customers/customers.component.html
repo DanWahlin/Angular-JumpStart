@@ -43,7 +43,7 @@
                                     </a>
                                 </div>
                                 <div class="pull-left card-body-right">
-                                    <div class="card-body-content">{{customer.city}}, {{customer.state.name}}</div>
+                                    <div class="card-body-content">{{customer.city | trim }}, {{customer.state.name}}</div>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                     <td><a [routerLink]="['Orders',{id:customer.id}]">{{ customer.firstName | capitalize }}</a></td>
                                     <td>{{ customer.lastName | capitalize }}</td>
                                     <td>{{ customer.address }}</td>
-                                    <td>{{ customer.city }}</td>
+                                    <td>{{ customer.city | trim }}</td>
                                     <td>{{ customer.state.name }}</td>
                                     <td>{{ customer.orderTotal | currency:'USD':true }}</td>
                                 </tr>

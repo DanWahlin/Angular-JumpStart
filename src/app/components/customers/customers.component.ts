@@ -7,13 +7,14 @@ import { Sorter } from '../../utils/sorter';
 import { FilterTextboxComponent } from '../filterTextbox/filterTextbox.component';
 import { SortByDirective } from '../../directives/sortby.directive';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
+import { TrimPipe } from '../../pipes/trim.pipe';
 
 @Component({ 
   selector: 'customers', 
   providers: [DataService],
   templateUrl: 'app/components/customers/customers.component.html',
   directives: [CORE_DIRECTIVES, RouterLink, FilterTextboxComponent, SortByDirective],
-  pipes: [CapitalizePipe]
+  pipes: [CapitalizePipe, TrimPipe]
 })
 export class CustomersComponent {
 

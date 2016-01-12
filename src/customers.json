@@ -5,7 +5,7 @@
             "lastName": "james",
             "gender": "male",
             "address": "1234 Anywhere St.",
-            "city": "Phoenix",
+            "city": " Phoenix ",
             "state": {
                 "abbreviation": "AZ",
                 "name": "Arizona"
@@ -18,7 +18,7 @@
             "lastName": "Thompson",
             "gender": "female",
             "address": "345 Cedar Point Ave.",
-            "city": "Los Angelos",
+            "city": "Los Angelos ",
             "state": {
                 "abbreviation": "CA",
                 "name": "California"
@@ -31,7 +31,7 @@
             "lastName": "Bishop",
             "gender": "male",
             "address": "1822 Long Bay Dr.",
-            "city": "Las Vegas",
+            "city": " Las Vegas ",
             "state": {
                 "abbreviation": "NV",
                 "name": "Nevada"
@@ -47,7 +47,7 @@
             "city": "Seattle",
             "state": {
                 "abbreviation": "WA",
-                "name": "Washington"
+                "name": " Washington "
             },
             "orderTotal": 15.99
       },
@@ -57,7 +57,7 @@
             "lastName": "Minar",
             "gender": "male",
             "address": "576 Crescent Blvd.",
-            "city": "Chandler",
+            "city": " Chandler",
             "state": {
                 "abbreviation": "AZ",
                 "name": "Arizona"
@@ -70,7 +70,7 @@
             "lastName": "Green",
             "gender": "male",
             "address": "9874 Center St.",
-            "city": "Mountain View",
+            "city": "Mountain View ",
             "state": {
                 "abbreviation": "CA",
                 "name": "California"
@@ -83,7 +83,7 @@
             "lastName": "Hevery",
             "gender": "male",
             "address": "9812 Builtway Appt #1",
-            "city": "Mountain View",
+            "city": "Mountain View ",
             "state": {
                 "abbreviation": "CA",
                 "name": "California"
@@ -109,7 +109,7 @@
             "lastName": "Papa",
             "gender": "male",
             "address": "66 Ray St.",
-            "city": "Orlando",
+            "city": " Orlando",
             "state": {
                 "abbreviation": "FL",
                 "name": "Florida"
@@ -122,7 +122,7 @@
             "lastName": "Smith",
             "gender": "female",
             "address": "1455 Chandler Blvd.",
-            "city": "Atlanta",
+            "city": " Atlanta",
             "state": {
                 "abbreviation": "GA",
                 "name": "Georgia"
