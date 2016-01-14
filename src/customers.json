@@ -18,7 +18,7 @@
             "lastName": "Thompson",
             "gender": "female",
             "address": "345 Cedar Point Ave.",
-            "city": "Los Angelos ",
+            "city": "Los Angeles ",
             "state": {
                 "abbreviation": "CA",
                 "name": "California"
