@@ -23,6 +23,6 @@ export class FilterTextboxComponent {
 
     filterChanged(event: any) {
         event.preventDefault();
-        this.changed.next(this.model.filter); //Raise changed event
+        this.changed.emit(this.model.filter); //Raise changed event
     }
 }

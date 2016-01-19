@@ -4,7 +4,7 @@ import { CustomersComponent } from '../customers/customers.component';
 import { OrdersComponent } from '../orders/orders.component';
 
 @Component({ 
-  selector: 'app',
+  selector: 'app-container',
   template: `<router-outlet></router-outlet>`,
   directives: [ROUTER_DIRECTIVES],
 })
