@@ -4,7 +4,7 @@ import { RouterLink } from 'angular2/router';
 //import { Observable } from 'rxjs/Observable';
 import { DataService } from '../shared/services/data.service';
 import { Sorter } from '../shared/sorter';
-import { FilterTextboxComponent } from '../filterTextbox/filterTextbox.component';
+import { FilterTextboxComponent } from './filterTextbox.component';
 import { SortByDirective } from '../shared/directives/sortby.directive';
 import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
 import { TrimPipe } from '../shared/pipes/trim.pipe';
