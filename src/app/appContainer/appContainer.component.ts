@@ -13,5 +13,9 @@ import { OrdersComponent } from '../orders/orders.component';
   { path: '/orders/:id', as: 'Orders', component: OrdersComponent    }
 ])
 export class AppComponent {
+  
+  constructor() {
 
+  }
+  
 }
