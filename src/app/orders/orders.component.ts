@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import { RouterLink } from 'angular2/router';
+import { RouterLink, RouteParams } from 'angular2/router';
 import { DataService } from '../shared/services/data.service';
 
 @Component({ 
@@ -12,12 +12,16 @@ import { DataService } from '../shared/services/data.service';
 export class OrdersComponent {
 	
 	  title: string = 'Orders';
-	
-    constructor(private dataService: DataService) {
-
+    filteredOrders: any[] = [];
+  
+    constructor(private dataService: DataService, private _routeParams: RouteParams) {
+      
     }
     
     ngOnInit() {
-      //Load orders here (hard-coded for now)
+      let customerId = +this._routeParams.get('id');
+      this.dataService.getOrders().subscribe((orders: any[]) => {
+        this.filteredOrders = orders.filter(order => order.customerId === customerId);
+      });
     }
 }

@@ -12,4 +12,9 @@ export class DataService {
                         .map((res: Response) => res.json());
     }
 
+    getOrders(){
+      return this.http.get('/src/orders.json')
+                        .map((res: Response) => res.json());                  
+    }
+
 }
