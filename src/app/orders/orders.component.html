@@ -1,18 +1,10 @@
  <h3><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;Orders</h3>
 
 <br />
-<table class="table table-striped table-hover">
-    <tr>
-        <th>Product</th>
-        <th>Total</th>
-    </tr>
-    <tr>
-        <td>Baseball</td>
-        <td>$9.99</td>
-    </tr>
-    <tr>
-        <td>Bat</td>
-        <td>$19.99</td>
+<table class="table table-striped table-hover" *ngFor="#order of filteredOrders">
+    <tr *ngFor="#orderItem of order.orderItems">
+        <td>{{orderItem.productName}}</td>
+        <td>${{orderItem.itemCost}}</td>    
     </tr>
 </table>
 
