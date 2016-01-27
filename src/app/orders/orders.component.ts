@@ -19,7 +19,7 @@ export class OrdersComponent {
     }
     
     ngOnInit() {
-      let customerId = +this._routeParams.get('id');
+      let customerId = parseInt(this._routeParams.get('id'), 10);
       this.dataService.getOrders().subscribe((orders: any[]) => {
         this.filteredOrders = orders.filter(order => order.customerId === customerId);
       });

@@ -63,5 +63,12 @@
                 {"productName": "Saddle", "itemCost": 599.99},
                 {"productName": "Riding cap", "itemCost": 79.99}
             ]
+      },
+      {
+            "customerId": 10,
+            "orderItems": [
+                {"productName": "Baseball", "itemCost": 9.99},
+                {"productName": "Bat", "itemCost": 19.99}
+            ]
       }
 ]

@@ -71,6 +71,10 @@ export class CustomersComponent {
   }
 
   sort(prop: string) {
+      //Check for complex type such as 'state.name'
+      if (prop && prop.indexOf('.')) {
+        
+      }
       this.sorter.sort(this.filteredCustomers, prop);
   }
 

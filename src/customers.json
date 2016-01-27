@@ -128,5 +128,18 @@
                 "name": "Georgia"
             },
             "orderTotal": 299.99
+      },
+      {
+            "id": 10,
+            "firstName": "ward",
+            "lastName": "bell",
+            "gender": "male",
+            "address": "888 Central St.",
+            "city": "San Francisco",
+            "state": {
+                "abbreviation": "CA",
+                "name": "California"
+            },
+            "orderTotal": 29.98
       }
 ]
