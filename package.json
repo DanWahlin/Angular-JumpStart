@@ -8,13 +8,13 @@
   },
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.2",
-    "systemjs": "0.19.6",
+    "angular2": "2.0.0-beta.3",
+    "systemjs": "0.19.20",
     "es6-promise": "^3.0.2",
-    "es6-shim": "^0.33.3",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.10"
+    "es6-shim": "^0.34.2",
+    "reflect-metadata": "0.1.3",
+    "rxjs": "5.0.0-beta.1",
+    "zone.js": "0.5.13"
   },
   "devDependencies": {
     "live-server": "^0.9.1",
