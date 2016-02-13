@@ -1,5 +1,5 @@
 <!--
-   Angular 2 Starter
+   Angular 2 JumpStart
    Dan Wahlin
 
    @DanWahlin
@@ -13,7 +13,7 @@
     <title>Angular 2 TypeScript App</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Angular 2 Starter">
+    <meta name="description" content="Angular 2 JumpStart">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
@@ -73,7 +73,8 @@
       System.config({
         baseURL: '/node_modules',
         defaultJSExtensions: true,
-        warnings: true
+        warnings: true,
+        packages: {'app': {format: 'register', defaultExtension: 'ts'}} 
       });
       
       System.import('./app/main')
