@@ -36,8 +36,6 @@ screenshots from the app:
 
 1. Run `npm install` to install app dependencies
 
-1. Run `npm run tsc` to start the TypeScript compiler (it will watch for changes to .ts files)
-
 1. Run `npm start` in a separate terminal window to start the server and launch the app
 
 We're hard at work on a new Angular 2 hands-on/instructor-led training course 
