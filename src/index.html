@@ -9,13 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="/src/"></base>
+    <base href="/src/">
     <title>Angular 2 TypeScript App</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Angular 2 JumpStart">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css' />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
     <link href="styles/styles.css" rel="stylesheet" />
 </head>
@@ -58,9 +58,10 @@
         </div>
     </footer>
    
-   <!-- IE required polyfills (order matters) -->
+   <!-- Required polyfills (order matters) -->
    <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
    <script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
+   <script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
    
    <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
    <script src="/node_modules/systemjs/dist/system.src.js"></script>
@@ -71,10 +72,12 @@
     <script>
         
       System.config({
-        baseURL: '/node_modules',
+        paths: {
+          'angular2/*': '/node_modules/angular2/*.js',
+          'rxjs/*': '/node_modules/rxjs/*.js'
+        },
         defaultJSExtensions: true,
-        warnings: true,
-        packages: {'app': {format: 'register', defaultExtension: 'js'}} 
+        packages: {app: {format: 'register', defaultExtension: 'js'}} 
       });
       
       System.import('./app/main')
