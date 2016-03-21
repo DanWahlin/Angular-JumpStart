@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
 import { RouterLink } from 'angular2/router';
 //import { Observable } from 'rxjs/Observable';
 import { DataService } from '../shared/services/data.service';
@@ -13,7 +12,7 @@ import { TrimPipe } from '../shared/pipes/trim.pipe';
   selector: 'customers', 
   providers: [DataService],
   templateUrl: 'app/customers/customers.component.html',
-  directives: [CORE_DIRECTIVES, RouterLink, FilterTextboxComponent, SortByDirective],
+  directives: [RouterLink, FilterTextboxComponent, SortByDirective],
   pipes: [CapitalizePipe, TrimPipe]
 })
 export class CustomersComponent {

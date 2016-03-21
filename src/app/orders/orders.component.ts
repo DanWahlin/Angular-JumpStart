@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { DataService } from '../shared/services/data.service';
 
@@ -7,7 +6,7 @@ import { DataService } from '../shared/services/data.service';
   selector: 'orders',
   providers: [DataService],
   templateUrl: 'app/orders/orders.component.html',
-  directives: [CORE_DIRECTIVES, RouterLink]
+  directives: [RouterLink]
 })
 export class OrdersComponent {
 	
