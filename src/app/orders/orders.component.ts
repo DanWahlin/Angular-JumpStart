@@ -10,7 +10,7 @@ import { DataService } from '../shared/services/data.service';
 })
 export class OrdersComponent {
 	
-	  title: string = 'Orders';
+	title: string = 'Orders';
     filteredOrders: any[] = [];
   
     constructor(private dataService: DataService, private _routeParams: RouteParams) {
