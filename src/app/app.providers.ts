@@ -3,7 +3,7 @@ import { HTTP_PROVIDERS } from 'angular2/http';
 import { FORM_PROVIDERS } from 'angular2/common';
 import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 
-import { DataService } from './services/data.service';
+import { DataService } from './shared/services/data.service';
 
 export const APP_PROVIDERS = [
     DataService,
