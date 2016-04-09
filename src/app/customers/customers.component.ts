@@ -76,5 +76,9 @@ export class CustomersComponent {
       }
       this.sorter.sort(this.filteredCustomers, prop);
   }
+  
+  customerTrackBy(index: number, customer: any) {
+    return customer.id;
+  }
 
 }

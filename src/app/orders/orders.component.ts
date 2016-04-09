@@ -23,4 +23,12 @@ export class OrdersComponent {
         this.filteredOrders = orders.filter(order => order.customerId === customerId);
       });
     }
+    
+    orderTrackBy(index: number, order: any) {
+      return order.id;
+    }
+    
+    orderItemTrackBy(index: number, orderItem: any) {
+      return orderItem.id;
+    }
 }
