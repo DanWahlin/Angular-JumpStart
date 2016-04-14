@@ -12,6 +12,9 @@ main {
     padding-top: 60px;
 }
 
+/* Ensure display:flex and others don't override a [hidden] */
+[hidden] { display: none !important; }
+
 .white {
     color: white;
 }
