@@ -12,16 +12,16 @@ export class DataService {
   
     baseUrl: string = '';
 
-    constructor(private http: Http) { }
+    constructor(private _http: Http) { }
     
     getCustomers() {
-        return this.http.get(this.baseUrl + 'customers.json')
+        return this._http.get(this.baseUrl + 'customers.json')
                         .map((res: Response) => res.json())
                         .catch(this.handleError);
     }
 
     getOrders(){
-      return this.http.get(this.baseUrl + 'orders.json')
+      return this._http.get(this.baseUrl + 'orders.json')
                       .map((res: Response) => res.json())
                       .catch(this.handleError);               
     }
