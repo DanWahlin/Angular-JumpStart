@@ -1,6 +1,7 @@
 import { Component } from 'angular2/core';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { DataService } from '../shared/services/data.service';
+import { IOrder, IOrderItem } from '../shared/interfaces';
 
 @Component({ 
   selector: 'orders',
@@ -11,7 +12,7 @@ import { DataService } from '../shared/services/data.service';
 export class OrdersComponent {
 	
 	title: string = 'Orders';
-    filteredOrders: any[] = [];
+    filteredOrders: IOrder[] = [];
   
     constructor(private dataService: DataService, private _routeParams: RouteParams) {
       
@@ -19,12 +20,12 @@ export class OrdersComponent {
     
     ngOnInit() {
       let customerId = parseInt(this._routeParams.get('id'), 10);
-      this.dataService.getOrders().subscribe((orders: any[]) => {
+      this.dataService.getOrders().subscribe((orders: IOrder[]) => {
         this.filteredOrders = orders.filter(order => order.customerId === customerId);
       });
     }
     
-    orderTrackBy(index: number, order: any) {
+    orderTrackBy(index: number, order: IOrderItem) {
       return order.id;
     }
     

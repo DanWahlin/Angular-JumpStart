@@ -1,12 +1,14 @@
 import { Component } from 'angular2/core';
 import { RouterLink } from 'angular2/router';
 //import { Observable } from 'rxjs/Observable';
+
 import { DataService } from '../shared/services/data.service';
 import { Sorter } from '../shared/sorter';
 import { FilterTextboxComponent } from './filterTextbox.component';
 import { SortByDirective } from '../shared/directives/sortby.directive';
 import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
 import { TrimPipe } from '../shared/pipes/trim.pipe';
+import { ICustomer, IOrder } from '../shared/interfaces';
 
 @Component({ 
   selector: 'customers', 
@@ -20,8 +22,8 @@ export class CustomersComponent {
   title: string;
   filterText: string;
   listDisplayModeEnabled: boolean;
-  customers: any[] = [];
-  filteredCustomers: any[] = [];
+  customers: ICustomer[] = [];
+  filteredCustomers: ICustomer[] = [];
   sorter: Sorter;
 
   constructor(private dataService: DataService) { }
@@ -32,7 +34,7 @@ export class CustomersComponent {
     this.listDisplayModeEnabled = false;
 
     this.dataService.getCustomers()
-        .subscribe((customers:any[]) => {
+        .subscribe((customers: ICustomer[]) => {
           this.customers = this.filteredCustomers = customers;
         });
 
