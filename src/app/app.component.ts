@@ -12,8 +12,8 @@ import { APP_PROVIDERS } from './app.providers';
   providers: [ APP_PROVIDERS ]
 })
 @RouteConfig([
-  { path: '/', as: 'Customers', component: CustomersComponent, useAsDefault: true },
-  { path: '/orders/:id', as: 'Orders', component: OrdersComponent    }
+  { path: '/', name: 'Customers', component: CustomersComponent, useAsDefault: true },
+  { path: '/orders/:id', name: 'Orders', component: OrdersComponent    }
 ])
 export class AppComponent {
   
