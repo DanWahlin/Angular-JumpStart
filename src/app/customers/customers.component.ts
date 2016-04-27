@@ -3,46 +3,43 @@ import { RouterLink } from 'angular2/router';
 //import { Observable } from 'rxjs/Observable';
 
 import { DataService } from '../shared/services/data.service';
-import { Sorter } from '../shared/sorter';
-import { FilterTextboxComponent } from './filterTextbox.component';
-import { SortByDirective } from '../shared/directives/sortby.directive';
-import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
-import { TrimPipe } from '../shared/pipes/trim.pipe';
+import { FilterTextboxComponent } from '../filterTextbox/filterTextbox.component';
+import { CustomersCardComponent } from './customersCard.component';
+import { CustomersGridComponent } from './customersGrid.component'
 import { ICustomer, IOrder } from '../shared/interfaces';
 
 @Component({ 
   selector: 'customers', 
   providers: [DataService],
   templateUrl: 'app/customers/customers.component.html',
-  directives: [RouterLink, FilterTextboxComponent, SortByDirective],
-  pipes: [CapitalizePipe, TrimPipe]
+  directives: [RouterLink, FilterTextboxComponent, 
+               CustomersCardComponent, CustomersGridComponent]
 })
 export class CustomersComponent {
 
   title: string;
   filterText: string;
-  listDisplayModeEnabled: boolean;
   customers: ICustomer[] = [];
   filteredCustomers: ICustomer[] = [];
-  sorter: Sorter;
+  displayMode: DisplayModeEnum;
+  displayModeEnum = DisplayModeEnum;
 
   constructor(private dataService: DataService) { }
   
   ngOnInit() {
     this.title = 'Customers';
     this.filterText = 'Filter Customers:';
-    this.listDisplayModeEnabled = false;
+    this.displayMode = DisplayModeEnum.Card;
 
     this.dataService.getCustomers()
         .subscribe((customers: ICustomer[]) => {
           this.customers = this.filteredCustomers = customers;
         });
 
-    this.sorter = new Sorter();
   }
 
-  changeDisplayMode(mode: string) {
-      this.listDisplayModeEnabled = (mode === 'List');
+  changeDisplayMode(mode: DisplayModeEnum) {
+      this.displayMode = mode;
   }
 
   filterChanged(data: string) {
@@ -67,20 +64,10 @@ export class CustomersComponent {
     }
   }
 
-  deleteCustomer(id: number) {
+}
 
-  }
-
-  sort(prop: string) {
-      //Check for complex type such as 'state.name'
-      if (prop && prop.indexOf('.')) {
-        
-      }
-      this.sorter.sort(this.filteredCustomers, prop);
-  }
-  
-  customerTrackBy(index: number, customer: any) {
-    return customer.id;
-  }
-
+enum DisplayModeEnum {
+  Card = 0,
+  Grid = 1,
+  Map = 2
 }

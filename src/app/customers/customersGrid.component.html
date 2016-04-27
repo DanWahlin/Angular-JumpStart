@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row grid-container">
+        <div class="col-md-10">
+            <div class="table">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th sort-by="firstName" (sorted)="sort($event)">First Name</th>
+                            <th sort-by="lastName" (sorted)="sort($event)">Last Name</th>
+                            <th sort-by="address" (sorted)="sort($event)">Address</th>
+                            <th sort-by="city" (sorted)="sort($event)">City</th>
+                            <th sort-by="state.name" (sorted)="sort($event)">State</th>
+                            <!-- Or you can do this directly rather than using sort-by directive -->
+                            <th (click)="sort('orderTotal')">Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="#customer of customers;trackBy:customerTrackBy">
+                            <td><img src="images/{{ customer.gender | lowercase }}.png" 
+                                    class="card-image" alt="Customer Image" /></td>
+                            <td><a [routerLink]="['Orders',{id:customer.id}]">{{ customer.firstName | capitalize }}</a></td>
+                            <td>{{ customer.lastName | capitalize }}</td>
+                            <td>{{ customer.address }}</td>
+                            <td>{{ customer.city | trim }}</td>
+                            <td>{{ customer.state.name }}</td>
+                            <td>{{ customer.orderTotal | currency:'USD':true }}</td>
+                        </tr>
+                        <tr *ngIf="!customers.length">
+                            <td>&nbsp;</td>
+                            <td colspan="6">No Records Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
