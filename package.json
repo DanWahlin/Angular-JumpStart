@@ -7,7 +7,7 @@
     "postinstall": "npm run typings install",
     "tsc": "tsc",
     "tsc:w": "tsc --watch",
-    "live": "live-server --open=src",
+    "live": "live-server --open=src --quiet",
     "start": "concurrently \"npm run tsc:w\" \"npm run live\" ",
     "typings": "typings"
   },
