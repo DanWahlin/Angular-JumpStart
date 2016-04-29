@@ -34,7 +34,9 @@ screenshots from the app:
 
 1. Run `npm install` to install app dependencies
 
-1. Run `npm start` in a separate terminal window to start the server and launch the app
+1. Run `npm run build:w` in a separate terminal window to build the TypeScript and watch for changes
+
+1. Run `npm start` in a separate terminal window to start the server
 
 We're hard at work on a new Angular 2 hands-on/instructor-led training course 
 as well as a video course that will be released in 2016!

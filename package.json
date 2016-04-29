@@ -10,7 +10,7 @@
     "bundle": "node bundle.js",
     "bundle:prod": "node bundle.js --prod",
     "live": "live-server --open=src --quiet",
-    "start": "concurrently \"npm run tsc:w\" \"npm run live\" ",
+    "start": "concurrently \"npm run build:w\" \"npm run live\" ",
     "typings": "typings"
   },
   "license": "ISC",
