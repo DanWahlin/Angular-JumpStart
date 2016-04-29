@@ -1,5 +1,5 @@
-import { Component } from 'angular2/core';
-import { RouterLink, RouteParams } from 'angular2/router';
+import { Component } from '@angular/core';
+import { RouterLink, RouteParams } from '@angular/router';
 import { DataService } from '../shared/services/data.service';
 import { IOrder, IOrderItem } from '../shared/interfaces';
 

@@ -18,6 +18,19 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css' />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
     <link href="styles/styles.css" rel="stylesheet" />
+    
+	<script src="/node_modules/zone.js/dist/zone.js"></script>
+	<script src="/node_modules/reflect-metadata/Reflect.js"></script>
+	<script src="/node_modules/systemjs/dist/system.js"></script>
+
+	<!-- remove for bundle usage -->
+	<script src="system.config.js"></script>
+	<script>
+		System.import('app').catch(function(err){
+			console.error(err);
+		});
+	</script>
+	<!-- remove for bundle usage -->
 </head>
 <body>
     <header class="navbar navbar-inner navbar-fixed-top">
@@ -57,30 +70,10 @@
             </div>
         </div>
     </footer>
-   
-   <!-- Required polyfills (order matters) -->
-   <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
-   <script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
-   <script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-   
-   <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
-   <script src="/node_modules/systemjs/dist/system.src.js"></script>
-   <script src="/node_modules/rxjs/bundles/Rx.js"></script>
-   <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
-   <script src="/node_modules/angular2/bundles/http.dev.js"></script>
-   <script src="/node_modules/angular2/bundles/router.dev.js"></script>
-   
-  <script>
-    System.config({
-        packages: {
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-    System.import('app/main')
-          .then(null, console.error.bind(console));
-  </script>
+    
+	<!-- add for bundle usage -->
+	<!-- <script src="dist/bundle.min.js"></script> -->
+	<!-- add for bundle usage -->
+    
 </body>
 </html>
