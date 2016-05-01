@@ -42,13 +42,13 @@ export class CustomerEditComponent implements OnInit {
   onSubmit() {
       this.dataService.updateCustomer(this.customer)
         .subscribe((status: boolean) => {
-          this.router.navigate(['Customers']);
+          this.router.navigate(['/Customers']);
       });
   }
   
   onCancel(event: Event) {
     event.preventDefault();
-    this.router.navigate(['Customers']);
+    this.router.navigate(['/Customers']);
   }
 
 }

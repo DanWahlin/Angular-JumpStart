@@ -7,35 +7,39 @@
 		},
 		packages: {
 			'app': {
-				main: 'main.js',
+				main: 'main',
+				defaultExtension: 'js'
+			},
+			'app/+customer': {
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'@angular/core': {
-				main: 'index.js',
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'@angular/compiler': {
-				main: 'index.js',
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'@angular/common': {
-				main: 'index.js',
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'@angular/platform-browser': {
-				main: 'index.js',
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'@angular/platform-browser-dynamic': {
-				main: 'index.js',
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'@angular/http': {
-				main: 'index.js',
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'@angular/router': {
-				main: 'index.js',
+				main: 'index',
 				defaultExtension: 'js'
 			},
 			'rxjs': {

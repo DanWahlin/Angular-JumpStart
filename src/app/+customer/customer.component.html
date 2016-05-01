@@ -8,16 +8,23 @@
             <ul class="nav navbar-nav">
                 <li class="toolbar-item">
                     <a [routerLink]="['CustomerDetails']" 
-                       (click)="customerDetailsEnabled = true" 
-                       [class.active]="customerDetailsEnabled">
+                       (click)="displayMode = displayModeEnum.Details" 
+                       [class.active]="displayMode === displayModeEnum.Details">
                        <span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Customer Details
                     </a>
                 </li>
                 <li class="toolbar-item">
                     <a [routerLink]="['CustomerOrders']"
-                       (click)="customerDetailsEnabled = false" 
-                       [class.active]="!customerDetailsEnabled">
+                       (click)="displayMode = displayModeEnum.Orders" 
+                       [class.active]="displayMode === displayModeEnum.Orders">
                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Customer Orders
+                    </a>
+                </li>
+                <li class="toolbar-item">
+                    <a [routerLink]="['CustomerEdit']"
+                       (click)="displayMode = displayModeEnum.Edit" 
+                       [class.active]="displayMode === displayModeEnum.Edit">
+                        <span class="glyphicon glyphicon-edit edit-icon"></span>&nbsp;&nbsp;Edit Customer
                     </a>
                 </li>
             </ul>

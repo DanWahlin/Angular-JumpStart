@@ -6,7 +6,7 @@
     <div class="col-md-11">
       <h4>    
           {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}&nbsp;          
-          <i [routerLink]="['/CustomerEdit',{id:customer.id}]" 
+          <i [routerLink]="['CustomerEdit']" 
             class="glyphicon glyphicon-edit edit-icon edit-icon-large" title="Edit Customer"></i>
       </h4>
       <br />

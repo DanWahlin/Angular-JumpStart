@@ -6,7 +6,7 @@
                     <a [routerLink]="['Customer',{id:customer.id},'CustomerDetails']" class="white">
                         {{customer.firstName | capitalize }} {{ customer.lastName | capitalize }} 
                     </a>
-                    <i title="Edit" [routerLink]="['CustomerEdit',{id:customer.id}]" 
+                    <i title="Edit" [routerLink]="['Customer',{id:customer.id},'CustomerEdit']" 
                        class="pull-right glyphicon glyphicon-edit edit-icon"></i>
                 </div>
                 <div class="card-body">
