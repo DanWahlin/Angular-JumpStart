@@ -26,11 +26,9 @@
       <select class="form-control" 
               [(ngModel)]="customer.state.abbreviation"
               ngControl="state" 
-              #state="ngForm"
               required>
           <option *ngFor="let state of states" [ngValue]="state.abbreviation">{{state.name}}</option>
       </select>
-      <div class="alert alert-danger" [hidden]="state.valid">State is required</div>
     </div>
     <button type="submit" class="btn btn-default" [disabled]="!customerForm.form.valid">Update</button>
   </form>
