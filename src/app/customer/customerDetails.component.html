@@ -1,0 +1,18 @@
+<div *ngIf="customer">
+  <div class="row">
+    <div class="col-md-1">
+      <img src="images/{{customer.gender | lowercase}}.png" class="card-image" />
+    </div>
+    <div class="col-md-11">
+      <h4>    
+          {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}&nbsp;          
+          <i [routerLink]="['/CustomerEdit',{id:customer.id}]" 
+            class="glyphicon glyphicon-edit edit-icon edit-icon-large" title="Edit Customer"></i>
+      </h4>
+      <br />
+      {{ customer.address }}
+      <br />
+      {{ customer.city }}, {{ customer.state.name }}
+    </div>
+  </div>    
+</div>   

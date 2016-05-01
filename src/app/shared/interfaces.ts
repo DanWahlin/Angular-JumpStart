@@ -6,7 +6,7 @@ export interface ICustomer {
     address: string;
     city: string;
     state: IState;
-    orderTotal: number;
+    orderTotal?: number;
 }
 
 export interface IState {

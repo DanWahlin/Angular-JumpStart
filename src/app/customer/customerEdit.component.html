@@ -1,0 +1,16 @@
+<div>
+  <h3><span class="glyphicon glyphicon-edit"></span> Edit Customer</h3>
+  <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="editForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" ngControl="firstName" #firstName="ngForm" [(ngModel)]="customer.firstName" required>
+      <div class="alert alert-danger" [hidden]="firstName.valid">First Name is required</div>
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" class="form-control" ngControl="lastName" #lastName="ngForm" [(ngModel)]="customer.lastName" required>
+      <div class="alert alert-danger" [hidden]="lastName.valid">Last Name is required</div>
+    </div>
+    <button type="submit" class="btn btn-default" [disabled]="!customerForm.form.valid">Update</button>
+  </form>
+</div>

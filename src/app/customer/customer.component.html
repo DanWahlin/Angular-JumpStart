@@ -1,0 +1,38 @@
+<div class="orders view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Customer Information</h3>
+        </header>
+        <br />
+        <div class="navbar">
+            <ul class="nav navbar-nav">
+                <li class="toolbar-item">
+                    <a [routerLink]="['CustomerDetails']" 
+                       (click)="customerDetailsEnabled = true" 
+                       [class.active]="customerDetailsEnabled">
+                       <span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Customer Details
+                    </a>
+                </li>
+                <li class="toolbar-item">
+                    <a [routerLink]="['CustomerOrders']"
+                       (click)="customerDetailsEnabled = false" 
+                       [class.active]="!customerDetailsEnabled">
+                        <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Customer Orders
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <router-outlet></router-outlet>
+            <br />
+            <br />
+            <a href="#" [routerLink]="['/Customers']" router-params="">View all Customers</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

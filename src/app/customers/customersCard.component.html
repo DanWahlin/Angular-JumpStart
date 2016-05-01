@@ -3,7 +3,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let customer of customers;trackBy:trackby.customer">
             <div class="card">
                 <div class="card-header">
-                    <a [routerLink]="['Orders',{id:customer.id}]" class="white">{{customer.firstName | capitalize }} {{ customer.lastName | capitalize }} 
+                    <a [routerLink]="['Customer',{id:customer.id},'CustomerDetails']" class="white">{{customer.firstName | capitalize }} {{ customer.lastName | capitalize }} 
                         <i class="icon-edit icon-white editIcon"></i></a>
                 </div>
                 <div class="card-body">
@@ -15,6 +15,7 @@
                         </div>
                         <div class="pull-left card-body-right">
                             <div class="card-body-content">{{customer.city | trim }}, {{customer.state.name}}</div>
+                            <a [routerLink]="['Customer',{id:customer.id},'CustomerOrders']">View Orders</a>
                         </div>
                     </div>
                 </div>

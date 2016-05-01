@@ -61,6 +61,14 @@ th {
 
 }
 
+.edit-icon {
+    cursor: pointer;
+}
+
+.orders-table {
+    width:50%;
+}
+
 .indent {
     margin-left:5px;
 }
@@ -72,7 +80,7 @@ th {
 .card {
     background-color:#fff;
     border: 1px solid #d4d4d4;
-    height:100px;
+    height:120px;
     margin-bottom: 20px;
     position: relative;
 }
@@ -233,5 +241,21 @@ footer {
 
 filter-textbox {
     margin-top: 5px;
+}
+
+form {
+	width:50%;
+}
+
+.editForm .ng-invalid {
+  border-left: 5px solid #a94442;
+}
+
+.editForm .ng-valid {
+  border-left: 5px solid #42A948;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
 }
 

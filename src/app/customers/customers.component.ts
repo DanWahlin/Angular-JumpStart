@@ -10,7 +10,6 @@ import { ICustomer, IOrder } from '../shared/interfaces';
 
 @Component({ 
   selector: 'customers', 
-  providers: [DataService],
   templateUrl: 'app/customers/customers.component.html',
   directives: [RouterLink, FilterTextboxComponent, 
                CustomersCardComponent, CustomersGridComponent]

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES, RouteConfig } from '@angular/router';
 
 import { CustomersComponent } from './customers/customers.component';
-import { OrdersComponent } from './orders/orders.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerEditComponent } from './customer/customerEdit.component';
 import { APP_PROVIDERS } from './app.providers';
 
 @Component({ 
@@ -13,7 +14,9 @@ import { APP_PROVIDERS } from './app.providers';
 })
 @RouteConfig([
   { path: '/', name: 'Customers', component: CustomersComponent, useAsDefault: true },
-  { path: '/orders/:id', name: 'Orders', component: OrdersComponent    }
+  { path: '/customers/:id/...', name: 'Customer', component: CustomerComponent },
+  { path: '/customers/:id/edit', name: 'CustomerEdit', component: CustomerEditComponent },
+  { path: '/**', redirectTo: ['Customers']}
 ])
 export class AppComponent {
   

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 //Grab everything with import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
@@ -11,22 +12,81 @@ import { ICustomer, IOrder } from '../interfaces';
 export class DataService {
   
     baseUrl: string = '';
+    customers: ICustomer[];
+    orders: IOrder[];
 
     constructor(private _http: Http) { }
     
     getCustomers() : Observable<ICustomer[]> {
-        return this._http.get(this.baseUrl + 'customers.json')
-                        .map((res: Response) => res.json())
-                        .catch(this.handleError);
+        if (!this.customers) {
+            return this._http.get(this.baseUrl + 'customers.json')
+                        .map((res: Response) => {
+                            this.customers = res.json();
+                            return this.customers;
+                        })
+                        .catch(this._handleError);
+        }
+        else {
+            //return cached data
+            return this._createObservable(this.customers);
+        }
+    }
+    
+    getCustomer(id: number) : Observable<ICustomer> {
+        if (this.customers) {
+            //filter using cached data
+            return this._findCustomerObservable(id);
+        } else {
+            //Query the existing customers to find the target customer
+            return Observable.create((observer: Observer<ICustomer>) => {
+                    this.getCustomers().subscribe((customers: ICustomer[]) => {
+                        this.customers = customers;                
+                        const cust = this._filterCustomers(id);
+                        observer.next(cust);
+                        observer.complete();
+                })
+            });
+        }
     }
 
     getOrders() : Observable<IOrder[]> {
       return this._http.get(this.baseUrl + 'orders.json')
-                      .map((res: Response) => res.json())
-                      .catch(this.handleError);               
+                .map((res: Response) => {
+                    this.orders = res.json();
+                    return this.orders;
+                })
+                .catch(this._handleError);               
     }
     
-    handleError(error: any) {
+    updateCustomer(customer: ICustomer) : Observable<boolean> {
+        return Observable.create((observer: Observer<boolean>) => {
+            this.customers.forEach((cust: ICustomer, index: number) => {
+               if (cust.id === customer.id) {
+                   this.customers[index] = customer;
+               } 
+            });
+            observer.next(true);
+            observer.complete();
+        });
+    }
+    
+    private _findCustomerObservable(id: number) : Observable<ICustomer> {        
+        return this._createObservable(this._filterCustomers(id));
+    }
+    
+    private _filterCustomers(id: number) : ICustomer {
+        const custs = this.customers.filter((cust) => cust.id === id);
+        return (custs.length) ? custs[0] : null;
+    }
+    
+    private _createObservable(data: any) : Observable<any> {
+        return Observable.create((observer: Observer<any>) => {
+            observer.next(data);
+            observer.complete();
+        });
+    }
+    
+    private _handleError(error: any) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }

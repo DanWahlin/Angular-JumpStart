@@ -13,18 +13,20 @@
                             <th sort-by="state.name" (sorted)="sort($event)">State</th>
                             <!-- Or you can do this directly rather than using sort-by directive -->
                             <th (click)="sort('orderTotal')">Order Total</th>
+                            <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let customer of customers;trackBy:trackby.customer">
                             <td><img src="images/{{ customer.gender | lowercase }}.png" 
                                     class="card-image" alt="Customer Image" /></td>
-                            <td><a [routerLink]="['Orders',{id:customer.id}]">{{ customer.firstName | capitalize }}</a></td>
+                            <td><a [routerLink]="['Customer',{id:customer.id},'CustomerDetails']">{{ customer.firstName | capitalize }}</a></td>
                             <td>{{ customer.lastName | capitalize }}</td>
                             <td>{{ customer.address }}</td>
                             <td>{{ customer.city | trim }}</td>
                             <td>{{ customer.state.name }}</td>
                             <td>{{ customer.orderTotal | currency:'USD':true }}</td>
+                            <td><a [routerLink]="['Customer',{id:customer.id},'CustomerOrders']">View Orders</a></td>
                         </tr>
                         <tr *ngIf="!customers.length">
                             <td>&nbsp;</td>
