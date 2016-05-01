@@ -30,7 +30,11 @@ export class CustomerEditComponent implements OnInit {
   ngOnInit() { 
       let instruction = this._router.root.currentInstruction;
       const id = +instruction.component.params['id'];
-      this._dataService.getCustomer(id).subscribe((customer: ICustomer) => this.customer = customer);
+      this._dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+        //Quick and dirty clone used in case user cancels out of form
+        const cust = JSON.stringify(customer);
+        this.customer = JSON.parse(cust);
+      });
       this._dataService.getStates().subscribe((states: IState[]) => this.states = states);
   }
   
@@ -39,6 +43,11 @@ export class CustomerEditComponent implements OnInit {
         .subscribe((status: boolean) => {
           this._router.navigate(['Customers']);
       });
+  }
+  
+  onCancel(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['Customers']);
   }
 
 }

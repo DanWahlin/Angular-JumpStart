@@ -17,7 +17,7 @@
       <div class="alert alert-danger" [hidden]="address.valid">Address is required</div>
     </div>
     <div class="form-group">
-      <label>Address</label>
+      <label>City</label>
       <input type="text" class="form-control" ngControl="city" #city="ngForm" [(ngModel)]="customer.city" required>
       <div class="alert alert-danger" [hidden]="city.valid">City is required</div>
     </div>
@@ -30,6 +30,7 @@
           <option *ngFor="let state of states" [ngValue]="state.abbreviation">{{state.name}}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-default" [disabled]="!customerForm.form.valid">Update</button>
+    <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>&nbsp;&nbsp;
+    <button type="submit" class="btn btn-success" [disabled]="!customerForm.form.valid">Update</button>
   </form>
 </div>
