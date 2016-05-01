@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { DataService } from '../shared/services/data.service';
-import { ICustomer } from '../shared/interfaces';
+import { ICustomer, IState } from '../shared/interfaces';
 
 @Component({
   selector: 'customer-edit',
@@ -23,22 +23,22 @@ export class CustomerEditComponent implements OnInit {
         name: ''
     }
   };
+  states: IState[];
   
   constructor(private _router: Router, private _dataService: DataService) { }
 
   ngOnInit() { 
       let instruction = this._router.root.currentInstruction;
       const id = +instruction.component.params['id'];
-      this._dataService.getCustomer(id).subscribe((customer: ICustomer) => {
-          this.customer = customer;
-      });
+      this._dataService.getCustomer(id).subscribe((customer: ICustomer) => this.customer = customer);
+      this._dataService.getStates().subscribe((states: IState[]) => this.states = states);
   }
   
   onSubmit() {
-    		this._dataService.updateCustomer(this.customer)
-          .subscribe((status: boolean) => {
-            this._router.navigate(['Customers']);
-        });
+      this._dataService.updateCustomer(this.customer)
+        .subscribe((status: boolean) => {
+          this._router.navigate(['Customers']);
+      });
   }
 
 }
