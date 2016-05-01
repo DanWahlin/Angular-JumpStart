@@ -6,8 +6,9 @@ import { ICustomer, IOrder, IOrderItem } from '../shared/interfaces';
 import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
 
 @Component({
+  moduleId: __moduleName,
   selector: 'customer-orders',
-  templateUrl: 'app/customer/customerOrders.component.html',
+  templateUrl: 'customerOrders.component.html',
   pipes: [ CapitalizePipe ]
 })
 export class CustomerOrdersComponent implements OnInit {
@@ -15,15 +16,15 @@ export class CustomerOrdersComponent implements OnInit {
   filteredOrders: IOrder[] = [];
   customer: ICustomer;
 
-  constructor(private _router: Router, private _routeParams: RouteParams, private _dataService: DataService) { }
+  constructor(private router: Router, private routeParams: RouteParams, private dataService: DataService) { }
 
   ngOnInit() { 
-      let instruction = this._router.root.currentInstruction;
+      let instruction = this.router.root.currentInstruction;
       const id = +instruction.component.params['id'];
-      this._dataService.getOrders(id).subscribe((orders: IOrder[]) => {
+      this.dataService.getOrders(id).subscribe((orders: IOrder[]) => {
         this.filteredOrders = orders;
       });
-      this._dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+      this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
         this.customer = customer;
       });
   }

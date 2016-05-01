@@ -6,8 +6,9 @@ import { DataService } from '../shared/services/data.service';
 import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
 
 @Component({
+  moduleId: __moduleName,
   selector: 'customer-details',
-  templateUrl: 'app/customer/customerDetails.component.html',
+  templateUrl: 'customerDetails.component.html',
   directives: [ RouterLink ],
   pipes: [ CapitalizePipe ]
 })
@@ -15,12 +16,12 @@ export class CustomerDetailsComponent implements OnInit {
 
   customer: ICustomer;
 
-  constructor(private _router: Router, private _dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() { 
-      let instruction = this._router.root.currentInstruction;
+      let instruction = this.router.root.currentInstruction;
       const id = +instruction.component.params['id'];
-      this._dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+      this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
           this.customer = customer;
       });
   }

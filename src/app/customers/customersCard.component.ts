@@ -7,8 +7,9 @@ import { ICustomer } from '../shared/interfaces';
 import { TrackByService } from '../shared/services/trackby.service';
 
 @Component({ 
+  moduleId: __moduleName,
   selector: 'customers-card', 
-  templateUrl: 'app/customers/customersCard.component.html',
+  templateUrl: 'customersCard.component.html',
   directives: [RouterLink],
   pipes: [CapitalizePipe, TrimPipe],
   //When using OnPush detectors, then the framework will check an OnPush 

@@ -6,8 +6,9 @@ import { CustomerOrdersComponent } from './customerOrders.component';
 import { CustomerDetailsComponent } from './customerDetails.component';
 
 @Component({ 
+  moduleId: __moduleName,
   selector: 'orders',
-  templateUrl: 'app/customer/customer.component.html',
+  templateUrl: 'customer.component.html',
   directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
@@ -18,10 +19,10 @@ export class CustomerComponent {
   
     customerDetailsEnabled: boolean;
   
-    constructor(private _router: Router) { }
+    constructor(private router: Router) { }
     
     ngOnInit() {
-      if (this._router.currentInstruction.component.urlPath === 'details') {
+      if (this.router.currentInstruction.component.urlPath === 'details') {
         this.customerDetailsEnabled = true;
       }
     }

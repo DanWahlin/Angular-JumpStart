@@ -9,8 +9,9 @@ import { CustomersGridComponent } from './customersGrid.component'
 import { ICustomer, IOrder } from '../shared/interfaces';
 
 @Component({ 
+  moduleId: __moduleName,
   selector: 'customers', 
-  templateUrl: 'app/customers/customers.component.html',
+  templateUrl: 'customers.component.html',
   directives: [RouterLink, FilterTextboxComponent, 
                CustomersCardComponent, CustomersGridComponent]
 })

@@ -16,55 +16,55 @@ export class DataService {
     orders: IOrder[];
     states: IState[];
 
-    constructor(private _http: Http) { }
+    constructor(private http: Http) { }
     
     getCustomers() : Observable<ICustomer[]> {
         if (!this.customers) {
-            return this._http.get(this._baseUrl + 'customers.json')
+            return this.http.get(this._baseUrl + 'customers.json')
                         .map((res: Response) => {
                             this.customers = res.json();
                             return this.customers;
                         })
-                        .catch(this._handleError);
+                        .catch(this.handleError);
         }
         else {
             //return cached data
-            return this._createObservable(this.customers);
+            return this.createObservable(this.customers);
         }
     }
     
     getCustomer(id: number) : Observable<ICustomer> {
         if (this.customers) {
             //filter using cached data
-            return this._findCustomerObservable(id);
+            return this.findCustomerObservable(id);
         } else {
             //Query the existing customers to find the target customer
             return Observable.create((observer: Observer<ICustomer>) => {
                     this.getCustomers().subscribe((customers: ICustomer[]) => {
                         this.customers = customers;                
-                        const cust = this._filterCustomers(id);
+                        const cust = this.filterCustomers(id);
                         observer.next(cust);
                         observer.complete();
                 })
             })
-            .catch(this._handleError);
+            .catch(this.handleError);
         }
     }
 
     getOrders(id: number) : Observable<IOrder[]> {
-      return this._http.get(this._baseUrl + 'orders.json')
+      return this.http.get(this._baseUrl + 'orders.json')
                 .map((res: Response) => {
                     this.orders = res.json();
                     return this.orders.filter((order: IOrder) => order.customerId === id);
                 })
-                .catch(this._handleError);               
+                .catch(this.handleError);               
     }
     
     updateCustomer(customer: ICustomer) : Observable<boolean> {
         return Observable.create((observer: Observer<boolean>) => {
             this.customers.forEach((cust: ICustomer, index: number) => {
                if (cust.id === customer.id) {
-                   const state = this._filterStates(customer.state.abbreviation);
+                   const state = this.filterStates(customer.state.abbreviation);
                    customer.state.abbreviation = state.abbreviation;
                    customer.state.name = state.name;
                    this.customers[index] = customer;
@@ -82,36 +82,36 @@ export class DataService {
                 observer.complete();
             });
         } else {
-            return this._http.get(this._baseUrl + 'states.json').map((response: Response) => {
+            return this.http.get(this._baseUrl + 'states.json').map((response: Response) => {
                 this.states = response.json();
                 return this.states;
             })
-            .catch(this._handleError);
+            .catch(this.handleError);
         }
     }
     
-    private _findCustomerObservable(id: number) : Observable<ICustomer> {        
-        return this._createObservable(this._filterCustomers(id));
+    private findCustomerObservable(id: number) : Observable<ICustomer> {        
+        return this.createObservable(this.filterCustomers(id));
     }
     
-    private _filterCustomers(id: number) : ICustomer {
+    private filterCustomers(id: number) : ICustomer {
         const custs = this.customers.filter((cust) => cust.id === id);
         return (custs.length) ? custs[0] : null;
     }
     
-    private _createObservable(data: any) : Observable<any> {
+    private createObservable(data: any) : Observable<any> {
         return Observable.create((observer: Observer<any>) => {
             observer.next(data);
             observer.complete();
         });
     }
     
-    private _filterStates(stateAbbreviation: string) {
+    private filterStates(stateAbbreviation: string) {
         const filteredStates = this.states.filter((state) => state.abbreviation === stateAbbreviation);
         return (filteredStates.length) ? filteredStates[0] : null;
     }
     
-    private _handleError(error: any) {
+    private handleError(error: any) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }

@@ -8,7 +8,7 @@ import { Directive, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SortByDirective {
 	
-	private _sortProperty: string;
+	private sortProperty: string;
   
   @Output()
 	sorted: EventEmitter<string> = new EventEmitter();
@@ -17,12 +17,12 @@ export class SortByDirective {
     
   @Input('sort-by') 
   set sortBy(value: string) {
-    this._sortProperty = value;
+    this.sortProperty = value;
   }
 
   onClick(event: any) {
     event.preventDefault();
-    this.sorted.next(this._sortProperty); //Raise clicked event
+    this.sorted.next(this.sortProperty); //Raise clicked event
   }
 
 }

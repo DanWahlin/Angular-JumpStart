@@ -7,6 +7,7 @@ import { CustomerEditComponent } from './customer/customerEdit.component';
 import { APP_PROVIDERS } from './app.providers';
 
 @Component({ 
+  moduleId: __moduleName,
   selector: 'app-container',
   template: `<router-outlet></router-outlet>`,
   directives: [ROUTER_DIRECTIVES],

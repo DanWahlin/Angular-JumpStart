@@ -5,8 +5,9 @@ import { DataService } from '../shared/services/data.service';
 import { ICustomer, IState } from '../shared/interfaces';
 
 @Component({
+  moduleId: __moduleName,
   selector: 'customer-edit',
-  templateUrl: 'app/customer/customerEdit.component.html'
+  templateUrl: 'customerEdit.component.html'
 })
 export class CustomerEditComponent implements OnInit {
 
@@ -25,29 +26,29 @@ export class CustomerEditComponent implements OnInit {
   };
   states: IState[];
   
-  constructor(private _router: Router, private _dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() { 
-      let instruction = this._router.root.currentInstruction;
+      let instruction = this.router.root.currentInstruction;
       const id = +instruction.component.params['id'];
-      this._dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+      this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
         //Quick and dirty clone used in case user cancels out of form
         const cust = JSON.stringify(customer);
         this.customer = JSON.parse(cust);
       });
-      this._dataService.getStates().subscribe((states: IState[]) => this.states = states);
+      this.dataService.getStates().subscribe((states: IState[]) => this.states = states);
   }
   
   onSubmit() {
-      this._dataService.updateCustomer(this.customer)
+      this.dataService.updateCustomer(this.customer)
         .subscribe((status: boolean) => {
-          this._router.navigate(['Customers']);
+          this.router.navigate(['Customers']);
       });
   }
   
   onCancel(event: Event) {
     event.preventDefault();
-    this._router.navigate(['Customers']);
+    this.router.navigate(['Customers']);
   }
 
 }
