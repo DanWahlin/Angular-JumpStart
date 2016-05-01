@@ -22,7 +22,6 @@ export class CustomersGridComponent implements OnInit {
 
   @Input() customers: any[] = [];
 
-
   constructor(private _sorter: Sorter, public trackby: TrackByService) { }
    
   ngOnInit() {

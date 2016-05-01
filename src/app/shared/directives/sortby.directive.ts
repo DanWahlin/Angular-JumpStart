@@ -8,7 +8,7 @@ import { Directive, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SortByDirective {
 	
-	_sortProperty: string;
+	private _sortProperty: string;
   
   @Output()
 	sorted: EventEmitter<string> = new EventEmitter();
