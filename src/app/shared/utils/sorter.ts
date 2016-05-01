@@ -26,15 +26,12 @@ export class Sorter {
             if (this.isString(bVal)) bVal = bVal.trim().toUpperCase();
           
             if(aVal === bVal){
-                console.log(aVal + ' = ' + bVal);
                 return 0;
             }
             else if (aVal > bVal){
-                console.log(aVal + ' > ' + bVal);
                 return this.direction * -1;
             }
             else {
-                console.log(aVal + ' < ' + bVal);
                 return this.direction * 1;
             }
         });
