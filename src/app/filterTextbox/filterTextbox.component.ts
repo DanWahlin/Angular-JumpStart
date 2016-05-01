@@ -22,7 +22,7 @@ export class FilterTextboxComponent {
     changed: EventEmitter<string> = new EventEmitter();
 
     filterChanged(event: any) {
-        event.preventDefault();
-        this.changed.emit(this.model.filter); //Raise changed event
+      event.preventDefault();
+      this.changed.emit(this.model.filter); //Raise changed event
     }
 }
