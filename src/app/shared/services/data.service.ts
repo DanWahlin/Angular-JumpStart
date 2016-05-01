@@ -51,11 +51,11 @@ export class DataService {
         }
     }
 
-    getOrders() : Observable<IOrder[]> {
+    getOrders(id: number) : Observable<IOrder[]> {
       return this._http.get(this._baseUrl + 'orders.json')
                 .map((res: Response) => {
                     this.orders = res.json();
-                    return this.orders;
+                    return this.orders.filter((order: IOrder) => order.customerId === id);
                 })
                 .catch(this._handleError);               
     }
