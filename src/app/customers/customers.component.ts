@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 //import { Observable } from 'rxjs/Observable';
 
 import { DataService } from '../shared/services/data.service';
@@ -9,10 +9,10 @@ import { CustomersGridComponent } from './customersGrid.component'
 import { ICustomer, IOrder } from '../shared/interfaces';
 
 @Component({ 
-  moduleId: __moduleName,
+  moduleId: module.id,
   selector: 'customers', 
   templateUrl: 'customers.component.html',
-  directives: [RouterLink, FilterTextboxComponent, 
+  directives: [ROUTER_DIRECTIVES, FilterTextboxComponent, 
                CustomersCardComponent, CustomersGridComponent]
 })
 export class CustomersComponent {

@@ -8,42 +8,29 @@
 		packages: {
 			'app': {
 				main: 'main',
-				defaultExtension: 'js'
-			},
-			'app/+customer': {
-				main: 'index',
-				defaultExtension: 'js'
 			},
 			'@angular/core': {
-				main: 'index',
-				defaultExtension: 'js'
+				main: 'index'
 			},
 			'@angular/compiler': {
-				main: 'index',
-				defaultExtension: 'js'
+				main: 'index'
 			},
 			'@angular/common': {
-				main: 'index',
-				defaultExtension: 'js'
+				main: 'index'
 			},
 			'@angular/platform-browser': {
-				main: 'index',
-				defaultExtension: 'js'
+				main: 'index'
 			},
 			'@angular/platform-browser-dynamic': {
-				main: 'index',
-				defaultExtension: 'js'
+				main: 'index'
 			},
 			'@angular/http': {
-				main: 'index',
-				defaultExtension: 'js'
+				main: 'index'
 			},
 			'@angular/router': {
-				main: 'index',
-				defaultExtension: 'js'
+				main: 'index'
 			},
 			'rxjs': {
-				defaultExtension: 'js'
 			}
 		}
 	});
@@ -64,12 +51,11 @@ Could use reduce() to minimize duplication but keeping it simple here
 	  //add packageName to it as a new property & apply the settings
 		//That creates the packages object nice and cleanly
 		ngPackage[packageName] = {
-			main: 'index.js',
-			defaultExtension: 'js'
+			main: 'index'
 		}
 		return ngPackage;
 	}, {});
 	
-	packages.app = { main: 'main.js', defaultExtension: 'js'};
-	packages.rxjs = { defaultExtension: 'js' };
+	packages.app = { main: 'ma};
+	packages.rxjs };
 */
