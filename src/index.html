@@ -19,16 +19,17 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
     <link href="styles/styles.css" rel="stylesheet" />
     
-	<script src="/node_modules/zone.js/dist/zone.js"></script>
-	<script src="/node_modules/reflect-metadata/Reflect.js"></script>
-	<script src="/node_modules/systemjs/dist/system.js"></script>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
 
 	<!-- remove for bundle usage -->
-	<script src="system.config.js"></script>
+	<script src="systemjs.config.js"></script>
 	<script>
-		System.import('app').catch(function(err){
-			console.error(err);
-		});
+		System.import('app').catch(function(err){ console.error(err); });
 	</script>
 	<!-- remove for bundle usage -->
 </head>
