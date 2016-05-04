@@ -14,7 +14,8 @@ import { APP_PROVIDERS } from './app.providers';
 })
 @Routes([
   { path: '/', component: CustomersComponent },
-  { path: '/customer/:id', component: CustomerComponent }
+  { path: '/customer/:id', component: CustomerComponent },
+  { path: '*', component: CustomerComponent }
 ])
 export class AppComponent {
   

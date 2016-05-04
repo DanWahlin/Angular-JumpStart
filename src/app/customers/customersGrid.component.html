@@ -20,13 +20,13 @@
                         <tr *ngFor="let customer of customers;trackBy:trackby.customer">
                             <td><img src="images/{{ customer.gender | lowercase }}.png" 
                                     class="card-image" alt="Customer Image" /></td>
-                            <td><a [routerLink]="['Customer',{id:customer.id},'CustomerDetails']">{{ customer.firstName | capitalize }}</a></td>
+                            <td><a [routerLink]="['/',customer.id,'details']">{{ customer.firstName | capitalize }}</a></td>
                             <td>{{ customer.lastName | capitalize }}</td>
                             <td>{{ customer.address }}</td>
                             <td>{{ customer.city | trim }}</td>
                             <td>{{ customer.state.name }}</td>
                             <td>{{ customer.orderTotal | currency:'USD':true }}</td>
-                            <td><a [routerLink]="['Customer',{id:customer.id},'CustomerOrders']">View Orders</a></td>
+                            <td><a [routerLink]="['/',customer.id,'orders']">View Orders</a></td>
                         </tr>
                         <tr *ngIf="!customers.length">
                             <td>&nbsp;</td>
