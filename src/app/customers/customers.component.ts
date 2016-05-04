@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 //import { Observable } from 'rxjs/Observable';
 
@@ -15,7 +15,7 @@ import { ICustomer, IOrder } from '../shared/interfaces';
   directives: [ROUTER_DIRECTIVES, FilterTextboxComponent, 
                CustomersCardComponent, CustomersGridComponent]
 })
-export class CustomersComponent {
+export class CustomersComponent implements OnInit {
 
   title: string;
   filterText: string;
