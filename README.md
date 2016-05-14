@@ -21,7 +21,7 @@ screenshots from the app:
 
 * TypeScript version that relies on classes and modules
 * Modules are loaded with System.js
-* Defining routes 
+* Defining routes (including child routes)
 * Using Custom Components
 * Using Custom Directives
 * Using Custom Pipes
@@ -29,12 +29,13 @@ screenshots from the app:
 * Using the Http object for Ajax calls along with Rx observables
 * Working with Utility and Service classes (such as for sorting and Ajax calls)
 * Using Angular 2 databinding Syntax [], () and [()]
+* Using Angular forms functionality for capturing and validating data
 
 ## Running the Application
 
 1. Run `npm install` to install app dependencies
 
-1. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
+2. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
 
-We're hard at work on a new Angular 2 hands-on/instructor-led training course 
-as well as a video course that will be released in 2016!
+This project is used in our Angular 2 Application Development instructor-led training course. For 
+more details visit http://codewithdan.com. 
