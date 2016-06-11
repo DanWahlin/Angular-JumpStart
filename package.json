@@ -23,18 +23,18 @@
     "@angular/http": "2.0.0-rc.1",
     "@angular/router": "2.0.0-rc.1",
     
-    "systemjs": "0.19.27",
-    "es6-shim": "^0.35.0",
+    "systemjs": "0.19.30",
+    "es6-shim": "^0.35.1",
     "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "0.6.12"
   },
   "devDependencies": {
-    "concurrently": "^2.0.0",
+    "concurrently": "^2.1.0",
     "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
-    "typings":"^0.8.1",
-    "systemjs-builder": "^0.15.15",
-    "yargs": "^4.6.0"
+    "typings":"^1.0.5",
+    "systemjs-builder": "^0.15.20",
+    "yargs": "^4.7.1"
   }
 }
