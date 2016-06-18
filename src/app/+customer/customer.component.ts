@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Routes, ROUTER_DIRECTIVES, 
-         RouteSegment, OnActivate, RouteTree } from '@angular/router';
-
-import { IOrder, IOrderItem } from '../shared/interfaces';
-import { CustomerOrdersComponent } from './customerOrders.component';
-import { CustomerDetailsComponent } from './customerDetails.component';
-import { CustomerEditComponent } from './customerEdit.component';
+import { Router, ActivatedRoute,  ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({ 
   moduleId: module.id,
@@ -13,21 +7,19 @@ import { CustomerEditComponent } from './customerEdit.component';
   templateUrl: 'customer.component.html',
   directives: [ROUTER_DIRECTIVES]
 })
-@Routes([
-  {path:'/orders',  component: CustomerOrdersComponent },
-  {path:'/details', component: CustomerDetailsComponent },
-  {path:'/edit', component: CustomerEditComponent }
-])
-export class CustomerComponent implements OnActivate {
+export class CustomerComponent implements OnInit {
   
     displayMode: CustomerDisplayModeEnum;
     displayModeEnum = CustomerDisplayModeEnum;
   
-    constructor(private router: Router) { }
-    
-    routerOnActivate(current: RouteSegment, prev?: RouteSegment,
-      currTree?: RouteTree, prevTree?: RouteTree) {
-      var path = currTree.children(current)[0].stringifiedUrlSegments;
+    constructor(private router: Router, private route: ActivatedRoute) { }
+
+    ngOnInit() {
+      //Next line needs a better technique. This is the easiest way
+      //to get child route path that I've found so far.
+      //Hoping this will be easier with later builds of router
+      const path = this.router.url.split('/')[3];
+      console.log(path);
       switch (path) {
         case 'details':
           this.displayMode = CustomerDisplayModeEnum.Details;
@@ -40,6 +32,7 @@ export class CustomerComponent implements OnActivate {
           break;
       }
     }
+
 }
 
 enum CustomerDisplayModeEnum {

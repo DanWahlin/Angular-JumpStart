@@ -19,7 +19,7 @@ export class FilterTextboxComponent {
     model: { filter: string } = { filter: null };
     
     @Output()
-    changed: EventEmitter<string> = new EventEmitter();
+    changed: EventEmitter<string> = new EventEmitter<string>();
 
     filterChanged(event: any) {
       event.preventDefault();

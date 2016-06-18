@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouteSegment, RouteTree, OnActivate } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../shared/services/data.service';
 import { ICustomer, IOrder, IOrderItem } from '../shared/interfaces';
@@ -11,25 +11,21 @@ import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
   templateUrl: 'customerOrders.component.html',
   pipes: [ CapitalizePipe ]
 })
-export class CustomerOrdersComponent implements OnActivate {
+export class CustomerOrdersComponent implements OnInit {
 
   filteredOrders: IOrder[] = [];
   customer: ICustomer;
 
-  constructor(private router: Router, private dataService: DataService) { }
-  
-  routerOnActivate(
-      current: RouteSegment,
-      prev?: RouteSegment,
-      currTree?: RouteTree,
-      prevTree?: RouteTree) {
-      const id = +currTree.parent(current).getParam('id');
-      this.dataService.getOrders(id).subscribe((orders: IOrder[]) => {
-        this.filteredOrders = orders;
-      });
-      this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
-        this.customer = customer;
-      });
+  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
+
+  ngOnInit() {
+    const id = +this.router.routerState.parent(this.route).snapshot.params['id'];
+    this.dataService.getOrders(id).subscribe((orders: IOrder[]) => {
+      this.filteredOrders = orders;
+    });
+    this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+      this.customer = customer;
+    });
   }
   
   orderTrackBy(index: number, order: IOrderItem) {

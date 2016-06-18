@@ -11,7 +11,7 @@ export class SortByDirective {
 	private sortProperty: string;
   
   @Output()
-	sorted: EventEmitter<string> = new EventEmitter();
+	sorted: EventEmitter<string> = new EventEmitter<string>();
 	
   constructor() { }
     

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouteSegment, RouteTree, OnActivate } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../shared/services/data.service';
 import { ICustomer, IState } from '../shared/interfaces';
@@ -9,7 +9,7 @@ import { ICustomer, IState } from '../shared/interfaces';
   selector: 'customer-edit',
   templateUrl: 'customerEdit.component.html'
 })
-export class CustomerEditComponent implements OnActivate {
+export class CustomerEditComponent implements OnInit {
 
   customer: ICustomer = 
   {
@@ -26,11 +26,10 @@ export class CustomerEditComponent implements OnActivate {
   };
   states: IState[];
   
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
 
-  routerOnActivate(current: RouteSegment, prev?: RouteSegment,
-      currTree?: RouteTree, prevTree?: RouteTree) {
-      const id = +currTree.parent(current).getParam('id');
+  ngOnInit() {
+      const id = +this.router.routerState.parent(this.route).snapshot.params['id'];
       this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
         //Quick and dirty clone used in case user cancels out of form
         const cust = JSON.stringify(customer);
