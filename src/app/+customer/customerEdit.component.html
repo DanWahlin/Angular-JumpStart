@@ -1,35 +1,36 @@
+<!-- Things like #firstName="ngForm" will change to #firstName="ngModel" after RC2 -->
 <div>
   <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="editForm">
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" ngControl="firstName" #firstName="ngForm" [(ngModel)]="customer.firstName" required>
+      <input type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngForm" required>
       <div class="alert alert-danger" [hidden]="firstName.valid">First Name is required</div>
     </div>
     <div class="form-group">
       <label>Last Name</label>
-      <input type="text" class="form-control" ngControl="lastName" #lastName="ngForm" [(ngModel)]="customer.lastName" required>
+      <input type="text" class="form-control" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngForm" required>
       <div class="alert alert-danger" [hidden]="lastName.valid">Last Name is required</div>
     </div>
     <div class="form-group">
       <label>Address</label>
-      <input type="text" class="form-control" ngControl="address" #address="ngForm" [(ngModel)]="customer.address" required>
+      <input type="text" class="form-control" name="address" [(ngModel)]="customer.address" #address="ngForm" required>
       <div class="alert alert-danger" [hidden]="address.valid">Address is required</div>
     </div>
     <div class="form-group">
       <label>City</label>
-      <input type="text" class="form-control" ngControl="city" #city="ngForm" [(ngModel)]="customer.city" required>
+      <input type="text" class="form-control" name="city" [(ngModel)]="customer.city" #city="ngForm" required>
       <div class="alert alert-danger" [hidden]="city.valid">City is required</div>
     </div>
     <div class="form-group">
       <label>State</label>
       <select class="form-control" 
               [(ngModel)]="customer.state.abbreviation"
-              ngControl="state" 
+              name="state" 
               required>
           <option *ngFor="let state of states" [ngValue]="state.abbreviation">{{state.name}}</option>
       </select>
     </div>
     <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>&nbsp;&nbsp;
-    <button type="submit" class="btn btn-success" [disabled]="!customerForm.form.valid">Update</button>
+    <button type="submit" class="btn btn-success" [disabled]="!customerForm.valid">Update</button>
   </form>
 </div>

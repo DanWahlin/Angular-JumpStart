@@ -19,7 +19,6 @@ export class CustomerComponent implements OnInit {
       //to get child route path that I've found so far.
       //Hoping this will be easier with later builds of router
       const path = this.router.url.split('/')[3];
-      console.log(path);
       switch (path) {
         case 'details':
           this.displayMode = CustomerDisplayModeEnum.Details;

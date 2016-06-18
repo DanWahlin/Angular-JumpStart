@@ -21,6 +21,7 @@
     "@angular/platform-browser": "2.0.0-rc.2",
     "@angular/platform-browser-dynamic": "2.0.0-rc.2",
     "@angular/http": "2.0.0-rc.2",
+    "@angular/forms": "0.1.0",
     "@angular/router": "3.0.0-alpha.7",
     
     "systemjs": "0.19.27",

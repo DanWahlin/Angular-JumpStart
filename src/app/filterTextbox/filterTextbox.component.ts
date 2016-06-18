@@ -6,7 +6,7 @@ import { FORM_DIRECTIVES } from '@angular/common';
   template: `
     <form>
          Filter:
-         <input type="text" 
+         <input type="text" name="filter"
                 [(ngModel)]="model.filter" 
                 (keyup)="filterChanged($event)"  />
     </form>
