@@ -1,3 +1,3 @@
-/// <reference path="../typings/globals/es6-shim/index.d.ts" />
+/// <reference path="../typings/globals/core-js/index.d.ts" />
 
 declare var module: {id: string};
