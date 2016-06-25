@@ -7,14 +7,11 @@ import { APP_PROVIDERS } from './app.providers';
   moduleId: module.id,
   selector: 'app-container',
   template: `<router-outlet></router-outlet>`,
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ ROUTER_DIRECTIVES ],
   providers: [ APP_PROVIDERS ]
 })
 export class AppComponent {
   
-  constructor() {
-
-  }
   
 }
 
