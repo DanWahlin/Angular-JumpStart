@@ -22,7 +22,7 @@
     "@angular/http": "2.0.0-rc.3",
     "@angular/platform-browser": "2.0.0-rc.3",
     "@angular/platform-browser-dynamic": "2.0.0-rc.3",
-    "@angular/router": "3.0.0-alpha.7",
+    "@angular/router": "3.0.0-alpha.8",
     
     "systemjs": "0.19.27",
     "es6-shim": "^0.35.1",
