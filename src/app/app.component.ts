@@ -14,12 +14,3 @@ export class AppComponent {
   
   
 }
-
-
-//Dynamic loading (old router but coming to new router)
-// { 
-//   path: '/customers/:id/...', 
-//   name: 'Customer',  
-//   loader: () => window['System'].import('app/+customer')
-//                 .then((module: any) => module.CustomerComponent) 
-// }
