@@ -10,8 +10,8 @@ import { TrackByService } from '../shared/services/trackby.service';
   moduleId: module.id,
   selector: 'customers-card', 
   templateUrl: 'customersCard.component.html',
-  directives: [ROUTER_DIRECTIVES],
-  pipes: [CapitalizePipe, TrimPipe],
+  directives: [ ROUTER_DIRECTIVES ],
+  pipes: [ CapitalizePipe, TrimPipe ],
   //When using OnPush detectors, then the framework will check an OnPush 
   //component when any of its input properties changes, when it fires 
   //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)

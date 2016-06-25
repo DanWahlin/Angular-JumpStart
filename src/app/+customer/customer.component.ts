@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute,  ROUTER_DIRECTIVES } from '@angular/router';
+import { Router,  ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({ 
   moduleId: module.id,
@@ -12,7 +12,7 @@ export class CustomerComponent implements OnInit {
     displayMode: CustomerDisplayModeEnum;
     displayModeEnum = CustomerDisplayModeEnum;
   
-    constructor(private router: Router, private route: ActivatedRoute) { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
       //Next line needs a better technique. This is the easiest way
