@@ -7,7 +7,7 @@ import { CustomerEditComponent } from './customerEdit.component';
 
 export const CustomerRoutes: RouterConfig = [
   { 
-    path: 'customer/:id', 
+    path: 'customers/:id', 
     component: CustomerComponent,
     children: [
       { path:'orders',  component: CustomerOrdersComponent },
