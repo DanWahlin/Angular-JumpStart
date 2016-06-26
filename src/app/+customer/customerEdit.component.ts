@@ -26,7 +26,9 @@ export class CustomerEditComponent implements OnInit {
   };
   states: IState[];
   
-  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private router: Router, 
+              private route: ActivatedRoute, 
+              private dataService: DataService) { }
 
   ngOnInit() {
       const id = +this.router.routerState.parent(this.route).snapshot.params['id'];
