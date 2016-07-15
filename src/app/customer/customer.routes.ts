@@ -6,7 +6,6 @@ import { CustomerDetailsComponent } from './customerDetails.component';
 import { CustomerEditComponent } from './customerEdit.component';
 
 export const CustomerRoutes: RouterConfig = [
-  { path: 'customers/:id', terminal: true, redirectTo: '/customers/:id/details' }, //route path with only a customer id to the details route.
   { 
     path: 'customers/:id', 
     component: CustomerComponent,
