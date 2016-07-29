@@ -21,6 +21,29 @@ export class Sorter {
               bVal = b[prop];
             }
             
+            //ADDRESS SORT OPTIONS: Uncomment the option below that you want to use, comment out the other.
+            //ADDRESS SORT OPTION 1: Sort Address by street number
+            /*
+            {
+                let regex = /^(\d+)/g;
+                let res = a[prop].match(regex);
+                if (res !== null) {
+                    aVal = +a[prop].match(regex)[0];
+                    bVal = +b[prop].match(regex)[0];
+                }
+            }
+            */
+            //ADDRESS SORT OPTION 2: Sort Address by street name first, then street number
+            
+            {
+                let regex = /(^\d+\s+)(\w+\s+.+)/g;
+                let res = a[prop].match(regex);
+                if (res !== null) {
+                    aVal = a[prop].replace(regex, '$2$1');
+                    bVal = b[prop].replace(regex, '$2$1');
+                }
+            }
+            
             //Fix issues that spaces before/after string value can cause such as ' San Francisco'
             if (this.isString(aVal)) aVal = aVal.trim().toUpperCase();
             if (this.isString(bVal)) bVal = bVal.trim().toUpperCase();
