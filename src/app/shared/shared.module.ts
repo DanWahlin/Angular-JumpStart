@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 import { SortByDirective } from './directives/sortby.directive';
-import { DataService } from './services/data.service';
 import { Sorter } from './utils/sorter';
 import { TrackByService } from './services/trackby.service';
 
@@ -19,7 +18,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [ DataService, Sorter, TrackByService ]
+      providers: [ Sorter, TrackByService ]
     };
   }
 }

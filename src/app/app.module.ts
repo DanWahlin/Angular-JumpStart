@@ -6,6 +6,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { CustomersCardComponent } from './customers/customersCard.component';
 import { CustomersGridComponent } from './customers/customersGrid.component';
 import { FilterTextboxComponent } from './filterTextbox/filterTextbox.component';
+import { DataService } from './shared/services/data.service';
 
 import { app_routing } from './app.routing';
 import { SharedModule }   from './shared/shared.module';
@@ -13,6 +14,7 @@ import { SharedModule }   from './shared/shared.module';
 @NgModule({
   imports:      [ BrowserModule, app_routing, SharedModule.forRoot() ],
   declarations: [ AppComponent, CustomersComponent, CustomersCardComponent, CustomersGridComponent, FilterTextboxComponent ],
+  providers: [ DataService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
