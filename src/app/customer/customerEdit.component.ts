@@ -25,6 +25,7 @@ export class CustomerEditComponent implements OnInit {
     }
   };
   states: IState[];
+  errorMessage: string;
   
   constructor(private router: Router, 
               private route: ActivatedRoute, 
@@ -43,7 +44,12 @@ export class CustomerEditComponent implements OnInit {
   onSubmit() {
       this.dataService.updateCustomer(this.customer)
         .subscribe((status: boolean) => {
-          this.router.navigate(['/']);
+          if (status) {
+            this.router.navigate(['/']);
+          }
+          else {
+            this.errorMessage = 'Unable to save customer';
+          }
       });
   }
   

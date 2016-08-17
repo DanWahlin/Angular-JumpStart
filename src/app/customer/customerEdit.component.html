@@ -32,5 +32,6 @@
     </div>
     <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>&nbsp;&nbsp;
     <button type="submit" class="btn btn-success" [disabled]="!customerForm.valid">Update</button>
+    <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
   </form>
 </div>

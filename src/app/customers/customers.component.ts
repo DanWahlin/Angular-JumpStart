@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 //import { Observable } from 'rxjs/Observable';
 
 import { DataService } from '../shared/services/data.service';
@@ -12,8 +11,7 @@ import { ICustomer, IOrder } from '../shared/interfaces';
   moduleId: module.id,
   selector: 'customers', 
   templateUrl: 'customers.component.html',
-  directives: [ ROUTER_DIRECTIVES, FilterTextboxComponent, 
-               CustomersCardComponent, CustomersGridComponent ]
+  directives: [ FilterTextboxComponent, CustomersCardComponent, CustomersGridComponent ]
 })
 export class CustomersComponent implements OnInit {
 

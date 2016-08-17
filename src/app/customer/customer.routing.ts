@@ -5,7 +5,7 @@ import { CustomerOrdersComponent } from './customerOrders.component';
 import { CustomerDetailsComponent } from './customerDetails.component';
 import { CustomerEditComponent } from './customerEdit.component';
 
-const CUSTOMER_ROUTES: Routes = [
+const customer_routes: Routes = [
   { 
     path: '', 
     component: CustomerComponent,
@@ -17,5 +17,5 @@ const CUSTOMER_ROUTES: Routes = [
   }
 ];
 
-export const CUSTOMER_ROUTING = RouterModule.forChild(CUSTOMER_ROUTES);
+export const customer_routing = RouterModule.forChild(customer_routes);
 

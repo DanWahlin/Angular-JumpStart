@@ -62,14 +62,15 @@ export class DataService {
     
     updateCustomer(customer: ICustomer) : Observable<boolean> {
         return Observable.create((observer: Observer<boolean>) => {
-            this.customers.forEach((cust: ICustomer, index: number) => {
-               if (cust.id === customer.id) {
+            for (var i=0;i<this.customers.length;i++) {
+               if (this.customers[i].id === customer.id) {
                    const state = this.filterStates(customer.state.abbreviation);
                    customer.state.abbreviation = state.abbreviation;
                    customer.state.name = state.name;
-                   this.customers[index] = customer;
+                   this.customers[i] = customer;
+                   break;
                } 
-            });
+            };
             observer.next(true);
             observer.complete();
         });

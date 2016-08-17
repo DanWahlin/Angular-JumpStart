@@ -6,11 +6,11 @@ import { CustomerDetailsComponent } from './customerDetails.component';
 import { CustomerEditComponent } from './customerEdit.component';
 import { CustomerOrdersComponent } from './customerOrders.component';
 
-import { CUSTOMER_ROUTING } from './customer.routing';
+import { customer_routing } from './customer.routing';
 import { SharedModule }   from '../shared/shared.module';
 
 @NgModule({
-  imports:      [ BrowserModule, CUSTOMER_ROUTING, SharedModule.forRoot() ],
+  imports:      [ BrowserModule, customer_routing, SharedModule.forRoot() ],
   declarations: [ CustomerComponent, CustomerDetailsComponent, 
                   CustomerEditComponent, CustomerOrdersComponent ]
 })

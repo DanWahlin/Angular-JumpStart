@@ -3,13 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../shared/services/data.service';
 import { ICustomer, IOrder, IOrderItem } from '../shared/interfaces';
-import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
 
 @Component({
   moduleId: module.id,
   selector: 'customer-orders',
-  templateUrl: 'customerOrders.component.html',
-  pipes: [ CapitalizePipe ]
+  templateUrl: 'customerOrders.component.html'
 })
 export class CustomerOrdersComponent implements OnInit {
 

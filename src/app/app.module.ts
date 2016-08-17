@@ -7,11 +7,11 @@ import { CustomersCardComponent } from './customers/customersCard.component';
 import { CustomersGridComponent } from './customers/customersGrid.component';
 import { FilterTextboxComponent } from './filterTextbox/filterTextbox.component';
 
-import { APP_ROUTING } from './app.routing';
+import { app_routing } from './app.routing';
 import { SharedModule }   from './shared/shared.module';
 
 @NgModule({
-  imports:      [ BrowserModule, APP_ROUTING, SharedModule.forRoot() ],
+  imports:      [ BrowserModule, app_routing, SharedModule.forRoot() ],
   declarations: [ AppComponent, CustomersComponent, CustomersCardComponent, CustomersGridComponent, FilterTextboxComponent ],
   bootstrap:    [ AppComponent ]
 })
