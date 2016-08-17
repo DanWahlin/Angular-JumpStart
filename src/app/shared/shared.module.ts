@@ -12,7 +12,8 @@ import { TrackByService } from './services/trackby.service';
 @NgModule({
   imports:      [ CommonModule ],
   declarations: [ CapitalizePipe, TrimPipe, SortByDirective ],
-  exports:      [ CapitalizePipe, TrimPipe, SortByDirective, CommonModule, FormsModule, HttpModule ]
+  exports:      [ CapitalizePipe, TrimPipe, SortByDirective, 
+                  CommonModule, FormsModule, HttpModule ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
