@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,  ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({ 
   moduleId: module.id,
   selector: 'orders',
-  templateUrl: 'customer.component.html',
-  directives: [ROUTER_DIRECTIVES]
+  templateUrl: 'customer.component.html'
 })
 export class CustomerComponent implements OnInit {
   

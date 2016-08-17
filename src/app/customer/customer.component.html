@@ -7,21 +7,21 @@
         <div class="navbar">
             <ul class="nav navbar-nav">
                 <li class="toolbar-item">
-                    <a [routerLink]="['details']" 
+                    <a routerLink="details" 
                        (click)="displayMode = displayModeEnum.Details" 
                        [class.active]="displayMode === displayModeEnum.Details">
                        <span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Customer Details
                     </a>
                 </li>
                 <li class="toolbar-item">
-                    <a [routerLink]="['orders']"
+                    <a routerLink="orders"
                        (click)="displayMode = displayModeEnum.Orders" 
                        [class.active]="displayMode === displayModeEnum.Orders">
                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Customer Orders
                     </a>
                 </li>
                 <li class="toolbar-item">
-                    <a [routerLink]="['edit']"
+                    <a routerLink="edit"
                        (click)="displayMode = displayModeEnum.Edit" 
                        [class.active]="displayMode === displayModeEnum.Edit">
                         <span class="glyphicon glyphicon-edit edit-icon"></span>&nbsp;&nbsp;Edit Customer
@@ -33,7 +33,7 @@
             <router-outlet></router-outlet>
             <br />
             <br />
-            <a [routerLink]="['/']">View all Customers</a>
+            <a routerLink="/">View all Customers</a>
         </div>
     </div>
 </div>

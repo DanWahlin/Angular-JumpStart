@@ -1,13 +1,13 @@
-import { RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { CustomerComponent }   from './customer.component';
 import { CustomerOrdersComponent } from './customerOrders.component';
 import { CustomerDetailsComponent } from './customerDetails.component';
 import { CustomerEditComponent } from './customerEdit.component';
 
-export const CustomerRoutes: RouterConfig = [
+const CUSTOMER_ROUTES: Routes = [
   { 
-    path: 'customers/:id', 
+    path: '', 
     component: CustomerComponent,
     children: [
       { path:'orders',  component: CustomerOrdersComponent },
@@ -16,4 +16,6 @@ export const CustomerRoutes: RouterConfig = [
     ]
   }
 ];
+
+export const CUSTOMER_ROUTING = RouterModule.forChild(CUSTOMER_ROUTES);
 
