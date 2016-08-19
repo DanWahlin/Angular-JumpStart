@@ -13,4 +13,4 @@ import { customer_routing } from './customer.routing';
   declarations: [ CustomerComponent, CustomerDetailsComponent, 
                   CustomerEditComponent, CustomerOrdersComponent ]
 })
-export default class AppModule { }
+export default class CustomerModule { }
