@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DataService } from './services/data.service';
 import { Sorter } from './services/sorter';
 import { TrackByService } from './services/trackby.service';
+import { throwIfAlreadyLoaded } from './moduleImportGuard';
 
 @NgModule({
   imports: [CommonModule],
@@ -18,17 +19,4 @@ export class CoreModule {
 }
 
 
-// john;s crappy idea is below
-import { BaseException } from '@angular/core';
 
-export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
-  if (parentModule) {
-    throw new ModuleImportGuardException(moduleName);
-  }
-}
-
-class ModuleImportGuardException extends BaseException {
-  constructor(name: string) {
-    super(`${name} has already been loaded. Import Core modules in the AppModule only.`);
-  }
-}

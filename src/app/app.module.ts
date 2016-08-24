@@ -13,8 +13,8 @@ import { SharedModule }   from './shared/shared.module';
     BrowserModule,
     app_routing, 
     CustomersModule,
-    CoreModule,
-    SharedModule
+    CoreModule,   //Singleton objects
+    SharedModule  //Shared (multi-instance) objects
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
