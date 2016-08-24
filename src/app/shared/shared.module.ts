@@ -6,20 +6,12 @@ import { HttpModule } from '@angular/http';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 import { SortByDirective } from './directives/sortby.directive';
-import { Sorter } from './utils/sorter';
-import { TrackByService } from './services/trackby.service';
 
 @NgModule({
-  imports:      [ CommonModule ],
-  declarations: [ CapitalizePipe, TrimPipe, SortByDirective ],
-  exports:      [ CapitalizePipe, TrimPipe, SortByDirective, 
-                  CommonModule, FormsModule, HttpModule ]
+  imports: [CommonModule],
+  declarations: [CapitalizePipe, TrimPipe, SortByDirective],
+  exports: [CapitalizePipe, TrimPipe, SortByDirective,
+    CommonModule, FormsModule, HttpModule],
+  // providers: [] // these would be multi-instance
 })
-export class SharedModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [ Sorter, TrackByService ]
-    };
-  }
-}
+export class SharedModule { }

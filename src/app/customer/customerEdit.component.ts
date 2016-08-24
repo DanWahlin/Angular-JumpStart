@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { DataService } from '../shared/services/data.service';
+import { DataService } from '../../app/core/services/data.service';
 import { ICustomer, IState } from '../shared/interfaces';
 
 @Component({
