@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ICustomer } from '../shared/interfaces';
-import { DataService } from '../shared/services/data.service';
+import { DataService } from '../../app/core/services/data.service';
 
 @Component({
   moduleId: module.id,

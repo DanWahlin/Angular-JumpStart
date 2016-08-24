@@ -6,7 +6,7 @@ import {Observer} from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
-import { ICustomer, IOrder, IState } from '../interfaces';
+import { ICustomer, IOrder, IState } from '../../../app/shared/interfaces';
 
 @Injectable()
 export class DataService {
@@ -16,7 +16,9 @@ export class DataService {
     orders: IOrder[];
     states: IState[];
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) { 
+      console.log("*** Created DataService ***")
+    }
     
     getCustomers() : Observable<ICustomer[]> {
         if (!this.customers) {
