@@ -6,11 +6,10 @@ import { CustomerDetailsComponent } from './customerDetails.component';
 import { CustomerEditComponent } from './customerEdit.component';
 import { CustomerOrdersComponent } from './customerOrders.component';
 import { SharedModule }   from '../shared/shared.module';
-// import { CoreModule }   from '../core/core.module';
 import { customer_routing } from './customer.routing';
 
 @NgModule({
-  imports:      [ CommonModule, customer_routing, SharedModule], //, CoreModule ],
+  imports:      [ CommonModule, customer_routing, SharedModule ],
   declarations: [ CustomerComponent, CustomerDetailsComponent, 
                   CustomerEditComponent, CustomerOrdersComponent ]
 })

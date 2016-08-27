@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DataService } from './services/data.service';
 import { Sorter } from './services/sorter';
 import { TrackByService } from './services/trackby.service';
-import { throwIfAlreadyLoaded } from './moduleImportGuard';
+import { EnsureModuleLoadedOnceGuard } from '../shared/ensureModuleLoadedOnceGuard';
 
 @NgModule({
   imports: [CommonModule],
@@ -12,10 +12,13 @@ import { throwIfAlreadyLoaded } from './moduleImportGuard';
   exports: [CommonModule],
   providers: [DataService, Sorter, TrackByService] // these should be singleton
 })
-export class CoreModule { 
+export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
+
+  //Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
-    throwIfAlreadyLoaded(parentModule, 'CoreModule');
+    super(parentModule);
   }  
+
 }
 
 
