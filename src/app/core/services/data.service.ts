@@ -17,7 +17,7 @@ export class DataService {
     states: IState[];
 
     constructor(private http: Http) { 
-      console.log("*** Created DataService ***")
+
     }
     
     getCustomers() : Observable<ICustomer[]> {
