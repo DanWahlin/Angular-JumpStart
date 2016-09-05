@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { DataService } from '../../app/core/services/data.service';
 import { ICustomer, IState } from '../shared/interfaces';
@@ -26,19 +27,29 @@ export class CustomerEditComponent implements OnInit {
   };
   states: IState[];
   errorMessage: string;
+  sub: Subscription;
   
   constructor(private router: Router, 
               private route: ActivatedRoute, 
               private dataService: DataService) { }
 
   ngOnInit() {
-      const id = +this.router.routerState.parent(this.route).snapshot.params['id'];
-      this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
-        //Quick and dirty clone used in case user cancels out of form
-        const cust = JSON.stringify(customer);
-        this.customer = JSON.parse(cust);
+      //Subscribe to params so if it changes we pick it up. Don't technically need that here
+      //since param won't be changing while component is alive. Could use this.route.snapshot.parent.params["id"] to simplify it.
+      this.sub = this.route.parent.params.subscribe(params => {
+        let id = +params['id'];
+        this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+          //Quick and dirty clone used in case user cancels out of form
+          const cust = JSON.stringify(customer);
+          this.customer = JSON.parse(cust);
+        });
       });
+
       this.dataService.getStates().subscribe((states: IState[]) => this.states = states);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
   
   onSubmit() {
