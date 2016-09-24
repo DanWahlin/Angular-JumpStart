@@ -34,7 +34,6 @@
     "lite-server": "^2.2.0",
     "typescript": "2.0.3",
     "typings": "^1.3.3",
-    "systemjs-builder": "^0.15.30",
     "yargs": "^5.0.0"
   }
 }
