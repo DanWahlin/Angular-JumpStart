@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 //Grab everything with import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
-import {Observer} from 'rxjs/Observer';
+import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
@@ -16,9 +16,7 @@ export class DataService {
     orders: IOrder[];
     states: IState[];
 
-    constructor(private http: Http) { 
-
-    }
+    constructor(private http: Http) { }
     
     getCustomers() : Observable<ICustomer[]> {
         if (!this.customers) {
