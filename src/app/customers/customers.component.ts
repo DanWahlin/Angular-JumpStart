@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { Observable } from 'rxjs/Observable';
 
-import { DataService } from '../../app/core/services/data.service';
+import { DataService } from '../core/services/data.service';
 import { ICustomer } from '../shared/interfaces';
 import { propertyResolver } from '../shared/property-resolver';
 

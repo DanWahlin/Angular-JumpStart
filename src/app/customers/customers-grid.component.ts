@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { Sorter } from '../../app/core/services/sorter';
-import { TrackByService } from '../../app/core/services/trackby.service';
+import { Sorter } from '../core/services/sorter';
+import { TrackByService } from '../core/services/trackby.service';
 
 @Component({ 
   moduleId: module.id,

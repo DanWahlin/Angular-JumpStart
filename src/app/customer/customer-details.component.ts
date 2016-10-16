@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ICustomer } from '../shared/interfaces';
-import { DataService } from '../../app/core/services/data.service';
+import { DataService } from '../core/services/data.service';
 
 @Component({
   moduleId: module.id,
