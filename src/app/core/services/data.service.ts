@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+
 //Grab everything with import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
@@ -113,8 +115,17 @@ export class DataService {
     }
     
     private handleError(error: any) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        console.error('server error:', error); 
+        if (error instanceof Response) {
+          let errMessage = '';
+          try {
+            errMessage = error.json().error;
+          } catch(err) {
+            errMessage = error.statusText;
+          }
+          return Observable.throw(errMessage);
+        }
+        return Observable.throw(error || 'Node.js server error');
     }
 
 }
