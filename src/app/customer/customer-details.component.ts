@@ -8,7 +8,7 @@ import { DataService } from '../../app/core/services/data.service';
 @Component({
   moduleId: module.id,
   selector: 'customer-details',
-  templateUrl: 'customerDetails.component.html'
+  templateUrl: 'customer-details.component.html'
 })
 export class CustomerDetailsComponent implements OnInit {
 

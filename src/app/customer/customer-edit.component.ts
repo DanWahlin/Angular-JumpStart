@@ -8,7 +8,7 @@ import { ICustomer, IState } from '../shared/interfaces';
 @Component({
   moduleId: module.id,
   selector: 'customer-edit',
-  templateUrl: 'customerEdit.component.html'
+  templateUrl: 'customer-edit.component.html'
 })
 export class CustomerEditComponent implements OnInit {
 

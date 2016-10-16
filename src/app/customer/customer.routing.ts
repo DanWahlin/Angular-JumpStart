@@ -1,11 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { CustomerComponent }   from './customer.component';
-import { CustomerOrdersComponent } from './customerOrders.component';
-import { CustomerDetailsComponent } from './customerDetails.component';
-import { CustomerEditComponent } from './customerEdit.component';
+import { CustomerOrdersComponent } from './customer-orders.component';
+import { CustomerDetailsComponent } from './customer-details.component';
+import { CustomerEditComponent } from './customer-edit.component';
+import { IRouting } from '../shared/interfaces';
 
-const customer_routes: Routes = [
+const routes: Routes = [
   { 
     path: '', 
     component: CustomerComponent,
@@ -17,5 +18,8 @@ const customer_routes: Routes = [
   }
 ];
 
-export const customer_routing = RouterModule.forChild(customer_routes);
+export const customerRouting: IRouting = {
+  routes: RouterModule.forChild(routes),
+  components: [ CustomerComponent, CustomerOrdersComponent, CustomerDetailsComponent, CustomerEditComponent]
+};
 

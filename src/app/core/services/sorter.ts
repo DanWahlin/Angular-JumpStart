@@ -1,3 +1,5 @@
+import { propertyResolver } from '../../shared/property-resolver'
+
 export class Sorter {
 
 	property: string = null;
@@ -12,9 +14,9 @@ export class Sorter {
             let bVal: any;
             
             //Handle resolving complex properties such as 'state.name' for prop value
-            if (prop && prop.indexOf('.')) {
-              aVal = this.resolveProperty(prop, a);
-              bVal = this.resolveProperty(prop, b);
+            if (prop && prop.indexOf('.') > -1) {
+              aVal = propertyResolver.resolve(prop, a);
+              bVal = propertyResolver.resolve(prop, b);
             }
             else {            
               aVal = a[prop];
@@ -39,12 +41,6 @@ export class Sorter {
     
     isString(val: any) : boolean {
       return (val && (typeof val === 'string' || val instanceof String));
-    }
-    
-    resolveProperty(path: string, obj: any) {
-      return path.split('.').reduce(function(prev, curr) {
-          return (prev ? prev[curr] : undefined)
-      }, obj || self)
     }
 
 }

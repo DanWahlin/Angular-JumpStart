@@ -1,3 +1,5 @@
+import { ModuleWithProviders } from '@angular/core';
+
 export interface ICustomer {
     id: number;
     firstName: string;
@@ -23,4 +25,9 @@ export interface IOrderItem {
     id: number;
     productName: string;
     itemCost: number;
+}
+
+export interface IRouting {
+    routes: ModuleWithProviders,
+    components: any[]
 }

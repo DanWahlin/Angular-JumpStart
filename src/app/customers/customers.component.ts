@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 //import { Observable } from 'rxjs/Observable';
 
 import { DataService } from '../../app/core/services/data.service';
-import { ICustomer, IOrder } from '../shared/interfaces';
+import { ICustomer } from '../shared/interfaces';
+import { propertyResolver } from '../shared/property-resolver';
 
 @Component({ 
   moduleId: module.id,
@@ -36,13 +37,23 @@ export class CustomersComponent implements OnInit {
       this.displayMode = mode;
   }
 
+
   filterChanged(data: string) {
     if (data && this.customers) {
         data = data.toUpperCase();
-        let props = ['firstName', 'lastName', 'address', 'city', 'orderTotal'];
+        let props = ['firstName', 'lastName', 'address', 'city', 'state.name', 'orderTotal'];
         let filtered = this.customers.filter(item => {
             let match = false;
             for (let prop of props) {
+                if (prop.indexOf('.') > -1) {
+                   var value = propertyResolver.resolve(prop, item);
+                   if (value && value.toUpperCase().indexOf(data) > -1) {
+                      match = true;
+                      break;
+                   }
+                   continue;
+                }
+                
                 //console.log(item[prop] + ' ' + item[prop].toUpperCase().indexOf(data));
                 if (item[prop].toString().toUpperCase().indexOf(data) > -1) {
                   match = true;
@@ -57,7 +68,6 @@ export class CustomersComponent implements OnInit {
       this.filteredCustomers = this.customers;
     }
   }
-
 }
 
 enum DisplayModeEnum {
