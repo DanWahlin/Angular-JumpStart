@@ -33,9 +33,11 @@ screenshots from the app:
 
 ## Running the Application
 
+1. Install Node.js 6.x or higher
+
 1. Run `npm install` to install app dependencies
 
-2. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
+1. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
 
-This project is used in our Angular 2 Application Development instructor-led training course. For 
-more details visit http://codewithdan.com. 
+Looking for expert onsite Angular 2 training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. 
+For more information visit http://codewithdan.com. 

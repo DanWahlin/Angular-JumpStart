@@ -9,7 +9,7 @@
         "tsc:w": "tsc -w",
         "bundle": "node bundle.js",
         "bundle:prod": "node bundle.js --prod",
-        "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+        "start": "tsc && concurrently \"tsc -w\" \"node server.js\" ",
         "typings": "typings"
     },
     "license": "ISC",
@@ -26,12 +26,14 @@
         "core-js": "^2.4.1",
         "reflect-metadata": "^0.1.8",
         "rxjs": "5.0.0-beta.12",
-        "zone.js": "^0.6.25"
+        "zone.js": "^0.6.25",
+        "express": "^4.14.0",
+        "body-parser": "^1.15.2"
     },
     "devDependencies": {
         "concurrently": "^3.1.0",
-        "lite-server": "^2.2.2",
         "typescript": "2.0.3",
-        "typings": "^1.4.0"
+        "typings": "^1.4.0",
+        "opn": "^4.0.2"
     }
 }

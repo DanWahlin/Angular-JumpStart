@@ -13,7 +13,8 @@ import { ICustomer, IOrder, IState } from '../../shared/interfaces';
 @Injectable()
 export class DataService {
   
-    _baseUrl: string = '';
+    customersBaseUrl: string = '/api/customers';
+    ordersBaseUrl: string = '/api/orders';
     customers: ICustomer[];
     orders: IOrder[];
     states: IState[];
@@ -21,78 +22,55 @@ export class DataService {
     constructor(private http: Http) { }
     
     getCustomers() : Observable<ICustomer[]> {
-        if (!this.customers) {
-            return this.http.get(this._baseUrl + 'customers.json')
-                        .map((res: Response) => {
-                            this.customers = res.json();
-                            return this.customers;
-                        })
-                        .catch(this.handleError);
-        }
-        else {
-            //return cached data
-            return this.createObservable(this.customers);
-        }
+        return this.http.get(this.customersBaseUrl)
+                    .map((res: Response) => {
+                        this.customers = res.json();
+                        return this.customers;
+                    })
+                    .catch(this.handleError);
     }
     
     getCustomer(id: number) : Observable<ICustomer> {
-        if (this.customers) {
-            //filter using cached data
-            return this.findCustomerObservable(id);
-        } else {
-            //Query the existing customers to find the target customer
-            return Observable.create((observer: Observer<ICustomer>) => {
-                    this.getCustomers().subscribe((customers: ICustomer[]) => {
-                        this.customers = customers;                
-                        const cust = this.filterCustomers(id);
-                        observer.next(cust);
-                        observer.complete();
-                })
-            })
-            .catch(this.handleError);
-        }
+        return this.http.get(this.customersBaseUrl + '/' + id)
+                    .map((res: Response) => res.json())
+                    .catch(this.handleError);
     }
 
     getOrders(id: number) : Observable<IOrder[]> {
-      return this.http.get(this._baseUrl + 'orders.json')
-                .map((res: Response) => {
-                    this.orders = res.json();
-                    return this.orders.filter((order: IOrder) => order.customerId === id);
-                })
+      return this.http.get(this.ordersBaseUrl + '/' + id)
+                .map((res: Response) => res.json())
                 .catch(this.handleError);               
     }
     
     updateCustomer(customer: ICustomer) : Observable<boolean> {
-        return Observable.create((observer: Observer<boolean>) => {
-            for (var i=0;i<this.customers.length;i++) {
-               if (this.customers[i].id === customer.id) {
-                   const state = this.filterStates(customer.state.abbreviation);
-                   customer.state.abbreviation = state.abbreviation;
-                   customer.state.name = state.name;
-                   this.customers[i] = customer;
-                   break;
-               } 
-            };
-            observer.next(true);
-            observer.complete();
-        });
+        return this.http.put(this.customersBaseUrl + '/' + customer.id, customer)
+                   .map((res: Response) => res.json())
+                   .catch(this.handleError);  
     }
     
     getStates(): Observable<IState[]> {
-        if (this.states) {
-            return Observable.create((observer: Observer<IState[]>) => {
-                observer.next(this.states);
-                observer.complete();
-            });
-        } else {
-            return this.http.get(this._baseUrl + 'states.json').map((response: Response) => {
-                this.states = response.json();
-                return this.states;
-            })
-            .catch(this.handleError);
-        }
+        return this.http.get('/api/states')
+                   .map((res: Response) => res.json())
+                   .catch(this.handleError); 
     }
     
+    private handleError(error: any) {
+        console.error('server error:', error); 
+        if (error instanceof Response) {
+          let errMessage = '';
+          try {
+            errMessage = error.json().error;
+          } catch(err) {
+            errMessage = error.statusText;
+          }
+          return Observable.throw(errMessage);
+        }
+        return Observable.throw(error || 'Node.js server error');
+    }
+
+    //Not using now but leaving since they show how to create
+    //and work with custom observables
+
     private findCustomerObservable(id: number) : Observable<ICustomer> {        
         return this.createObservable(this.filterCustomers(id));
     }
@@ -112,20 +90,6 @@ export class DataService {
     private filterStates(stateAbbreviation: string) {
         const filteredStates = this.states.filter((state) => state.abbreviation === stateAbbreviation);
         return (filteredStates.length) ? filteredStates[0] : null;
-    }
-    
-    private handleError(error: any) {
-        console.error('server error:', error); 
-        if (error instanceof Response) {
-          let errMessage = '';
-          try {
-            errMessage = error.json().error;
-          } catch(err) {
-            errMessage = error.statusText;
-          }
-          return Observable.throw(errMessage);
-        }
-        return Observable.throw(error || 'Node.js server error');
     }
 
 }
