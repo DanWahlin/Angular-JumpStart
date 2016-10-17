@@ -39,5 +39,7 @@ screenshots from the app:
 
 1. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
 
+1. Go to http://localhost:3000 in your browser
+
 Looking for expert onsite Angular 2 training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. 
 For more information visit http://codewithdan.com. 
