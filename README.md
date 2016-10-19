@@ -33,7 +33,7 @@ screenshots from the app:
 
 ## Running the Application
 
-1. Install Node.js 6.x or higher
+1. Install `Node.js 6.x` or higher. The server uses ES2015 features so you need Node 6.x or higher!
 
 1. Run `npm install` to install app dependencies
 
