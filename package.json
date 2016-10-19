@@ -7,8 +7,6 @@
         "postinstall": "typings install",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
-        "bundle": "node bundle.js",
-        "bundle:prod": "node bundle.js --prod",
         "start": "tsc && concurrently \"tsc -w\" \"node server.js\" ",
         "typings": "typings"
     },
