@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { DataService } from '../core/services/data.service';
@@ -20,8 +20,8 @@ export class CustomerOrdersComponent implements OnInit {
 
   ngOnInit() {
       //Subscribe to params so if it changes we pick it up. Don't technically need that here
-      //since param won't be changing while component is alive. Could use this.route.snapshot.parent.params["id"] to simplify it.
-      this.sub = this.route.parent.params.subscribe(params => {
+      //since param won't be changing while component is alive. Could use this.route.parent.snapshot.params["id"] to simplify it.
+      this.route.parent.params.forEach((params: Params) => {
         let id = +params['id'];
         this.dataService.getOrders(id).subscribe((orders: IOrder[]) => {
           this.filteredOrders = orders;
@@ -30,10 +30,6 @@ export class CustomerOrdersComponent implements OnInit {
           this.customer = customer;
         });
       });
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
   
   orderTrackBy(index: number, order: IOrderItem) {

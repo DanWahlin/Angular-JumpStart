@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { DataService } from '../core/services/data.service';
@@ -35,8 +35,10 @@ export class CustomerEditComponent implements OnInit {
 
   ngOnInit() {
       //Subscribe to params so if it changes we pick it up. Don't technically need that here
-      //since param won't be changing while component is alive. Could use this.route.snapshot.parent.params["id"] to simplify it.
-      this.sub = this.route.parent.params.subscribe(params => {
+      //since param won't be changing while component is alive. 
+      //Could use this.route.parent.snapshot.params["id"] to simplify it.
+
+      this.route.parent.params.forEach((params: Params) => {
         let id = +params['id'];
         this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
           //Quick and dirty clone used in case user cancels out of form
@@ -45,12 +47,23 @@ export class CustomerEditComponent implements OnInit {
         });
       });
 
+      // Can also use standard subscribe() for the params observable
+      // this.sub = this.route.parent.params.subscribe(params => {
+      //   let id = +params['id'];
+      //   this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+      //     //Quick and dirty clone used in case user cancels out of form
+      //     const cust = JSON.stringify(customer);
+      //     this.customer = JSON.parse(cust);
+      //   });
+      // });
+
+      // ngOnDestroy() {
+      //   this.sub.unsubscribe();
+      // }
+
       this.dataService.getStates().subscribe((states: IState[]) => this.states = states);
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
   
   onSubmit() {
       this.dataService.updateCustomer(this.customer)
