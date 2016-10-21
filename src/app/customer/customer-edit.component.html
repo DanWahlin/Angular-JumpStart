@@ -1,6 +1,6 @@
 <!-- Things like #firstName="ngForm" will change to #firstName="ngModel" after RC2 -->
 <div>
-  <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="editForm">
+  <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="editForm" novalidate>
     <div class="form-group">
       <label>Name</label>
       <input type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required>
@@ -31,7 +31,7 @@
       </select>
     </div>
     <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>&nbsp;&nbsp;
-    <button type="submit" class="btn btn-success" [disabled]="!customerForm.valid">Update</button>
+    <button type="submit" class="btn btn-success" [disabled]="!customerForm.dirty || !customerForm.valid">Update</button>
     <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
   </form>
 </div>

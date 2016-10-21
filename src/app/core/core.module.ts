@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { DataService } from './services/data.service';
 import { Sorter } from './services/sorter';
 import { TrackByService } from './services/trackby.service';
+import { DialogService } from './services/dialog.service';
 import { EnsureModuleLoadedOnceGuard } from '../shared/ensureModuleLoadedOnceGuard';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [ CommonModule ],
   declarations: [],
-  exports: [CommonModule],
-  providers: [DataService, Sorter, TrackByService] // these should be singleton
+  exports: [ CommonModule ],
+  providers: [ DataService, Sorter, TrackByService, DialogService ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
 
