@@ -10,4 +10,4 @@ import { customerRouting } from './customer.routing';
   declarations: [ customerRouting.components ],
   providers: [ CanDeactivateGuard ]
 })
-export default class AppModule { }
+export default class CustomerModule { }
