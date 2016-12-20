@@ -1,7 +1,7 @@
-# Angular 2 JumpStart with TypeScript
+# Angular JumpStart with TypeScript
 
 The goal of this jumpstart app is to provide
-a simple way to get started with Angular 2 while also showing several key Angular 2 features. The sample
+a simple way to get started with Angular 2+ while also showing several key Angular features. The sample
 relies on System.js to load TypeScript modules and the required scripts used in the application.
 
 Simply clone the project or download and extract the .zip to get started. Here are a few
@@ -41,5 +41,5 @@ screenshots from the app:
 
 1. Go to http://localhost:3000 in your browser
 
-Looking for expert onsite Angular 2 training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. 
+Looking for expert onsite Angular/TypeScript training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. 
 For more information visit http://codewithdan.com. 
