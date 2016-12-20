@@ -17,7 +17,7 @@ screenshots from the app:
 
 <img width="500" src="src/images/screenshots/orders.png" border="0" />
 
-## Angular 2 Concepts Covered
+## Angular Concepts Covered
 
 * TypeScript version that relies on classes and modules
 * Modules are loaded with System.js
@@ -28,7 +28,7 @@ screenshots from the app:
 * Defining Properties and Using Events in Components/Directives
 * Using the Http object for Ajax calls along with Rx observables
 * Working with Utility and Service classes (such as for sorting and Ajax calls)
-* Using Angular 2 databinding Syntax [], () and [()]
+* Using Angular databinding Syntax [], () and [()]
 * Using Angular forms functionality for capturing and validating data
 
 ## Running the Application
