@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { DataService } from '../core/services/data.service';
 import { DialogService } from '../core/services/dialog.service';
 import { ICustomer, IState } from '../shared/interfaces';
+import { GrowlerComponent, GrowlMessageType } from '../growler/growler.component';
 
 @Component({
   moduleId: module.id,
@@ -29,6 +30,7 @@ export class CustomerEditComponent implements OnInit {
   states: IState[];
   errorMessage: string;
   @ViewChild('customerForm') customerForm: NgForm;
+  @ViewChild(GrowlerComponent) growler: GrowlerComponent;
   
   constructor(private router: Router, 
               private route: ActivatedRoute, 
@@ -58,9 +60,11 @@ export class CustomerEditComponent implements OnInit {
           if (status) {
             //Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
             this.customerForm.form.markAsPristine();
-            this.router.navigate(['/']);
+            this.growler.growl('Operation performed successfully.', GrowlMessageType.Success);
+            //this.router.navigate(['/']);
           }
           else {
+            this.growler.growl('Unable to save customer', GrowlMessageType.Danger);
             this.errorMessage = 'Unable to save customer';
           }
       });

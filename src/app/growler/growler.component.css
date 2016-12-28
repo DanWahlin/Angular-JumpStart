@@ -1,0 +1,66 @@
+    .growler {
+      position: fixed;
+      z-index: 999999;
+    }
+    
+    .growler.close-button:focus {
+      outline: 0;
+    }
+    
+    .growler.top-left {
+      top: 12px;
+      left: 12px;
+    }
+    
+    .growler.top-right {
+      top: 12px;
+      right: 12px;
+    }
+    
+    .growler.bottom-right {
+      bottom: 12px;
+      right: 12px;
+    }
+    
+    .growler.bottom-left {
+      bottom: 12px;
+      left: 12px;
+    }
+    
+    .growler.top-center {
+      top: 12px;
+      left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+              transform: translate(-50%, 0%);
+    }
+    
+    .growler.bottom-center {
+      bottom: 12px;
+      left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+              transform: translate(-50%, 0%);
+    }
+    
+    .growl {
+      cursor: pointer;
+      padding: 5;
+      width: 285px;
+      height: 65px; 
+      opacity: 0;      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      -webkit-transition: opacity 1s;
+      -moz-transition: opacity 1s; 
+      -o-transition: opacity 1s;
+      transition: opacity 1s;        
+    }   
+    
+    .growl.active {        
+      opacity: 1;
+    } 
+    
+    .growl-message {
+
+    }
