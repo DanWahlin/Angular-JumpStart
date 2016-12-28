@@ -21,6 +21,11 @@
                                 <span class="glyphicon glyphicon-align-justify"></span> List View
                             </a>
                         </li>
+                        <li class="toolbar-item">
+                            <a (click)="changeDisplayMode(displayModeEnum.Map)" [class.active]="displayMode === displayModeEnum.Map">
+                                <span class="glyphicon glyphicon-map-marker"></span> Map View
+                            </a>
+                        </li>
                     </ul>
                     <filter-textbox class="navbar-right"
                      (changed)="filterChanged($event)"></filter-textbox>
@@ -35,6 +40,17 @@
         <customers-grid 
           [customers]="filteredCustomers" 
           [hidden]="displayMode !== displayModeEnum.Grid"></customers-grid>
+
+        <map *ngIf="filteredCustomers.length" 
+            [zoom]="2" 
+            [enabled]="displayMode === displayModeEnum.Map" 
+            [hidden]="displayMode !== displayModeEnum.Map">
+          <map-point 
+            *ngFor="let customer of filteredCustomers" 
+            [latitude]="customer.latitude" 
+            [longitude]="customer.longitude"
+            [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</a></h3>' + customer.city + ', ' + customer.state.name"></map-point>
+        </map>
           
     </div>
 </div>

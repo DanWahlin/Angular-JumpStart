@@ -4,4 +4,6 @@
       "**/app/**/*.js.map": true,
       "**/app/**/*.js": true
     }
+,
+"typescript.check.workspaceVersion": false
 }

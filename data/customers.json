@@ -10,7 +10,9 @@
                 "abbreviation": "AZ",
                 "name": "Arizona"
             },
-            "orderTotal": 40.99
+            "orderTotal": 40.99,
+            "latitude": 33.299,
+            "longitude": -111.963
       },
       {
             "id": 2,
@@ -18,12 +20,14 @@
             "lastName": "Thompson",
             "gender": "female",
             "address": "345 Cedar Point Ave.",
-            "city": "Los Angeles ",
+            "city": "Encinitas ",
             "state": {
                 "abbreviation": "CA",
                 "name": "California"
             },
-            "orderTotal": 89.99
+            "orderTotal": 89.99,
+            "latitude": 33.037,
+            "longitude": -117.291
       },
       {
             "id": 3,
@@ -31,12 +35,14 @@
             "lastName": "Bishop",
             "gender": "male",
             "address": "1822 Long Bay Dr.",
-            "city": " Las Vegas ",
+            "city": " Seattle ",
             "state": {
-                "abbreviation": "NV",
-                "name": "Nevada"
+                "abbreviation": "WA",
+                "name": "Washington"
             },
-            "orderTotal": 29.99
+            "orderTotal": 29.99,
+            "latitude": 47.596,
+            "longitude": -122.331
       },
       {
             "id": 4,
@@ -44,12 +50,14 @@
             "lastName": "Adams",
             "gender": "female",
             "address": "79455 Pinetop Way",
-            "city": "Seattle",
+            "city": "Chandler",
             "state": {
-                "abbreviation": "WA",
-                "name": " Washington "
+                "abbreviation": "AZ",
+                "name": " Arizona "
             },
-            "orderTotal": 15.99
+            "orderTotal": 15.99,
+            "latitude": 33.299,
+            "longitude": -111.963
       },
       {
             "id": 5,
@@ -57,12 +65,14 @@
             "lastName": "Minar",
             "gender": "male",
             "address": "576 Crescent Blvd.",
-            "city": " Chandler",
+            "city": " Dallas",
             "state": {
-                "abbreviation": "AZ",
-                "name": "Arizona"
+                "abbreviation": "TX",
+                "name": "Texas"
             },
-            "orderTotal": 29.99
+            "orderTotal": 29.99,
+            "latitude": 32.782927,
+            "longitude": -96.806191
       },
       {
             "id": 6,
@@ -70,12 +80,14 @@
             "lastName": "Green",
             "gender": "male",
             "address": "9874 Center St.",
-            "city": "Mountain View ",
+            "city": "Orlando ",
             "state": {
-                "abbreviation": "CA",
-                "name": "California"
+                "abbreviation": "FL",
+                "name": "Florida"
             },
-            "orderTotal": 49.99
+            "orderTotal": 49.99,
+            "latitude": 28.384238,
+            "longitude": -81.564103
       },
       {
             "id": 7,
@@ -83,12 +95,14 @@
             "lastName": "Hevery",
             "gender": "male",
             "address": "9812 Builtway Appt #1",
-            "city": "Mountain View ",
+            "city": "Carey ",
             "state": {
-                "abbreviation": "CA",
-                "name": "California"
+                "abbreviation": "NC",
+                "name": "North Carolina"
             },
-            "orderTotal": 19.99
+            "orderTotal": 19.99,
+            "latitude": 35.727985,
+            "longitude": -78.797594
       },
       {
             "id": 8,
@@ -96,12 +110,14 @@
             "lastName": "Wahlin",
             "gender": "female",
             "address": "4651 Tuvo St.",
-            "city": "Chandler",
+            "city": "Anaheim",
             "state": {
-                "abbreviation": "AZ",
-                "name": "Arizona"
+                "abbreviation": "CA",
+                "name": "California"
             },
-            "orderTotal": 9.99
+            "orderTotal": 9.99,
+            "latitude": 33.809898,
+            "longitude": -117.918757
       },
       {
             "id": 9,
@@ -114,7 +130,9 @@
                 "abbreviation": "FL",
                 "name": "Florida"
             },
-            "orderTotal": 149.99
+            "orderTotal": 149.99,
+            "latitude": 28.384238,
+            "longitude": -81.564103
       },
       {
             "id": 10,
@@ -127,7 +145,9 @@
                 "abbreviation": "GA",
                 "name": "Georgia"
             },
-            "orderTotal": 299.99
+            "orderTotal": 299.99,
+            "latitude": 33.762297, 
+            "longitude": -84.392953
       },
       {
             "id": 11,
@@ -135,11 +155,13 @@
             "lastName": "bell",
             "gender": "male",
             "address": "888 Central St.",
-            "city": "San Francisco",
+            "city": "Los Angeles",
             "state": {
                 "abbreviation": "CA",
                 "name": "California"
             },
-            "orderTotal": 29.98
+            "orderTotal": 29.98,
+            "latitude": 34.042552,
+            "longitude": -118.266429
       }
 ]

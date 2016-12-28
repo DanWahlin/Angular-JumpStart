@@ -12,6 +12,7 @@ import { DataService } from '../core/services/data.service';
 export class CustomerDetailsComponent implements OnInit {
 
   customer: ICustomer;
+  mapEnabled: boolean;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
@@ -20,7 +21,10 @@ export class CustomerDetailsComponent implements OnInit {
       this.route.parent.params.subscribe((params: Params) => {
         let id = +params['id'];
         this.dataService.getCustomer(id)
-            .subscribe((customer: ICustomer) => this.customer = customer);
+            .subscribe((customer: ICustomer) => {
+              this.customer = customer;
+              this.mapEnabled = true;
+            });
       });
   }
 
