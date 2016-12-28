@@ -6,6 +6,7 @@
     "scripts": {
         "tsc": "tsc",
         "tsc:w": "tsc -w",
+        "start:nodemon": "tsc && concurrently \"tsc -w\" \"nodemon server.js\" ",
         "start": "tsc && concurrently \"tsc -w\" \"node server.js\" "
     },
     "license": "ISC",

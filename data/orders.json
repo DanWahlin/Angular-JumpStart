@@ -70,5 +70,13 @@
                 {"id": 21, "productName": "Baseball", "itemCost": 9.99},
                 {"id": 22, "productName": "Bat", "itemCost": 19.99}
             ]
+      },
+      {
+            "customerId": 11,
+            "orderItems": [
+                {"id": 16, "productName": "Surfboard", "itemCost": 299.99},
+                {"id": 17, "productName": "Wax", "itemCost": 5.99},
+                {"id": 18, "productName": "Shark Repellent", "itemCost": 7.99}
+            ]
       }
 ]

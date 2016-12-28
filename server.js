@@ -16,6 +16,23 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 //The src folder has our static resources (index.html, css, images)
 app.use(express.static(__dirname + '/src')); 
 
+app.get('/api/customers/page/:skip/:top', (req, res) => {
+    const topVal = req.params.top,
+          skipVal = req.params.skip,
+          skip = (isNaN(skipVal)) ? 0 : +skipVal;  
+    let top = (isNaN(topVal)) ? 10 : skip + (+topVal);
+
+    if (top > customers.length) {
+        top = skip + (customers.length - skip);
+    }
+
+    console.log(`Skip: ${skip} Top: ${top}`);
+
+    var pagedCustomers = customers.slice(skip, top);
+    res.setHeader('X-InlineCount', customers.length);
+    res.json(pagedCustomers);
+});
+
 app.get('/api/customers', (req, res) => {
     res.json(customers);
 });
@@ -94,10 +111,10 @@ app.listen(3000);
 console.log('Express listening on port 3000.');
 
 //Open browser
-var opn = require('opn');
+// var opn = require('opn');
 
-opn('http://localhost:3000').then(() => {
-    console.log('Browser closed.');
-});
+// opn('http://localhost:3000').then(() => {
+//     console.log('Browser closed.');
+// });
 
 

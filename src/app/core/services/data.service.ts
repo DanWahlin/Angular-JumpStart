@@ -8,7 +8,7 @@ import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
-import { ICustomer, IOrder, IState } from '../../shared/interfaces';
+import { ICustomer, IOrder, IState, IPagedResults } from '../../shared/interfaces';
 
 @Injectable()
 export class DataService {
@@ -28,6 +28,19 @@ export class DataService {
                         return this.customers;
                     })
                     .catch(this.handleError);
+    }
+
+    getCustomersPage(page: number, pageSize: number) : Observable<IPagedResults<ICustomer[]>> {
+        return this.http.get(`${this.customersBaseUrl}/page/${page}/${pageSize}`)
+                   .map((res: Response) => {
+                       const totalRecords = +res.headers.get('X-InlineCount');
+                       let customers = res.json();
+                       return {
+                           results: customers,
+                           totalRecords: totalRecords
+                       };
+                   })
+                   .catch(this.handleError);
     }
     
     getCustomer(id: number) : Observable<ICustomer> {

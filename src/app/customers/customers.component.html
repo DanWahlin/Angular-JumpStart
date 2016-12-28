@@ -41,6 +41,11 @@
           [customers]="filteredCustomers" 
           [hidden]="displayMode !== displayModeEnum.Grid"></customers-grid>
 
+        <pagination [hidden]="displayMode === displayModeEnum.Map"
+            [totalItems]="totalRecords" 
+            [pageSize]="pageSize" 
+            (pageChanged)="pageChanged($event)"></pagination>
+
         <map *ngIf="filteredCustomers.length" 
             [zoom]="2" 
             [enabled]="displayMode === displayModeEnum.Map" 
