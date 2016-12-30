@@ -15,7 +15,7 @@ export class SortByDirective {
 	
   constructor() { }
     
-  @Input('sort-by') 
+  @Input('cm-sort-by') 
   set sortBy(value: string) {
     this.sortProperty = value;
   }
