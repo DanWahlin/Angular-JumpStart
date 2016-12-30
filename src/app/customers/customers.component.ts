@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 //import { Observable } from 'rxjs/Observable';
 
-import { DataService } from '../core/data.service';
+import { DataService } from '../core/services/data.service';
 import { ICustomer, IPagedResults } from '../shared/interfaces';
-import { propertyResolver } from '../shared/property-resolver';
+import { FilterService } from '../core/services/filter.service';
 
 @Component({ 
   moduleId: module.id,
-  selector: 'customers', 
+  selector: 'cm-customers', 
   templateUrl: 'customers.component.html'
 })
 export class CustomersComponent implements OnInit {
@@ -21,7 +21,7 @@ export class CustomersComponent implements OnInit {
   totalRecords: number = 0;
   pageSize: number = 10;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private filterService: FilterService) { }
   
   ngOnInit() {
     this.title = 'Customers';
@@ -52,27 +52,8 @@ export class CustomersComponent implements OnInit {
   filterChanged(data: string) {
     if (data && this.customers) {
         data = data.toUpperCase();
-        let props = ['firstName', 'lastName', 'city', 'state.name'];
-        let filtered = this.customers.filter(item => {
-            let match = false;
-            for (let prop of props) {
-                if (prop.indexOf('.') > -1) {
-                   var value = propertyResolver.resolve(prop, item);
-                   if (value && value.toUpperCase().indexOf(data) > -1) {
-                      match = true;
-                      break;
-                   }
-                   continue;
-                }
-                
-                if (item[prop].toString().toUpperCase().indexOf(data) > -1) {
-                  match = true;
-                  break;
-                }
-            };
-            return match;
-        });
-        this.filteredCustomers = filtered;
+        const props = ['firstName', 'lastName', 'city', 'state.name'];
+        this.filteredCustomers = this.filterService.filter<ICustomer>(this.customers, data, props);
     }
     else {
       this.filteredCustomers = this.customers;

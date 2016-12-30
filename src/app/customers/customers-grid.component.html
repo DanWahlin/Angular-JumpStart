@@ -6,11 +6,11 @@
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
-                            <th sort-by="firstName" (sorted)="sort($event)">First Name</th>
-                            <th sort-by="lastName" (sorted)="sort($event)">Last Name</th>
-                            <th sort-by="address" (sorted)="sort($event)">Address</th>
-                            <th sort-by="city" (sorted)="sort($event)">City</th>
-                            <th sort-by="state.name" (sorted)="sort($event)">State</th>
+                            <th cm-sort-by="firstName" (sorted)="sort($event)">First Name</th>
+                            <th cm-sort-by="lastName" (sorted)="sort($event)">Last Name</th>
+                            <th cm-sort-by="address" (sorted)="sort($event)">Address</th>
+                            <th cm-sort-by="city" (sorted)="sort($event)">City</th>
+                            <th cm-sort-by="state.name" (sorted)="sort($event)">State</th>
                             <!-- Or you can do this directly rather than using sort-by directive -->
                             <th (click)="sort('orderTotal')">Order Total</th>
                             <th>&nbsp;</th>

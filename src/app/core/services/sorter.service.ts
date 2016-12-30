@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { propertyResolver } from '../shared/property-resolver'
+
+import { propertyResolver } from '../../core/services/property-resolver';
 
 @Injectable()
-export class Sorter {
+export class SorterService {
 
 	property: string = null;
 	direction: number = 1;

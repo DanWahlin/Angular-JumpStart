@@ -230,11 +230,14 @@ form {
 .customer-form input[type='text'], 
 .customer-form input[type='number'],
 .customer-form input[type='email'],
-.customer-form select,
+.customer-form select {
+    width:100%;
+}
+
 .login-form input[type='text'], 
 .login-form input[type='email'],
 .login-form input[type='password'] {
-    width:250px;
+    width:50%;
 }
 
 .customer-form .ng-invalid, .login-form .ng-invalid {

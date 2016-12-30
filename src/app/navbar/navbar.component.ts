@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/subscription';
 
-import { AuthService } from '../core/auth.service';
-import { GrowlerComponent, GrowlMessageType } from '../growler/growler.component';
+import { AuthService } from '../core/services/auth.service';
+import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'navbar',
+    selector: 'cm-navbar',
     templateUrl: 'navbar.component.html'
 })
 export class NavbarComponent implements OnInit, OnDestroy {
@@ -16,9 +16,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     isCollapsed: boolean;
     loginLogoutText: string = 'Login';
     sub: Subscription;
-    @ViewChild(GrowlerComponent) growler: GrowlerComponent;
 
-    constructor(private router: Router, private authservice: AuthService) { }
+    constructor(private router: Router, private authservice: AuthService, private growler: GrowlerService) { }
 
     ngOnInit() { 
         this.sub = this.authservice.authChanged
@@ -38,7 +37,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.authservice.logout()
                 .subscribe((status: boolean) => {
                     this.setLoginLogoutText();
-                    this.growler.growl('Logged Out', GrowlMessageType.Success);
+                    this.growler.growl('Logged Out', GrowlerMessageType.Success);
                     this.router.navigate(['/customers']);
                     return;
                 },

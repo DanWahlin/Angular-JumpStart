@@ -16,11 +16,11 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <map [latitude]="customer.latitude" 
+      <cm-map [latitude]="customer.latitude" 
            [longitude]="customer.longitude" 
            [zoom]="10" 
            [enabled]="mapEnabled"
-           [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></map>
+           [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map>
     </div>
   </div>
 </div>   

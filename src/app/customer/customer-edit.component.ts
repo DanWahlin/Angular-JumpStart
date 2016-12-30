@@ -2,14 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { DataService } from '../core/data.service';
-import { DialogService } from '../core/dialog.service';
+import { DataService } from '../core/services/data.service';
+import { ModalService, IModalContent } from '../core/modal/modal.service';
 import { ICustomer, IState } from '../shared/interfaces';
-import { GrowlerComponent, GrowlMessageType } from '../growler/growler.component';
+import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'customer-edit',
+  selector: 'cm-customer-edit',
   templateUrl: 'customer-edit.component.html'
 })
 export class CustomerEditComponent implements OnInit {
@@ -30,12 +30,12 @@ export class CustomerEditComponent implements OnInit {
   states: IState[];
   errorMessage: string;
   @ViewChild('customerForm') customerForm: NgForm;
-  @ViewChild(GrowlerComponent) growler: GrowlerComponent;
   
   constructor(private router: Router, 
               private route: ActivatedRoute, 
               private dataService: DataService,
-              public dialogService: DialogService) { }
+              private growler: GrowlerService,
+              private modalService: ModalService) { }
 
   ngOnInit() {
       //Subscribe to params so if it changes we pick it up. Don't technically need that here
@@ -60,11 +60,11 @@ export class CustomerEditComponent implements OnInit {
           if (status) {
             //Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
             this.customerForm.form.markAsPristine();
-            this.growler.growl('Operation performed successfully.', GrowlMessageType.Success);
+            this.growler.growl('Operation performed successfully.', GrowlerMessageType.Success);
             //this.router.navigate(['/']);
           }
           else {
-            this.growler.growl('Unable to save customer', GrowlMessageType.Danger);
+            this.growler.growl('Unable to save customer', GrowlerMessageType.Danger);
             this.errorMessage = 'Unable to save customer';
           }
       });
@@ -72,21 +72,23 @@ export class CustomerEditComponent implements OnInit {
   
   onCancel(event: Event) {
     event.preventDefault();
+    //Route guard will take care of showing modal dialog service if data is dirty
     this.router.navigate(['/']);
-
-    //Route guard will take care of dialog service so this isn't needed now
-    // this.dialogService.confirm('Lose unsaved changes?').then((leave: boolean) => {
-    //   if (leave) {
-    //     this.router.navigate(['/']);
-    //   }
-    // });
   }
 
   canDeactivate(): Promise<boolean> | boolean {
     if (!this.customerForm.dirty) {
       return true;
     }
-    return this.dialogService.confirm('Discard form changes?');
+
+    //Dirty show display modal dialog to user to confirm leaving
+    const modalContent: IModalContent = {
+      header: 'Lose Unsaved Changes?',
+      body: 'You have unsaved changes! Would you like to leave the page and lose them?',
+      cancelText: 'Cancel',
+      submitText: 'Leave'
+    }
+    return this.modalService.show(modalContent);
   }
 
 }

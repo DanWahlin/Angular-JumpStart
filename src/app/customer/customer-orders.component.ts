@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { DataService } from '../core/data.service';
+import { DataService } from '../core/services/data.service';
 import { ICustomer, IOrder, IOrderItem } from '../shared/interfaces';
 
 @Component({
   moduleId: module.id,
-  selector: 'customer-orders',
+  selector: 'cm-customer-orders',
   templateUrl: 'customer-orders.component.html'
 })
 export class CustomerOrdersComponent implements OnInit {

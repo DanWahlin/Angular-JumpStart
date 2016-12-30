@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 
+import { ModalService, IModalContent } from './core/modal/modal.service';
+
 @Component({ 
   moduleId: module.id,
-  selector: 'app-container',
-  template: `
-    <main class="container">
-      <navbar></navbar>
-      <router-outlet></router-outlet>
-      <br /><br />
-    </main>
-  `
+  selector: 'cm-app-component',
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
 

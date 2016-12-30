@@ -7,7 +7,7 @@ import { MapPointComponent } from './mapPoint.component';
 
 @Component({
   moduleId: module.id,
-  selector: 'map',
+  selector: 'cm-map',
   templateUrl: 'map.component.html',
   //When using OnPush detectors, then the framework will check an OnPush 
   //component when any of its input properties changes, when it fires 

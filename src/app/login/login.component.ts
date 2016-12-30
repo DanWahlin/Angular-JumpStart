@@ -2,22 +2,24 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from '../core/auth.service';
-import { ValidationService } from '../core/validation.service';
+import { AuthService } from '../core/services/auth.service';
+import { ValidationService } from '../core/services/validation.service';
 import { IUserLogin } from '../shared/interfaces';
-import { GrowlerComponent, GrowlMessageType } from '../growler/growler.component';
+import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'login',
+    selector: 'cm-login',
     templateUrl: 'login.component.html'
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     errorMessage: string;
-    @ViewChild(GrowlerComponent) growler: GrowlerComponent;
 
-    constructor(private formBuilder: FormBuilder, private router: Router, private authservice: AuthService) { }
+    constructor(private formBuilder: FormBuilder, 
+                private router: Router, 
+                private authservice: AuthService,
+                private growler: GrowlerService) { }
 
     ngOnInit() { 
         this.buildForm();
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
                 } else {
                     const loginError = 'Unable to login';
                     this.errorMessage = loginError;
-                    this.growler.growl(loginError, GrowlMessageType.Danger);
+                    this.growler.growl(loginError, GrowlerMessageType.Danger);
                 }
             },
             (err: any) => console.log(err));

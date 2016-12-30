@@ -1,19 +1,23 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DataService } from './data.service';
-import { Sorter } from './sorter.service';
-import { TrackByService } from './trackby.service';
-import { DialogService } from './dialog.service';
-import { EnsureModuleLoadedOnceGuard } from '../shared/ensureModuleLoadedOnceGuard';
-import { ValidationService } from './validation.service';
-import { AuthService } from'./auth.service';
+import { GrowlerModule } from './growler/growler.module';
+import { ModalModule } from './modal/modal.module';
+
+import { DataService } from './services/data.service';
+import { FilterService } from './services/filter.service';
+import { SorterService } from './services/sorter.service';
+import { TrackByService } from './services/trackby.service';
+import { DialogService } from './services/dialog.service';
+import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
+import { ValidationService } from './services/validation.service';
+import { AuthService } from'./services/auth.service';
 
 @NgModule({
-  imports: [ CommonModule ],
-  declarations: [],
-  exports: [ CommonModule ],
-  providers: [ DataService, Sorter, TrackByService, DialogService, ValidationService, AuthService ] // these should be singleton
+  imports: [ CommonModule, GrowlerModule, ModalModule ],
+  exports: [ CommonModule, GrowlerModule, ModalModule ],
+  providers: [ SorterService, FilterService, DataService, TrackByService, 
+               DialogService, ValidationService, AuthService ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
 

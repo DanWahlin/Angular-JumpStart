@@ -1,11 +1,11 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { Sorter } from '../core/sorter.service';
-import { TrackByService } from '../core/trackby.service';
+import { SorterService } from '../core/services/sorter.service';
+import { TrackByService } from '../core/services/trackby.service';
 
 @Component({ 
   moduleId: module.id,
-  selector: 'customers-grid', 
+  selector: 'cm-customers-grid', 
   templateUrl: 'customers-grid.component.html',
   //When using OnPush detectors, then the framework will check an OnPush 
   //component when any of its input properties changes, when it fires 
@@ -16,14 +16,14 @@ export class CustomersGridComponent implements OnInit {
 
   @Input() customers: any[] = [];
 
-  constructor(private sorter: Sorter, private trackbyService: TrackByService) { }
+  constructor(private sorterService: SorterService, private trackbyService: TrackByService) { }
    
   ngOnInit() {
 
   }
 
   sort(prop: string) {
-      this.sorter.sort(this.customers, prop);
+      this.sorterService.sort(this.customers, prop);
   }
 
 }

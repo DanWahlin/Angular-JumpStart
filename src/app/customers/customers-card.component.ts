@@ -2,11 +2,11 @@ import { Component, Input, OnInit, ChangeDetectionStrategy,
          trigger, state, style, transition, animate } from '@angular/core';
 
 import { ICustomer } from '../shared/interfaces';
-import { TrackByService } from '../core/trackby.service';
+import { TrackByService } from '../core/services/trackby.service';
 
 @Component({ 
   moduleId: module.id,
-  selector: 'customers-card', 
+  selector: 'cm-customers-card', 
   templateUrl: 'customers-card.component.html',
   //Add [@flyInOut]="'in'" into template on card
   // animations: [

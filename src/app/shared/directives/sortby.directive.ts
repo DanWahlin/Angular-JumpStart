@@ -1,7 +1,7 @@
 import { Directive, Input, Output, EventEmitter } from '@angular/core';
 
 @Directive({
-  selector: '[sort-by]',
+  selector: '[cm-sort-by]',
   host: {
     '(click)': 'onClick($event)'
   }

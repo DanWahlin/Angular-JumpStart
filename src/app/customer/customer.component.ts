@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({ 
   moduleId: module.id,
-  selector: 'orders',
+  selector: 'cm-orders',
   templateUrl: 'customer.component.html'
 })
 export class CustomerComponent implements OnInit {

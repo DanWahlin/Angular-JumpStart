@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'filter-textbox',
+  selector: 'cm-filter-textbox',
   template: `
     <form>
          Filter:

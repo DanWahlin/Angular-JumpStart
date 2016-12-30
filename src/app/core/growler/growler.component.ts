@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { GrowlerService, GrowlerMessageType } from './growler.service';
+
 @Component({
   moduleId: module.id,
-  selector: 'growler',
+  selector: 'cm-growler',
   template: `
     <div [ngClass]="position" class="growler">
       <div *ngFor="let growl of growls" [ngClass]="{active: growl.enabled}" 
@@ -21,7 +23,9 @@ export class GrowlerComponent implements OnInit {
   @Input() position: string = 'bottom-right'; 
   @Input() timeout: number = 3000;
   
-  constructor() { }
+  constructor(private growlerService: GrowlerService) {
+    growlerService.growl = this.growl.bind(this);
+  }
 
   ngOnInit() { }
    
@@ -32,9 +36,9 @@ export class GrowlerComponent implements OnInit {
   * @param {GrowlMessageType} growlType - The type of message to display (a GrowlMessageType enumeration)
   * @return {number} id - Returns the ID for the generated growl
   */
-  growl(message: string, growlType: GrowlMessageType) : number {  
+  growl(message: string, growlType: GrowlerMessageType) : number {  
      this.growlCount++;
-     const bootstrapAlertType = GrowlMessageType[growlType].toLowerCase();
+     const bootstrapAlertType = GrowlerMessageType[growlType].toLowerCase();
      const messageType = `alert-${ bootstrapAlertType }`;     
      
      const growl = new Growl(this.growlCount, message, messageType, this.timeout, this);
@@ -59,8 +63,8 @@ class Growl {
   timeoutId: number;  
   
   constructor(public id: number, 
-              private message: string, 
-              private messageType: string, 
+              public message: string, 
+              public messageType: string, 
               private timeout: number, 
               private growlerContainer: GrowlerComponent) { 
     this.show();
@@ -86,11 +90,4 @@ class Growl {
     }, this.timeout);
   }
   
-}
-
-export enum GrowlMessageType {
-  Success,
-  Danger,
-  Warning,
-  Info
 }
