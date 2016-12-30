@@ -10,7 +10,10 @@
                 "abbreviation": "AZ",
                 "name": "Arizona"
             },
-            "orderTotal": 40.99,
+            "orders": [
+                {"productName": "Basketball", "itemCost": 7.99},
+                {"productName": "Shoes", "itemCost": 199.99}
+            ],
             "latitude": 33.299,
             "longitude": -111.963
       },
@@ -25,7 +28,10 @@
                 "abbreviation": "CA",
                 "name": "California"
             },
-            "orderTotal": 89.99,
+            "orders": [
+                {"productName": "Frisbee", "itemCost": 2.99},
+                {"productName": "Hat", "itemCost": 5.99}
+            ],
             "latitude": 33.037,
             "longitude": -117.291
       },
@@ -40,7 +46,11 @@
                 "abbreviation": "WA",
                 "name": "Washington"
             },
-            "orderTotal": 29.99,
+            "orders": [
+                {"productName": "Boomerang", "itemCost": 29.99},
+                {"productName": "Helmet", "itemCost": 19.99},
+                {"productName": "Kangaroo Saddle", "itemCost": 179.99}
+            ],
             "latitude": 47.596,
             "longitude": -122.331
       },
@@ -55,7 +65,10 @@
                 "abbreviation": "AZ",
                 "name": " Arizona "
             },
-            "orderTotal": 15.99,
+            "orders": [
+                {"productName": "Budgie Smugglers", "itemCost": 19.99},
+                {"productName": "Swimming Cap", "itemCost": 5.49}
+            ],
             "latitude": 33.299,
             "longitude": -111.963
       },
@@ -70,7 +83,10 @@
                 "abbreviation": "TX",
                 "name": "Texas"
             },
-            "orderTotal": 29.99,
+            "orders": [
+                {"productName": "Bow", "itemCost": 399.99},
+                {"productName": "Arrows", "itemCost": 69.99}
+            ],
             "latitude": 32.782927,
             "longitude": -96.806191
       },
@@ -85,7 +101,10 @@
                 "abbreviation": "FL",
                 "name": "Florida"
             },
-            "orderTotal": 49.99,
+            "orders": [
+                {"productName": "Baseball", "itemCost": 9.99},
+                {"productName": "Bat", "itemCost": 19.99}
+            ],
             "latitude": 28.384238,
             "longitude": -81.564103
       },
@@ -100,7 +119,11 @@
                 "abbreviation": "NC",
                 "name": "North Carolina"
             },
-            "orderTotal": 19.99,
+            "orders": [
+                {"productName": "Surfboard", "itemCost": 299.99},
+                {"productName": "Wax", "itemCost": 5.99},
+                {"productName": "Shark Repellent", "itemCost": 15.99}
+            ],
             "latitude": 35.727985,
             "longitude": -78.797594
       },
@@ -115,7 +138,10 @@
                 "abbreviation": "CA",
                 "name": "California"
             },
-            "orderTotal": 9.99,
+            "orders": [
+                {"productName": "Saddle", "itemCost": 599.99},
+                {"productName": "Riding cap", "itemCost": 79.99}
+            ],
             "latitude": 33.809898,
             "longitude": -117.918757
       },
@@ -130,7 +156,10 @@
                 "abbreviation": "FL",
                 "name": "Florida"
             },
-            "orderTotal": 149.99,
+            "orders": [
+                {"productName": "Baseball", "itemCost": 9.99},
+                {"productName": "Bat", "itemCost": 19.99}
+            ],
             "latitude": 28.384238,
             "longitude": -81.564103
       },
@@ -145,7 +174,11 @@
                 "abbreviation": "GA",
                 "name": "Georgia"
             },
-            "orderTotal": 299.99,
+            "orders": [
+                {"productName": "Surfboard", "itemCost": 299.99},
+                {"productName": "Wax", "itemCost": 5.99},
+                {"productName": "Shark Repellent", "itemCost": 7.99}
+            ],
             "latitude": 33.762297, 
             "longitude": -84.392953
       },
@@ -160,7 +193,6 @@
                 "abbreviation": "CA",
                 "name": "California"
             },
-            "orderTotal": 312.98,
             "latitude": 34.042552,
             "longitude": -118.266429
       },
@@ -175,7 +207,6 @@
                 "abbreviation": "TX",
                 "name": "Texas"
             },
-            "orderTotal": 29.98,
             "latitude": 32.782927,
             "longitude": -96.806191
       },
@@ -190,7 +221,11 @@
                 "abbreviation": "NY",
                 "name": "New York City"
             },
-            "orderTotal": 29.98,
+            "orders": [
+                {"productName": "Car", "itemCost": 42999.99},
+                {"productName": "Wax", "itemCost": 5.99},
+                {"productName": "Shark Repellent", "itemCost": 7.99}
+            ],
             "latitude": 40.725037,
             "longitude": -74.004903
       },
@@ -205,7 +240,6 @@
                 "abbreviation": "NY",
                 "name": "New York"
             },
-            "orderTotal": 29.98,
             "latitude": 40.725037,
             "longitude": -74.004903
       },
@@ -220,7 +254,6 @@
                 "abbreviation": "NY",
                 "name": "New York"
             },
-            "orderTotal": 29.98,
             "latitude": 41.028726,
             "longitude": -73.758261
       },
@@ -235,7 +268,6 @@
                 "abbreviation": "NV",
                 "name": "Nevada"
             },
-            "orderTotal": 29.98,
             "latitude": 36.091824,
             "longitude": -115.174247
       },
@@ -250,7 +282,6 @@
                 "abbreviation": "TX",
                 "name": "Texas"
             },
-            "orderTotal": 29.98,
             "latitude": 29.750163,
             "longitude": -95.362769
       },
@@ -265,7 +296,6 @@
                 "abbreviation": "WA",
                 "name": "Washington"
             },
-            "orderTotal": 29.98,
             "latitude": 47.596,
             "longitude": -122.331
       },
@@ -280,7 +310,6 @@
                 "abbreviation": "CAT",
                 "name": "Catalonia"
             },
-            "orderTotal": 29.98,
             "latitude": 41.386444, 
             "longitude": 2.111988
       },
@@ -295,7 +324,6 @@
                 "abbreviation": "IS",
                 "name": "Iceland"
             },
-            "orderTotal": 29.98,
             "latitude": 64.120278, 
             "longitude": -21.830471
       },
@@ -307,10 +335,13 @@
             "address": "9874 Lake Blvd.",
             "city": "Zurich",
             "state": {
-                "abbreviation": "",
+                "abbreviation": "COZ",
                 "name": "Canton of Zurick"
             },
-            "orderTotal": 29.98,
+            "orders": [
+                {"productName": "Baseball", "itemCost": 9.99},
+                {"productName": "Bat", "itemCost": 19.99}
+            ],
             "latitude": 47.341337, 
             "longitude": 8.582503
       },
@@ -325,7 +356,6 @@
                 "abbreviation": "WA",
                 "name": "Rio de Janeiro"
             },
-            "orderTotal": 29.98,
             "latitude": -22.919369, 
             "longitude": -43.181836
       }

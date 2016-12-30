@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { DataService } from '../core/services/data.service';
+import { DataService } from '../core/data.service';
 import { ICustomer, IOrder, IOrderItem } from '../shared/interfaces';
 
 @Component({
@@ -20,21 +20,14 @@ export class CustomerOrdersComponent implements OnInit {
       //Subscribe to params so if it changes we pick it up.  Could use this.route.parent.snapshot.params["id"] to simplify it.
       this.route.parent.params.subscribe((params: Params) => {
         let id = +params['id'];
-        this.dataService.getOrders(id).subscribe((orders: IOrder[]) => {
-          this.orders = orders;
-        });
         this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
           this.customer = customer;
         });
       });
   }
-  
-  orderTrackBy(index: number, order: IOrderItem) {
-    return order.id;
-  }
-  
-  orderItemTrackBy(index: number, orderItem: any) {
-    return orderItem.id;
+
+  ordersTrackBy(index: number, orderItem: any) {
+    return index;
   }
 
 }

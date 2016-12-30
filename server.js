@@ -3,7 +3,6 @@ var express     = require('express'),
     fs          = require('fs'),
     app         = express(),
     customers   = JSON.parse(fs.readFileSync('data/customers.json', 'utf-8')),
-    orders      = JSON.parse(fs.readFileSync('data/orders.json', 'utf-8')),
     states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -83,15 +82,11 @@ app.delete('/api/customers/:id', function(req, res) {
     res.json({ status: true });
 });
 
-app.get('/api/orders', function(req, res) {
-    res.json(orders);
-});
-
 app.get('/api/orders/:id', function(req, res) {
     let customerId = +req.params.id;
-    for (let order of orders) {
-        if (order.customerId === customerId) {
-            return res.json([ order ]);
+    for (let cust of customers) {
+        if (cust.customerId === customerId) {
+            return res.json(cust);
         }
     }
     res.json([]);
@@ -99,6 +94,16 @@ app.get('/api/orders/:id', function(req, res) {
 
 app.get('/api/states', (req, res) => {
     res.json(states);
+});
+
+app.post('/api/auth/login', (req, res) => {
+    var userLogin = req.body;
+    //Add "real" auth here. Simulating it by returning a simple boolean.
+    res.json(true);
+});
+
+app.post('/api/auth/logout', (req, res) => {
+    res.json(true);
 });
 
 // redirect all others to the index (HTML5 history)

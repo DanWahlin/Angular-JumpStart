@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ChangeDetectionStrategy,
          trigger, state, style, transition, animate } from '@angular/core';
 
 import { ICustomer } from '../shared/interfaces';
-import { TrackByService } from '../core/services/trackby.service';
+import { TrackByService } from '../core/trackby.service';
 
 @Component({ 
   moduleId: module.id,
@@ -30,7 +30,7 @@ export class CustomersCardComponent implements OnInit {
 
   @Input() customers: ICustomer[] = [];
   
-  constructor(public trackby: TrackByService) { }
+  constructor(private trackbyService: TrackByService) { }
   
   ngOnInit() {
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { Observable } from 'rxjs/Observable';
 
-import { DataService } from '../core/services/data.service';
+import { DataService } from '../core/data.service';
 import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { propertyResolver } from '../shared/property-resolver';
 
@@ -52,7 +52,7 @@ export class CustomersComponent implements OnInit {
   filterChanged(data: string) {
     if (data && this.customers) {
         data = data.toUpperCase();
-        let props = ['firstName', 'lastName', 'address', 'city', 'state.name', 'orderTotal'];
+        let props = ['firstName', 'lastName', 'city', 'state.name'];
         let filtered = this.customers.filter(item => {
             let match = false;
             for (let prop of props) {
@@ -65,7 +65,6 @@ export class CustomersComponent implements OnInit {
                    continue;
                 }
                 
-                //console.log(item[prop] + ' ' + item[prop].toUpperCase().indexOf(data));
                 if (item[prop].toString().toUpperCase().indexOf(data) > -1) {
                   match = true;
                   break;

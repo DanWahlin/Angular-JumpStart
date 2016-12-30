@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { DataService } from '../core/services/data.service';
-import { DialogService } from '../core/services/dialog.service';
+import { DataService } from '../core/data.service';
+import { DialogService } from '../core/dialog.service';
 import { ICustomer, IState } from '../shared/interfaces';
 import { GrowlerComponent, GrowlMessageType } from '../growler/growler.component';
 

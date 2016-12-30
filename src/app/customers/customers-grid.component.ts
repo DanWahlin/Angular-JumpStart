@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { Sorter } from '../core/services/sorter';
-import { TrackByService } from '../core/services/trackby.service';
+import { Sorter } from '../core/sorter.service';
+import { TrackByService } from '../core/trackby.service';
 
 @Component({ 
   moduleId: module.id,
@@ -16,7 +16,7 @@ export class CustomersGridComponent implements OnInit {
 
   @Input() customers: any[] = [];
 
-  constructor(private sorter: Sorter, public trackby: TrackByService) { }
+  constructor(private sorter: Sorter, private trackbyService: TrackByService) { }
    
   ngOnInit() {
 

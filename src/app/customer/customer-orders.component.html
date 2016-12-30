@@ -2,17 +2,21 @@
     <div class="row" *ngIf="customer">
         <h4>Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
         <br />
-        <table class="table table-striped table-hover orders-table" *ngFor="let order of orders;trackBy:orderTrackBy">
-            <tr *ngFor="let orderItem of order.orderItems;trackBy:orderItemTrackBy">
-                <td>{{orderItem.productName}}</td>
-                <td>${{orderItem.itemCost}}</td>    
+        <table class="table table-striped table-hover orders-table">
+            <tr *ngFor="let order of customer.orders;trackBy:ordersTrackBy">
+                <td>{{ order.productName }}</td>
+                <td class="text-right">{{ order.itemCost | currency:'USD':true }}</td>    
+            </tr>
+            <tr class="summary-border">
+                <td>&nbsp;</td>
+                <td class="text-right">{{ customer.orderTotal | currency:'USD':true }}</td>
             </tr>
         </table>
-        <div *ngIf="!orders.length">
+        <div *ngIf="!customer.orders.length">
             No orders found
         </div> 
     </div>
     <div *ngIf="!customer" class="row">
-    No customer found
+        No customer found
     </div>  
 </div>

@@ -4,8 +4,12 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'app-container',
   template: `
-    <app-header></app-header>
-    <router-outlet></router-outlet>`
+    <main class="container">
+      <navbar></navbar>
+      <router-outlet></router-outlet>
+      <br /><br />
+    </main>
+  `
 })
 export class AppComponent {
 

@@ -1,0 +1,51 @@
+<div class="view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-lock"></span> Login</h3>
+        </header>
+        <br />
+        <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm)" class="login-form" novalidate>
+            <div class="login">
+                <div class="row">
+                    <div class="col-md-2">
+                        Email:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="email" name="email" class="form-control" formControlName="email" required />
+                        <div class="alert alert-danger" [hidden]="loginForm.controls.email.untouched || loginForm.controls.email.valid">
+                            A valid email address is required
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Password:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="password" name="password" class="form-control" formControlName="password" required />
+                        <div class="alert alert-danger" [hidden]="loginForm.controls.password.untouched || loginForm.controls.password.valid">
+                            Password is required
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
+                    </div>
+                </div>
+                <br />
+                <div class="statusRow">
+                    <br />
+                    <div class="label label-important" *ngIf="errorMessage">
+                        <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;Error: {{ errorMessage }}
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <growler position="top-right" timeout="2500"></growler>
+
+    </div>
+</div>

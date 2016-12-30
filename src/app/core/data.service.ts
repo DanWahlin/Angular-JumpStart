@@ -8,14 +8,13 @@ import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
-import { ICustomer, IOrder, IState, IPagedResults } from '../../shared/interfaces';
+import { ICustomer, IOrder, IState, IPagedResults } from '../shared/interfaces';
 
 @Injectable()
 export class DataService {
   
     customersBaseUrl: string = '/api/customers';
     ordersBaseUrl: string = '/api/orders';
-    customers: ICustomer[];
     orders: IOrder[];
     states: IState[];
 
@@ -24,8 +23,9 @@ export class DataService {
     getCustomers() : Observable<ICustomer[]> {
         return this.http.get(this.customersBaseUrl)
                     .map((res: Response) => {
-                        this.customers = res.json();
-                        return this.customers;
+                        let customers = res.json();
+                        this.calculateCustomersOrderTotal(customers);
+                        return customers;
                     })
                     .catch(this.handleError);
     }
@@ -35,6 +35,7 @@ export class DataService {
                    .map((res: Response) => {
                        const totalRecords = +res.headers.get('X-InlineCount');
                        let customers = res.json();
+                       this.calculateCustomersOrderTotal(customers);
                        return {
                            results: customers,
                            totalRecords: totalRecords
@@ -45,14 +46,12 @@ export class DataService {
     
     getCustomer(id: number) : Observable<ICustomer> {
         return this.http.get(this.customersBaseUrl + '/' + id)
-                    .map((res: Response) => res.json())
-                    .catch(this.handleError);
-    }
-
-    getOrders(id: number) : Observable<IOrder[]> {
-      return this.http.get(this.ordersBaseUrl + '/' + id)
-                .map((res: Response) => res.json())
-                .catch(this.handleError);               
+                   .map((res: Response) => {
+                       let customer = res.json();
+                       this.calculateCustomersOrderTotal([customer]);
+                       return customer;
+                   })
+                   .catch(this.handleError);
     }
     
     updateCustomer(customer: ICustomer) : Observable<boolean> {
@@ -67,7 +66,7 @@ export class DataService {
                    .catch(this.handleError); 
     }
     
-    private handleError(error: any) {
+    handleError(error: any) {
         console.error('server error:', error); 
         if (error instanceof Response) {
           let errMessage = '';
@@ -83,26 +82,24 @@ export class DataService {
 
     //Not using now but leaving since they show how to create
     //and work with custom observables
-
-    private findCustomerObservable(id: number) : Observable<ICustomer> {        
-        return this.createObservable(this.filterCustomers(id));
-    }
-    
-    private filterCustomers(id: number) : ICustomer {
-        const custs = this.customers.filter((cust) => cust.id === id);
-        return (custs.length) ? custs[0] : null;
-    }
-    
-    private createObservable(data: any) : Observable<any> {
+       
+    createObservable(data: any) : Observable<any> {
         return Observable.create((observer: Observer<any>) => {
             observer.next(data);
             observer.complete();
         });
     }
-    
-    private filterStates(stateAbbreviation: string) {
-        const filteredStates = this.states.filter((state) => state.abbreviation === stateAbbreviation);
-        return (filteredStates.length) ? filteredStates[0] : null;
+
+    calculateCustomersOrderTotal(customers: ICustomer[]) {
+        for (let customer of customers) {
+            if (customer && customer.orders) {
+                let total = 0;
+                for (let order of customer.orders) {
+                    total += order.itemCost;
+                }
+                customer.orderTotal = total;
+            }
+        }
     }
 
 }
