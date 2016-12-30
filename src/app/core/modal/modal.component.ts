@@ -10,8 +10,8 @@ import { ModalService, IModalContent } from './modal.service';
 })
 export class ModalComponent implements OnInit {
 
-  visible = false;
-  visibleAnimate = false;
+  modalVisible = false;
+  modalVisibleAnimate = false;
   modalContent: IModalContent = {};
   cancel: () => void;
   ok: () => void;
@@ -34,8 +34,8 @@ export class ModalComponent implements OnInit {
 
   show(modalContent: IModalContent) {
     this.modalContent = Object.assign(this.defaultModalContent, modalContent);
-    this.visible = true;
-    setTimeout(() => this.visibleAnimate = true);
+    this.modalVisible = true;
+    setTimeout(() => this.modalVisibleAnimate = true);
     const promise = new Promise<boolean>((resolve, reject) => {
       this.cancel = () => {
         this.hide();
@@ -50,8 +50,8 @@ export class ModalComponent implements OnInit {
   }
 
   hide() {
-    this.visibleAnimate = false;
-    setTimeout(() => this.visible = false, 300);
+    this.modalVisibleAnimate = false;
+    setTimeout(() => this.modalVisible = false, 300);
   }
 
 }
