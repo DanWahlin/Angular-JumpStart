@@ -85,8 +85,8 @@ export class CustomerEditComponent implements OnInit {
     const modalContent: IModalContent = {
       header: 'Lose Unsaved Changes?',
       body: 'You have unsaved changes! Would you like to leave the page and lose them?',
-      cancelText: 'Cancel',
-      submitText: 'Leave'
+      cancelButtonText: 'Cancel',
+      OKButtonText: 'Leave'
     }
     return this.modalService.show(modalContent);
   }

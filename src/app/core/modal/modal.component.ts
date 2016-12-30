@@ -14,7 +14,14 @@ export class ModalComponent implements OnInit {
   visibleAnimate = false;
   modalContent: IModalContent = {};
   cancel: () => void;
-  submit: () => void;
+  ok: () => void;
+  defaultModalContent: IModalContent = { 
+    header: 'Please Confirm', 
+    body:'Are you sure you want to continue?', 
+    cancelButtonText: 'Cancel', 
+    OKButtonText: 'OK', 
+    cancelButtonVisible: true 
+  };
 
   constructor(private modalService: ModalService) { 
     modalService.show = this.show.bind(this);
@@ -25,8 +32,8 @@ export class ModalComponent implements OnInit {
 
   }
 
-  show(modalContent: IModalContent = { header: '', body:'', cancelText: 'Cancel', submitText: 'Submit' }) {
-    this.modalContent = modalContent;
+  show(modalContent: IModalContent) {
+    this.modalContent = Object.assign(this.defaultModalContent, modalContent);
     this.visible = true;
     setTimeout(() => this.visibleAnimate = true);
     const promise = new Promise<boolean>((resolve, reject) => {
@@ -34,7 +41,7 @@ export class ModalComponent implements OnInit {
         this.hide();
         resolve(false);
       }
-      this.submit = () => {
+      this.ok = () => {
         this.hide();
         resolve(true);
       }
