@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/subscription';
 
 import { AuthService } from '../core/auth.service';
+import { GrowlerComponent, GrowlMessageType } from '../growler/growler.component';
 
 @Component({
     moduleId: module.id,
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     isCollapsed: boolean;
     loginLogoutText: string = 'Login';
     sub: Subscription;
+    @ViewChild(GrowlerComponent) growler: GrowlerComponent;
 
     constructor(private router: Router, private authservice: AuthService) { }
 
@@ -36,6 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.authservice.logout()
                 .subscribe((status: boolean) => {
                     this.setLoginLogoutText();
+                    this.growler.growl('Logged Out', GrowlMessageType.Success);
                     this.router.navigate(['/customers']);
                     return;
                 },

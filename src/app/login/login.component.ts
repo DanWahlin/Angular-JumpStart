@@ -34,7 +34,13 @@ export class LoginComponent implements OnInit {
         this.authservice.login(userLogin)
             .subscribe((status: boolean) => {
                 if (status) {
-                    this.router.navigate(['/customers']);
+                    if (this.authservice.redirectUrl) {
+                        const redirectUrl = this.authservice.redirectUrl;
+                        this.authservice.redirectUrl = '';
+                        this.router.navigate([redirectUrl]);
+                    } else {
+                        this.router.navigate(['/customers']);
+                    }
                 } else {
                     const loginError = 'Unable to login';
                     this.errorMessage = loginError;

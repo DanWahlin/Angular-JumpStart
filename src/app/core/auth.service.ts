@@ -12,6 +12,7 @@ export class AuthService {
     
     authUrl: string = '/api/auth';
     isAuthenticated: boolean = false;
+    redirectUrl: string;
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(private http: Http) { }
