@@ -41,11 +41,6 @@
           [customers]="filteredCustomers" 
           [hidden]="displayMode !== displayModeEnum.Grid"></cm-customers-grid>
 
-        <cm-pagination [hidden]="displayMode === displayModeEnum.Map"
-            [totalItems]="totalRecords" 
-            [pageSize]="pageSize" 
-            (pageChanged)="pageChanged($event)"></cm-pagination>
-
         <cm-map *ngIf="filteredCustomers.length" 
             [zoom]="2" 
             [enabled]="displayMode === displayModeEnum.Map" 
@@ -56,6 +51,11 @@
             [longitude]="customer.longitude"
             [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</a></h3>' + customer.city + ', ' + customer.state.name"></cm-map-point>
         </cm-map>
+
+        <cm-pagination
+            [totalItems]="totalRecords" 
+            [pageSize]="pageSize" 
+            (pageChanged)="pageChanged($event)"></cm-pagination>
           
     </div>
 </div>
