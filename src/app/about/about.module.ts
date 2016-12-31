@@ -1,9 +1,9 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import { aboutRouting } from './about.routing';
+import { AboutRoutingModule } from './about-routing.module';
 
 @NgModule({
-  imports:      [ aboutRouting.routes ],
-  declarations: [ aboutRouting.components ]
+  imports:      [ AboutRoutingModule ],
+  declarations: [ AboutRoutingModule.components ]
 })
 export class AboutModule { }

@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
-import { loginRouting } from './login.routing';
+import { LoginRoutingModule } from './login-routing.module';
 
 @NgModule({
-  imports: [ ReactiveFormsModule, SharedModule, loginRouting.routes ],
-  exports: [ loginRouting.components ],
-  declarations: [ loginRouting.components ]
+  imports: [ ReactiveFormsModule, SharedModule, LoginRoutingModule ],
+  declarations: [ LoginRoutingModule.components ]
 })
 export class LoginModule { }

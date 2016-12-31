@@ -1,4 +1,5 @@
 import { ModuleWithProviders } from '@angular/core';
+import { Routes } from '@angular/router';
 
 export interface ICustomer {
     id: number;
@@ -28,11 +29,6 @@ export interface IOrderItem {
     id: number;
     productName: string;
     itemCost: number;
-}
-
-export interface IRouting {
-    routes: ModuleWithProviders,
-    components: any[]
 }
 
 export interface IPagedResults<T> {

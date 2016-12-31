@@ -1,10 +1,10 @@
 import { NgModule }      from '@angular/core';
 
 import { SharedModule }   from '../shared/shared.module';
-import { ordersRouting } from './orders.routing';
+import { OrdersRoutingModule } from './orders-routing.module';
 
 @NgModule({
-  imports:      [ ordersRouting.routes, SharedModule ],
-  declarations: [ ordersRouting.components ]
+  imports:      [ SharedModule, OrdersRoutingModule ],
+  declarations: [ OrdersRoutingModule.components ]
 })
 export class OrdersModule { }
