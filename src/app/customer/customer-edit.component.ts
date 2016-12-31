@@ -30,6 +30,8 @@ export class CustomerEditComponent implements OnInit {
   };
   states: IState[];
   errorMessage: string;
+  deleteMessageEnabled: boolean;
+  operationText: string = 'Insert';
   @ViewChild('customerForm') customerForm: NgForm;
   
   constructor(private router: Router, 
@@ -44,37 +46,73 @@ export class CustomerEditComponent implements OnInit {
       //Could use this.route.parent.snapshot.params["id"] to simplify it.
       this.route.parent.params.subscribe((params: Params) => {
         let id = +params['id'];
-        this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
-          //Quick and dirty clone used in case user cancels out of form
-          const cust = JSON.stringify(customer);
-          this.customer = JSON.parse(cust);
-        });
+        if (id !== 0) {
+          this.operationText = 'Update';
+          this.getCustomer(id);
+        }
       });
 
       this.dataService.getStates().subscribe((states: IState[]) => this.states = states);
   }
 
-  
-  onSubmit() {
-      this.dataService.updateCustomer(this.customer)
-        .subscribe((status: boolean) => {
-          if (status) {
-            //Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
-            this.customerForm.form.markAsPristine();
-            this.growler.growl('Operation performed successfully.', GrowlerMessageType.Success);
-            //this.router.navigate(['/']);
-          }
-          else {
-            this.growler.growl('Unable to save customer', GrowlerMessageType.Danger);
-            this.errorMessage = 'Unable to save customer';
-          }
+  getCustomer(id: number) {
+      this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+        this.customer = customer;
       });
   }
+
+  onSubmit() {
+      if (this.customer.id === 0) {
+        this.dataService.insertCustomer(this.customer)
+          .subscribe((insertedCustomer: ICustomer) => {
+            if (insertedCustomer) {
+              //Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
+              this.customerForm.form.markAsPristine();
+              this.router.navigate(['/customers']);
+            } else {
+              const msg = 'Unable to insert customer';
+              this.growler.growl(msg, GrowlerMessageType.Danger);
+              this.errorMessage = msg;
+            }
+          },
+          (err: any) => console.log(err));
+      } else {
+        this.dataService.updateCustomer(this.customer)
+          .subscribe((status: boolean) => {
+            if (status) {
+              //Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
+              this.customerForm.form.markAsPristine();
+              this.growler.growl('Operation performed successfully.', GrowlerMessageType.Success);
+              //this.router.navigate(['/']);
+            }
+            else {
+              const msg = 'Unable to update customer';
+              this.growler.growl(msg, GrowlerMessageType.Danger);
+              this.errorMessage = msg;
+            }
+        },
+        (err: any) => console.log(err));
+      }
+  }
   
-  onCancel(event: Event) {
+  cancel(event: Event) {
     event.preventDefault();
     //Route guard will take care of showing modal dialog service if data is dirty
     this.router.navigate(['/']);
+  }
+
+  delete(event: Event) {
+    event.preventDefault();
+    this.dataService.deleteCustomer(this.customer.id)
+        .subscribe((status: boolean) => {
+          if (status) {
+            this.router.navigate(['/customers']);
+          }
+          else {
+            this.errorMessage = 'Unable to delete customer';
+          }
+        },
+        (err) => console.log(err));
   }
 
   canDeactivate(): Promise<boolean> | boolean {

@@ -4,22 +4,22 @@
     <div class="form-group">
       <label>Name</label>
       <input type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required>
-      <div class="alert alert-danger" [hidden]="firstName.valid">First Name is required</div>
+      <div class="alert alert-danger" [hidden]="firstName.pristine || firstName.valid">First Name is required</div>
     </div>
     <div class="form-group">
       <label>Last Name</label>
       <input type="text" class="form-control" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel" required>
-      <div class="alert alert-danger" [hidden]="lastName.valid">Last Name is required</div>
+      <div class="alert alert-danger" [hidden]="lastName.pristine || lastName.valid">Last Name is required</div>
     </div>
     <div class="form-group">
       <label>Address</label>
       <input type="text" class="form-control" name="address" [(ngModel)]="customer.address" #address="ngModel" required>
-      <div class="alert alert-danger" [hidden]="address.valid">Address is required</div>
+      <div class="alert alert-danger" [hidden]="address.pristine || address.valid">Address is required</div>
     </div>
     <div class="form-group">
       <label>City</label>
       <input type="text" class="form-control" name="city" [(ngModel)]="customer.city" #city="ngModel" required>
-      <div class="alert alert-danger" [hidden]="city.valid">City is required</div>
+      <div class="alert alert-danger" [hidden]="city.pristine || city.valid">City is required</div>
     </div>
     <div class="form-group">
       <label>State</label>
@@ -30,9 +30,19 @@
           <option *ngFor="let state of states" [ngValue]="state.abbreviation">{{state.name}}</option>
       </select>
     </div>
-    <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>&nbsp;&nbsp;
-    <button type="submit" class="btn btn-success" [disabled]="!customerForm.dirty || !customerForm.valid">Update</button>
+    <div *ngIf="customer">
+      <div class="alert alert-warning" *ngIf="customer.id && deleteMessageEnabled">
+         Delete Customer?&nbsp;&nbsp;<button class="btn btn-danger" (click)="delete($event)">Yes</button>&nbsp;&nbsp;
+         <button class="btn btn-default" (click)="deleteMessageEnabled = false">No</button>
+      </div>
+      <button class="btn btn-danger" *ngIf="customer.id && !deleteMessageEnabled" (click)="deleteMessageEnabled = true">Delete</button>&nbsp;&nbsp;
+
+      <div class="pull-right" *ngIf="!deleteMessageEnabled">
+        <button class="btn btn-default" (click)="cancel($event)">Cancel</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-success" [disabled]="customerForm.pristine || !customerForm.valid">{{ operationText }}</button>
+      </div>
+    </div>
     <div class="alert alert-danger" *ngIf="errorMessage != null">{{ errorMessage }}</div>
   </form>
-
+  <br />
 </div>

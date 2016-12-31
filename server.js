@@ -54,7 +54,7 @@ app.post('/api/customers', (req, res) => {
     postedCustomer.id = ++maxId;
     postedCustomer.gender = (postedCustomer.id % 2 === 0) ? 'female' : 'male';
     customers.push(postedCustomer);
-    res.json({ status: true });
+    res.json(postedCustomer);
 });
 
 app.put('/api/customers/:id', (req, res) => {

@@ -53,11 +53,23 @@ export class DataService {
                    })
                    .catch(this.handleError);
     }
+
+    insertCustomer(customer: ICustomer) : Observable<ICustomer> {
+        return this.http.post(this.customersBaseUrl, customer)
+                   .map((res: Response) => res.json())
+                   .catch(this.handleError);
+    }
     
     updateCustomer(customer: ICustomer) : Observable<boolean> {
         return this.http.put(this.customersBaseUrl + '/' + customer.id, customer)
                    .map((res: Response) => res.json())
                    .catch(this.handleError);  
+    }
+
+    deleteCustomer(id: number) : Observable<boolean> {
+        return this.http.delete(this.customersBaseUrl + '/' + id)
+                   .map((res: Response) => res.json().status)
+                   .catch(this.handleError);
     }
     
     getStates(): Observable<IState[]> {
