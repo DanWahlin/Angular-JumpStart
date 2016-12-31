@@ -2,7 +2,6 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { app_routing } from './app.routing';
 
 import { CustomersModule } from './customers/customers.module';
@@ -15,15 +14,12 @@ import { SharedModule }   from './shared/shared.module';
 @NgModule({
   imports: [
     BrowserModule,
-    app_routing, 
-    CustomersModule,
-    OrdersModule,
-    AboutModule,
-    LoginModule,
-    CoreModule,   //Singleton objects
-    SharedModule  //Shared (multi-instance) objects
+    LoginModule,    //Eager loaded since we may need to go here right away as browser loads based on route user enters
+    app_routing,    //Main routes for application
+    CoreModule,     //Singleton objects (services, components that are loaded only once, etc.)
+    SharedModule    //Shared (multi-instance) objects
   ],
-  declarations: [ AppComponent, NavbarComponent ],
+  declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

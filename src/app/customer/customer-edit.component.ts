@@ -10,7 +10,8 @@ import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.serv
 @Component({
   moduleId: module.id,
   selector: 'cm-customer-edit',
-  templateUrl: 'customer-edit.component.html'
+  templateUrl: 'customer-edit.component.html',
+  styleUrls: [ 'customer-edit.component.css' ]
 })
 export class CustomerEditComponent implements OnInit {
 

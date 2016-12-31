@@ -6,8 +6,7 @@ import { CustomersGridComponent } from './customers-grid.component';
 import { IRouting } from '../shared/interfaces';
 
 const routes: Routes = [
-  { path: '', pathMatch:'full', redirectTo: '/customers' },
-  { path: 'customers', component: CustomersComponent}
+  { path: '', component: CustomersComponent }
 ];
 
 export const customersRouting: IRouting = {

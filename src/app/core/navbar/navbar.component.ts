@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/subscription';
 
-import { AuthService } from '../core/services/auth.service';
-import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
+import { AuthService } from '../services/auth.service';
+import { GrowlerService, GrowlerMessageType } from '../growler/growler.service';
 
 @Component({
     moduleId: module.id,

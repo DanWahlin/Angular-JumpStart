@@ -7,6 +7,7 @@ import { TrackByService } from '../core/services/trackby.service';
   moduleId: module.id,
   selector: 'cm-customers-grid', 
   templateUrl: 'customers-grid.component.html',
+  styleUrls: [ 'customers-grid.component.css' ],
   //When using OnPush detectors, then the framework will check an OnPush 
   //component when any of its input properties changes, when it fires 
   //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
@@ -16,7 +17,7 @@ export class CustomersGridComponent implements OnInit {
 
   @Input() customers: any[] = [];
 
-  constructor(private sorterService: SorterService, private trackbyService: TrackByService) { }
+  constructor(private sorterService: SorterService, public trackbyService: TrackByService) { }
    
   ngOnInit() {
 

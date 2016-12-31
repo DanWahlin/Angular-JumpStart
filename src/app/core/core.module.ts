@@ -1,9 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { GrowlerModule } from './growler/growler.module';
 import { ModalModule } from './modal/modal.module';
 
+import { NavbarComponent } from './navbar/navbar.component';
 import { DataService } from './services/data.service';
 import { FilterService } from './services/filter.service';
 import { SorterService } from './services/sorter.service';
@@ -14,8 +16,9 @@ import { ValidationService } from './services/validation.service';
 import { AuthService } from'./services/auth.service';
 
 @NgModule({
-  imports: [ CommonModule, GrowlerModule, ModalModule ],
-  exports: [ CommonModule, GrowlerModule, ModalModule ],
+  imports: [ CommonModule, RouterModule, GrowlerModule, ModalModule ],
+  exports: [ GrowlerModule, RouterModule, ModalModule, NavbarComponent ],
+  declarations: [ NavbarComponent ],
   providers: [ SorterService, FilterService, DataService, TrackByService, 
                DialogService, ValidationService, AuthService ] // these should be singleton
 })

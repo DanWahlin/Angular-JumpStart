@@ -1,15 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'cm-filter-textbox',
-  template: `
-    <form>
-         Filter:
-         <input type="text" name="filter"
-                [(ngModel)]="model.filter" 
-                (keyup)="filterChanged($event)"  />
-    </form>
-  `
+  templateUrl: 'filter-textbox.component.html',
+  styleUrls: [ 'filter-textbox.component.css' ]
 })
 export class FilterTextboxComponent {
 

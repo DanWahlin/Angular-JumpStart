@@ -8,6 +8,7 @@ import { TrackByService } from '../core/services/trackby.service';
   moduleId: module.id,
   selector: 'cm-customers-card', 
   templateUrl: 'customers-card.component.html',
+  styleUrls: [ 'customers-card.component.css' ],
   //Add [@flyInOut]="'in'" into template on card
   // animations: [
   //   trigger('flyInOut', [

@@ -4,7 +4,7 @@ import { OrdersComponent } from './orders.component';
 import { IRouting } from '../shared/interfaces';
 
 const routes: Routes = [
-  { path: 'orders', component: OrdersComponent }
+  { path: '', component: OrdersComponent }
 ];
 
 export const ordersRouting: IRouting = {
