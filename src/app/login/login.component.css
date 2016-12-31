@@ -1,7 +1,7 @@
 .login-form input[type='text'], 
 .login-form input[type='email'],
 .login-form input[type='password'] {
-    width:50%;
+    width:75%;
 }
 
 .login-form .ng-invalid {

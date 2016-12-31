@@ -61,6 +61,14 @@ app.put('/api/customers/:id', (req, res) => {
     let putCustomer = req.body;
     let id = +req.params.id;
     let status = false;
+
+    //Ensure state name is in sync with state abbreviation 
+    const filteredStates = states.filter((state) => state.abbreviation === putCustomer.state.abbreviation);
+    if (filteredStates && filteredStates.length) {
+        putCustomer.state.name = filteredStates[0].name;
+        console.log('Updated putCustomer state to ' + putCustomer.state.name);
+    }
+
     for (let i=0,len=customers.length;i<len;i++) {
         if (customers[i].id === id) {
             customers[i] = putCustomer;

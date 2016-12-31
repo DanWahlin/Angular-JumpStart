@@ -1,0 +1,13 @@
+form input[type='text'], 
+form input[type='email'],
+form input[type='password'] {
+    width:75%;
+}
+
+form .ng-invalid {
+  border-left: 5px solid #a94442;
+}
+
+form .ng-valid {
+  border-left: 5px solid #42A948;
+}
