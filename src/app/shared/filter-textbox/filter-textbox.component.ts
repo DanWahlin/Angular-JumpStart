@@ -7,7 +7,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: [ 'filter-textbox.component.css' ]
 })
 export class FilterTextboxComponent {
-
   
     model: { filter: string } = { filter: null };
     

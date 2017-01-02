@@ -36,6 +36,7 @@ export class ModalComponent implements OnInit {
     this.modalContent = Object.assign(this.defaultModalContent, modalContent);
     this.modalVisible = true;
     setTimeout(() => this.modalVisibleAnimate = true);
+
     const promise = new Promise<boolean>((resolve, reject) => {
       this.cancel = () => {
         this.hide();
@@ -46,7 +47,7 @@ export class ModalComponent implements OnInit {
         resolve(true);
       }
     });
-    return promise;
+    return promise;    
   }
 
   hide() {
