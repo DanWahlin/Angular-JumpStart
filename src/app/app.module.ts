@@ -4,9 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { CustomersModule } from './customers/customers.module';
-import { OrdersModule } from './orders/orders.module';
-import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
 import { CoreModule }   from './core/core.module';
 import { SharedModule }   from './shared/shared.module';
