@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import { Observable } from 'rxjs/Observable';
 
 import { DataService } from '../core/services/data.service';
 import { ICustomer, IPagedResults } from '../shared/interfaces';
