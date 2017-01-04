@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { DataService } from '../core/services/data.service';
 import { ICustomer, IOrder, IOrderItem } from '../shared/interfaces';
@@ -14,7 +14,7 @@ export class CustomerOrdersComponent implements OnInit {
   orders: IOrder[] = [];
   customer: ICustomer;
 
-  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
       //Subscribe to params so if it changes we pick it up.  Could use this.route.parent.snapshot.params["id"] to simplify it.
