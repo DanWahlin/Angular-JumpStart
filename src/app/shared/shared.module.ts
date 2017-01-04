@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { FilterTextboxModule } from './filter-textbox/filter-textbox.module';
 import { MapModule } from './map/map.module';
@@ -13,7 +12,7 @@ import { SortByDirective } from './directives/sortby.directive';
 
 @NgModule({
   imports: [CommonModule, MapModule, FilterTextboxModule, PaginationModule ],
-  exports: [ CommonModule, FormsModule, HttpModule, CapitalizePipe, TrimPipe, SortByDirective,
+  exports: [ CommonModule, FormsModule, CapitalizePipe, TrimPipe, SortByDirective,
              MapModule, FilterTextboxModule, PaginationModule ],
   declarations: [ CapitalizePipe, TrimPipe, SortByDirective ]
 })
