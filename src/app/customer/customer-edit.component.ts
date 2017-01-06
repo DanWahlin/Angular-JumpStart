@@ -83,7 +83,7 @@ export class CustomerEditComponent implements OnInit {
               //Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
               this.customerForm.form.markAsPristine();
               this.growler.growl('Operation performed successfully.', GrowlerMessageType.Success);
-              //this.router.navigate(['/']);
+              //this.router.navigate(['/customers']);
             }
             else {
               const msg = 'Unable to update customer';
@@ -98,7 +98,7 @@ export class CustomerEditComponent implements OnInit {
   cancel(event: Event) {
     event.preventDefault();
     //Route guard will take care of showing modal dialog service if data is dirty
-    this.router.navigate(['/']);
+    this.router.navigate(['/customers']);
   }
 
   delete(event: Event) {
