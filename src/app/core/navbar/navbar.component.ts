@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.authservice.logout()
                 .subscribe((status: boolean) => {
                     this.setLoginLogoutText();
-                    this.growler.growl('Logged Out', GrowlerMessageType.Success);
+                    this.growler.growl('Logged Out', GrowlerMessageType.Info);
                     this.router.navigate(['/customers']);
                     return;
                 },

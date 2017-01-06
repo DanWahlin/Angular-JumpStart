@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder, 
                 private router: Router, 
-                private authservice: AuthService,
+                private authService: AuthService,
                 private growler: GrowlerService) { }
 
     ngOnInit() { 
@@ -34,12 +34,13 @@ export class LoginComponent implements OnInit {
     }
 
     submit({ userLogin, valid }: { userLogin: IUserLogin, valid: boolean }) {
-        this.authservice.login(userLogin)
+        this.authService.login(userLogin)
             .subscribe((status: boolean) => {
                 if (status) {
-                    if (this.authservice.redirectUrl) {
-                        const redirectUrl = this.authservice.redirectUrl;
-                        this.authservice.redirectUrl = '';
+                    this.growler.growl('Logged in', GrowlerMessageType.Info);
+                    if (this.authService.redirectUrl) {
+                        const redirectUrl = this.authService.redirectUrl;
+                        this.authService.redirectUrl = '';
                         this.router.navigate([redirectUrl]);
                     } else {
                         this.router.navigate(['/customers']);
