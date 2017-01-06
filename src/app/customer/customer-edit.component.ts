@@ -61,7 +61,7 @@ export class CustomerEditComponent implements OnInit {
       });
   }
 
-  onSubmit() {
+  submit() {
       if (this.customer.id === 0) {
         this.dataService.insertCustomer(this.customer)
           .subscribe((insertedCustomer: ICustomer) => {
