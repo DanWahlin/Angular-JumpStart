@@ -1,8 +1,7 @@
-<!-- Things like #firstName="ngForm" will change to #firstName="ngModel" after RC2 -->
 <div>
   <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="customer-form" novalidate>
     <div class="form-group">
-      <label>Name</label>
+      <label>First Name</label>
       <input type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required>
       <div class="alert alert-danger" [hidden]="firstName.pristine || firstName.valid">First Name is required</div>
     </div>
