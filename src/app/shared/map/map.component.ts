@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, Input, 
+import { Component, OnInit, AfterContentInit, Input, ViewChild,
          ContentChildren, ElementRef, QueryList, ChangeDetectionStrategy } from '@angular/core';
 
 import 'rxjs/add/operator/debounceTime';
@@ -14,7 +14,6 @@ import { MapPointComponent } from './mapPoint.component';
   //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-
 export class MapComponent implements OnInit, AfterContentInit {
   
   private isEnabled : boolean;
@@ -42,9 +41,10 @@ export class MapComponent implements OnInit, AfterContentInit {
     this.init();
   }  
   
+  @ViewChild('mapContainer') mapDiv : ElementRef;
   @ContentChildren(MapPointComponent) mapPoints : QueryList<MapPointComponent>;
   
-  constructor(private elem: ElementRef) { }
+  constructor() { }
 
   ngOnInit() {  
        if (this.latitude && this.longitude) {
@@ -53,7 +53,7 @@ export class MapComponent implements OnInit, AfterContentInit {
           this.mapWidth = this.width + 'px';  
         }
         else {
-          const hw = this.getWindowHeightWidth(this.elem.nativeElement.ownerDocument);
+          const hw = this.getWindowHeightWidth(this.mapDiv.nativeElement.ownerDocument);
           this.mapHeight = hw.height / 2 + 'px';
           this.mapWidth = hw.width + 'px';
         }
@@ -61,9 +61,9 @@ export class MapComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-       this.mapPoints.changes.debounceTime(500).subscribe(() => {
+      this.mapPoints.changes.debounceTime(500).subscribe(() => {
          if (this.enabled) this.renderMapPoints();
-       });
+      });
   }
   
   init() {      
@@ -90,7 +90,7 @@ export class MapComponent implements OnInit, AfterContentInit {
   
   private ensureScript() {
     this.loadingScript = true;
-    const document = this.elem.nativeElement.ownerDocument;
+    const document = this.mapDiv.nativeElement.ownerDocument;
     const script = <HTMLScriptElement>document.querySelector('script[id="googlemaps"]');
     if (script) {
       if (this.isEnabled) this.renderMap();
@@ -118,7 +118,7 @@ export class MapComponent implements OnInit, AfterContentInit {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     
-    const mapContainer : HTMLDivElement = this.elem.nativeElement.firstChild;          
+    const mapContainer : HTMLDivElement = this.mapDiv.nativeElement;          
     this.map = new google.maps.Map(mapContainer, options);
     if (this.mapPoints && this.mapPoints.length) {
       this.renderMapPoints();
