@@ -20,8 +20,8 @@ export class MapComponent implements OnInit, AfterContentInit {
   private loadingScript: boolean;
   private map: google.maps.Map;
   private markers: google.maps.Marker[] = [];  
-  private mapHeight: string;
-  private mapWidth: string;
+  mapHeight: string;
+  mapWidth: string;
 
   @Input() height: number;
   @Input() width: number;
@@ -32,11 +32,11 @@ export class MapComponent implements OnInit, AfterContentInit {
   
   //Necessary since a map rendered while container is hidden 
   //will not load the map tiles properly and show a grey screen
-  @Input() public get enabled() : boolean {
+  @Input() get enabled() : boolean {
     return this.isEnabled;
   }
   
-  public set enabled(isEnabled: boolean) {
+  set enabled(isEnabled: boolean) {
     this.isEnabled = isEnabled;
     this.init();
   }  
