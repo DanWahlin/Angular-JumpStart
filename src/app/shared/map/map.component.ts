@@ -109,23 +109,22 @@ export class MapComponent implements OnInit, AfterContentInit {
      }
   }
   
-  private renderMap() {
-    const latlng = this.createLatLong(this.latitude, this.longitude);
-    const options = {
-      zoom: this.zoom,
-      center: latlng,
-      mapTypeControl: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    
-    const mapContainer : HTMLDivElement = this.mapDiv.nativeElement;          
-    this.map = new google.maps.Map(mapContainer, options);
-    if (this.mapPoints && this.mapPoints.length) {
-      this.renderMapPoints();
-    } else {
-      this.createMarker(latlng, this.map, this.markerText);
-    }  
-  }
+private renderMap() {
+  const latlng = this.createLatLong(this.latitude, this.longitude);
+  const options = {
+    zoom: this.zoom,
+    center: latlng,
+    mapTypeControl: true,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+           
+  this.map = new google.maps.Map(this.mapDiv.nativeElement, options);
+  if (this.mapPoints && this.mapPoints.length) {
+    this.renderMapPoints();
+  } else {
+    this.createMarker(latlng, this.map, this.markerText);
+  }  
+}
 
   private createLatLong(latitude: number, longitude: number) {
     return (latitude && longitude) ? new google.maps.LatLng(latitude, longitude) : null;
