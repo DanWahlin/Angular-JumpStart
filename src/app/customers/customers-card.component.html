@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row card-container">
         <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let customer of customers;trackBy:trackbyService.customer">
-            <div class="card" [@flyInOut]="'in'">
+            <div class="card">
                 <div class="card-header">
                     <a [routerLink]="['/customers',customer.id,'details']" class="white">
                         {{customer.firstName | capitalize }} {{ customer.lastName | capitalize }} 
