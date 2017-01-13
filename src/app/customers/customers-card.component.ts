@@ -18,7 +18,7 @@ import { TrackByService } from '../core/services/trackby.service';
         animate(300)
       ]),
       transition('* => void', [
-        animate(300, style({transform: 'translateX(-50%)', opacity: 1}))
+        animate(300, style({transform: 'translateX(-25%)', opacity: 1}))
       ])
     ])
   ],
