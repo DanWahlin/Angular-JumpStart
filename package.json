@@ -34,6 +34,7 @@
         "opn": "^4.0.2",
         "@types/core-js": "^0.9.35",
         "@types/node": "^7.0.5",
-        "@types/google-maps": "^3.2.0"
+        "@types/google-maps": "^3.2.0",
+        "lite-server": "^2.2.2"
     }
 }
