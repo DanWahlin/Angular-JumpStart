@@ -17,6 +17,7 @@ relies on System.js to load TypeScript modules and the required scripts used in 
 * Working with Utility and Service classes (such as for sorting and Ajax calls)
 * Using Angular databinding Syntax [], () and [()]
 * Using template-driven and reactive forms functionality for capturing and validating data
+* Optional: Webpack functionality is available for module loading and more (see below for details)
 
 ## Running the Application
 
