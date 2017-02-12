@@ -20,7 +20,7 @@ relies on System.js to load TypeScript modules and the required scripts used in 
 
 ## Running the Application
 
-1. Install `Node.js 6.x` or higher. *The server uses ES2015 features so you need Node 6.x or higher!*
+1. Install `Node.js 6.5` or higher. *IMPORTANT: The server uses ES2015 features so you need Node 6.x or higher!!!!*
 
 1. Run `npm install` to install app dependencies
 
@@ -47,4 +47,41 @@ screenshots from the app:
 <br /><br />
 
 <img width="500" src="src/images/screenshots/details.png" border="0" />
+
+## Running the Application using WebPack
+
+The Angular JumpStart application uses System.JS by default for module loading mainly to keep the app
+as simple as possible and focused on Angular concepts rather than a ton of configuration. However, Webpack 
+can also be used to handle working with modules plus perform tasks such as bundling, minification, conversion
+of TypeScript to JavaScript, start up a dev web server and much more. 
+
+If you'd like to use WebPack instead of SystemJS you'll need to modify a few things in the application. Here's a
+list of the required steps to get the application going using Webpack:
+
+1. Delete all *.js and *.js.map files in the `src/app` folder if you previously ran the app using the steps above. 
+If you haven't run the app yet then there are no ES5 files to delete so you can move to the next step.
+
+1. Do a global search and replace in the project to comment out all references to moduleId in each component since it 
+isn't used by Webpack:
+
+    *Find:*             `moduleId: module.id,`
+
+    *Replace with:*     `//moduleId: module.id,`
+
+    If you plan on sticking with Webpack and not going back to SystemJS you can completely remove `moduleId: module.id,` if you'd like.
+
+1. Open `src/app/app-routing.module.ts` and change `app/` to `./` for all `loadChildren` paths. For example:
+
+    *Change:*     loadChildren: 'app/customers/customers.module#CustomersModule'
+
+    *To:*         loadChildren: './customers/customers.module#CustomersModule'
+
+1. Install `Node.js 6.5` or higher. *IMPORTANT: The server uses ES2015 features so you need Node 6.x or higher!!!!*
+
+1. Run `npm install` to install app dependencies
+
+1. Run `npm run webpack-build-watch` in a console window. This will generate the required script assets needed to run the application
+   and place them in the `src/dist` folder. It will also watch for any code changes.
+
+1. Run `node server.js` to start the server and navigate to http://localhost:3000.
 

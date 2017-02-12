@@ -10,5 +10,8 @@ npm-debug.log
 src/app/**/*.js
 src/app/**/*.js.map
 
+# Ignore any Webpack generated files
+src/app/dist
+
 
 

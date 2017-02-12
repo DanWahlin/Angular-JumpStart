@@ -4,6 +4,9 @@
     "version": "1.0.0",
     "repository": "https://github.com/danwahlin/angular2-jumpstart",
     "scripts": {
+        "clean": "rimraf ./src/dist",
+        "webpack-build-watch": "webpack --progress --watch",
+        "webpack-server": "webpack-dev-server --open --inline --progress --port 3000 --content-base src",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
         "start:nodemon": "tsc && concurrently \"tsc -w\" \"nodemon server.js\" ",
@@ -35,6 +38,18 @@
         "@types/core-js": "^0.9.35",
         "@types/node": "^7.0.5",
         "@types/google-maps": "^3.2.0",
-        "lite-server": "^2.2.2"
+        "lite-server": "^2.2.2",
+        "webpack": "2.2.1",
+        "webpack-dev-server": "^2.3.0",
+        "html-webpack-plugin": "^2.28.0",
+        "webpack-merge": "^2.6.1",
+        "extract-text-webpack-plugin": "^2.0.0-rc.3",
+        "angular2-template-loader": "^0.6.2",
+        "angular-router-loader": "^0.5.0",
+        "awesome-typescript-loader": "^3.0.4-rc.2",
+        "css-loader": "^0.26.1",
+        "to-string-loader": "^1.1.5",
+        "raw-loader": "^0.5.1",
+        "style-loader": "^0.13.1"
     }
 }
