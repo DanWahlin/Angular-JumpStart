@@ -66,7 +66,7 @@ isn't used by Webpack:
 
     *Replace with:*     `//moduleId: module.id,`
 
-    If you plan on sticking with Webpack and not going back to SystemJS you can completely remove `moduleId: module.id,` if you'd like.
+    If you plan on only using Webpack and not going back to SystemJS you can completely remove `moduleId: module.id,` if you'd like.
 
 1. Open `src/app/app-routing.module.ts` and change `app/` to `./` for all `loadChildren` paths. For example:
 
@@ -85,8 +85,8 @@ isn't used by Webpack:
     *Windows:   `set NODE_ENV=production`
 
 1. Run `npm run webpack-build-watch` in a console window. This will generate the required script assets needed to run the application
-   and place them in the `src/devDist` folder for a development build or `src/dist` for a production/AOT build. 
-   It will also watch for any code changes that are made.
+   and place them in the `src/devDist` folder for a development build or `src/dist` for a production/AOT build (if you performed the previous step). 
+   It will also watch for any code changes that are made and rebuild the script bundles as needed.
 
 1. Run `node server.js` in another command window to start the server.
 
