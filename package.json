@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "repository": "https://github.com/danwahlin/angular-jumpstart",
     "scripts": {
-        "clean": "del 'src/app/**/*.js' 'src/app/**/*.js.map' 'src/devDist' 'src/dist'",
+        "clean": "del-cli 'src/app/**/*.js' 'src/app/**/*.js.map' 'src/devDist' 'src/dist'",
         "webpack-build-watch": "npm run clean && webpack --progress --watch",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
