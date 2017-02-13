@@ -59,9 +59,6 @@ of TypeScript to JavaScript, start up a dev web server and much more.
 If you'd like to use WebPack instead of SystemJS you'll need to modify a few things in the application. Here's a
 list of the required steps to get the application going using Webpack:
 
-1. Delete all *.js and *.js.map files in the `src/app` folder if you previously ran the app using the steps above. 
-If you haven't run the app yet then there are no ES5 files to delete so you can move to the next step.
-
 1. Do a global search and replace in the project to comment out all references to `moduleId` in each component since it 
 isn't used by Webpack:
 

@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "repository": "https://github.com/danwahlin/angular-jumpstart",
     "scripts": {
-        "clean": "rimraf ./src/devDist && rimraf ./src/dist",
+        "clean": "del 'src/app/**/*.js' 'src/app/**/*.js.map' 'src/devDist' 'src/dist'",
         "webpack-build-watch": "npm run clean && webpack --progress --watch",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
@@ -38,6 +38,7 @@
         "@types/core-js": "^0.9.35",
         "@types/node": "^7.0.5",
         "@types/google-maps": "^3.2.0",
+        "del-cli": "^0.2.1",
         "webpack": "2.2.1",
         "webpack-dev-server": "^2.3.0",
         "html-webpack-plugin": "^2.28.0",
