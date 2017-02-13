@@ -10,7 +10,11 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
+  "angularCompilerOptions": {
+    "genDir": "./src/app/ngfactory"
+  },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/app/main.aot.ts"
   ]
 }

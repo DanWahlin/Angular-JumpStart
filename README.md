@@ -49,7 +49,7 @@ screenshots from the app:
 
 <img width="500" src="src/images/screenshots/details.png" border="0" />
 
-## Running the Application using WebPack
+## Running the Application using WebPack (and optionally AOT)
 
 The Angular JumpStart application uses System.JS by default for module loading mainly to keep the app
 as simple as possible and focused on Angular concepts rather than a ton of configuration. However, Webpack 
@@ -62,7 +62,7 @@ list of the required steps to get the application going using Webpack:
 1. Delete all *.js and *.js.map files in the `src/app` folder if you previously ran the app using the steps above. 
 If you haven't run the app yet then there are no ES5 files to delete so you can move to the next step.
 
-1. Do a global search and replace in the project to comment out all references to moduleId in each component since it 
+1. Do a global search and replace in the project to comment out all references to `moduleId` in each component since it 
 isn't used by Webpack:
 
     *Find:*             `moduleId: module.id,`
@@ -81,8 +81,18 @@ isn't used by Webpack:
 
 1. Run `npm install` to install app dependencies
 
-1. Run `npm run webpack-build-watch` in a console window. This will generate the required script assets needed to run the application
-   and place them in the `src/dist` folder. It will also watch for any code changes.
+1. Optional (for AOT). If you'd like to run the application using Ahead of Time (AOT) compilation, 
+   run the following command to set the NODE_ENV environment variable to production and create an AOT build:
 
-1. Run `node server.js` to start the server and navigate to http://localhost:3000.
+    *Mac*:      `export NODE_ENV=production`
+    *Windows:   `set NODE_ENV=production`
+
+1. Run `npm run webpack-build-watch` in a console window. This will generate the required script assets needed to run the application
+   and place them in the `src/devDist` folder for a development build or `src/dist` for a production/AOT build. 
+   It will also watch for any code changes that are made.
+
+1. Run `node server.js` in another command window to start the server.
+
+1. Navigate to http://localhost:3000 in a browser.
+
 
