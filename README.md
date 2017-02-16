@@ -18,6 +18,7 @@ relies on System.js to load TypeScript modules and the required scripts used in 
 * Using Angular databinding Syntax [], () and [()]
 * Using template-driven and reactive forms functionality for capturing and validating data
 * Optional: Webpack functionality is available for module loading and more (see below for details)
+* Optional: Ahead-of-Time (AOT) functionality is available for a production build of the project (see below for details)
 
 ## Running the Application
 
