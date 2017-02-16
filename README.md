@@ -53,7 +53,7 @@ screenshots from the app:
 ## Running the Application using WebPack (and optionally AOT)
 
 The Angular JumpStart application uses System.JS by default for module loading mainly to keep the app
-as simple as possible and focused on Angular concepts rather than a ton of configuration. However, Webpack 
+as simple as possible and focused on Angular concepts rather than on a ton of configuration. However, Webpack 
 can also be used to handle working with modules plus perform tasks such as bundling, minification, conversion
 of TypeScript to JavaScript, start up a dev web server and much more. 
 
