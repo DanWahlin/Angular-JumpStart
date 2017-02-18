@@ -50,6 +50,7 @@
         "to-string-loader": "^1.1.5",
         "raw-loader": "^0.5.1",
         "style-loader": "^0.13.1",
-        "@ngtools/webpack": "1.2.10"
+        "@ngtools/webpack": "1.2.10",
+        "lite-server": "^2.2.2"
     }
 }
