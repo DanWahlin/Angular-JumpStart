@@ -1,8 +1,8 @@
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
-const rootDir = path.resolve(__dirname, '..');
+const webpack = require('webpack'),
+      HtmlWebpackPlugin = require('html-webpack-plugin'),
+      ExtractTextPlugin = require('extract-text-webpack-plugin'),
+      path = require('path'),
+      rootDir = path.resolve(__dirname, '..');
 
 module.exports = {
   resolve: {
