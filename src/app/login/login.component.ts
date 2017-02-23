@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    submit({ userLogin, valid }: { userLogin: IUserLogin, valid: boolean }) {
-        this.authService.login(userLogin)
+    submit({ value, valid }: { value: IUserLogin, valid: boolean }) {
+        this.authService.login(value)
             .subscribe((status: boolean) => {
                 if (status) {
                     this.growler.growl('Logged in', GrowlerMessageType.Info);
