@@ -33,7 +33,7 @@
     },
     "devDependencies": {
         "concurrently": "^3.3.0",
-        "typescript": "2.1.6",
+        "typescript": "2.2.1",
         "opn": "^4.0.2",
         "@types/core-js": "^0.9.35",
         "@types/node": "^7.0.5",
