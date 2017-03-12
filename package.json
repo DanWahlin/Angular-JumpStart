@@ -31,12 +31,11 @@
         "body-parser": "1.17.1"
     },
     "devDependencies": {
+        "@types/node": "7.0.5",
+        "@types/google-maps": "3.2.0",
         "concurrently": "3.4.0",
         "typescript": "2.2.1",
         "opn": "4.0.2",
-        "@types/core-js": "0.9.35",
-        "@types/node": "7.0.5",
-        "@types/google-maps": "3.2.0",
         "del-cli": "0.2.1",
         "webpack": "2.2.1",
         "html-webpack-plugin": "2.28.0",
