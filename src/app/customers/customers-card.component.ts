@@ -31,7 +31,7 @@ export class CustomersCardComponent implements OnInit {
 
   @Input() customers: ICustomer[] = [];
   
-  constructor(private trackbyService: TrackByService) { }
+  constructor(public trackbyService: TrackByService) { }
   
   ngOnInit() {
 
