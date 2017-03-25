@@ -13,7 +13,7 @@ module.exports = webpackMerge(commonConfig, {
     app: './src/app/main.aot.ts'
   },
   output: {
-    path: path.resolve(rootDir, './src/dist'),
+    path: path.resolve(rootDir, 'src/dist'),
     publicPath: '/dist/',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'

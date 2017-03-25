@@ -10,7 +10,7 @@ const env = process.env.NODE_ENV;
 module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
   output: {
-    path: path.resolve(rootDir, './src/devDist'),
+    path: path.resolve(rootDir, 'src/devDist'),
     sourceMapFilename: '[name].map',
     publicPath: '/devDist/',
     filename: '[name].js',
