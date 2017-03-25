@@ -30,8 +30,7 @@ relies on System.js to load TypeScript modules and the required scripts used in 
 
 1. Go to http://localhost:3000 in your browser
 
-Looking for expert onsite Angular/TypeScript training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. 
-For more information visit http://codewithdan.com. 
+Looking for expert onsite Angular/TypeScript training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. For more information visit http://codewithdan.com. 
 
 Simply clone the project or download and extract the .zip to get started. Here are a few
 screenshots from the app:
@@ -60,22 +59,11 @@ of TypeScript to JavaScript, start up a dev web server and much more.
 If you'd like to use WebPack instead of SystemJS you'll need to modify a few things in the application. Here's a
 list of the required steps to get the application going using Webpack:
 
-1. Do a global search and replace in the project to comment out all references to `moduleId` in each component since it 
-isn't used by Webpack:
-
-    *Find:*             `moduleId: module.id,`
-
-    *Replace with:*     `//moduleId: module.id,`
-
-    If you plan on only using Webpack and not going back to SystemJS you can completely remove `moduleId: module.id,` if you'd like.
-
 1. Open `src/app/app-routing.module.ts` and change `app/` to `./` for all `loadChildren` paths. For example:
 
     *Change:*     loadChildren: 'app/customers/customers.module#CustomersModule'
 
     *To:*         loadChildren: './customers/customers.module#CustomersModule'
-
-1. Install `Node.js 6.5` or higher. *IMPORTANT: The server uses ES2015 features so you need Node 6.x or higher!!!!*
 
 1. Run `npm install` to install app dependencies
 
