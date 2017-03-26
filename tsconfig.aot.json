@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -11,8 +11,13 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "exclude": [
-    "node_modules",
+
+  "files": [
+    "src/app/app.module.ts",
     "src/app/main.aot.ts"
-  ]
+  ],
+
+  "angularCompilerOptions": {
+   "genDir": "./src/aot"
+ }
 }

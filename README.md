@@ -59,6 +59,13 @@ of TypeScript to JavaScript, start up a dev web server and much more.
 If you'd like to use WebPack instead of SystemJS you'll need to modify a few things in the application. Here's a
 list of the required steps to get the application going using Webpack:
 
+1. Do a global search and replace in the project to comment out all references to `moduleId` in each component since it isn't used by Webpack:		
+    *Find:*             `moduleId: module.id,`		
+	
+    *Replace with:*     `//moduleId: module.id,`		
+	
+If you plan on only using Webpack and not going back to SystemJS you can completely remove `moduleId: module.id,` if you'd like.
+
 1. Open `src/app/app-routing.module.ts` and change `app/` to `./` for all `loadChildren` paths. For example:
 
     *Change:*     loadChildren: 'app/customers/customers.module#CustomersModule'
@@ -73,7 +80,7 @@ list of the required steps to get the application going using Webpack:
     *Mac*:      `export NODE_ENV=production`
     *Windows:   `set NODE_ENV=production`
 
-1. Run `npm run webpack-build-watch` in a console window. This will generate the required script assets needed to run the application
+1. Run `npm run build` in a console window. This will generate the required script assets needed to run the application
    and place them in the `src/devDist` folder for a development build or `src/dist` for a production/AOT build (if you performed the previous step). 
    It will also watch for any code changes that are made and rebuild the script bundles as needed.
 

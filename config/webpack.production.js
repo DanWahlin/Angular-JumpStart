@@ -27,8 +27,8 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     //Angular AOT pluging
     new ngToolsWebpack.AotPlugin({
-        tsConfigPath: './tsconfig.json',
-        entryModule: rootDir + '/src/app/app.module#AppModule'
+        mainPath: "src/app/main.ts",
+        tsConfigPath: './tsconfig.aot.json'
     }),
     new webpack.LoaderOptionsPlugin({
         minimize: true,

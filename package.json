@@ -5,7 +5,7 @@
     "repository": "https://github.com/danwahlin/angular-jumpstart",
     "scripts": {
         "clean": "del-cli \"src/app/**/*.js\" \"src/app/**/*.js.map\" \"src/devDist\" \"src/dist\"",
-        "webpack-build-watch": "npm run clean && webpack --progress --watch",
+        "build": "npm run clean && webpack --progress --watch",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
         "start:nodemon": "tsc && concurrently \"tsc -w\" \"nodemon server.js\" ",
