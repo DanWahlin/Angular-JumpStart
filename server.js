@@ -17,6 +17,7 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use(express.static(__dirname + '/src')); 
 
 app.get('/api/customers/page/:skip/:top', (req, res) => {
+    "use strict"
     const topVal = req.params.top,
           skipVal = req.params.skip,
           skip = (isNaN(skipVal)) ? 0 : +skipVal;  
@@ -38,6 +39,7 @@ app.get('/api/customers', (req, res) => {
 });
 
 app.get('/api/customers/:id', (req, res) => {
+    "use strict"
     let customerId = +req.params.id;
     let selectedCustomer = {};
     for (let customer of customers) {
@@ -50,6 +52,7 @@ app.get('/api/customers/:id', (req, res) => {
 });
 
 app.post('/api/customers', (req, res) => {
+    "use strict"
     let postedCustomer = req.body;
     let maxId = Math.max.apply(Math,customers.map((cust) => cust.id));
     postedCustomer.id = ++maxId;
@@ -59,6 +62,7 @@ app.post('/api/customers', (req, res) => {
 });
 
 app.put('/api/customers/:id', (req, res) => {
+    "use strict"
     let putCustomer = req.body;
     let id = +req.params.id;
     let status = false;
@@ -81,6 +85,7 @@ app.put('/api/customers/:id', (req, res) => {
 });
 
 app.delete('/api/customers/:id', function(req, res) {
+    "use strict"
     let customerId = +req.params.id;
     for (let i=0,len=customers.length;i<len;i++) {
         if (customers[i].id === customerId) {
@@ -92,6 +97,7 @@ app.delete('/api/customers/:id', function(req, res) {
 });
 
 app.get('/api/orders/:id', function(req, res) {
+    "use strict"
     let customerId = +req.params.id;
     for (let cust of customers) {
         if (cust.customerId === customerId) {
