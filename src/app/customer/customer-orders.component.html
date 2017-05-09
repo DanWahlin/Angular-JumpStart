@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row" *ngIf="customer">
+    <div class="row" *ngIf="customer && customer.orders">
         <h4>Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
         <br />
         <table class="table table-striped table-hover orders-table">
@@ -12,10 +12,10 @@
                 <td class="text-right">{{ customer.orderTotal | currency:'USD':true }}</td>
             </tr>
         </table>
-        <div *ngIf="!customer.orders.length">
-            No orders found
-        </div> 
     </div>
+    <div *ngIf="!customer || !customer.orders" class="row">
+        No customer found
+    </div> 
     <div *ngIf="!customer" class="row">
         No customer found
     </div>  
