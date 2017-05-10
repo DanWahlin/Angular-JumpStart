@@ -13,8 +13,8 @@
             </tr>
         </table>
     </div>
-    <div *ngIf="!customer || !customer.orders" class="row">
-        No customer found
+    <div *ngIf="customer && !customer.orders" class="row">
+        No orders found
     </div> 
     <div *ngIf="!customer" class="row">
         No customer found
