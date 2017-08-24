@@ -12,12 +12,8 @@
     "suppressImplicitAnyIndexErrors": true
   },
 
-  "files": [
-    "src/app/app.module.ts",
-    "src/app/main.aot.ts"
-  ],
-
   "angularCompilerOptions": {
-   "genDir": "./src/aot"
+   "genDir": "./src/aot",
+   "entryModule": "./src/app/app.module#AppModule"
  }
 }

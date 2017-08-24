@@ -8,10 +8,9 @@ import { ICustomer, IState } from '../shared/interfaces';
 import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'cm-customer-edit',
-  templateUrl: 'customer-edit.component.html',
-  styleUrls: [ 'customer-edit.component.css' ]
+  templateUrl: './customer-edit.component.html',
+  styleUrls: [ './customer-edit.component.css' ]
 })
 export class CustomerEditComponent implements OnInit {
 

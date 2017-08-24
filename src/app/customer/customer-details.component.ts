@@ -5,10 +5,9 @@ import { ICustomer } from '../shared/interfaces';
 import { DataService } from '../core/services/data.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'cm-customer-details',
-  templateUrl: 'customer-details.component.html',
-  styleUrls: [ 'customer-details.component.css' ]
+  templateUrl: './customer-details.component.html',
+  styleUrls: [ './customer-details.component.css' ]
 })
 export class CustomerDetailsComponent implements OnInit {
 

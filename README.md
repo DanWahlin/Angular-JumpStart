@@ -51,20 +51,11 @@ screenshots from the app:
 
 ## Running the Application using WebPack (and optionally AOT)
 
-The Angular JumpStart application uses System.JS by default for module loading mainly to keep the app
-as simple as possible and focused on Angular concepts rather than on a ton of configuration. However, Webpack 
-can also be used to handle working with modules plus perform tasks such as bundling, minification, conversion
-of TypeScript to JavaScript, start up a dev web server and much more. 
+The Angular JumpStart application uses System.JS by default for module loading mainly so that the app can load directly without going through a build process. However, Webpack can also be used to handle working with modules plus perform tasks such as bundling, minification, conversion of TypeScript to JavaScript, start up a dev web server and much more. 
 
-If you'd like to use WebPack instead of SystemJS you'll need to modify a few things in the application. Here's a
-list of the required steps to get the application going using Webpack:
+Follow these steps if you'd like to use webpack:
 
-1. Do a global search and replace in the project to comment out all references to `moduleId` in each component since it isn't used by Webpack:		
-    *Find:*             `moduleId: module.id,`		
-	
-    *Replace with:*     `//moduleId: module.id,`		
-	
-If you plan on only using Webpack and not going back to SystemJS you can completely remove `moduleId: module.id,` if you'd like.
+1. Run `npm install` to install app dependencies
 
 1. Open `src/app/app-routing.module.ts` and change `app/` to `./` for all `loadChildren` paths. For example:
 
@@ -72,17 +63,12 @@ If you plan on only using Webpack and not going back to SystemJS you can complet
 
     *To:*         loadChildren: './customers/customers.module#CustomersModule'
 
-1. Run `npm install` to install app dependencies
-
-1. Optional (for AOT). If you'd like to run the application using Ahead of Time (AOT) compilation, 
-   run the following command to set the NODE_ENV environment variable to production and create an AOT build:
+1. Optional (for AOT). If you'd like to run the application using Ahead of Time (AOT) compilation, run the following command to set the NODE_ENV environment variable to production and create an AOT build:
 
     *Mac*:      `export NODE_ENV=production`
     *Windows:   `set NODE_ENV=production`
 
-1. Run `npm run build` in a console window. This will generate the required script assets needed to run the application
-   and place them in the `src/devDist` folder for a development build or `src/dist` for a production/AOT build (if you performed the previous step). 
-   It will also watch for any code changes that are made and rebuild the script bundles as needed.
+1. Run `npm run build` in a console window. This will generate the required script assets needed to run the application and place them in the `src/devDist` folder for a development build or `src/dist` for a production/AOT build (if you performed the previous step). It will also watch for any code changes that are made and rebuild the script bundles as needed.
 
 1. Run `node server.js` in another command window to start the server.
 

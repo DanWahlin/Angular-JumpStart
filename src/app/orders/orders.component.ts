@@ -5,9 +5,8 @@ import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { TrackByService } from '../core/services/trackby.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'cm-customers-orders',
-    templateUrl: 'orders.component.html'
+    templateUrl: './orders.component.html'
 })
 export class OrdersComponent implements OnInit {
 

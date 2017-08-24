@@ -5,9 +5,8 @@ import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { FilterService } from '../core/services/filter.service';
 
 @Component({ 
-  moduleId: module.id,
   selector: 'cm-customers', 
-  templateUrl: 'customers.component.html'
+  templateUrl: './customers.component.html'
 })
 export class CustomersComponent implements OnInit {
 

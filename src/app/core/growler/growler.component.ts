@@ -3,7 +3,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GrowlerService, GrowlerMessageType } from './growler.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'cm-growler',
   template: `
     <div [ngClass]="position" class="growler">

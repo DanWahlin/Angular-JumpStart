@@ -6,9 +6,8 @@ import 'rxjs/add/operator/debounceTime';
 import { MapPointComponent } from './mapPoint.component';
 
 @Component({
-  moduleId: module.id,
   selector: 'cm-map',
-  templateUrl: 'map.component.html',
+  templateUrl: './map.component.html',
   //When using OnPush detectors, then the framework will check an OnPush 
   //component when any of its input properties changes, when it fires 
   //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)

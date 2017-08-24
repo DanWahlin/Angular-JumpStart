@@ -7,9 +7,8 @@ import { AuthService } from '../services/auth.service';
 import { GrowlerService, GrowlerMessageType } from '../growler/growler.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'cm-navbar',
-    templateUrl: 'navbar.component.html'
+    templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 

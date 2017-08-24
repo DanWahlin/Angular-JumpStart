@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({ 
-  moduleId: module.id,
   selector: 'cm-orders',
-  templateUrl: 'customer.component.html'
+  templateUrl: './customer.component.html'
 })
 export class CustomerComponent implements OnInit {
   

@@ -5,10 +5,9 @@ import { ICustomer } from '../shared/interfaces';
 import { TrackByService } from '../core/services/trackby.service';
 
 @Component({ 
-  moduleId: module.id,
   selector: 'cm-customers-card', 
-  templateUrl: 'customers-card.component.html',
-  styleUrls: [ 'customers-card.component.css' ],
+  templateUrl: './customers-card.component.html',
+  styleUrls: [ './customers-card.component.css' ],
   //Add [@flyInOut]="'in'" into template on card
   // animations: [
   //   trigger('flyInOut', [
