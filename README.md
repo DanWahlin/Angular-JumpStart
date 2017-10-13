@@ -2,7 +2,9 @@
 
 The goal of this jumpstart app is to provide
 a simple way to get started with Angular 2+ while also showing several key Angular features. The sample
-relies on System.js to load TypeScript modules and the required scripts used in the application.
+relies on the Angular CLI to build the application.
+
+Looking for expert onsite Angular/TypeScript training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. For more information visit http://codewithdan.com.
 
 ## Angular Concepts Covered
 
@@ -22,56 +24,31 @@ relies on System.js to load TypeScript modules and the required scripts used in 
 
 ## Running the Application
 
-1. Install `Node.js 6.5` or higher. *IMPORTANT: The server uses ES2015 features so you need Node 6.x or higher!!!!*
+1. Install `Node.js 6.11` or higher. *IMPORTANT: The server uses ES2015 features AND the Angular CLI so you need Node 6.11 or higher!!!!*
 
 1. Run `npm install` to install app dependencies
 
+1. Run `ng build --watch` to build and bundle the code
+
 1. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
 
-1. Go to http://localhost:3000 in your browser
-
-Looking for expert onsite Angular/TypeScript training? We've trained the biggest (and smallest :-)) companies around the world for over 15 years. For more information visit http://codewithdan.com. 
+1. Go to http://localhost:3000 in your browser 
 
 Simply clone the project or download and extract the .zip to get started. Here are a few
 screenshots from the app:
 
-<img width="500" src="src/images/screenshots/cards.png" border="0" />
+<img width="500" src="src/assets/images/screenshots/cards.png" border="0" />
 
 <br /><br />
 
-<img width="500" src="src/images/screenshots/grid.png" border="0" />
+<img width="500" src="src/assets/images/screenshots/grid.png" border="0" />
 
 <br /><br />
 
-<img width="500" src="src/images/screenshots/orders.png" border="0" />
+<img width="500" src="src/assets/images/screenshots/orders.png" border="0" />
 
 <br /><br />
 
-<img width="500" src="src/images/screenshots/details.png" border="0" />
-
-## Running the Application using WebPack (and optionally AOT)
-
-The Angular JumpStart application uses System.JS by default for module loading mainly so that the app can load directly without going through a build process. However, Webpack can also be used to handle working with modules plus perform tasks such as bundling, minification, conversion of TypeScript to JavaScript, start up a dev web server and much more. 
-
-Follow these steps if you'd like to use webpack:
-
-1. Run `npm install` to install app dependencies
-
-1. Open `src/app/app-routing.module.ts` and change `app/` to `./` for all `loadChildren` paths. For example:
-
-    *Change:*     loadChildren: 'app/customers/customers.module#CustomersModule'
-
-    *To:*         loadChildren: './customers/customers.module#CustomersModule'
-
-1. Optional (for AOT). If you'd like to run the application using Ahead of Time (AOT) compilation, run the following command to set the NODE_ENV environment variable to production and create an AOT build:
-
-    *Mac*:      `export NODE_ENV=production`
-    *Windows:   `set NODE_ENV=production`
-
-1. Run `npm run build` in a console window. This will generate the required script assets needed to run the application and place them in the `src/devDist` folder for a development build or `src/dist` for a production/AOT build (if you performed the previous step). It will also watch for any code changes that are made and rebuild the script bundles as needed.
-
-1. Run `node server.js` in another command window to start the server.
-
-1. Navigate to http://localhost:3000 in a browser.
+<img width="500" src="src/assets/images/screenshots/details.png" border="0" />
 
 

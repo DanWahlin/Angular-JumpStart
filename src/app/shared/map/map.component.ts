@@ -1,3 +1,5 @@
+/// <reference path="../../../../node_modules/@types/googlemaps/index.d.ts" />
+
 import { Component, OnInit, AfterContentInit, Input, ViewChild,
          ContentChildren, ElementRef, QueryList, ChangeDetectionStrategy } from '@angular/core';
 

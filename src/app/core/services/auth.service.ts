@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; 
@@ -15,16 +15,15 @@ export class AuthService {
     redirectUrl: string;
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     private userAuthChanged(status: boolean) {
        this.authChanged.emit(status); //Raise changed event
     }
 
     login(userLogin: IUserLogin) : Observable<boolean> {
-        return this.http.post(this.authUrl + '/login', userLogin)
-                   .map((response: Response) => {
-                       const loggedIn = response.json();
+        return this.http.post<boolean>(this.authUrl + '/login', userLogin)
+                   .map(loggedIn => {
                        this.isAuthenticated = loggedIn;
                        this.userAuthChanged(loggedIn);
                        return loggedIn;
@@ -33,9 +32,8 @@ export class AuthService {
     }
 
     logout() : Observable<boolean> {
-        return this.http.post(this.authUrl + '/logout', null)
-                   .map((response: Response) => {
-                       const loggedOut = response.json();
+        return this.http.post<boolean>(this.authUrl + '/logout', null)
+                   .map(loggedOut => {
                        this.isAuthenticated = !loggedOut;
                        this.userAuthChanged(!loggedOut); //Return loggedIn status
                        return status;
@@ -43,16 +41,13 @@ export class AuthService {
                    .catch(this.handleError); 
     }
 
-    handleError(error: any) {
+    private handleError(error: HttpErrorResponse) {
         console.error('server error:', error); 
-        if (error instanceof Response) {
-          let errMessage = '';
-          try {
-            errMessage = error.json().error;
-          } catch(err) {
-            errMessage = error.statusText;
-          }
+        if (error.error instanceof Error) {
+          let errMessage = error.error.message;
           return Observable.throw(errMessage);
+          // Use the following instead if using lite-server
+          //return Observable.throw(err.text() || 'backend server error');
         }
         return Observable.throw(error || 'Node.js server error');
     }

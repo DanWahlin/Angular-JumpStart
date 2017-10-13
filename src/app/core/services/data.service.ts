@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 //Grab everything with import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
@@ -8,7 +8,7 @@ import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
-import { ICustomer, IOrder, IState, IPagedResults } from '../../shared/interfaces';
+import { ICustomer, IOrder, IState, IPagedResults, IApiResponse } from '../../shared/interfaces';
 
 @Injectable()
 export class DataService {
@@ -18,12 +18,11 @@ export class DataService {
     orders: IOrder[];
     states: IState[];
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
     
     getCustomers() : Observable<ICustomer[]> {
-        return this.http.get(this.customersBaseUrl)
-                    .map((res: Response) => {
-                        let customers = res.json();
+        return this.http.get<ICustomer[]>(this.customersBaseUrl)
+                    .map(customers => {
                         this.calculateCustomersOrderTotal(customers);
                         return customers;
                     })
@@ -31,10 +30,10 @@ export class DataService {
     }
 
     getCustomersPage(page: number, pageSize: number) : Observable<IPagedResults<ICustomer[]>> {
-        return this.http.get(`${this.customersBaseUrl}/page/${page}/${pageSize}`)
-                   .map((res: Response) => {
+        return this.http.get<ICustomer[]>(`${this.customersBaseUrl}/page/${page}/${pageSize}`, {observe: 'response'})
+                   .map(res => {
                        const totalRecords = +res.headers.get('X-InlineCount');
-                       let customers = res.json();
+                       let customers = res.body as ICustomer[];
                        this.calculateCustomersOrderTotal(customers);
                        return {
                            results: customers,
@@ -45,9 +44,8 @@ export class DataService {
     }
     
     getCustomer(id: number) : Observable<ICustomer> {
-        return this.http.get(this.customersBaseUrl + '/' + id)
-                   .map((res: Response) => {
-                       let customer = res.json();
+        return this.http.get<ICustomer>(this.customersBaseUrl + '/' + id)
+                   .map(customer => {
                        this.calculateCustomersOrderTotal([customer]);
                        return customer;
                    })
@@ -55,39 +53,34 @@ export class DataService {
     }
 
     insertCustomer(customer: ICustomer) : Observable<ICustomer> {
-        return this.http.post(this.customersBaseUrl, customer)
-                   .map((res: Response) => res.json())
+        return this.http.post<ICustomer>(this.customersBaseUrl, customer)
                    .catch(this.handleError);
     }
     
     updateCustomer(customer: ICustomer) : Observable<boolean> {
-        return this.http.put(this.customersBaseUrl + '/' + customer.id, customer)
-                   .map((res: Response) => res.json())
+        return this.http.put<IApiResponse>(this.customersBaseUrl + '/' + customer.id, customer)
+                   .map(res => res.status)           
                    .catch(this.handleError);  
     }
 
     deleteCustomer(id: number) : Observable<boolean> {
-        return this.http.delete(this.customersBaseUrl + '/' + id)
-                   .map((res: Response) => res.json().status)
+        return this.http.delete<IApiResponse>(this.customersBaseUrl + '/' + id)
+                   .map(res => res.status)
                    .catch(this.handleError);
     }
     
     getStates(): Observable<IState[]> {
-        return this.http.get('/api/states')
-                   .map((res: Response) => res.json())
+        return this.http.get<IState[]>('/api/states')
                    .catch(this.handleError); 
     }
     
-    handleError(error: any) {
+    private handleError(error: HttpErrorResponse) {
         console.error('server error:', error); 
-        if (error instanceof Response) {
-          let errMessage = '';
-          try {
-            errMessage = error.json().error;
-          } catch(err) {
-            errMessage = error.statusText;
-          }
+        if (error.error instanceof Error) {
+          let errMessage = error.error.message;
           return Observable.throw(errMessage);
+          // Use the following instead if using lite-server
+          //return Observable.throw(err.text() || 'backend server error');
         }
         return Observable.throw(error || 'Node.js server error');
     }

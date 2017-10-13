@@ -9,12 +9,8 @@ var express     = require('express'),
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//Would normally copy necessary scripts into src folder (via grunt/gulp) but serving
-//node_modules directly to keep everything as simple as possible
-app.use('/node_modules', express.static(__dirname + '/node_modules')); 
-
-//The src folder has our static resources (index.html, css, images)
-app.use(express.static(__dirname + '/src')); 
+//The dist folder has our static resources (index.html, css, images)
+app.use(express.static(__dirname + '/dist')); 
 
 app.get('/api/customers/page/:skip/:top', (req, res) => {
     const topVal = req.params.top,
@@ -117,7 +113,7 @@ app.post('/api/auth/logout', (req, res) => {
 
 // redirect all others to the index (HTML5 history)
 app.all('/*', function(req, res) {
-    res.sendFile(__dirname + '/src/index.html');
+    res.sendFile(__dirname + '/dist/index.html');
 });
 
 app.listen(3000);

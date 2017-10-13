@@ -40,3 +40,8 @@ export interface IUserLogin {
     email: string;
     password: string;
 }
+
+export interface IApiResponse {
+    status: boolean;
+    error?: string;
+}
