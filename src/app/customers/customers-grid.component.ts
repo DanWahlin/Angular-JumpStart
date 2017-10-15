@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core
 
 import { SorterService } from '../core/services/sorter.service';
 import { TrackByService } from '../core/services/trackby.service';
+import { ICustomer } from '../shared/interfaces';
 
 @Component({ 
   selector: 'cm-customers-grid', 
@@ -14,7 +15,7 @@ import { TrackByService } from '../core/services/trackby.service';
 })
 export class CustomersGridComponent implements OnInit {
 
-  @Input() customers: any[] = [];
+  @Input() customers: ICustomer[] = [];
 
   constructor(private sorterService: SorterService, public trackbyService: TrackByService) { }
    
