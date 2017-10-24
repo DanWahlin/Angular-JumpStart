@@ -5,9 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { GrowlerModule } from './growler/growler.module';
 import { ModalModule } from './modal/modal.module';
+import { OverlayModule } from './overlay/overlay.module';
 
-import { NavbarComponent } from './navbar/navbar.component';
 import { DataService } from './services/data.service';
+import { NavbarComponent } from './navbar/navbar.component';
 import { FilterService } from './services/filter.service';
 import { SorterService } from './services/sorter.service';
 import { TrackByService } from './services/trackby.service';
@@ -15,13 +16,15 @@ import { DialogService } from './services/dialog.service';
 import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
 import { ValidationService } from './services/validation.service';
 import { AuthService } from'./services/auth.service';
+import { EventBusService } from './services/event-bus.service';
 
 @NgModule({
-  imports: [ CommonModule, RouterModule, HttpClientModule, GrowlerModule, ModalModule ],
-  exports: [ GrowlerModule, RouterModule, HttpClientModule, ModalModule, NavbarComponent ],
+  imports: [ CommonModule, RouterModule, HttpClientModule, GrowlerModule, ModalModule, OverlayModule ],
+  exports: [ GrowlerModule, RouterModule, HttpClientModule, ModalModule, OverlayModule, NavbarComponent ],
   declarations: [ NavbarComponent ],
   providers: [ SorterService, FilterService, DataService, TrackByService, 
-               DialogService, ValidationService, AuthService ] // these should be singleton
+               DialogService, ValidationService, AuthService, EventBusService
+              ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
 

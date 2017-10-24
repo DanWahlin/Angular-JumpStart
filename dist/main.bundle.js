@@ -79,7 +79,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<main class=\"container\">\n    <cm-navbar></cm-navbar>\n    <router-outlet></router-outlet>\n    <cm-growler position=\"top-right\" timeout=\"2000\"></cm-growler>\n    <cm-modal></cm-modal>\n</main>\n<br /><br />"
+module.exports = "<main class=\"container\">\n    <cm-navbar></cm-navbar>\n    <router-outlet></router-outlet>\n    <cm-growler position=\"top-right\" timeout=\"2000\"></cm-growler>\n    <cm-modal></cm-modal>\n    <cm-overlay delay=\"300\">\n        <span class=\"spinner\"></span>&nbsp;&nbsp;&nbsp;Loading\n    </cm-overlay>\n</main>\n<br /><br />"
 
 /***/ }),
 
@@ -171,15 +171,17 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__growler_growler_module__ = __webpack_require__("../../../../../src/app/core/growler/growler.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modal_modal_module__ = __webpack_require__("../../../../../src/app/core/modal/modal.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__navbar_navbar_component__ = __webpack_require__("../../../../../src/app/core/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__overlay_overlay_module__ = __webpack_require__("../../../../../src/app/core/overlay/overlay.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_data_service__ = __webpack_require__("../../../../../src/app/core/services/data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_filter_service__ = __webpack_require__("../../../../../src/app/core/services/filter.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_sorter_service__ = __webpack_require__("../../../../../src/app/core/services/sorter.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_trackby_service__ = __webpack_require__("../../../../../src/app/core/services/trackby.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_dialog_service__ = __webpack_require__("../../../../../src/app/core/services/dialog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ensureModuleLoadedOnceGuard__ = __webpack_require__("../../../../../src/app/core/ensureModuleLoadedOnceGuard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_validation_service__ = __webpack_require__("../../../../../src/app/core/services/validation.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_auth_service__ = __webpack_require__("../../../../../src/app/core/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__navbar_navbar_component__ = __webpack_require__("../../../../../src/app/core/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_filter_service__ = __webpack_require__("../../../../../src/app/core/services/filter.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_sorter_service__ = __webpack_require__("../../../../../src/app/core/services/sorter.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_trackby_service__ = __webpack_require__("../../../../../src/app/core/services/trackby.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_dialog_service__ = __webpack_require__("../../../../../src/app/core/services/dialog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ensureModuleLoadedOnceGuard__ = __webpack_require__("../../../../../src/app/core/ensureModuleLoadedOnceGuard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_validation_service__ = __webpack_require__("../../../../../src/app/core/services/validation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_auth_service__ = __webpack_require__("../../../../../src/app/core/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_event_bus_service__ = __webpack_require__("../../../../../src/app/core/services/event-bus.service.ts");
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -217,6 +219,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 
+
+
 var CoreModule = (function (_super) {
     __extends(CoreModule, _super);
     //Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
@@ -224,14 +228,15 @@ var CoreModule = (function (_super) {
         return _super.call(this, parentModule) || this;
     }
     return CoreModule;
-}(__WEBPACK_IMPORTED_MODULE_12__ensureModuleLoadedOnceGuard__["a" /* EnsureModuleLoadedOnceGuard */]));
+}(__WEBPACK_IMPORTED_MODULE_13__ensureModuleLoadedOnceGuard__["a" /* EnsureModuleLoadedOnceGuard */]));
 CoreModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_4__growler_growler_module__["a" /* GrowlerModule */], __WEBPACK_IMPORTED_MODULE_5__modal_modal_module__["a" /* ModalModule */]],
-        exports: [__WEBPACK_IMPORTED_MODULE_4__growler_growler_module__["a" /* GrowlerModule */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_5__modal_modal_module__["a" /* ModalModule */], __WEBPACK_IMPORTED_MODULE_6__navbar_navbar_component__["a" /* NavbarComponent */]],
-        declarations: [__WEBPACK_IMPORTED_MODULE_6__navbar_navbar_component__["a" /* NavbarComponent */]],
-        providers: [__WEBPACK_IMPORTED_MODULE_9__services_sorter_service__["a" /* SorterService */], __WEBPACK_IMPORTED_MODULE_8__services_filter_service__["a" /* FilterService */], __WEBPACK_IMPORTED_MODULE_7__services_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_10__services_trackby_service__["a" /* TrackByService */],
-            __WEBPACK_IMPORTED_MODULE_11__services_dialog_service__["a" /* DialogService */], __WEBPACK_IMPORTED_MODULE_13__services_validation_service__["a" /* ValidationService */], __WEBPACK_IMPORTED_MODULE_14__services_auth_service__["a" /* AuthService */]] // these should be singleton
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_4__growler_growler_module__["a" /* GrowlerModule */], __WEBPACK_IMPORTED_MODULE_5__modal_modal_module__["a" /* ModalModule */], __WEBPACK_IMPORTED_MODULE_6__overlay_overlay_module__["a" /* OverlayModule */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_4__growler_growler_module__["a" /* GrowlerModule */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_5__modal_modal_module__["a" /* ModalModule */], __WEBPACK_IMPORTED_MODULE_6__overlay_overlay_module__["a" /* OverlayModule */], __WEBPACK_IMPORTED_MODULE_8__navbar_navbar_component__["a" /* NavbarComponent */]],
+        declarations: [__WEBPACK_IMPORTED_MODULE_8__navbar_navbar_component__["a" /* NavbarComponent */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_10__services_sorter_service__["a" /* SorterService */], __WEBPACK_IMPORTED_MODULE_9__services_filter_service__["a" /* FilterService */], __WEBPACK_IMPORTED_MODULE_7__services_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_11__services_trackby_service__["a" /* TrackByService */],
+            __WEBPACK_IMPORTED_MODULE_12__services_dialog_service__["a" /* DialogService */], __WEBPACK_IMPORTED_MODULE_14__services_validation_service__["a" /* ValidationService */], __WEBPACK_IMPORTED_MODULE_15__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_16__services_event_bus_service__["b" /* EventBusService */]
+        ] // these should be singleton
     }),
     __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Optional */])()), __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* SkipSelf */])()),
     __metadata("design:paramtypes", [CoreModule])
@@ -753,6 +758,242 @@ var _a, _b, _c;
 
 /***/ }),
 
+/***/ "../../../../../src/app/core/overlay/overlay-request-response.interceptor.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverlayRequestResponseInterceptor; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do__ = __webpack_require__("../../../../rxjs/add/operator/do.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_delay__ = __webpack_require__("../../../../rxjs/add/operator/delay.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_delay__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_event_bus_service__ = __webpack_require__("../../../../../src/app/core/services/event-bus.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var OverlayRequestResponseInterceptor = (function () {
+    function OverlayRequestResponseInterceptor(eventBus) {
+        this.eventBus = eventBus;
+    }
+    OverlayRequestResponseInterceptor.prototype.intercept = function (req, next) {
+        var _this = this;
+        var randomTime = this.getRandomIntInclusive(0, 2000);
+        var started = Date.now();
+        this.eventBus.emit(new __WEBPACK_IMPORTED_MODULE_4__services_event_bus_service__["a" /* EmitEvent */](__WEBPACK_IMPORTED_MODULE_4__services_event_bus_service__["c" /* Events */].httpRequest));
+        return next
+            .handle(req)
+            .delay(randomTime) //Simulate random Http call delays
+            .do(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpResponse */]) {
+                var elapsed = Date.now() - started;
+                //console.log('Http response elapsed time: ' + elapsed);
+                _this.eventBus.emit(new __WEBPACK_IMPORTED_MODULE_4__services_event_bus_service__["a" /* EmitEvent */](__WEBPACK_IMPORTED_MODULE_4__services_event_bus_service__["c" /* Events */].httpResponse));
+            }
+        });
+    };
+    OverlayRequestResponseInterceptor.prototype.getRandomIntInclusive = function (min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+    };
+    return OverlayRequestResponseInterceptor;
+}());
+OverlayRequestResponseInterceptor = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_event_bus_service__["b" /* EventBusService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_event_bus_service__["b" /* EventBusService */]) === "function" && _a || Object])
+], OverlayRequestResponseInterceptor);
+
+var _a;
+//# sourceMappingURL=overlay-request-response.interceptor.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/core/overlay/overlay.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".overlay {\n  display:none;\n}\n\n.overlay.active {        \n  display: block;\n} \n\n.overlay-background {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1050;\n  display: block;\n  overflow: hidden;\n  -webkit-overflow-scrolling: touch;\n  outline: 0;\n  background-color:rgba(0,0,0,0.6);\n}\n\n.overlay-content {\n\n}\n\n.overlay-content {\n  position: fixed;\n  z-index: 999999;\n  top: 50%;\n  left: 50%;\n  background-color: white;\n  border: 1px solid rgb(94, 94, 94);\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n\n  cursor: pointer;\n  padding: 5;\n  width: 285px;\n  height: 100px;    \n  display: -webkit-box;    \n  display: -ms-flexbox;    \n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  transition: opacity 1s;        \n} \n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/core/overlay/overlay.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"overlay\" [class.active]=\"enabled\">\n    <div class=\"overlay-background\"></div>\n    <div class=\"overlay-content\">\n        <ng-content></ng-content>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/core/overlay/overlay.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverlayComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_event_bus_service__ = __webpack_require__("../../../../../src/app/core/services/event-bus.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var OverlayComponent = (function () {
+    function OverlayComponent(eventBus) {
+        this.eventBus = eventBus;
+        this.enabled = false;
+        this.queue = [];
+        this.timerId = null;
+        this.timerHideId = null;
+        this.delay = 500;
+    }
+    OverlayComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        //Handle request
+        this.httpRequestSub = this.eventBus.on(__WEBPACK_IMPORTED_MODULE_1__services_event_bus_service__["c" /* Events */].httpRequest, (function () {
+            _this.queue.push({});
+            if (_this.queue.length === 1) {
+                //Only show if we have an item in the queue after the delay time
+                setTimeout(function () {
+                    if (_this.queue.length)
+                        _this.enabled = true;
+                }, _this.delay);
+            }
+        }));
+        //Handle response
+        this.httpResponseSub = this.eventBus.on(__WEBPACK_IMPORTED_MODULE_1__services_event_bus_service__["c" /* Events */].httpResponse, (function () {
+            _this.queue.pop();
+            if (_this.queue.length === 0) {
+                //Since we don't know if another XHR request will be made, pause before
+                //hiding the overlay. If another XHR request comes in then the overlay
+                //will stay visible which prevents a flicker
+                setTimeout(function () {
+                    //Make sure queue is still 0 since a new XHR request may have come in
+                    //while timer was running
+                    if (_this.queue.length === 0)
+                        _this.enabled = false;
+                }, _this.delay);
+            }
+        }));
+    };
+    OverlayComponent.prototype.ngOnDestroy = function () {
+        this.httpRequestSub.unsubscribe();
+        this.httpResponseSub.unsubscribe();
+    };
+    return OverlayComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], OverlayComponent.prototype, "delay", void 0);
+OverlayComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'cm-overlay',
+        template: __webpack_require__("../../../../../src/app/core/overlay/overlay.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/core/overlay/overlay.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_event_bus_service__["b" /* EventBusService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_event_bus_service__["b" /* EventBusService */]) === "function" && _a || Object])
+], OverlayComponent);
+
+var _a;
+//# sourceMappingURL=overlay.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/core/overlay/overlay.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverlayModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ensureModuleLoadedOnceGuard__ = __webpack_require__("../../../../../src/app/core/ensureModuleLoadedOnceGuard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__overlay_request_response_interceptor__ = __webpack_require__("../../../../../src/app/core/overlay/overlay-request-response.interceptor.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__overlay_component__ = __webpack_require__("../../../../../src/app/core/overlay/overlay.component.ts");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+
+var OverlayModule = (function (_super) {
+    __extends(OverlayModule, _super);
+    //Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
+    function OverlayModule(parentModule) {
+        return _super.call(this, parentModule) || this;
+    }
+    return OverlayModule;
+}(__WEBPACK_IMPORTED_MODULE_3__ensureModuleLoadedOnceGuard__["a" /* EnsureModuleLoadedOnceGuard */]));
+OverlayModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_5__overlay_component__["a" /* OverlayComponent */]],
+        declarations: [__WEBPACK_IMPORTED_MODULE_5__overlay_component__["a" /* OverlayComponent */]],
+        providers: [
+            {
+                provide: __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HTTP_INTERCEPTORS */],
+                useClass: __WEBPACK_IMPORTED_MODULE_4__overlay_request_response_interceptor__["a" /* OverlayRequestResponseInterceptor */],
+                multi: true,
+            }
+        ]
+    }),
+    __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Optional */])()), __param(0, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* SkipSelf */])()),
+    __metadata("design:paramtypes", [OverlayModule])
+], OverlayModule);
+
+//# sourceMappingURL=overlay.module.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/core/services/auth.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -828,7 +1069,7 @@ __decorate([
 ], AuthService.prototype, "authChanged", void 0);
 AuthService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]) === "function" && _b || Object])
 ], AuthService);
 
 var _a, _b;
@@ -958,7 +1199,7 @@ var DataService = (function () {
 }());
 DataService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]) === "function" && _a || Object])
 ], DataService);
 
 var _a;
@@ -1002,6 +1243,68 @@ DialogService = __decorate([
 ], DialogService);
 
 //# sourceMappingURL=dialog.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/core/services/event-bus.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EventBusService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmitEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Events; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EventBusService = (function () {
+    function EventBusService() {
+        this.subject = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Subject"]();
+    }
+    EventBusService.prototype.on = function (event, action) {
+        return this.subject
+            .filter(function (e) {
+            return e.name === event;
+        })
+            .map(function (event) {
+            return event.value;
+        })
+            .subscribe(action);
+    };
+    EventBusService.prototype.emit = function (event) {
+        this.subject.next(event);
+    };
+    return EventBusService;
+}());
+EventBusService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], EventBusService);
+
+var EmitEvent = (function () {
+    function EmitEvent(name, value) {
+        this.name = name;
+        this.value = value;
+    }
+    return EmitEvent;
+}());
+
+var Events;
+(function (Events) {
+    Events[Events["httpRequest"] = 0] = "httpRequest";
+    Events[Events["httpResponse"] = 1] = "httpResponse";
+})(Events || (Events = {}));
+//# sourceMappingURL=event-bus.service.js.map
 
 /***/ }),
 
