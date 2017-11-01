@@ -30,7 +30,7 @@ module.exports = "<div class=\"container\">\n    <div class=\"row card-container
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersCardComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_trackby_service__ = __webpack_require__("../../../../../src/app/core/services/trackby.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -50,40 +50,39 @@ var CustomersCardComponent = (function () {
     }
     CustomersCardComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Array)
+    ], CustomersCardComponent.prototype, "customers", void 0);
+    CustomersCardComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-customers-card',
+            template: __webpack_require__("../../../../../src/app/customers/customers-card.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/customers/customers-card.component.css")],
+            //Add [@flyInOut]="'in'" into template on card
+            // animations: [
+            //   trigger('flyInOut', [
+            //     state('in', style({transform: 'translateX(0)', opacity: 1})),
+            //     transition('void => *', [
+            //       style({transform: 'translateX(25%)', opacity: 0}),
+            //       animate(300)
+            //     ]),
+            //     transition('* => void', [
+            //       animate(300, style({transform: 'translateX(-25%)', opacity: 1}))
+            //     ])
+            //   ])
+            // ],
+            //When using OnPush detectors, then the framework will check an OnPush 
+            //component when any of its input properties changes, when it fires 
+            //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
+            changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectionStrategy */].OnPush
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_trackby_service__["a" /* TrackByService */]])
+    ], CustomersCardComponent);
     return CustomersCardComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", Array)
-], CustomersCardComponent.prototype, "customers", void 0);
-CustomersCardComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-customers-card',
-        template: __webpack_require__("../../../../../src/app/customers/customers-card.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/customers/customers-card.component.css")],
-        //Add [@flyInOut]="'in'" into template on card
-        // animations: [
-        //   trigger('flyInOut', [
-        //     state('in', style({transform: 'translateX(0)', opacity: 1})),
-        //     transition('void => *', [
-        //       style({transform: 'translateX(25%)', opacity: 0}),
-        //       animate(300)
-        //     ]),
-        //     transition('* => void', [
-        //       animate(300, style({transform: 'translateX(-25%)', opacity: 1}))
-        //     ])
-        //   ])
-        // ],
-        //When using OnPush detectors, then the framework will check an OnPush 
-        //component when any of its input properties changes, when it fires 
-        //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
-        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectionStrategy */].OnPush
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_trackby_service__["a" /* TrackByService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_trackby_service__["a" /* TrackByService */]) === "function" && _a || Object])
-], CustomersCardComponent);
 
-var _a;
-//# sourceMappingURL=customers-card.component.js.map
+
 
 /***/ }),
 
@@ -108,7 +107,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/customers/customers-grid.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row grid-container\">\n        <div class=\"col-md-10\">\n            <div class=\"table\">\n                <table class=\"table table-striped table-hover\">\n                    <thead>\n                        <tr>\n                            <th>&nbsp;</th>\n                            <th cm-sort-by=\"firstName\" (sorted)=\"sort($event)\">First Name</th>\n                            <th cm-sort-by=\"lastName\" (sorted)=\"sort($event)\">Last Name</th>\n                            <th cm-sort-by=\"address\" (sorted)=\"sort($event)\">Address</th>\n                            <th cm-sort-by=\"city\" (sorted)=\"sort($event)\">City</th>\n                            <th cm-sort-by=\"state.name\" (sorted)=\"sort($event)\">State</th>\n                            <!-- Or you can do this directly rather than using sort-by directive -->\n                            <th (click)=\"sort('orderTotal')\">Order Total</th>\n                            <th>&nbsp;</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr *ngFor=\"let customer of customers;trackBy:trackbyService.customer\">\n                            <td><img src=\"assets/images/{{ customer.gender | lowercase }}.png\"\n                                    class=\"grid-image\" alt=\"Customer Image\" /></td>\n                            <td><a [routerLink]=\"['/customers',customer.id,'details']\">{{ customer.firstName | capitalize }}</a></td>\n                            <td>{{ customer.lastName | capitalize }}</td>\n                            <td>{{ customer.address }}</td>\n                            <td>{{ customer.city | trim }}</td>\n                            <td>{{ customer.state.name }}</td>\n                            <td>{{ customer.orderTotal | currency:'USD':true }}</td>\n                            <td><a [routerLink]=\"['/customers',customer.id,'orders']\">View Orders</a></td>\n                        </tr>\n                        <tr *ngIf=\"!customers.length\">\n                            <td>&nbsp;</td>\n                            <td colspan=\"7\">No Records Found</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n    <div class=\"row grid-container\">\n        <div class=\"col-md-10\">\n            <div class=\"table\">\n                <table class=\"table table-striped table-hover\">\n                    <thead>\n                        <tr>\n                            <th>&nbsp;</th>\n                            <th cm-sort-by=\"firstName\" (sorted)=\"sort($event)\">First Name</th>\n                            <th cm-sort-by=\"lastName\" (sorted)=\"sort($event)\">Last Name</th>\n                            <th cm-sort-by=\"address\" (sorted)=\"sort($event)\">Address</th>\n                            <th cm-sort-by=\"city\" (sorted)=\"sort($event)\">City</th>\n                            <th cm-sort-by=\"state.name\" (sorted)=\"sort($event)\">State</th>\n                            <!-- Or you can do this directly rather than using sort-by directive -->\n                            <th (click)=\"sort('orderTotal')\">Order Total</th>\n                            <th>&nbsp;</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr *ngFor=\"let customer of customers;trackBy:trackbyService.customer\">\n                            <td><img src=\"assets/images/{{ customer.gender | lowercase }}.png\"\n                                    class=\"grid-image\" alt=\"Customer Image\" /></td>\n                            <td><a [routerLink]=\"['/customers',customer.id,'details']\">{{ customer.firstName | capitalize }}</a></td>\n                            <td>{{ customer.lastName | capitalize }}</td>\n                            <td>{{ customer.address }}</td>\n                            <td>{{ customer.city | trim }}</td>\n                            <td>{{ customer.state.name }}</td>\n                            <td>{{ customer.orderTotal | currency:'USD':'symbol' }}</td>\n                            <td><a [routerLink]=\"['/customers',customer.id,'orders']\">View Orders</a></td>\n                        </tr>\n                        <tr *ngIf=\"!customers.length\">\n                            <td>&nbsp;</td>\n                            <td colspan=\"7\">No Records Found</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -117,7 +116,7 @@ module.exports = "<div class=\"container\">\n    <div class=\"row grid-container
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersGridComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_sorter_service__ = __webpack_require__("../../../../../src/app/core/services/sorter.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_trackby_service__ = __webpack_require__("../../../../../src/app/core/services/trackby.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -143,27 +142,26 @@ var CustomersGridComponent = (function () {
     CustomersGridComponent.prototype.sort = function (prop) {
         this.sorterService.sort(this.customers, prop);
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Array)
+    ], CustomersGridComponent.prototype, "customers", void 0);
+    CustomersGridComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-customers-grid',
+            template: __webpack_require__("../../../../../src/app/customers/customers-grid.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/customers/customers-grid.component.css")],
+            //When using OnPush detectors, then the framework will check an OnPush 
+            //component when any of its input properties changes, when it fires 
+            //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
+            changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectionStrategy */].OnPush
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_sorter_service__["a" /* SorterService */], __WEBPACK_IMPORTED_MODULE_2__core_services_trackby_service__["a" /* TrackByService */]])
+    ], CustomersGridComponent);
     return CustomersGridComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", Array)
-], CustomersGridComponent.prototype, "customers", void 0);
-CustomersGridComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-customers-grid',
-        template: __webpack_require__("../../../../../src/app/customers/customers-grid.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/customers/customers-grid.component.css")],
-        //When using OnPush detectors, then the framework will check an OnPush 
-        //component when any of its input properties changes, when it fires 
-        //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
-        changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectionStrategy */].OnPush
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_sorter_service__["a" /* SorterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_sorter_service__["a" /* SorterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_trackby_service__["a" /* TrackByService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_trackby_service__["a" /* TrackByService */]) === "function" && _b || Object])
-], CustomersGridComponent);
 
-var _a, _b;
-//# sourceMappingURL=customers-grid.component.js.map
+
 
 /***/ }),
 
@@ -172,8 +170,8 @@ var _a, _b;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers_component__ = __webpack_require__("../../../../../src/app/customers/customers.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customers_card_component__ = __webpack_require__("../../../../../src/app/customers/customers-card.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customers_grid_component__ = __webpack_require__("../../../../../src/app/customers/customers-grid.component.ts");
@@ -194,17 +192,17 @@ var routes = [
 var CustomersRoutingModule = (function () {
     function CustomersRoutingModule() {
     }
+    CustomersRoutingModule.components = [__WEBPACK_IMPORTED_MODULE_2__customers_component__["a" /* CustomersComponent */], __WEBPACK_IMPORTED_MODULE_3__customers_card_component__["a" /* CustomersCardComponent */], __WEBPACK_IMPORTED_MODULE_4__customers_grid_component__["a" /* CustomersGridComponent */]];
+    CustomersRoutingModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
+        })
+    ], CustomersRoutingModule);
     return CustomersRoutingModule;
 }());
-CustomersRoutingModule.components = [__WEBPACK_IMPORTED_MODULE_2__customers_component__["a" /* CustomersComponent */], __WEBPACK_IMPORTED_MODULE_3__customers_card_component__["a" /* CustomersCardComponent */], __WEBPACK_IMPORTED_MODULE_4__customers_grid_component__["a" /* CustomersGridComponent */]];
-CustomersRoutingModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
-    })
-], CustomersRoutingModule);
 
-//# sourceMappingURL=customers-routing.module.js.map
+
 
 /***/ }),
 
@@ -220,7 +218,7 @@ module.exports = "<div class=\"customers view indent\">\n    <div class=\"contai
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_data_service__ = __webpack_require__("../../../../../src/app/core/services/data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_filter_service__ = __webpack_require__("../../../../../src/app/core/services/filter.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -275,15 +273,15 @@ var CustomersComponent = (function () {
             this.filteredCustomers = this.customers;
         }
     };
+    CustomersComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-customers',
+            template: __webpack_require__("../../../../../src/app/customers/customers.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_data_service__["a" /* DataService */], __WEBPACK_IMPORTED_MODULE_2__core_services_filter_service__["a" /* FilterService */]])
+    ], CustomersComponent);
     return CustomersComponent;
 }());
-CustomersComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-customers',
-        template: __webpack_require__("../../../../../src/app/customers/customers.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__core_services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__core_services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_filter_service__["a" /* FilterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_filter_service__["a" /* FilterService */]) === "function" && _b || Object])
-], CustomersComponent);
 
 var DisplayModeEnum;
 (function (DisplayModeEnum) {
@@ -291,8 +289,7 @@ var DisplayModeEnum;
     DisplayModeEnum[DisplayModeEnum["Grid"] = 1] = "Grid";
     DisplayModeEnum[DisplayModeEnum["Map"] = 2] = "Map";
 })(DisplayModeEnum || (DisplayModeEnum = {}));
-var _a, _b;
-//# sourceMappingURL=customers.component.js.map
+
 
 /***/ }),
 
@@ -302,7 +299,7 @@ var _a, _b;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomersModule", function() { return CustomersModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers_routing_module__ = __webpack_require__("../../../../../src/app/customers/customers-routing.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -317,16 +314,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var CustomersModule = (function () {
     function CustomersModule() {
     }
+    CustomersModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_2__customers_routing_module__["a" /* CustomersRoutingModule */], __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["a" /* SharedModule */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__customers_routing_module__["a" /* CustomersRoutingModule */].components]
+        })
+    ], CustomersModule);
     return CustomersModule;
 }());
-CustomersModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_2__customers_routing_module__["a" /* CustomersRoutingModule */], __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["a" /* SharedModule */]],
-        declarations: [__WEBPACK_IMPORTED_MODULE_2__customers_routing_module__["a" /* CustomersRoutingModule */].components]
-    })
-], CustomersModule);
 
-//# sourceMappingURL=customers.module.js.map
+
 
 /***/ })
 

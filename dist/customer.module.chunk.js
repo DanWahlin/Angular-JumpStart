@@ -5,8 +5,8 @@ webpackJsonp(["customer.module"],{
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CanActivateGuard; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_auth_service__ = __webpack_require__("../../../../../src/app/core/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -34,15 +34,14 @@ var CanActivateGuard = (function () {
         this.router.navigate(['/login']);
         return false;
     };
+    CanActivateGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
+    ], CanActivateGuard);
     return CanActivateGuard;
 }());
-CanActivateGuard = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object])
-], CanActivateGuard);
 
-var _a, _b;
-//# sourceMappingURL=can-activate.guard.js.map
+
 
 /***/ }),
 
@@ -51,7 +50,7 @@ var _a, _b;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CanDeactivateGuard; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,13 +66,13 @@ var CanDeactivateGuard = (function () {
         //Check with component to see if we're able to deactivate
         return component.canDeactivate();
     };
+    CanDeactivateGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], CanDeactivateGuard);
     return CanDeactivateGuard;
 }());
-CanDeactivateGuard = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
-], CanDeactivateGuard);
 
-//# sourceMappingURL=can-deactivate.guard.js.map
+
 
 /***/ }),
 
@@ -107,8 +106,8 @@ module.exports = "<div *ngIf=\"customer\">\n  <div class=\"row\">\n    <div clas
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerDetailsComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__ = __webpack_require__("../../../../../src/app/core/services/data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -139,19 +138,18 @@ var CustomerDetailsComponent = (function () {
             });
         });
     };
+    CustomerDetailsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-customer-details',
+            template: __webpack_require__("../../../../../src/app/customer/customer-details.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/customer/customer-details.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__["a" /* DataService */]])
+    ], CustomerDetailsComponent);
     return CustomerDetailsComponent;
 }());
-CustomerDetailsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-customer-details',
-        template: __webpack_require__("../../../../../src/app/customer/customer-details.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/customer/customer-details.component.css")]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__["a" /* DataService */]) === "function" && _b || Object])
-], CustomerDetailsComponent);
 
-var _a, _b;
-//# sourceMappingURL=customer-details.component.js.map
+
 
 /***/ }),
 
@@ -185,9 +183,9 @@ module.exports = "<div>\n  <form (ngSubmit)=\"submit()\" #customerForm=\"ngForm\
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerEditComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_data_service__ = __webpack_require__("../../../../../src/app/core/services/data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_modal_modal_service__ = __webpack_require__("../../../../../src/app/core/modal/modal.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_growler_growler_service__ = __webpack_require__("../../../../../src/app/core/growler/growler.service.ts");
@@ -312,30 +310,33 @@ var CustomerEditComponent = (function () {
         };
         return this.modalService.show(modalContent);
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('customerForm'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* NgForm */])
+    ], CustomerEditComponent.prototype, "customerForm", void 0);
+    CustomerEditComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-customer-edit',
+            template: __webpack_require__("../../../../../src/app/customer/customer-edit.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/customer/customer-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_3__core_services_data_service__["a" /* DataService */],
+            __WEBPACK_IMPORTED_MODULE_5__core_growler_growler_service__["b" /* GrowlerService */],
+            __WEBPACK_IMPORTED_MODULE_4__core_modal_modal_service__["a" /* ModalService */]])
+    ], CustomerEditComponent);
     return CustomerEditComponent;
 }());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('customerForm'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* NgForm */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* NgForm */]) === "function" && _a || Object)
-], CustomerEditComponent.prototype, "customerForm", void 0);
-CustomerEditComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-customer-edit',
-        template: __webpack_require__("../../../../../src/app/customer/customer-edit.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/customer/customer-edit.component.css")]
-    }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__core_services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__core_services_data_service__["a" /* DataService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__core_growler_growler_service__["b" /* GrowlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__core_growler_growler_service__["b" /* GrowlerService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__core_modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__core_modal_modal_service__["a" /* ModalService */]) === "function" && _f || Object])
-], CustomerEditComponent);
 
-var _a, _b, _c, _d, _e, _f;
-//# sourceMappingURL=customer-edit.component.js.map
+
 
 /***/ }),
 
 /***/ "../../../../../src/app/customer/customer-orders.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\" *ngIf=\"customer && customer.orders\">\n        <h4>Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>\n        <br />\n        <table class=\"table table-striped table-hover orders-table\">\n            <tr *ngFor=\"let order of customer.orders;trackBy:ordersTrackBy\">\n                <td>{{ order.productName }}</td>\n                <td class=\"text-right\">{{ order.itemCost | currency:'USD':true }}</td>    \n            </tr>\n            <tr class=\"summary-border\">\n                <td>&nbsp;</td>\n                <td class=\"text-right\">{{ customer.orderTotal | currency:'USD':true }}</td>\n            </tr>\n        </table>\n    </div>\n    <div *ngIf=\"customer && !customer.orders\" class=\"row\">\n        No orders found\n    </div> \n    <div *ngIf=\"!customer\" class=\"row\">\n        No customer found\n    </div>  \n</div>"
+module.exports = "<div class=\"container\">\n    <div class=\"row\" *ngIf=\"customer && customer.orders\">\n        <h4>Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>\n        <br />\n        <table class=\"table table-striped table-hover orders-table\">\n            <tr *ngFor=\"let order of customer.orders;trackBy:ordersTrackBy\">\n                <td>{{ order.productName }}</td>\n                <td class=\"text-right\">{{ order.itemCost | currency:'USD':'symbol' }}</td>    \n            </tr>\n            <tr class=\"summary-border\">\n                <td>&nbsp;</td>\n                <td class=\"text-right\">{{ customer.orderTotal | currency:'USD':'symbol' }}</td>\n            </tr>\n        </table>\n    </div>\n    <div *ngIf=\"customer && !customer.orders\" class=\"row\">\n        No orders found\n    </div> \n    <div *ngIf=\"!customer\" class=\"row\">\n        No customer found\n    </div>  \n</div>"
 
 /***/ }),
 
@@ -344,8 +345,8 @@ module.exports = "<div class=\"container\">\n    <div class=\"row\" *ngIf=\"cust
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerOrdersComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__ = __webpack_require__("../../../../../src/app/core/services/data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -378,18 +379,17 @@ var CustomerOrdersComponent = (function () {
     CustomerOrdersComponent.prototype.ordersTrackBy = function (index, orderItem) {
         return index;
     };
+    CustomerOrdersComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-customer-orders',
+            template: __webpack_require__("../../../../../src/app/customer/customer-orders.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__["a" /* DataService */]])
+    ], CustomerOrdersComponent);
     return CustomerOrdersComponent;
 }());
-CustomerOrdersComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-customer-orders',
-        template: __webpack_require__("../../../../../src/app/customer/customer-orders.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_data_service__["a" /* DataService */]) === "function" && _b || Object])
-], CustomerOrdersComponent);
 
-var _a, _b;
-//# sourceMappingURL=customer-orders.component.js.map
+
 
 /***/ }),
 
@@ -398,8 +398,8 @@ var _a, _b;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_component__ = __webpack_require__("../../../../../src/app/customer/customer.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_orders_component__ = __webpack_require__("../../../../../src/app/customer/customer-orders.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_details_component__ = __webpack_require__("../../../../../src/app/customer/customer-details.component.ts");
@@ -438,18 +438,18 @@ var routes = [
 var CustomerRoutingModule = (function () {
     function CustomerRoutingModule() {
     }
+    CustomerRoutingModule.components = [__WEBPACK_IMPORTED_MODULE_2__customer_component__["a" /* CustomerComponent */], __WEBPACK_IMPORTED_MODULE_3__customer_orders_component__["a" /* CustomerOrdersComponent */], __WEBPACK_IMPORTED_MODULE_4__customer_details_component__["a" /* CustomerDetailsComponent */], __WEBPACK_IMPORTED_MODULE_5__customer_edit_component__["a" /* CustomerEditComponent */]];
+    CustomerRoutingModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_6__can_activate_guard__["a" /* CanActivateGuard */], __WEBPACK_IMPORTED_MODULE_7__can_deactivate_guard__["a" /* CanDeactivateGuard */]]
+        })
+    ], CustomerRoutingModule);
     return CustomerRoutingModule;
 }());
-CustomerRoutingModule.components = [__WEBPACK_IMPORTED_MODULE_2__customer_component__["a" /* CustomerComponent */], __WEBPACK_IMPORTED_MODULE_3__customer_orders_component__["a" /* CustomerOrdersComponent */], __WEBPACK_IMPORTED_MODULE_4__customer_details_component__["a" /* CustomerDetailsComponent */], __WEBPACK_IMPORTED_MODULE_5__customer_edit_component__["a" /* CustomerEditComponent */]];
-CustomerRoutingModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]],
-        providers: [__WEBPACK_IMPORTED_MODULE_6__can_activate_guard__["a" /* CanActivateGuard */], __WEBPACK_IMPORTED_MODULE_7__can_deactivate_guard__["a" /* CanDeactivateGuard */]]
-    })
-], CustomerRoutingModule);
 
-//# sourceMappingURL=customer-routing.module.js.map
+
 
 /***/ }),
 
@@ -465,8 +465,8 @@ module.exports = "<div class=\"orders view\">\n    <div class=\"container\">\n  
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -499,23 +499,22 @@ var CustomerComponent = (function () {
         //     break;
         // }
     };
+    CustomerComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-orders',
+            template: __webpack_require__("../../../../../src/app/customer/customer.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
+    ], CustomerComponent);
     return CustomerComponent;
 }());
-CustomerComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-orders',
-        template: __webpack_require__("../../../../../src/app/customer/customer.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
-], CustomerComponent);
 
-var _a;
 // enum CustomerDisplayModeEnum {
 //   Details=0,
 //   Orders=1,
 //   Edit=2
 // }
-//# sourceMappingURL=customer.component.js.map
+
 
 /***/ }),
 
@@ -525,7 +524,7 @@ var _a;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerModule", function() { return CustomerModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_routing_module__ = __webpack_require__("../../../../../src/app/customer/customer-routing.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -540,16 +539,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var CustomerModule = (function () {
     function CustomerModule() {
     }
+    CustomerModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_2__customer_routing_module__["a" /* CustomerRoutingModule */], __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["a" /* SharedModule */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__customer_routing_module__["a" /* CustomerRoutingModule */].components]
+        })
+    ], CustomerModule);
     return CustomerModule;
 }());
-CustomerModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_2__customer_routing_module__["a" /* CustomerRoutingModule */], __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["a" /* SharedModule */]],
-        declarations: [__WEBPACK_IMPORTED_MODULE_2__customer_routing_module__["a" /* CustomerRoutingModule */].components]
-    })
-], CustomerModule);
 
-//# sourceMappingURL=customer.module.js.map
+
 
 /***/ })
 

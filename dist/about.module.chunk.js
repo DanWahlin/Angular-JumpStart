@@ -5,8 +5,8 @@ webpackJsonp(["about.module"],{
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutRoutingModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_component__ = __webpack_require__("../../../../../src/app/about/about.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -23,17 +23,17 @@ var routes = [
 var AboutRoutingModule = (function () {
     function AboutRoutingModule() {
     }
+    AboutRoutingModule.components = [__WEBPACK_IMPORTED_MODULE_2__about_component__["a" /* AboutComponent */]];
+    AboutRoutingModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
+        })
+    ], AboutRoutingModule);
     return AboutRoutingModule;
 }());
-AboutRoutingModule.components = [__WEBPACK_IMPORTED_MODULE_2__about_component__["a" /* AboutComponent */]];
-AboutRoutingModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]]
-    })
-], AboutRoutingModule);
 
-//# sourceMappingURL=about-routing.module.js.map
+
 
 /***/ }),
 
@@ -49,7 +49,7 @@ module.exports = "<div class=\"view\">\n    <div class=\"container\">\n        <
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,17 +65,17 @@ var AboutComponent = (function () {
     }
     AboutComponent.prototype.ngOnInit = function () {
     };
+    AboutComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'cm-about',
+            template: __webpack_require__("../../../../../src/app/about/about.component.html")
+        }),
+        __metadata("design:paramtypes", [])
+    ], AboutComponent);
     return AboutComponent;
 }());
-AboutComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'cm-about',
-        template: __webpack_require__("../../../../../src/app/about/about.component.html")
-    }),
-    __metadata("design:paramtypes", [])
-], AboutComponent);
 
-//# sourceMappingURL=about.component.js.map
+
 
 /***/ }),
 
@@ -85,7 +85,7 @@ AboutComponent = __decorate([
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AboutModule", function() { return AboutModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__about_routing_module__ = __webpack_require__("../../../../../src/app/about/about-routing.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -98,16 +98,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var AboutModule = (function () {
     function AboutModule() {
     }
+    AboutModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__about_routing_module__["a" /* AboutRoutingModule */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_1__about_routing_module__["a" /* AboutRoutingModule */].components]
+        })
+    ], AboutModule);
     return AboutModule;
 }());
-AboutModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__about_routing_module__["a" /* AboutRoutingModule */]],
-        declarations: [__WEBPACK_IMPORTED_MODULE_1__about_routing_module__["a" /* AboutRoutingModule */].components]
-    })
-], AboutModule);
 
-//# sourceMappingURL=about.module.js.map
+
 
 /***/ })
 
