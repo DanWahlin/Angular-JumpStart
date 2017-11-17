@@ -1,8 +1,6 @@
 //Original version created by Cory Rylan: https://coryrylan.com/blog/angular-2-form-builder-and-validation-management
 import { AbstractControl } from '@angular/forms';
-import { Injectable } from '@angular/core';
 
-@Injectable()
 export class ValidationService {
      
     static getValidatorErrorMessage(code: string) {

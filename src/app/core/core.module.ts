@@ -14,7 +14,6 @@ import { SorterService } from './services/sorter.service';
 import { TrackByService } from './services/trackby.service';
 import { DialogService } from './services/dialog.service';
 import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
-import { ValidationService } from './services/validation.service';
 import { AuthService } from'./services/auth.service';
 import { EventBusService } from './services/event-bus.service';
 
@@ -23,7 +22,7 @@ import { EventBusService } from './services/event-bus.service';
   exports: [ GrowlerModule, RouterModule, HttpClientModule, ModalModule, OverlayModule, NavbarComponent ],
   declarations: [ NavbarComponent ],
   providers: [ SorterService, FilterService, DataService, TrackByService, 
-               DialogService, ValidationService, AuthService, EventBusService
+               DialogService, AuthService, EventBusService
               ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
