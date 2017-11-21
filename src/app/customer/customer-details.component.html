@@ -1,4 +1,4 @@
-<div *ngIf="customer">
+<div class="container" *ngIf="customer">
   <div class="row">
     <div class="col-md-2">
       <img src="assets/images/{{customer.gender | lowercase}}.png" class="details-image" />
@@ -24,6 +24,6 @@
     </div>
   </div>
 </div>   
-<div *ngIf="!customer" class="row">
+<div *ngIf="!customer" class="container">
    No customer found
 </div>  

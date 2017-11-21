@@ -13,7 +13,7 @@ export class OverlayRequestResponseInterceptor implements HttpInterceptor {
   constructor(private eventBus: EventBusService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const randomTime = this.getRandomIntInclusive(0, 2000);
+    const randomTime = this.getRandomIntInclusive(0, 1500);
     const started = Date.now();
     this.eventBus.emit(new EmitEvent(Events.httpRequest));
     return next
