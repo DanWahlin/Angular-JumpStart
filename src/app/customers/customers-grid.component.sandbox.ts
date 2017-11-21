@@ -23,7 +23,7 @@ export default sandboxOf(CustomersGridComponent, sandboxConfig)
       customers: customers.slice(0, 10)
     }
   })
-  .add('Without 4 Customers', {
+  .add('With 4 Customers', {
     template: `<cm-customers-grid [customers]="customers"></cm-customers-grid>`,
     context: {
       customers: customers.slice(0, 4)
