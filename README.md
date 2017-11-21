@@ -51,4 +51,11 @@ screenshots from the app:
 
 <img width="500" src="src/assets/images/screenshots/details.png" border="0" />
 
+## Running Angular Playground
+
+This application includes Angular Playground (http://www.angularplayground.it) which provides a great way to isolate components in a sandbox rather than loading the 
+entire application to see a given component. To run the playground run the following command:
+
+`npm run playground`
+
 

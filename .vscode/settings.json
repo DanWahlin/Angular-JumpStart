@@ -8,6 +8,5 @@
       "**/config/*.js": {
         "when": "$(basename).js.map"
       }
-    },
-    "typescript.check.tscVersion": false
+    }
 }
