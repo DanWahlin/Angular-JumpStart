@@ -3,5 +3,5 @@ import { AboutComponent } from './about.component';
 
 export default sandboxOf(AboutComponent)
   .add('About Component', {
-    template: `<cm-about>Hey playground!</cm-about>`
+    template: `<cm-about></cm-about>`
   });
