@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { GrowlerModule } from './growler/growler.module';
 import { ModalModule } from './modal/modal.module';
@@ -16,13 +16,19 @@ import { DialogService } from './services/dialog.service';
 import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
 import { AuthService } from'./services/auth.service';
 import { EventBusService } from './services/event-bus.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   imports: [ CommonModule, RouterModule, HttpClientModule, GrowlerModule, ModalModule, OverlayModule ],
   exports: [ GrowlerModule, RouterModule, HttpClientModule, ModalModule, OverlayModule, NavbarComponent ],
   declarations: [ NavbarComponent ],
   providers: [ SorterService, FilterService, DataService, TrackByService, 
-               DialogService, AuthService, EventBusService
+               DialogService, AuthService, EventBusService,
+               {
+                 provide: HTTP_INTERCEPTORS,
+                 useClass: AuthInterceptor,
+                 multi: true,
+               } 
               ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule

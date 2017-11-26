@@ -29,7 +29,7 @@
     "body-parser": "1.18.2"
   },
   "devDependencies": {
-    "@angular/cli": "1.5.0",
+    "@angular/cli": "1.5.4",
     "@angular/compiler-cli": "^5.0.2",
     "@angular/language-service": "^5.0.2",
     "@types/googlemaps": "3.30.0",
