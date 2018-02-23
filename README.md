@@ -24,7 +24,7 @@ Looking for expert onsite Angular/TypeScript training? We've trained the biggest
 
 ## Running the Application
 
-1. Install `Node.js 6.11` or higher. *IMPORTANT: The server uses ES2015 features AND the Angular CLI so you need Node 6.11 or higher!!!!*
+1. Install `Node.js 8.9` or higher. *IMPORTANT: The server uses ES2015 features AND the Angular CLI so you need this versin of Node.js!!!!*
 
 1. Run `npm install` to install app dependencies
 
