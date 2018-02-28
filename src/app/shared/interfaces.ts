@@ -11,8 +11,8 @@ export interface ICustomer {
     state: IState;
     orders?: IOrder[];
     orderTotal?: number;
-    latitude?: number,
-    longitude?: number
+    latitude?: number;
+    longitude?: number;
 }
 
 export interface IState {

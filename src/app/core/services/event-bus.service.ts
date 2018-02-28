@@ -8,7 +8,7 @@ export class EventBusService {
 
     constructor() { }
 
-    on(event: Events, action: any) : Subscription {
+    on(event: Events, action: any): Subscription {
          return this.subject
                     .filter((e: EmitEvent) => {
                       return e.name === event;

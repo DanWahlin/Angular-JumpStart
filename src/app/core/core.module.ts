@@ -14,29 +14,29 @@ import { SorterService } from './services/sorter.service';
 import { TrackByService } from './services/trackby.service';
 import { DialogService } from './services/dialog.service';
 import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
-import { AuthService } from'./services/auth.service';
+import { AuthService } from './services/auth.service';
 import { EventBusService } from './services/event-bus.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
-  imports: [ CommonModule, RouterModule, HttpClientModule, GrowlerModule, ModalModule, OverlayModule ],
-  exports: [ GrowlerModule, RouterModule, HttpClientModule, ModalModule, OverlayModule, NavbarComponent ],
-  declarations: [ NavbarComponent ],
-  providers: [ SorterService, FilterService, DataService, TrackByService, 
-               DialogService, AuthService, EventBusService,
-               {
-                 provide: HTTP_INTERCEPTORS,
-                 useClass: AuthInterceptor,
-                 multi: true,
-               } 
-              ] // these should be singleton
+  imports: [CommonModule, RouterModule, HttpClientModule, GrowlerModule, ModalModule, OverlayModule],
+  exports: [GrowlerModule, RouterModule, HttpClientModule, ModalModule, OverlayModule, NavbarComponent],
+  declarations: [NavbarComponent],
+  providers: [SorterService, FilterService, DataService, TrackByService,
+    DialogService, AuthService, EventBusService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ] // these should be singleton
 })
-export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
+export class CoreModule extends EnsureModuleLoadedOnceGuard {    // Ensure that CoreModule is only loaded into AppModule
 
-  //Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
-  constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
+  // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     super(parentModule);
-  }  
+  }
 
 }
 

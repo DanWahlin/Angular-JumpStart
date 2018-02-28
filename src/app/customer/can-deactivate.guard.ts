@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable }    from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 import { CustomerEditComponent } from './customer-edit.component';
 
@@ -15,7 +15,7 @@ export class CanDeactivateGuard implements CanDeactivate<CustomerEditComponent> 
 
     console.log(`CustomerId: ${route.parent.params['id']} URL: ${state.url}`);
 
-    //Check with component to see if we're able to deactivate
+    // Check with component to see if we're able to deactivate
     return component.canDeactivate();
   }
 }

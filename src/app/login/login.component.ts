@@ -16,12 +16,12 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     errorMessage: string;
 
-    constructor(private formBuilder: FormBuilder, 
-                private router: Router, 
+    constructor(private formBuilder: FormBuilder,
+                private router: Router,
                 private authService: AuthService,
                 private growler: GrowlerService) { }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.buildForm();
     }
 

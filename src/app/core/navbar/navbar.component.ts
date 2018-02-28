@@ -13,12 +13,12 @@ import { GrowlerService, GrowlerMessageType } from '../growler/growler.service';
 export class NavbarComponent implements OnInit, OnDestroy {
 
     isCollapsed: boolean;
-    loginLogoutText: string = 'Login';
+    loginLogoutText = 'Login';
     sub: Subscription;
 
     constructor(private router: Router, private authservice: AuthService, private growler: GrowlerService) { }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.sub = this.authservice.authChanged
             .subscribe((loggedIn: boolean) => {
                 this.setLoginLogoutText();
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         }
         this.redirectToLogin();
     }
-    
+
     redirectToLogin() {
         this.router.navigate(['/login']);
     }

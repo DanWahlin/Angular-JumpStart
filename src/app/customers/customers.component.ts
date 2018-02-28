@@ -4,8 +4,8 @@ import { DataService } from '../core/services/data.service';
 import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { FilterService } from '../core/services/filter.service';
 
-@Component({ 
-  selector: 'cm-customers', 
+@Component({
+  selector: 'cm-customers',
   templateUrl: './customers.component.html'
 })
 export class CustomersComponent implements OnInit {
@@ -16,11 +16,11 @@ export class CustomersComponent implements OnInit {
   filteredCustomers: ICustomer[] = [];
   displayMode: DisplayModeEnum;
   displayModeEnum = DisplayModeEnum;
-  totalRecords: number = 0;
-  pageSize: number = 10;
+  totalRecords = 0;
+  pageSize = 10;
 
   constructor(private dataService: DataService, private filterService: FilterService) { }
-  
+
   ngOnInit() {
     this.title = 'Customers';
     this.filterText = 'Filter Customers:';
@@ -52,8 +52,7 @@ export class CustomersComponent implements OnInit {
         data = data.toUpperCase();
         const props = ['firstName', 'lastName', 'city', 'state.name'];
         this.filteredCustomers = this.filterService.filter<ICustomer>(this.customers, data, props);
-    }
-    else {
+    } else {
       this.filteredCustomers = this.customers;
     }
   }

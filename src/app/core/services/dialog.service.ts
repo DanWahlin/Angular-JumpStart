@@ -4,16 +4,16 @@ import { Injectable } from '@angular/core';
 export class DialogService {
 
   promise: Promise<boolean>;
-  message: string = 'Is it OK?';
+  message = 'Is it OK?';
 
   confirm(message?: string) {
-    if (message) { this.message = message };
+    if (message) { this.message = message; }
     this.promise = new Promise<boolean>(this.resolver);
     return this.promise;
-  };
+  }
 
   resolver(resolve: any) {
       return resolve(window.confirm('Is it OK?'));
   }
-  
+
 }

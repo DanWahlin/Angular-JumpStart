@@ -10,8 +10,8 @@ const sandboxConfig = {
   imports: [ SharedModule, CoreModule ],
   providers: [
       { provide: DataService, useClass: MockDataService },
-      { provide: ActivatedRoute, useFactory: () => { 
-        let route = getActivatedRouteWithParent([{ id: '1' }]);  
+      { provide: ActivatedRoute, useFactory: () => {
+        const route = getActivatedRouteWithParent([{ id: '1' }]);
         return route;
       }}
   ],
@@ -20,14 +20,14 @@ const sandboxConfig = {
 
 export default sandboxOf(CustomerDetailsComponent, sandboxConfig)
   .add('With a Customer', {
-    template: `<cm-customer-details></cm-customer-details>`    
+    template: `<cm-customer-details></cm-customer-details>`
   })
   .add('Without a Customer', {
     template: `<cm-customer-details></cm-customer-details>`,
     providers: [
-      { provide: ActivatedRoute, useFactory: () => { 
-        let route = getActivatedRouteWithParent([{ id: null }]);  
+      { provide: ActivatedRoute, useFactory: () => {
+        const route = getActivatedRouteWithParent([{ id: null }]);
         return route;
       }}
-    ]   
+    ]
   });
