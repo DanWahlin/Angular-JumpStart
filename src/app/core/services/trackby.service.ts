@@ -4,15 +4,15 @@ import { ICustomer, IOrder } from '../../shared/interfaces';
 
 @Injectable()
 export class TrackByService {
-  
-  customer(index:number, customer: ICustomer) {
+
+  customer(index: number, customer: ICustomer) {
     return customer.id;
   }
 
-  order(index:number, order: IOrder) {
+  order(index: number, order: IOrder) {
     return index;
   }
 
 
-  
+
 }

@@ -8,19 +8,19 @@ import { IUserLogin } from '../../shared/interfaces';
 
 @Injectable()
 export class AuthService {
-    
-    authUrl: string = '/api/auth';
-    isAuthenticated: boolean = false;
+
+    authUrl = '/api/auth';
+    isAuthenticated = false;
     redirectUrl: string;
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(private http: HttpClient) { }
 
     private userAuthChanged(status: boolean) {
-       this.authChanged.emit(status); //Raise changed event
+       this.authChanged.emit(status); // Raise changed event
     }
 
-    login(userLogin: IUserLogin) : Observable<boolean> {
+    login(userLogin: IUserLogin): Observable<boolean> {
         return this.http.post<boolean>(this.authUrl + '/login', userLogin)
             .pipe(
                 map(loggedIn => {
@@ -32,12 +32,12 @@ export class AuthService {
             );
     }
 
-    logout() : Observable<boolean> {
+    logout(): Observable<boolean> {
         return this.http.post<boolean>(this.authUrl + '/logout', null)
             .pipe(
                 map(loggedOut => {
                     this.isAuthenticated = !loggedOut;
-                    this.userAuthChanged(!loggedOut); //Return loggedIn status
+                    this.userAuthChanged(!loggedOut); // Return loggedIn status
                     return status;
                 }),
                 catchError(this.handleError)
@@ -45,12 +45,12 @@ export class AuthService {
     }
 
     private handleError(error: HttpErrorResponse) {
-        console.error('server error:', error); 
+        console.error('server error:', error);
         if (error.error instanceof Error) {
-          let errMessage = error.error.message;
+          const errMessage = error.error.message;
           return Observable.throw(errMessage);
           // Use the following instead if using lite-server
-          //return Observable.throw(err.text() || 'backend server error');
+          // return Observable.throw(err.text() || 'backend server error');
         }
         return Observable.throw(error || 'Server error');
     }

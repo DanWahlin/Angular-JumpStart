@@ -9,8 +9,8 @@ import { ICustomer, IOrder, IState, IPagedResults, IApiResponse } from '../../sh
 @Injectable()
 export class DataService {
 
-    customersBaseUrl: string = '/api/customers';
-    ordersBaseUrl: string = '/api/orders';
+    customersBaseUrl = '/api/customers';
+    ordersBaseUrl = '/api/orders';
     orders: IOrder[];
     states: IState[];
 
@@ -23,7 +23,7 @@ export class DataService {
             .pipe(
                 map(res => {
                     const totalRecords = +res.headers.get('X-InlineCount');
-                    let customers = res.body as ICustomer[];
+                    const customers = res.body as ICustomer[];
                     this.calculateCustomersOrderTotal(customers);
                     return {
                         results: customers,
@@ -33,7 +33,7 @@ export class DataService {
                 catchError(this.handleError)
             );
     }
-    
+
     getCustomers(): Observable<ICustomer[]> {
         return this.http.get<ICustomer[]>(this.customersBaseUrl)
             .pipe(
@@ -58,7 +58,7 @@ export class DataService {
 
     insertCustomer(customer: ICustomer): Observable<ICustomer> {
         return this.http.post<ICustomer>(this.customersBaseUrl, customer)
-            .pipe(catchError(this.handleError))
+            .pipe(catchError(this.handleError));
     }
 
     updateCustomer(customer: ICustomer): Observable<boolean> {
@@ -85,19 +85,19 @@ export class DataService {
     private handleError(error: HttpErrorResponse) {
         console.error('server error:', error);
         if (error.error instanceof Error) {
-            let errMessage = error.error.message;
+            const errMessage = error.error.message;
             return Observable.throw(errMessage);
             // Use the following instead if using lite-server
-            //return Observable.throw(err.text() || 'backend server error');
+            // return Observable.throw(err.text() || 'backend server error');
         }
         return Observable.throw(error || 'Node.js server error');
     }
 
     calculateCustomersOrderTotal(customers: ICustomer[]) {
-        for (let customer of customers) {
+        for (const customer of customers) {
             if (customer && customer.orders) {
                 let total = 0;
-                for (let order of customer.orders) {
+                for (const order of customer.orders) {
                     total += order.itemCost;
                 }
                 customer.orderTotal = total;
@@ -105,12 +105,12 @@ export class DataService {
         }
     }
 
-    //Not using now but leaving since they show how to create
-    //and work with custom observables
+    // Not using now but leaving since they show how to create
+    // and work with custom observables
 
-    //Would need following import added:
-    //import { Observer } from 'rxjs/Observer';
-    
+    // Would need following import added:
+    // import { Observer } from 'rxjs/Observer';
+
     // createObservable(data: any): Observable<any> {
     //     return Observable.create((observer: Observer<any>) => {
     //         observer.next(data);

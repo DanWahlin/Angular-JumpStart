@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-@Component({ 
+@Component({
   selector: 'cm-app-component',
   templateUrl: './app.component.html'
 })

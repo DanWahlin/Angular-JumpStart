@@ -17,9 +17,9 @@ export class CustomerDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-      //Subscribe to params so if it changes we pick it up. Could use this.route.parent.snapshot.params["id"] to simplify it.
+      // Subscribe to params so if it changes we pick it up. Could use this.route.parent.snapshot.params["id"] to simplify it.
       this.route.parent.params.subscribe((params: Params) => {
-        let id = +params['id'];
+        const id = +params['id'];
         this.dataService.getCustomer(id)
             .subscribe((customer: ICustomer) => {
               this.customer = customer;

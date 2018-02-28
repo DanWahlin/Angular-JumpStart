@@ -11,8 +11,8 @@ import { TrackByService } from '../core/services/trackby.service';
 export class OrdersComponent implements OnInit {
 
     customers: ICustomer[];
-    totalRecords: number = 0;
-    pageSize: number = 5;
+    totalRecords = 0;
+    pageSize = 5;
 
     constructor(private dataService: DataService, private trackbyService: TrackByService) { }
 

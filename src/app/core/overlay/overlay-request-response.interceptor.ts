@@ -18,11 +18,11 @@ export class OverlayRequestResponseInterceptor implements HttpInterceptor {
     this.eventBus.emit(new EmitEvent(Events.httpRequest));
     return next
           .handle(req)
-          .delay(randomTime)  //Simulate random Http call delays
+          .delay(randomTime)  // Simulate random Http call delays
           .do(event => {
             if (event instanceof HttpResponse) {
               const elapsed = Date.now() - started;
-              //console.log('Http response elapsed time: ' + elapsed);
+              // console.log('Http response elapsed time: ' + elapsed);
               this.eventBus.emit(new EmitEvent(Events.httpResponse));
             }
           });
@@ -31,7 +31,7 @@ export class OverlayRequestResponseInterceptor implements HttpInterceptor {
   getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+    return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
 }
 
 }

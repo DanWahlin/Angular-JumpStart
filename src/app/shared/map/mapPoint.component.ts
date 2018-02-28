@@ -12,7 +12,7 @@ export class MapPointComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { 
+  ngOnInit() {
 
   }
 

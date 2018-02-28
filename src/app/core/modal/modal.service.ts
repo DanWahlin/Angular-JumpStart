@@ -10,7 +10,7 @@ export interface IModalContent {
 
 @Injectable()
 export class ModalService {
-    
+
     constructor() { }
 
     show: (modalContent: IModalContent) => Promise<boolean>;
