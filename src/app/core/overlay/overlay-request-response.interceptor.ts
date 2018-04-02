@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
+import { tap, delay, catchError } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 import { EventBusService, EmitEvent, Events } from '../services/event-bus.service';
 
@@ -18,14 +18,20 @@ export class OverlayRequestResponseInterceptor implements HttpInterceptor {
     this.eventBus.emit(new EmitEvent(Events.httpRequest));
     return next
           .handle(req)
-          .delay(randomTime)  // Simulate random Http call delays
-          .do(event => {
-            if (event instanceof HttpResponse) {
-              const elapsed = Date.now() - started;
-              // console.log('Http response elapsed time: ' + elapsed);
+          .pipe(
+            delay(randomTime),  // Simulate random Http call delays
+            tap(event => {
+              if (event instanceof HttpResponse) {
+                const elapsed = Date.now() - started;
+                // console.log('Http response elapsed time: ' + elapsed);
+                this.eventBus.emit(new EmitEvent(Events.httpResponse));
+              }
+            }),
+            catchError(err => {
               this.eventBus.emit(new EmitEvent(Events.httpResponse));
-            }
-          });
+              return of(null);
+            }) 
+          );
   }
 
   getRandomIntInclusive(min, max) {
