@@ -1,4 +1,4 @@
-import { trigger, state, animate, style, transition } from '@angular/core';
+import { trigger, state, animate, style, transition } from '@angular/animations';
 
 // Post by Gerard Sans: https://medium.com/google-developer-experts/angular-2-animate-router-transitions-6de179e00204#.7h2femijg
 

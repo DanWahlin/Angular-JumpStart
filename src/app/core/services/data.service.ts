@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { ICustomer, IOrder, IState, IPagedResults, IApiResponse } from '../../shared/interfaces';
@@ -109,7 +109,7 @@ export class DataService {
     // and work with custom observables
 
     // Would need following import added:
-    // import { Observer } from 'rxjs/Observer';
+    // import { Observer } from 'rxjs';
 
     // createObservable(data: any): Observable<any> {
     //     return Observable.create((observer: Observer<any>) => {

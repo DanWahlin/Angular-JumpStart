@@ -1,7 +1,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { IUserLogin } from '../../shared/interfaces';
@@ -38,7 +38,7 @@ export class AuthService {
                 map(loggedOut => {
                     this.isAuthenticated = !loggedOut;
                     this.userAuthChanged(!loggedOut); // Return loggedIn status
-                    return status;
+                    return loggedOut;
                 }),
                 catchError(this.handleError)
             );

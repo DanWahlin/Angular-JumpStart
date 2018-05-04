@@ -5,7 +5,7 @@ import {
   ContentChildren, ElementRef, QueryList, ChangeDetectionStrategy
 } from '@angular/core';
 
-import 'rxjs/add/operator/debounceTime';
+import { debounceTime } from 'rxjs/operators';
 
 import { MapPointComponent } from './mapPoint.component';
 
@@ -63,9 +63,13 @@ export class MapComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.mapPoints.changes.debounceTime(500).subscribe(() => {
-      if (this.enabled) { this.renderMapPoints(); }
-    });
+    this.mapPoints.changes
+      .pipe(
+        debounceTime(500)
+      )
+      .subscribe(() => {
+        if (this.enabled) { this.renderMapPoints(); }
+      })
   }
 
   init() {

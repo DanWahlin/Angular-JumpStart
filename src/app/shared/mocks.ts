@@ -1,15 +1,17 @@
-import { ActivatedRouteSnapshot, ActivatedRoute, UrlSegment, Params, Data, Route, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { Type } from '@angular/core';
+import { ActivatedRouteSnapshot, ActivatedRoute, UrlSegment, Params, Data, Route, ParamMap } from '@angular/router';
+
+import { Observable, of } from 'rxjs';
+
 import { ICustomer, IPagedResults } from './interfaces';
 
 export class MockDataService {
     getCustomer(id: number): Observable<ICustomer> {
         console.log(id);
         if (id === 1) {
-            return Observable.of(customers.slice(0, 1)[0]);
+            return of(customers.slice(0, 1)[0]);
         } else {
-            return Observable.of(null);
+            return of(null);
         }
     }
 
@@ -23,14 +25,14 @@ export class MockDataService {
             top = skip + (customers.length - skip);
         }
 
-        return Observable.of({
+        return of({
             totalRecords: customers.length,
             results: customers.slice(skip, top)
         });
     }
 
     getCustomers(): Observable<ICustomer[]> {
-        return Observable.of(customers);
+        return of(customers);
     }
 }
 
@@ -62,7 +64,7 @@ export function getActivatedRouteWithParent(params: any[]) {
     if (params) {
         for (const param of params) {
             // var keyNames = Object.keys(param);
-            route.parent.params = Observable.of(param);
+            route.parent.params = of(param);
         }
     }
 

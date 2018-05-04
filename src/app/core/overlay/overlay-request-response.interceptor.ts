@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 import { tap, delay, catchError } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
 
 import { EventBusService, EmitEvent, Events } from '../services/event-bus.service';
 
