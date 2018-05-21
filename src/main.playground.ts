@@ -3,7 +3,7 @@ import { PlaygroundModule } from 'angular-playground';
 
 PlaygroundModule
   .configure({
-      selector: 'app-root',
+      selector: 'cm-app-component',
       overlay: false,
       modules: []
   });
