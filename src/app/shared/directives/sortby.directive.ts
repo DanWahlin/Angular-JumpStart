@@ -1,10 +1,7 @@
-import { Directive, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[cm-sort-by]',
-  host: {
-    '(click)': 'onClick($event)'
-  }
+  selector: '[cmSortBy]'
 })
 export class SortByDirective {
 
@@ -15,14 +12,18 @@ export class SortByDirective {
 
   constructor() { }
 
-  @Input('cm-sort-by')
+  @Input('cmSortBy')
   set sortBy(value: string) {
     this.sortProperty = value;
   }
 
-  onClick(event: any) {
+  @HostListener('click')
+  onClick() {
     event.preventDefault();
     this.sorted.next(this.sortProperty); // Raise clicked event
   }
+
+
+
 
 }

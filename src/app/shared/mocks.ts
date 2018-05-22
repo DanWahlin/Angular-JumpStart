@@ -4,10 +4,12 @@ import { ActivatedRouteSnapshot, ActivatedRoute, UrlSegment, Params, Data, Route
 import { Observable, of } from 'rxjs';
 
 import { ICustomer, IPagedResults } from './interfaces';
+import { LoggerService } from '../core/services/logger.service';
 
 export class MockDataService {
+    constructor(private logger: LoggerService) {}
+
     getCustomer(id: number): Observable<ICustomer> {
-        console.log(id);
         if (id === 1) {
             return of(customers.slice(0, 1)[0]);
         } else {

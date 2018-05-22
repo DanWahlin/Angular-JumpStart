@@ -69,7 +69,7 @@ export class MapComponent implements OnInit, AfterContentInit {
       )
       .subscribe(() => {
         if (this.enabled) { this.renderMapPoints(); }
-      })
+      });
   }
 
   init() {
@@ -101,17 +101,17 @@ export class MapComponent implements OnInit, AfterContentInit {
     if (script) {
       if (this.isEnabled) { this.renderMap(); }
     } else {
-      const script = document.createElement('script');
-      script.id = 'googlemaps';
-      script.type = 'text/javascript';
-      script.async = true;
-      script.defer = true;
-      script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBnfvR2KoVNAjdYs-GpXjNPwqc9PoqVr4U';
-      script.onload = () => {
+      const mapsScript = document.createElement('script');
+      mapsScript.id = 'googlemaps';
+      mapsScript.type = 'text/javascript';
+      mapsScript.async = true;
+      mapsScript.defer = true;
+      mapsScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBnfvR2KoVNAjdYs-GpXjNPwqc9PoqVr4U';
+      mapsScript.onload = () => {
         this.loadingScript = false;
         if (this.isEnabled) { this.renderMap(); }
       };
-      document.body.appendChild(script);
+      document.body.appendChild(mapsScript);
     }
   }
 

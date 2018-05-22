@@ -3,9 +3,12 @@ import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@ang
 import { Observable } from 'rxjs';
 
 import { CustomerEditComponent } from './customer-edit.component';
+import { LoggerService } from '../core/services/logger.service';
 
 @Injectable()
 export class CanDeactivateGuard implements CanDeactivate<CustomerEditComponent> {
+
+  constructor(private logger: LoggerService) {}
 
   canDeactivate(
     component: CustomerEditComponent,
@@ -13,7 +16,7 @@ export class CanDeactivateGuard implements CanDeactivate<CustomerEditComponent> 
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
 
-    console.log(`CustomerId: ${route.parent.params['id']} URL: ${state.url}`);
+    this.logger.log(`CustomerId: ${route.parent.params['id']} URL: ${state.url}`);
 
     // Check with component to see if we're able to deactivate
     return component.canDeactivate();

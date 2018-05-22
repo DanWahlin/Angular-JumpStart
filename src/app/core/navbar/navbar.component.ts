@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
 import { GrowlerService, GrowlerMessageType } from '../growler/growler.service';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
     selector: 'cm-navbar',
@@ -16,14 +17,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
     loginLogoutText = 'Login';
     sub: Subscription;
 
-    constructor(private router: Router, private authservice: AuthService, private growler: GrowlerService) { }
+    constructor(private router: Router,
+        private authservice: AuthService,
+        private growler: GrowlerService,
+        private logger: LoggerService) { }
 
     ngOnInit() {
         this.sub = this.authservice.authChanged
             .subscribe((loggedIn: boolean) => {
                 this.setLoginLogoutText();
             },
-            (err: any) => console.log(err));
+            (err: any) => this.logger.log(err));
     }
 
     ngOnDestroy() {
@@ -40,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                     this.router.navigate(['/customers']);
                     return;
                 },
-                (err: any) => console.log(err));
+                (err: any) => this.logger.log(err));
         }
         this.redirectToLogin();
     }

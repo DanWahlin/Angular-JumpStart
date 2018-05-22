@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { propertyResolver } from '../../core/services/property-resolver';
+import { PropertyResolver } from '../../core/services/property-resolver';
 
 @Injectable()
 export class FilterService {
@@ -12,7 +12,7 @@ export class FilterService {
             let match = false;
             for (const prop of props) {
                 if (prop.indexOf('.') > -1) {
-                   const value = propertyResolver.resolve(prop, item);
+                   const value = PropertyResolver.resolve(prop, item);
                    if (value && value.toUpperCase().indexOf(data) > -1) {
                       match = true;
                       break;

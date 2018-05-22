@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { propertyResolver } from '../../core/services/property-resolver';
+import { PropertyResolver } from '../../core/services/property-resolver';
 
 @Injectable()
 export class SorterService {
@@ -18,8 +18,8 @@ export class SorterService {
 
             // Handle resolving complex properties such as 'state.name' for prop value
             if (prop && prop.indexOf('.') > -1) {
-              aVal = propertyResolver.resolve(prop, a);
-              bVal = propertyResolver.resolve(prop, b);
+              aVal = PropertyResolver.resolve(prop, a);
+              bVal = PropertyResolver.resolve(prop, b);
             } else {
               aVal = a[prop];
               bVal = b[prop];

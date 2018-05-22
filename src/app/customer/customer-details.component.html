@@ -15,7 +15,7 @@
   </div>    
   <br /><br />
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="customer && customer.latitude && customer.longitude">
       <cm-map [latitude]="customer.latitude" 
            [longitude]="customer.longitude" 
            [zoom]="10" 

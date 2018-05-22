@@ -6,6 +6,7 @@ import { DataService } from '../core/services/data.service';
 import { ModalService, IModalContent } from '../core/modal/modal.service';
 import { ICustomer, IState } from '../shared/interfaces';
 import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
+import { LoggerService } from '../core/services/logger.service';
 
 @Component({
   selector: 'cm-customer-edit',
@@ -37,7 +38,8 @@ export class CustomerEditComponent implements OnInit {
     private route: ActivatedRoute,
     private dataService: DataService,
     private growler: GrowlerService,
-    private modalService: ModalService) { }
+    private modalService: ModalService,
+    private logger: LoggerService) { }
 
   ngOnInit() {
     // Subscribe to params so if it changes we pick it up. Don't technically need that here
@@ -74,7 +76,7 @@ export class CustomerEditComponent implements OnInit {
             this.errorMessage = msg;
           }
         },
-          (err: any) => console.log(err));
+          (err: any) => this.logger.log(err));
     } else {
       this.dataService.updateCustomer(this.customer)
         .subscribe((status: boolean) => {
@@ -89,7 +91,7 @@ export class CustomerEditComponent implements OnInit {
             this.errorMessage = msg;
           }
         },
-          (err: any) => console.log(err));
+          (err: any) => this.logger.log(err));
     }
   }
 
@@ -109,7 +111,7 @@ export class CustomerEditComponent implements OnInit {
           this.errorMessage = 'Unable to delete customer';
         }
       },
-        (err) => console.log(err));
+        (err) => this.logger.log(err));
   }
 
   canDeactivate(): Promise<boolean> | boolean {

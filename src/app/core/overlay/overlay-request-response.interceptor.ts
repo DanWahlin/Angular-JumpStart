@@ -22,14 +22,13 @@ export class OverlayRequestResponseInterceptor implements HttpInterceptor {
             tap(event => {
               if (event instanceof HttpResponse) {
                 const elapsed = Date.now() - started;
-                // console.log('Http response elapsed time: ' + elapsed);
                 this.eventBus.emit(new EmitEvent(Events.httpResponse));
               }
             }),
             catchError(err => {
               this.eventBus.emit(new EmitEvent(Events.httpResponse));
               return of(null);
-            }) 
+            })
           );
   }
 

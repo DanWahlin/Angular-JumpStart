@@ -6,6 +6,7 @@ import { AuthService } from '../core/services/auth.service';
 import { ValidationService } from '../core/services/validation.service';
 import { IUserLogin } from '../shared/interfaces';
 import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
+import { LoggerService } from '../core/services/logger.service';
 
 @Component({
     selector: 'cm-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
                 private router: Router,
                 private authService: AuthService,
-                private growler: GrowlerService) { }
+                private growler: GrowlerService,
+                private logger: LoggerService) { }
 
     ngOnInit() {
         this.buildForm();
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
                     this.growler.growl(loginError, GrowlerMessageType.Danger);
                 }
             },
-            (err: any) => console.log(err));
+            (err: any) => this.logger.log(err));
     }
 
 }

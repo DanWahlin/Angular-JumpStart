@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { GrowlerService, GrowlerMessageType } from './growler.service';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
   selector: 'cm-growler',
@@ -22,7 +23,8 @@ export class GrowlerComponent implements OnInit {
   @Input() position = 'bottom-right';
   @Input() timeout = 3000;
 
-  constructor(private growlerService: GrowlerService) {
+  constructor(private growlerService: GrowlerService,
+    private logger: LoggerService) {
     growlerService.growl = this.growl.bind(this);
   }
 
@@ -50,7 +52,7 @@ export class GrowlerComponent implements OnInit {
       if (growl.id === id) {
         this.growls.splice(index, 1);
         this.growlCount--;
-        console.log('removed ' + id);
+        this.logger.log('removed ' + id);
       }
     });
   }
