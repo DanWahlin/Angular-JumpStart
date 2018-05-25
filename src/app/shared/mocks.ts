@@ -4,10 +4,9 @@ import { ActivatedRouteSnapshot, ActivatedRoute, UrlSegment, Params, Data, Route
 import { Observable, of } from 'rxjs';
 
 import { ICustomer, IPagedResults } from './interfaces';
-import { LoggerService } from '../core/services/logger.service';
 
 export class MockDataService {
-    constructor(private logger: LoggerService) {}
+    constructor() {}
 
     getCustomer(id: number): Observable<ICustomer> {
         if (id === 1) {

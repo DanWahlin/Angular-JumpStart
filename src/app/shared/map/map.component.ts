@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 
 import { debounceTime } from 'rxjs/operators';
-
 import { MapPointComponent } from './mapPoint.component';
 
 @Component({
