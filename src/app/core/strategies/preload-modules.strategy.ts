@@ -1,6 +1,5 @@
 // Preloading example from https://angular.io/docs/ts/latest/guide/router.html#!#custom-preloading
 
-import 'rxjs/add/observable/of';
 import { Injectable } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
 import { Observable, of } from 'rxjs';
