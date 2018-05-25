@@ -48,7 +48,7 @@ th {
 }
 
 .navbar {
-    /* height: 60px; */
+    min-height: 60px;
 }
 
 .navbar .nav > li.toolbar-item > a {
