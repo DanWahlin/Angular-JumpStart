@@ -1,9 +1,9 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EnsureModuleLoadedOnceGuard } from '../ensureModuleLoadedOnceGuard';
 import { GrowlerComponent } from './growler.component';
 import { GrowlerService } from './growler.service';
+import { EnsureModuleLoadedOnceGuard } from '../ensure-module-loaded-once.guard';
 
 @NgModule({
   imports: [CommonModule],

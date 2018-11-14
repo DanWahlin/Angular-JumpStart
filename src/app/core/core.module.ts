@@ -13,7 +13,7 @@ import { FilterService } from './services/filter.service';
 import { SorterService } from './services/sorter.service';
 import { TrackByService } from './services/trackby.service';
 import { DialogService } from './services/dialog.service';
-import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
+import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { AuthService } from './services/auth.service';
 import { EventBusService } from './services/event-bus.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';

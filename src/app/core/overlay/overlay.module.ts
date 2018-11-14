@@ -2,9 +2,9 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { EnsureModuleLoadedOnceGuard } from '../ensureModuleLoadedOnceGuard';
 import { OverlayRequestResponseInterceptor } from './overlay-request-response.interceptor';
 import { OverlayComponent } from './overlay.component';
+import { EnsureModuleLoadedOnceGuard } from '../ensure-module-loaded-once.guard';
 
 
 @NgModule({
