@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { DataService } from '../core/services/data.service';
-import { ICustomer, IOrder, IOrderItem } from '../shared/interfaces';
+import { DataService } from '../../core/services/data.service';
+import { ICustomer, IOrder, IOrderItem } from '../../shared/interfaces';
 
 @Component({
   selector: 'cm-customer-orders',

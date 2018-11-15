@@ -1,9 +1,9 @@
 import { sandboxOf } from 'angular-playground';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { CustomersCardComponent } from './customers-card.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CoreModule } from '../core/core.module';
-import { customers } from '../shared/mocks';
+import { CoreModule } from '../../core/core.module';
+import { customers } from '../../shared/mocks';
 
 const sandboxConfig = {
   imports: [ SharedModule, CoreModule, RouterTestingModule ],
