@@ -6,6 +6,7 @@ sandboxes.ts
 # Code Editor Settings
 .idea
 .vs
+.vscode
 
 # Build Generated Files
 src/app/**/*.js
