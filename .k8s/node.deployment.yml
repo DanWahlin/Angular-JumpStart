@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: node-env
+  name: node-env
+data:
+  NODE_ENV: production
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: node
+  name: node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+      - env:
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_ENV
+              name: node-env
+        image: node-service-jumpstart
+        imagePullPolicy: IfNotPresent
+        name: node-service-jumpstart
+        ports:
+        - containerPort: 3000
+        resources: {}

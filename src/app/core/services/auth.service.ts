@@ -9,7 +9,9 @@ import { IUserLogin } from '../../shared/interfaces';
 @Injectable()
 export class AuthService {
 
-    authUrl = '/api/auth';
+    // Can use /api/auth below when running locally
+    // Full domain/port is included for Docker example
+    authUrl = 'http://localhost:3000/api/auth';
     isAuthenticated = false;
     redirectUrl: string;
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();

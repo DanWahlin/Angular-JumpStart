@@ -4,13 +4,24 @@ var express     = require('express'),
     fs          = require('fs'),
     app         = express(),
     customers   = JSON.parse(fs.readFileSync('data/customers.json', 'utf-8')),
-    states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8'));
+    states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8')),
+    inContainer = process.env.CONTAINER;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//CORS
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, Authorization, X-Requested-With, X-XSRF-TOKEN, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+    next();
+});
+
 //The dist folder has our static resources (index.html, css, images)
-app.use(express.static(__dirname + '/dist')); 
+if (!inContainer) {
+    app.use(express.static(__dirname + '/dist')); 
+}
 
 app.get('/api/customers/page/:skip/:top', (req, res) => {
     const topVal = req.params.top,
@@ -121,10 +132,12 @@ app.listen(3000);
 console.log('Express listening on port 3000.');
 
 //Open browser
-var opn = require('opn');
+if (!inContainer) {
+    var opn = require('opn');
 
-opn('http://localhost:3000').then(() => {
-    console.log('Browser closed.');
-});
+    opn('http://localhost:3000').then(() => {
+        console.log('Browser closed.');
+    });
+}
 
 

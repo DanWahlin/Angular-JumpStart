@@ -9,8 +9,10 @@ import { ICustomer, IOrder, IState, IPagedResults, IApiResponse } from '../../sh
 @Injectable()
 export class DataService {
 
-    customersBaseUrl = '/api/customers';
-    ordersBaseUrl = '/api/orders';
+    // Can use /api/customers and /api/orders below when running locally
+    // Full domain/port is included for Docker example
+    customersBaseUrl = 'http://localhost:3000/api/customers';
+    ordersBaseUrl = 'http://localhost:3000/api/orders';
     orders: IOrder[];
     states: IState[];
 
