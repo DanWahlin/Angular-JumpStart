@@ -61,4 +61,7 @@ entire application to see a given component. To run the playground run the follo
 
 `npm run playground`
 
+## Running in Kubernetes
+
+
 
