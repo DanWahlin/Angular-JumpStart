@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -10,13 +11,14 @@ import { ICustomer, IOrder, IState, IPagedResults, IApiResponse } from '../../sh
 export class DataService {
 
     // Can use /api/customers and /api/orders below when running locally
-    // Full domain/port is included for Docker example
-    customersBaseUrl = 'http://localhost:8080/api/customers';
-    ordersBaseUrl = 'http://localhost:8080/api/orders';
+    // Full domain/port is included for Docker example or if it were to run in the cloud
+    hostPort = `${this.window.location.protocol}//${this.window.location.hostname}:${this.window.location.port}`;
+    customersBaseUrl = this.hostPort + '/api/customers';
+    ordersBaseUrl = this.hostPort + '/api/orders';
     orders: IOrder[];
     states: IState[];
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, @Inject('Window') private window: Window) { }
 
     getCustomersPage(page: number, pageSize: number): Observable<IPagedResults<ICustomer[]>> {
         return this.http.get<ICustomer[]>(

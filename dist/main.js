@@ -243,7 +243,8 @@ var CoreModule = /** @class */ (function (_super) {
                     provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"],
                     useClass: _interceptors_auth_interceptor__WEBPACK_IMPORTED_MODULE_17__["AuthInterceptor"],
                     multi: true,
-                }
+                },
+                { provide: 'Window', useFactory: function () { return window; } }
             ] // these should be singleton
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"])()),
@@ -1078,12 +1079,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DataService = /** @class */ (function () {
-    function DataService(http) {
+    function DataService(http, window) {
         this.http = http;
+        this.window = window;
         // Can use /api/customers and /api/orders below when running locally
-        // Full domain/port is included for Docker example
-        this.customersBaseUrl = 'http://localhost:8080/api/customers';
-        this.ordersBaseUrl = 'http://localhost:8080/api/orders';
+        // Full domain/port is included for Docker example or if it were to run in the cloud
+        this.hostPort = this.window.location.protocol + "//" + this.window.location.hostname + ":" + this.window.location.port;
+        this.customersBaseUrl = this.hostPort + '/api/customers';
+        this.ordersBaseUrl = this.hostPort + '/api/orders';
     }
     DataService.prototype.getCustomersPage = function (page, pageSize) {
         var _this = this;
@@ -1155,7 +1158,8 @@ var DataService = /** @class */ (function () {
     };
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])('Window')),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], Window])
     ], DataService);
     return DataService;
 }());
