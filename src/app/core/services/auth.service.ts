@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
@@ -10,13 +10,15 @@ import { IUserLogin } from '../../shared/interfaces';
 export class AuthService {
 
     // Can use /api/auth below when running locally
-    // Full domain/port is included for Docker example
-    authUrl = 'http://localhost:8080/api/auth';
+    // Full domain/port is included for Docker example or if it were to run in the cloud
+    port = (this.window.location.port) ? ':' + this.window.location.port : '';
+    baseUrl = `${this.window.location.protocol}//${this.window.location.hostname}${this.port}`;
+    authUrl = this.baseUrl + '/api/auth';
     isAuthenticated = false;
     redirectUrl: string;
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, @Inject('Window') private window: Window) { }
 
     private userAuthChanged(status: boolean) {
        this.authChanged.emit(status); // Raise changed event

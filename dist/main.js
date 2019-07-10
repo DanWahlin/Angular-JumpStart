@@ -1004,11 +1004,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AuthService = /** @class */ (function () {
-    function AuthService(http) {
+    function AuthService(http, window) {
         this.http = http;
+        this.window = window;
         // Can use /api/auth below when running locally
-        // Full domain/port is included for Docker example
-        this.authUrl = 'http://localhost:8080/api/auth';
+        // Full domain/port is included for Docker example or if it were to run in the cloud
+        this.port = (this.window.location.port) ? ':' + this.window.location.port : '';
+        this.baseUrl = this.window.location.protocol + "//" + this.window.location.hostname + this.port;
+        this.authUrl = this.baseUrl + '/api/auth';
         this.isAuthenticated = false;
         this.authChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
@@ -1049,7 +1052,8 @@ var AuthService = /** @class */ (function () {
     ], AuthService.prototype, "authChanged", void 0);
     AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])('Window')),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], Window])
     ], AuthService);
     return AuthService;
 }());
@@ -1084,9 +1088,10 @@ var DataService = /** @class */ (function () {
         this.window = window;
         // Can use /api/customers and /api/orders below when running locally
         // Full domain/port is included for Docker example or if it were to run in the cloud
-        this.hostPort = this.window.location.protocol + "//" + this.window.location.hostname + ":" + this.window.location.port;
-        this.customersBaseUrl = this.hostPort + '/api/customers';
-        this.ordersBaseUrl = this.hostPort + '/api/orders';
+        this.port = (this.window.location.port) ? ':' + this.window.location.port : '';
+        this.baseUrl = this.window.location.protocol + "//" + this.window.location.hostname + this.port;
+        this.customersBaseUrl = this.baseUrl + '/api/customers';
+        this.ordersBaseUrl = this.baseUrl + '/api/orders';
     }
     DataService.prototype.getCustomersPage = function (page, pageSize) {
         var _this = this;
