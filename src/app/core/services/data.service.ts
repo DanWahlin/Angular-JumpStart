@@ -11,8 +11,8 @@ export class DataService {
 
     // Can use /api/customers and /api/orders below when running locally
     // Full domain/port is included for Docker example
-    customersBaseUrl = 'http://localhost:3000/api/customers';
-    ordersBaseUrl = 'http://localhost:3000/api/orders';
+    customersBaseUrl = 'http://localhost:8080/api/customers';
+    ordersBaseUrl = 'http://localhost:8080/api/orders';
     orders: IOrder[];
     states: IState[];
 

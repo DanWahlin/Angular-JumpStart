@@ -36,5 +36,5 @@ spec:
         imagePullPolicy: IfNotPresent
         name: node-service-jumpstart
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
         resources: {}

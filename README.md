@@ -32,7 +32,7 @@ Looking for expert onsite Angular/TypeScript training? We've trained the biggest
 
 1. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
 
-1. Go to http://localhost:3000 in your browser 
+1. Go to http://localhost:8080 in your browser 
 
 Simply clone the project or download and extract the .zip to get started. 
 

@@ -11,7 +11,7 @@ export class AuthService {
 
     // Can use /api/auth below when running locally
     // Full domain/port is included for Docker example
-    authUrl = 'http://localhost:3000/api/auth';
+    authUrl = 'http://localhost:8080/api/auth';
     isAuthenticated = false;
     redirectUrl: string;
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();

@@ -30,7 +30,7 @@ services:
       - NODE_ENV=production
       - CONTAINER=true
     ports:
-      - "3000:3000"
+      - "8080:8080"
     networks:
       - app-network
 

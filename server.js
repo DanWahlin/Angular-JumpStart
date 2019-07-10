@@ -7,7 +7,7 @@ var express     = require('express'),
     states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8')),
     inContainer = process.env.CONTAINER,
     inAzure = process.env.WEBSITE_RESOURCE_GROUP,
-    port = process.env.PORT || 3000;
+    port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,6 +23,7 @@ app.use(function(req, res, next) {
 //The dist folder has our static resources (index.html, css, images)
 if (!inContainer) {
     app.use(express.static(__dirname + '/dist')); 
+    console.log(__dirname);
 }
 
 app.get('/api/customers/page/:skip/:top', (req, res) => {
@@ -131,13 +132,13 @@ app.all('/*', function(req, res) {
 
 app.listen(port);
 
-console.log('Express listening on port 3000.');
+console.log('Express listening on port ' + port);
 
 //Open browser
 if (!inContainer && !inAzure) {
     var opn = require('opn');
 
-    opn('http://localhost:3000').then(() => {
+    opn('http://localhost:' + port).then(() => {
         console.log('Browser closed.');
     });
 }

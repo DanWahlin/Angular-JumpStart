@@ -1,4 +1,4 @@
-FROM node:10.15.3-alpine
+FROM node:10.16.0-alpine
 
 LABEL author="Dan Wahlin"
 
@@ -9,6 +9,6 @@ RUN npm install --only=prod
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 8080
 
 ENTRYPOINT ["node", "server.js"]
