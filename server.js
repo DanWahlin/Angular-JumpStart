@@ -6,7 +6,8 @@ var express     = require('express'),
     customers   = JSON.parse(fs.readFileSync('data/customers.json', 'utf-8')),
     states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8')),
     inContainer = process.env.CONTAINER,
-    inAzure = process.env.WEBSITE_RESOURCE_GROUP;
+    inAzure = process.env.WEBSITE_RESOURCE_GROUP,
+    port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -128,7 +129,7 @@ app.all('/*', function(req, res) {
     res.sendFile(__dirname + '/dist/index.html');
 });
 
-app.listen(3000);
+app.listen(port);
 
 console.log('Express listening on port 3000.');
 
