@@ -43,7 +43,7 @@ export class MapComponent implements OnInit, AfterContentInit {
     this.init();
   }
 
-  @ViewChild('mapContainer') mapDiv: ElementRef;
+  @ViewChild('mapContainer', { static: true }) mapDiv: ElementRef;
   @ContentChildren(MapPointComponent) mapPoints: QueryList<MapPointComponent>;
 
   constructor() { }
