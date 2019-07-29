@@ -1,5 +1,5 @@
 {
-    "sourceRoot": "./src",
+    "sourceRoots": ["./src"],
     "angularCli": {
       "appName": "playground"
     }
