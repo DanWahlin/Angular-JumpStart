@@ -47,7 +47,7 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.5.3",
-    "@types/googlemaps": "3.37.0",
+    "@types/googlemaps": "3.37.6",
     "angular-playground": "^6.0.1"
   }
 }
