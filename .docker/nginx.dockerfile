@@ -1,8 +1,8 @@
 ##### Stage 1
-FROM node:10.15.3-alpine as node
+FROM node:12.14.0 as node
 LABEL author="Dan Wahlin"
 WORKDIR /app
-COPY package.json package.json
+COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 RUN npm run build -- --prod

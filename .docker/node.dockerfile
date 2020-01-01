@@ -1,10 +1,10 @@
-FROM node:10.16.0-alpine
+FROM node:12.14.0-alpine
 
 LABEL author="Dan Wahlin"
 
 WORKDIR /var/www/node-service
 
-COPY package.json package.json
+COPY package.json package-lock.json ./
 RUN npm install --only=prod
 
 COPY . .
