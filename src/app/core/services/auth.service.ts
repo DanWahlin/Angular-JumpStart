@@ -11,8 +11,8 @@ export class AuthService {
 
     // Can use /api/auth below when running locally
     // Full domain/port is included for Docker example or if it were to run in the cloud
-    port = (this.window.location.port) ? ':' + this.window.location.port : '';
-    baseUrl = `${this.window.location.protocol}//${this.window.location.hostname}${this.port}`;
+    port = '8080';
+    baseUrl = `${this.window.location.protocol}//${this.window.location.hostname}:${this.port}`;
     authUrl = this.baseUrl + '/api/auth';
     isAuthenticated = false;
     redirectUrl: string;
