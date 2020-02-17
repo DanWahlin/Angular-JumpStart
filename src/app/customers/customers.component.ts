@@ -5,7 +5,7 @@ import { DataService } from '../core/services/data.service';
 import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { FilterService } from '../core/services/filter.service';
 import { LoggerService } from '../core/services/logger.service';
-import { MapComponent } from '../shared/map/map.component';
+
 
 @Component({
   selector: 'cm-customers',
@@ -20,7 +20,7 @@ export class CustomersComponent implements OnInit {
   displayModeEnum = DisplayModeEnum;
   totalRecords = 0;
   pageSize = 10;
-  mapComponentRef: ComponentRef<MapComponent>;
+  mapComponentRef: ComponentRef<any>;
   _filteredCustomers: ICustomer[] = [];
 
   get filteredCustomers() {
@@ -35,7 +35,7 @@ export class CustomersComponent implements OnInit {
   @ViewChild('mapsContainer', { read: ViewContainerRef }) 
   private mapsViewContainerRef: ViewContainerRef;
 
-  constructor(private readonly componentFactoryResolver: ComponentFactoryResolver,
+  constructor(private componentFactoryResolver: ComponentFactoryResolver,
     private dataService: DataService,
     private filterService: FilterService,
     private logger: LoggerService) { }
@@ -76,18 +76,16 @@ export class CustomersComponent implements OnInit {
     }
   }
 
-  lazyLoadMapComponent() {
+  async lazyLoadMapComponent() {
     if (!this.mapsViewContainerRef.length) {
       // Lazy load MapComponent
-      import('../shared/map/map.component').then(({ MapComponent }) => {
-          console.log('Lazy loaded map component!');
-          const mapComponent = this.componentFactoryResolver.resolveComponentFactory(MapComponent);
-          this.mapComponentRef = this.mapsViewContainerRef.createComponent(mapComponent);
-          this.mapComponentRef.instance.zoom = 2;
-          this.mapComponentRef.instance.dataPoints = this.filteredCustomers;
-          this.mapComponentRef.instance.enabled = true;
-        }
-      );
+      const { MapComponent } = await import('../shared/map/map.component');
+      console.log('Lazy loaded map component!');
+      const component = this.componentFactoryResolver.resolveComponentFactory(MapComponent);
+      this.mapComponentRef = this.mapsViewContainerRef.createComponent(component);
+      this.mapComponentRef.instance.zoom = 2;
+      this.mapComponentRef.instance.dataPoints = this.filteredCustomers;
+      this.mapComponentRef.instance.enabled = true;
     }
   }
 

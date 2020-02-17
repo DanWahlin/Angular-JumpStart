@@ -46,7 +46,16 @@
           [customers]="filteredCustomers" 
           [hidden]="displayMode !== displayModeEnum.Grid"></cm-customers-grid>
 
-        <!-- This could be used to eagerly load the map component -->
+        <!-- lazy load the map component -->
+        <div [hidden]="displayMode !== displayModeEnum.Map">
+            <ng-container #mapsContainer></ng-container>
+        </div>
+
+        <!-- 
+            This could be used to eagerly load the map component.
+            Would need to import MapModule into either SharedModule (and export it) or 
+            into CustomersModule to use it this way.
+        -->
         <!-- <cm-map *ngIf="filteredCustomers.length" 
             [zoom]="2" 
             [enabled]="displayMode === displayModeEnum.Map" 
@@ -57,11 +66,6 @@
             [longitude]="customer.longitude"
             [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map-point>
         </cm-map> -->
-
-        <!-- lazy load the map component -->
-        <div [hidden]="displayMode !== displayModeEnum.Map">
-            <ng-container #mapsContainer></ng-container>
-        </div>
 
         <cm-pagination
             [totalItems]="totalRecords" 
