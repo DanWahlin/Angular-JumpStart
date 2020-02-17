@@ -5,8 +5,9 @@ import {
   ContentChildren, ElementRef, QueryList, ChangeDetectionStrategy
 } from '@angular/core';
 
-import { debounceTime } from 'rxjs/operators';
-import { MapPointComponent } from './mapPoint.component';
+import { debounceTime, startWith } from 'rxjs/operators';
+import { MapPointComponent } from './map-point.component';
+import { IMapDataPoint } from '../../shared/interfaces';
 
 @Component({
   selector: 'cm-map',
@@ -31,6 +32,15 @@ export class MapComponent implements OnInit, AfterContentInit {
   @Input() longitude = -94.1629;
   @Input() markerText = 'Your Location';
   @Input() zoom = 8;
+  private _dataPoints: IMapDataPoint[] = null;
+  @Input() public get dataPoints() {
+    return this._dataPoints;
+  }
+
+  public set dataPoints(value: any[]) {
+    this._dataPoints = value;
+    this.renderMapPoints();
+  }
 
   // Necessary since a map rendered while container is hidden
   // will not load the map tiles properly and show a grey screen
@@ -63,12 +73,14 @@ export class MapComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     this.mapPoints.changes
-      .pipe(
-        debounceTime(500)
-      )
-      .subscribe(() => {
-        if (this.enabled) { this.renderMapPoints(); }
-      });
+        .pipe(
+          debounceTime(500)
+        )
+        .subscribe(() => {
+          if (this.enabled) { 
+            this.renderMapPoints(); 
+          }
+        });
   }
 
   init() {
@@ -124,10 +136,12 @@ export class MapComponent implements OnInit, AfterContentInit {
     };
 
     this.map = new google.maps.Map(this.mapDiv.nativeElement, options);
-    if (this.mapPoints && this.mapPoints.length) {
+
+    // See if we have any mapPoints (child content) or dataPoints (@Input property)
+    if ((this.mapPoints && this.mapPoints.length) || (this.dataPoints && this.dataPoints.length)) {
       this.renderMapPoints();
     } else {
-      this.createMarker(latlng, this.map, this.markerText);
+      this.createMarker(latlng, this.markerText);
     }
   }
 
@@ -139,10 +153,16 @@ export class MapComponent implements OnInit, AfterContentInit {
     if (this.map) {
       this.clearMapPoints();
 
-      this.mapPoints.forEach((point: MapPointComponent) => {
-        const mapPointLatlng = this.createLatLong(point.latitude, point.longitude);
-        this.createMarker(mapPointLatlng, this.map, point.markerText);
-      });
+      // lon/lat can be passed as child content or via the dataPoints @Input property
+      const mapPoints = (this.mapPoints && this.mapPoints.length) ? this.mapPoints : this.dataPoints;
+
+      if (mapPoints) {
+        for (const point of mapPoints) {
+          let markerText = (point.markerText) ? point.markerText : `<h3>${point.firstName} ${point.lastName}</h3>`;
+          const mapPointLatlng = this.createLatLong(point.latitude, point.longitude);
+          this.createMarker(mapPointLatlng, markerText);
+        }
+      }
     }
   }
 
@@ -153,14 +173,14 @@ export class MapComponent implements OnInit, AfterContentInit {
     this.markers = [];
   }
 
-  private createMarker(position: google.maps.LatLng, map: google.maps.Map, title: string) {
+  private createMarker(position: google.maps.LatLng, title: string) {
     const infowindow = new google.maps.InfoWindow({
       content: title
     });
 
     const marker = new google.maps.Marker({
       position: position,
-      map: map,
+      map: this.map,
       title: title,
       animation: google.maps.Animation.DROP
     });
@@ -168,7 +188,7 @@ export class MapComponent implements OnInit, AfterContentInit {
     this.markers.push(marker);
 
     marker.addListener('click', () => {
-      infowindow.open(map, marker);
+      infowindow.open(this.map, marker);
     });
   }
 }

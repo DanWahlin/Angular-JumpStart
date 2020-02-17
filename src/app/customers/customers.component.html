@@ -21,7 +21,7 @@
                                 <span class="glyphicon glyphicon-align-justify"></span> List View
                             </a>
                         </li>
-                        <li class="toolbar-item">
+                        <li class="toolbar-item" (click)="lazyLoadMapComponent()">
                             <a (click)="changeDisplayMode(displayModeEnum.Map)" [class.active]="displayMode === displayModeEnum.Map">
                                 <span class="glyphicon glyphicon-map-marker"></span> Map View
                             </a>
@@ -46,7 +46,8 @@
           [customers]="filteredCustomers" 
           [hidden]="displayMode !== displayModeEnum.Grid"></cm-customers-grid>
 
-        <cm-map *ngIf="filteredCustomers.length" 
+        <!-- This could be used to eagerly load the map component -->
+        <!-- <cm-map *ngIf="filteredCustomers.length" 
             [zoom]="2" 
             [enabled]="displayMode === displayModeEnum.Map" 
             [hidden]="displayMode !== displayModeEnum.Map">
@@ -54,8 +55,13 @@
             *ngFor="let customer of filteredCustomers" 
             [latitude]="customer.latitude" 
             [longitude]="customer.longitude"
-            [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</a></h3>' + customer.city + ', ' + customer.state.name"></cm-map-point>
-        </cm-map>
+            [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map-point>
+        </cm-map> -->
+
+        <!-- lazy load the map component -->
+        <div [hidden]="displayMode !== displayModeEnum.Map">
+            <ng-container #mapsContainer></ng-container>
+        </div>
 
         <cm-pagination
             [totalItems]="totalRecords" 

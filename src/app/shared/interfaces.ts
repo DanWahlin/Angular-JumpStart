@@ -15,6 +15,12 @@ export interface ICustomer {
     longitude?: number;
 }
 
+export interface IMapDataPoint {
+    longitude: number;
+    latitutde: number;
+    markerText?: string;
+}
+
 export interface IState {
     abbreviation: string;
     name: string;
