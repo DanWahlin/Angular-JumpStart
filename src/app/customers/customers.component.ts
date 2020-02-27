@@ -77,6 +77,7 @@ export class CustomersComponent implements OnInit {
   }
 
   async lazyLoadMapComponent() {
+    this.changeDisplayMode(DisplayModeEnum.Map);
     if (!this.mapsViewContainerRef.length) {
       // Lazy load MapComponent
       const { MapComponent } = await import('../shared/map/map.component');
