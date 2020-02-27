@@ -21,8 +21,8 @@
                                 <span class="glyphicon glyphicon-align-justify"></span> List View
                             </a>
                         </li>
-                        <li class="toolbar-item" (click)="lazyLoadMapComponent()">
-                            <a [class.active]="displayMode === displayModeEnum.Map">
+                        <li class="toolbar-item">
+                            <a (click)="lazyLoadMapComponent()" [class.active]="displayMode === displayModeEnum.Map">
                                 <span class="glyphicon glyphicon-map-marker"></span> Map View
                             </a>
                         </li>
