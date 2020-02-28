@@ -56,6 +56,8 @@ Here are a few screenshots from the app:
 
 ## Running Angular Playground
 
+NOTE: Angular Playground doesn't currently work with Angular 9 (which this project now uses). Hopefully it'll be updated in the near future.
+
 This application includes Angular Playground (http://www.angularplayground.it) which provides a great way to isolate components in a sandbox rather than loading the 
 entire application to see a given component. To run the playground run the following command:
 
