@@ -61,6 +61,8 @@ entire application to see a given component. To run the playground run the follo
 
 `npm run playground`
 
+Then open a browser and visit `http://localhost:4201` and follow the directions there (or visit their website for more information).
+
 ## Running in Kubernetes
 
 1. Install Docker Desktop from https://www.docker.com/get-started
