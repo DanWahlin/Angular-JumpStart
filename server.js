@@ -49,9 +49,11 @@ app.get('/api/customers', (req, res) => {
 
 app.get('/api/customers/:id', (req, res) => {
     let customerId = +req.params.id;
-    let selectedCustomer = {};
+    let selectedCustomer = null;
     for (let customer of customers) {
         if (customer.id === customerId) {
+           // found customer to create one to send
+           selectedCustomer = {};
            selectedCustomer = customer;
            break;
         }

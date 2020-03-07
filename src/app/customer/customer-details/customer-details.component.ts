@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentRef, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { ICustomer } from '../../shared/interfaces';
@@ -13,8 +13,14 @@ export class CustomerDetailsComponent implements OnInit {
 
   customer: ICustomer;
   mapEnabled: boolean;
+  mapComponentRef: ComponentRef<any>;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  @ViewChild('mapsContainer', { read: ViewContainerRef }) 
+  private mapsViewContainerRef: ViewContainerRef;
+
+  constructor(private route: ActivatedRoute, 
+    private dataService: DataService,
+    private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
     // Subscribe to params so if it changes we pick it up. Could use this.route.parent.snapshot.params["id"] to simplify it.
@@ -24,10 +30,26 @@ export class CustomerDetailsComponent implements OnInit {
         this.dataService.getCustomer(id)
           .subscribe((customer: ICustomer) => {
             this.customer = customer;
-            this.mapEnabled = true;
+            if (this.customer && this.customer.latitude) {
+              this.lazyLoadMapComponent();
+              // this.mapEnabled = true; // For eager loading map
+            }
           });
       }
     });
+  }
+
+  async lazyLoadMapComponent() {
+    if (!this.mapsViewContainerRef.length) {
+      // Lazy load MapComponent
+      const { MapComponent } = await import('../../shared/map/map.component');
+      console.log('Lazy loaded map component!');
+      const component = this.componentFactoryResolver.resolveComponentFactory(MapComponent);
+      this.mapComponentRef = this.mapsViewContainerRef.createComponent(component);
+      this.mapComponentRef.instance.zoom = 10;
+      this.mapComponentRef.instance.customer = this.customer;
+      this.mapComponentRef.instance.enabled = true;
+    }
   }
 
 

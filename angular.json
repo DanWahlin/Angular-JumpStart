@@ -15,7 +15,7 @@
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
@@ -90,8 +90,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "tsconfig.app.json",
+              "tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
@@ -134,25 +134,27 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/playground",
             "index": "src/index.html",
             "main": "src/main.playground.ts",
-            "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.playground.json",
+            "aot": false,
             "assets": [
-              "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets"
             ],
-            "styles": [],
+            "styles": [
+              "src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "budgets": [
+              "fileReplacements": [
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -160,23 +162,17 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": false,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": false,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
+              "buildOptimizer": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "playground:build"
+            "browserTarget": "playground:build",
+            "port": 4201
           }
         }
       }

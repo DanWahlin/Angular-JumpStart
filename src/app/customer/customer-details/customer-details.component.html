@@ -1,5 +1,5 @@
-<div class="container" *ngIf="customer">
-  <div class="row">
+<div class="container">
+  <div class="row" *ngIf="customer">
     <div class="col-md-2">
       <img src="assets/images/{{customer.gender | lowercase}}.png" class="details-image" />
     </div>
@@ -15,12 +15,17 @@
   </div>    
   <br /><br />
   <div class="row">
-    <div class="col-md-12" *ngIf="customer && customer.latitude && customer.longitude">
-      <cm-map [latitude]="customer.latitude" 
+    <div class="col-md-12">
+      <!-- <cm-map [latitude]="customer.latitude" 
            [longitude]="customer.longitude" 
            [zoom]="10" 
            [enabled]="mapEnabled"
-           [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map>
+           [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map> -->
+          
+      <!-- lazy load the map component -->
+      <div>
+          <ng-container #mapsContainer></ng-container>
+      </div>
     </div>
   </div>
 </div>   

@@ -14,7 +14,7 @@ export class OrdersComponent implements OnInit {
     totalRecords = 0;
     pageSize = 5;
 
-    constructor(private dataService: DataService, private trackbyService: TrackByService) { }
+    constructor(private dataService: DataService, public trackbyService: TrackByService) { }
 
     ngOnInit() {
         this.getCustomersPage(1);
