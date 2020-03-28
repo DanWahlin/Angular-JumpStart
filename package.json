@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "cypress": "concurrently \"npm start\" \"cypress open\"",
     "playground": "angular-playground"
   },
   "dependencies": {
@@ -32,10 +33,15 @@
     "@angular/cli": "~9.0.5",
     "@angular/compiler-cli": "~9.0.5",
     "@angular/language-service": "~9.0.5",
-    "@types/node": "^12.11.1",
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
+    "@types/googlemaps": "3.39.2",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "angular-playground": "^7.0.0",
     "codelyzer": "^5.1.2",
+    "concurrently": "^5.1.0",
+    "cypress": "^4.2.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.2.0",
@@ -46,8 +52,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.7.5",
-    "@types/googlemaps": "3.39.2",
-    "angular-playground": "^7.0.0"
+    "typescript": "~3.7.5"
   }
 }

@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="email" name="email" class="form-control" formControlName="email" />
-                        <div class="alert alert-danger" [hidden]="loginForm.controls.email.untouched || loginForm.controls.email.valid">
+                        <div class="alert alert-danger" data-cy="email-error" [hidden]="loginForm.controls.email.untouched || loginForm.controls.email.valid">
                             A valid email address is required
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="password" name="password" class="form-control" formControlName="password" />
-                        <div class="alert alert-danger" [hidden]="loginForm.controls.password.untouched || loginForm.controls.password.valid">
+                        <div class="alert alert-danger" data-cy="password-error" [hidden]="loginForm.controls.password.untouched || loginForm.controls.password.valid">
                             Password is required (6 or more characters with at least one number)
                         </div>
                     </div>

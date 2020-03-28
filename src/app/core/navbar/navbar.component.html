@@ -17,7 +17,7 @@
                     <li routerLinkActive="active"><a routerLink="/customers">Customers</a></li>
                     <li routerLinkActive="active"><a routerLink="/orders">Orders</a></li>
                     <li routerLinkActive="active"><a routerLink="/about">About</a></li>
-                    <li routerLinkActive="active" (click)="loginOrOut()"><a>{{ loginLogoutText }}</a></li>
+                    <li routerLinkActive="active" (click)="loginOrOut()" data-cy="login-logout"><a>{{ loginLogoutText }}</a></li>
                 </ul>
             </span>
         </div>
