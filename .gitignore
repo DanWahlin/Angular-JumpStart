@@ -16,5 +16,7 @@ dist
 src/app/devDist
 src/app/dist
 
+cypress/videos
+
 
 

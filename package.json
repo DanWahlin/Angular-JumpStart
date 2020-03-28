@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cypress": "concurrently \"npm start\" \"cypress open\"",
+    "cypress:headless": "concurrently \"npm start\" \"cypress run\"",
     "playground": "angular-playground"
   },
   "dependencies": {
