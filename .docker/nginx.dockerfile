@@ -1,5 +1,5 @@
 ##### Stage 1
-FROM node:12.14.0 as node
+FROM node:12.16.1 as node
 LABEL author="Dan Wahlin"
 WORKDIR /app
 COPY package.json package-lock.json ./
