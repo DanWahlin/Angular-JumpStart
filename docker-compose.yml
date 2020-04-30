@@ -1,5 +1,6 @@
 # Run docker-compose build
 # Run docker-compose up
+# Visit http://localhost
 # Live long and prosper
 
 version: '3.7'
@@ -35,18 +36,18 @@ services:
       - app-network
 
   # Can uncomment to get cAdvisor going on Mac/Linux. Not for Windows though. 
-  # cadvisor:
-  #   container_name: cadvisor
-  #   image: google/cadvisor
-  #   volumes:
-  #     - /:/rootfs:ro
-  #     - /var/run:/var/run:rw
-  #     - /sys:/sys:ro
-  #     - /var/lib/docker/:/var/lib/docker:ro
-  #   ports:
-  #     - "8080:8080"
-  #   networks:
-  #     - app-network
+  cadvisor:
+    container_name: cadvisor
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
 
 networks:
   app-network:
