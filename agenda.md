@@ -8,7 +8,6 @@ https://github.com/danwahlin/angular-jumpstart
 https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#-strong-api-overview-strong-
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
-https://kompose.io/
 
 ## Agenda
 
@@ -27,7 +26,13 @@ docker stack rm angular-jumpstart
 
 4. Deploying Containers to Kubernetes
 
+ https://kompose.io/
  kompose convert -h
+ kompose convert -f docker-compose.yml -o ./[your-folder-goes-here]
+
+ Tweak the generated YAML. Then once ready run:
+
+ kubectl apply -f [your-folder-name]
 
 
 Additional resources:
