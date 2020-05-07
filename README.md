@@ -72,15 +72,16 @@ Then open a browser and visit `http://localhost:4201` and follow the directions 
 1. Visit `http://localhost`
 1. Stop Kubernetes using `kubectl delete -f .k8s`
 
-## Kubernetes Day Zero Webinar Content
-
-# Deploying to Kubernetes
+<a id="kubernetes-day-zero"></a>
+## Kubernetes Day Zero Webinar: Deploying to Kubernetes
 
 Dan Wahlin
 
 Twitter: @DanWahlin
 
 https://codewithdan.com
+
+Resources mentioned:
 
 * https://github.com/danwahlin/angular-jumpstart
 * https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
