@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UtilitiesService {
     
     constructor(@Inject('Window') private window: Window) { }
