@@ -1,10 +1,9 @@
 const states = require('../data/states.json');
 
 module.exports = async function (context, req) {
-   
     context.res = {
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'    
         },
         // status: 200, /* Defaults to 200 */
         body: states
