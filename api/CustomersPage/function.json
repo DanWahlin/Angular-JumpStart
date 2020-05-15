@@ -8,7 +8,7 @@
       "methods": [
         "get"
       ],
-      "route": "api/customers/page/{skip}/{top}"
+      "route": "customers/page/{skip}/{top}"
     },
     {
       "type": "http",

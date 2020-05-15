@@ -8,7 +8,7 @@
       "methods": [
         "post"
       ],
-      "route": "api/auth/login/"
+      "route": "auth/login/"
     },
     {
       "type": "http",
