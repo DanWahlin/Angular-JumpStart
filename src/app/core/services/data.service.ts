@@ -79,7 +79,7 @@ export class DataService {
     }
 
     getStates(): Observable<IState[]> {
-        return this.http.get<IState[]>(this.customersBaseUrl + '/api/states')
+        return this.http.get<IState[]>(this.baseUrl + '/api/states')
             .pipe(catchError(this.handleError));
     }
 
