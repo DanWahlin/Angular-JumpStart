@@ -10,9 +10,13 @@ export class UtilitiesService {
     }
 
     private getPort() {
-        if (this.window.location.port) {
+        const port = this.window.location.port;
+        if (port) {
+            if (port === '4200') {
+                // Local run with 'npm run' also started in api folder for Azure Functions
+                return ':7071'; // for debugging Azure Functions locally
+            }
             return ':' + this.window.location.port;
-            // return ':7071'; // for debugging Azure Functions locally
         }
         return '';
     }

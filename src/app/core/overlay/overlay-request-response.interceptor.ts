@@ -18,7 +18,7 @@ export class OverlayRequestResponseInterceptor implements HttpInterceptor {
     return next
           .handle(req)
           .pipe(
-            delay(randomTime),  // Simulate random Http call delays
+            // delay(randomTime),  // Simulate random Http call delays
             tap(event => {
               if (event instanceof HttpResponse) {
                 const elapsed = Date.now() - started;
