@@ -10,7 +10,7 @@ and the VS Code extension called `Azure Functions`
 
 Run either with `Run/Start Debugging`
 
-or `func host start` from the command line
+or `npm start` or `func host start` from the command line
 
 ## Interesting parts
 
