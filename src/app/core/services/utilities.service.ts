@@ -1,8 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class UtilitiesService {
-    
+export class UtilitiesService {    
     constructor(@Inject('Window') private window: Window) { }
 
     getApiUrl() {
@@ -16,5 +15,4 @@ export class UtilitiesService {
         }
         return '';
     }
-
 }
