@@ -8,7 +8,7 @@
       "methods": [
         "put"
       ],
-      "route": "customers/"
+      "route": "customers/{id}"
     },
     {
       "type": "http",
