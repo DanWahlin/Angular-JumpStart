@@ -50,7 +50,6 @@ export class AuthService {
         if (error.error instanceof Error) {
           const errMessage = error.error.message;
           return Observable.throw(errMessage);
-          // Use the following instead if using lite-server
           // return Observable.throw(err.text() || 'backend server error');
         }
         return Observable.throw(error || 'Server error');
