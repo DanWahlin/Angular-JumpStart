@@ -11,8 +11,8 @@ export class UtilitiesService {
 
     private getPort() {
         if (this.window.location.port) {
-            // return ':' + this.window.location.port;
-            return ':' + 7071;
+            return ':' + this.window.location.port;
+            // return ':7071'; // for debugging Azure Functions locally
         }
         return '';
     }
