@@ -8,7 +8,7 @@
       "methods": [
         "get"
       ],
-      "route": "customers/"
+      "route": "customers"
     },
     {
       "type": "http",

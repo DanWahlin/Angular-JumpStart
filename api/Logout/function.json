@@ -8,7 +8,7 @@
       "methods": [
         "post"
       ],
-      "route": "auth/logout/"
+      "route": "auth/logout"
     },
     {
       "type": "http",

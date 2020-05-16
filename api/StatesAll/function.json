@@ -8,7 +8,7 @@
       "methods": [
         "get"
       ],
-      "route": "states/"
+      "route": "states"
     },
     {
       "type": "http",
