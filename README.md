@@ -72,6 +72,10 @@ Then open a browser and visit `http://localhost:4201` and follow the directions 
 1. Visit `http://localhost`
 1. Stop Kubernetes using `kubectl delete -f .k8s`
 
+## Running in the Azure Static Web Apps Service
+
+Check out my post on this at https://blog.codewithdan.com/getting-started-with-azure-static-web-apps. 
+
 <a id="kubernetes-day-zero"></a>
 ## Kubernetes Day Zero Webinar: Deploying to Kubernetes
 
