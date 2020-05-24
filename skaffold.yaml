@@ -6,8 +6,16 @@ build:
   artifacts:
   - image: nginx-angular-jumpstart
     context: .
+    sync: 
+      # A local build will update dist and sync it to the container
+      manual:
+      - src: "./dist"
+        dest: "/usr/share/nginx/html"
     docker:
-      dockerfile: .docker/nginx.dockerfile
+      # Referencing a dev version of the Dockerfile so that the speed is better
+      # Will build app locally which is then copied into the image
+      # Much faster than doing a multi-stage build as you would for production
+      dockerfile: .docker/nginx.dev.dockerfile
   - image: node-service-jumpstart
     context: .
     docker:

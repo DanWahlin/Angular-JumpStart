@@ -1,8 +1,8 @@
 "use strict";
 var express     = require('express'),
     bodyParser  = require('body-parser'),
-    fs          = require('fs'),
-    app         = express(),
+    fs          = require('fs'), 
+    app         = express(), 
     customers   = JSON.parse(fs.readFileSync('data/customers.json', 'utf-8')),
     states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8')),
     inContainer = process.env.CONTAINER,
@@ -127,10 +127,12 @@ app.post('/api/auth/logout', (req, res) => {
     res.json(true);
 });
 
-// redirect all others to the index (HTML5 history)
-app.all('/*', function(req, res) {
-    res.sendFile(__dirname + '/dist/index.html');
-});
+if (!inContainer) {
+    // redirect all others to the index (HTML5 history)
+    app.all('/*', function(req, res) {
+        res.sendFile(__dirname + '/dist/index.html');
+    });
+}
 
 app.listen(port);
 

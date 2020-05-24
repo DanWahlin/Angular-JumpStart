@@ -82,7 +82,7 @@ To generate the `skaffold.yaml` file that's included in the project the followin
 
 ```
 skaffold init --compose-file docker-compose.yml -k='.k8s/*.yml' \
-  -a '{"builder":"Docker","payload":{"path":".docker/nginx.dockerfile"},"image":"nginx-angular-jumpstart"}' \
+  -a '{"builder":"Docker","payload":{"path":".docker/nginx.dev.dockerfile"},"image":"nginx-angular-jumpstart"}' \
   -a '{"builder":"Docker","payload":{"path":".docker/node.dockerfile"},"image":"node-service-jumpstart"}'
 ```
 
