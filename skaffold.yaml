@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta4
+kind: Config
+metadata:
+  name: angular-jumpstart
+build:
+  artifacts:
+  - image: nginx-angular-jumpstart
+    context: .
+    docker:
+      dockerfile: .docker/nginx.dockerfile
+  - image: node-service-jumpstart
+    context: .
+    docker:
+      dockerfile: .docker/node.dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - .k8s/*.yml

@@ -40,19 +40,19 @@ Once the app is running you can play around with editing customers after you log
 
 Here are a few screenshots from the app:
 
-<img width="500" src="src/assets/images/screenshots/cards.png" border="0" />
+![](src/assets/images/screenshots/cards.png)
 
 <br /><br />
 
-<img width="500" src="src/assets/images/screenshots/grid.png" border="0" />
+![](src/assets/images/screenshots/grid.png)
 
 <br /><br />
 
-<img width="500" src="src/assets/images/screenshots/orders.png" border="0" />
+![](src/assets/images/screenshots/orders.png)
 
 <br /><br />
 
-<img width="500" src="src/assets/images/screenshots/details.png" border="0" />
+![](src/assets/images/screenshots/details.png)
 
 ## Running Angular Playground
 
@@ -72,9 +72,23 @@ Then open a browser and visit `http://localhost:4201` and follow the directions 
 1. Visit `http://localhost`
 1. Stop Kubernetes using `kubectl delete -f .k8s`
 
+## Running with Skaffold
+
+If you'd like to use the [Skaffold tool](https://skaffold.dev/docs/install) to run the project in Kubernetes, install it, and run the following command:
+
+`skaffold dev`
+
+To generate the `skaffold.yaml` file that's included in the project the following command was run:
+
+```
+skaffold init --compose-file docker-compose.yml -k='.k8s/*.yml' \
+  -a '{"builder":"Docker","payload":{"path":".docker/nginx.dockerfile"},"image":"nginx-angular-jumpstart"}' \
+  -a '{"builder":"Docker","payload":{"path":".docker/node.dockerfile"},"image":"node-service-jumpstart"}'
+```
+
 ## Running in the Azure Static Web Apps Service
 
-Check out my post on this at https://blog.codewithdan.com/getting-started-with-azure-static-web-apps. 
+Check out my post on [Getting Started with Azure Static Web Apps](https://blog.codewithdan.com/getting-started-with-azure-static-web-apps). 
 
 <a id="kubernetes-day-zero"></a>
 ## Kubernetes Day Zero Webinar: Deploying to Kubernetes
