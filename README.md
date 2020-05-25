@@ -78,13 +78,23 @@ If you'd like to use the [Skaffold tool](https://skaffold.dev/docs/install) to r
 
 `skaffold dev`
 
-To generate the `skaffold.yaml` file that's included in the project the following command was run:
+To generate the `skaffold.yaml` file that's included in the project the following command was run and the image context paths it defines were modified:
 
 ```
-skaffold init --compose-file docker-compose.yml -k='.k8s/*.yml' \
+skaffold init -k '.k8s/*.yml' \
   -a '{"builder":"Docker","payload":{"path":".docker/nginx.dev.dockerfile"},"image":"nginx-angular-jumpstart"}' \
   -a '{"builder":"Docker","payload":{"path":".docker/node.dockerfile"},"image":"node-service-jumpstart"}'
 ```
+
+If you wanted to generate the initial Kubernetes manifest files from an existing docker-compose.yml file you can use the following command.
+It uses the [Kompose tool](https://kompose.io) behind the scenes to create the YAML files
+
+```
+skaffold init --compose-file docker-compose.yml \
+  -a '{"builder":"Docker","payload":{"path":".docker/nginx.dev.dockerfile"},"image":"nginx-angular-jumpstart"}' \
+  -a '{"builder":"Docker","payload":{"path":".docker/node.dockerfile"},"image":"node-service-jumpstart"}'
+```
+
 
 ## Running in the Azure Static Web Apps Service
 
