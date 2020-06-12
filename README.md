@@ -65,6 +65,8 @@ Here are a few screenshots from the app:
 1. `cd` into `./deno` and run the following command:
 
     `deno run --allow-net --allow-read server.ts`
+    
+1. Go to http://localhost:8080 in your browser 
 
 ## Running Angular Playground
 
