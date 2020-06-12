@@ -106,10 +106,4 @@ router.post('/api/auth/logout', (ctx) => {
     ctx.response.body = true;
 });
 
-// router.all('/(.*)', (ctx) => {
-//     ctx.response.type = '.html';
-//     ctx.response.body = loadFile('../dist/index.html');
-// });
-
-
 export default router;
