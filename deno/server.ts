@@ -1,4 +1,5 @@
-import { Application, send } from 'https://deno.land/x/oak/mod.ts'; 
+// NOTE: In a "real" app you'll want to add versions to the modules
+import { Application } from 'https://deno.land/x/oak/mod.ts'; 
 import { join } from 'https://deno.land/std/path/mod.ts';
 import { exists } from 'https://deno.land/std/fs/mod.ts';
 import { oakCors } from 'https://deno.land/x/cors/mod.ts';
