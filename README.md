@@ -22,7 +22,7 @@ Looking for expert onsite Angular/TypeScript training? We've trained the biggest
 * Optional: Webpack functionality is available for module loading and more (see below for details)
 * Optional: Ahead-of-Time (AOT) functionality is available for a production build of the project (see below for details)
 
-## Running the Application
+## Running the Application with Node.js
 
 1. Install the latest LTS version of Node.js from https://nodejs.org. *IMPORTANT: The server uses ES2015 features AND the Angular CLI so you need a current version of Node.js.*
 
@@ -53,6 +53,18 @@ Here are a few screenshots from the app:
 <br /><br />
 
 ![](src/assets/images/screenshots/details.png)
+
+## Running the Application with Deno
+
+1. Install the latest version of Deno from https://deno.land
+
+1. Run `npm install` to install the Angular dependencies
+
+1. Run `ng build` to build and bundle the code
+
+1. `cd` into `./deno` and run the following command:
+
+    `deno run --allow-net --allow-read server.ts`
 
 ## Running Angular Playground
 
