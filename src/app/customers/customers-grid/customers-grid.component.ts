@@ -24,7 +24,7 @@ export class CustomersGridComponent implements OnInit {
   }
 
   sort(prop: string) {
-    this.sorterService.sort(this.customers, prop);
+    this.customers = this.sorterService.sort(this.customers, prop);
   }
 
 }
