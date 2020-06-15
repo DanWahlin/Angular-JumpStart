@@ -27,7 +27,6 @@ export class SorterService {
             } else {
                 aVal = a[prop];
                 bVal = b[prop];
-                console.log(aVal, bVal);
             }
 
             // Fix issues that spaces before/after string value can cause such as ' San Francisco'
