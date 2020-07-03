@@ -182,7 +182,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "cm",
-      "styleext": "css"
+      "style": "css"
     },
     "@schematics/angular:directive": {
       "prefix": "cm"

@@ -3,10 +3,10 @@ kind: ConfigMap
 metadata:
   labels:
     app: node-env
-  name: node-env
+  name: env-vars
 data:
-  NODE_ENV: production
-
+  NODE_ENV: "production"
+  CONTAINER: "true"
 ---
 
 apiVersion: apps/v1
@@ -31,7 +31,12 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: NODE_ENV
-              name: node-env
+              name: env-vars
+        - name: CONTAINER
+          valueFrom:
+            configMapKeyRef:
+              key: CONTAINER
+              name: env-vars
         image: node-service-jumpstart
         imagePullPolicy: IfNotPresent
         name: node-service-jumpstart

@@ -1,24 +1,21 @@
-import { Injectable, Output, EventEmitter, Inject } from '@angular/core';
+import { Injectable, Output, EventEmitter, Inject, Directive } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { IUserLogin } from '../../shared/interfaces';
+import { UtilitiesService } from './utilities.service';
 
 @Injectable()
 export class AuthService {
-
-    // Can use /api/auth below when running locally
-    // Full domain/port is included for Docker example or if it were to run in the cloud
-    port = '8080';
-    baseUrl = `${this.window.location.protocol}//${this.window.location.hostname}:${this.port}`;
+    baseUrl = this.utilitiesService.getApiUrl();
     authUrl = this.baseUrl + '/api/auth';
     isAuthenticated = false;
     redirectUrl: string;
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    constructor(private http: HttpClient, @Inject('Window') private window: Window) { }
+    constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {  }
 
     private userAuthChanged(status: boolean) {
        this.authChanged.emit(status); // Raise changed event
@@ -53,7 +50,6 @@ export class AuthService {
         if (error.error instanceof Error) {
           const errMessage = error.error.message;
           return Observable.throw(errMessage);
-          // Use the following instead if using lite-server
           // return Observable.throw(err.text() || 'backend server error');
         }
         return Observable.throw(error || 'Server error');

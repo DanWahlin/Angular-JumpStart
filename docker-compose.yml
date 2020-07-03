@@ -1,5 +1,6 @@
 # Run docker-compose build
 # Run docker-compose up
+# Visit http://localhost
 # Live long and prosper
 
 version: '3.7'
@@ -44,7 +45,7 @@ services:
   #     - /sys:/sys:ro
   #     - /var/lib/docker/:/var/lib/docker:ro
   #   ports:
-  #     - "8080:8080"
+  #     - "9000:8080"
   #   networks:
   #     - app-network
 
