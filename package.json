@@ -54,7 +54,7 @@
     "typescript": "~3.9.5"
   },
   "optionalDependencies": {
-    "cypress": "^4.10.0",
+    "cypress": "^4.12.0",
     "@bahmutov/add-typescript-to-cypress": "^2.1.2"
   }
 }
