@@ -11,8 +11,7 @@
     "e2e": "ng e2e",
     "cypress": "concurrently \"npm start\" \"cypress open\"",
     "cypress:headless": "concurrently \"npm start\" \"cypress run\"",
-    "playground": "angular-playground",
-    "postinstall": "ngcc"
+    "playground": "angular-playground"
   },
   "dependencies": {
     "@angular/animations": "~11.0.0",
