@@ -9,8 +9,8 @@ var express     = require('express'),
     inAzure = process.env.WEBSITE_RESOURCE_GROUP,
     port = process.env.PORT || 8080;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //CORS
 app.use(function(req, res, next) {
