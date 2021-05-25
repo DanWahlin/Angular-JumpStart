@@ -1,11 +1,11 @@
 ##### Stage 1
-FROM node:12.16.1 as node
+FROM node:14.17.0 as node
 LABEL author="Dan Wahlin"
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install --no-optional
 COPY . .
-RUN npm run build -- --prod
+RUN npm run build
 
 ##### Stage 2
 FROM nginx:alpine

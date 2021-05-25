@@ -4,7 +4,7 @@ import { SandboxesDefined } from './sandboxes';
 
 platformBrowserDynamic().bootstrapModule(PlaygroundModule
   .configure({
-    selector: 'app-root',
+    selector: 'cm-app-component',
     overlay: false,
     modules: [],
     sandboxesDefined: SandboxesDefined

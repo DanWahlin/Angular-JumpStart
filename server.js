@@ -1,6 +1,5 @@
 "use strict";
 var express     = require('express'),
-    bodyParser  = require('body-parser'),
     fs          = require('fs'), 
     app         = express(), 
     customers   = JSON.parse(fs.readFileSync('data/customers.json', 'utf-8')),
@@ -13,9 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //CORS
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, Authorization, X-Requested-With, X-XSRF-TOKEN, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Headers", "Origin, Authorization, X-Requested-With, X-XSRF-TOKEN, X-InlineCount, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
     next();
 });
