@@ -30,7 +30,7 @@ Looking for expert onsite Angular/TypeScript training? We've trained the biggest
 
 1. Run `ng build --watch` to build and bundle the code
 
-1. Run `npm start` in a separate terminal window to build the TypeScript, watch for changes and launch the web server
+1. Run `npm start` in a separate terminal window to launch the web and RESTful API server
 
 1. Go to http://localhost:8080 in your browser 
 
