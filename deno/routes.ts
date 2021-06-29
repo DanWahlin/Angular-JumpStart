@@ -31,8 +31,9 @@ router.get<{id: string}>('/api/customers/:id', (ctx) => {
     let selectedCustomer = null;
     for (let customer of customers) {
         if (customer.id === customerId) {
-           // found customer to create one to send
+          
            selectedCustomer = {};
+           // found customer to create one to send
            selectedCustomer = customer;
            break;
         }
