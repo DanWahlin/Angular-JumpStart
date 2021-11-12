@@ -1,3 +1,4 @@
+/.angular/cache
 # NPM
 node_modules
 npm-debug.log

@@ -138,7 +138,7 @@ app.listen(port);
 
 console.log('Express listening on port ' + port);
 
-//Open browser
+// //Open browser
 if (!inContainer && !inAzure) {
     var opn = require('opn');
 
