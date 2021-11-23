@@ -7,7 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class FilterTextboxComponent {
 
-    model: { filter: string } = { filter: null };
+    model: { filter: string } = { filter: '' };
 
     @Output()
     changed: EventEmitter<string> = new EventEmitter<string>();

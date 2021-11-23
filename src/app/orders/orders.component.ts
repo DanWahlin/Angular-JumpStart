@@ -10,7 +10,7 @@ import { TrackByService } from '../core/services/trackby.service';
 })
 export class OrdersComponent implements OnInit {
 
-    customers: ICustomer[];
+    customers: ICustomer[] = [];
     totalRecords = 0;
     pageSize = 5;
 

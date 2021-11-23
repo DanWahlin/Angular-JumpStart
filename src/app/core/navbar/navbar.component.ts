@@ -13,9 +13,9 @@ import { LoggerService } from '../services/logger.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-    isCollapsed: boolean;
+    isCollapsed: boolean = false;
     loginLogoutText = 'Login';
-    sub: Subscription;
+    sub: Subscription = {} as Subscription;
 
     constructor(private router: Router,
         private authservice: AuthService,

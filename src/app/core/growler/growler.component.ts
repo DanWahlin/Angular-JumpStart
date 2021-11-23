@@ -60,8 +60,8 @@ export class GrowlerComponent implements OnInit {
 
 class Growl {
 
-  enabled: boolean;
-  timeoutId: number;
+  enabled: boolean = false;
+  timeoutId: number = 0;
 
   constructor(public id: number,
               public message: string,

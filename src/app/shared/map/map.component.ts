@@ -5,7 +5,7 @@ import {
   ContentChildren, ElementRef, QueryList, ChangeDetectionStrategy
 } from '@angular/core';
 
-import { debounceTime, startWith } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { MapPointComponent } from './map-point.component';
 import { IMapDataPoint } from '../../shared/interfaces';
 
@@ -19,22 +19,22 @@ import { IMapDataPoint } from '../../shared/interfaces';
 })
 export class MapComponent implements OnInit, AfterContentInit {
 
-  private isEnabled: boolean;
-  private loadingScript: boolean;
-  private map: google.maps.Map;
+  private isEnabled: boolean = false;
+  private loadingScript: boolean = false;
+  private map: google.maps.Map = {} as google.maps.Map;
   private markers: google.maps.Marker[] = [];
-  mapHeight: string;
-  mapWidth: string;
+  mapHeight: string | null = null;
+  mapWidth: string | null = null;
 
-  @Input() height: number;
-  @Input() width: number;
+  @Input() height: number = 0;
+  @Input() width: number = 0;
   @Input() latitude = 34.5133;
   @Input() longitude = -94.1629;
   @Input() markerText = 'Your Location';
   @Input() zoom = 8;
-  private _dataPoints: IMapDataPoint[] = null;
+  private _dataPoints: IMapDataPoint[] = [];
   @Input() public get dataPoints() {
-    return this._dataPoints;
+    return this._dataPoints as IMapDataPoint[];
   }
 
   public set dataPoints(value: any[]) {
@@ -53,8 +53,8 @@ export class MapComponent implements OnInit, AfterContentInit {
     this.init();
   }
 
-  @ViewChild('mapContainer', { static: true }) mapDiv: ElementRef;
-  @ContentChildren(MapPointComponent) mapPoints: QueryList<MapPointComponent>;
+  @ViewChild('mapContainer', { static: true }) mapDiv: ElementRef = {} as ElementRef;
+  @ContentChildren(MapPointComponent) mapPoints: QueryList<MapPointComponent> = {} as QueryList<MapPointComponent>;
 
   constructor() { }
 
@@ -91,7 +91,7 @@ export class MapComponent implements OnInit, AfterContentInit {
     }, 200);
   }
 
-  private getWindowHeightWidth(document: HTMLDocument) {
+  private getWindowHeightWidth(document: Document) {
     let width = window.innerWidth
       || document.documentElement.clientWidth
       || document.body.clientWidth;
@@ -127,13 +127,13 @@ export class MapComponent implements OnInit, AfterContentInit {
   }
 
   private renderMap() {
-    const latlng = this.createLatLong(this.latitude, this.longitude);
+    const latlng = this.createLatLong(this.latitude, this.longitude) as google.maps.LatLng;
     const options = {
       zoom: this.zoom,
       center: latlng,
       mapTypeControl: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+    } as google.maps.MapOptions;
 
     this.map = new google.maps.Map(this.mapDiv.nativeElement, options);
 
@@ -150,7 +150,7 @@ export class MapComponent implements OnInit, AfterContentInit {
   }
 
   private renderMapPoints() {
-    if (this.map) {
+    if (this.map && this.isEnabled) {
       this.clearMapPoints();
 
       // lon/lat can be passed as child content or via the dataPoints @Input property
@@ -159,7 +159,7 @@ export class MapComponent implements OnInit, AfterContentInit {
       if (mapPoints) {
         for (const point of mapPoints) {
           let markerText = (point.markerText) ? point.markerText : `<h3>${point.firstName} ${point.lastName}</h3>`;
-          const mapPointLatlng = this.createLatLong(point.latitude, point.longitude);
+          const mapPointLatlng = this.createLatLong(point.latitude, point.longitude) as google.maps.LatLng;
           this.createMarker(mapPointLatlng, markerText);
         }
       }

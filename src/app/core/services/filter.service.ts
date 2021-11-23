@@ -20,7 +20,7 @@ export class FilterService {
                    continue;
                 }
 
-                if (item[prop].toString().toUpperCase().indexOf(data) > -1) {
+                if ((item as any)[prop].toString().toUpperCase().indexOf(data) > -1) {
                   match = true;
                   break;
                 }

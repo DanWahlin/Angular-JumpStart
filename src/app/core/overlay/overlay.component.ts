@@ -10,12 +10,12 @@ import { Subscription } from 'rxjs';
 })
 export class OverlayComponent implements OnInit, OnDestroy {
 
-    httpRequestSub: Subscription;
-    httpResponseSub: Subscription;
+    httpRequestSub: Subscription = {} as Subscription;
+    httpResponseSub: Subscription = {} as Subscription;
     enabled = false;
-    queue = [];
-    timerId: number = null;
-    timerHideId: number = null;
+    queue: any[] = [];
+    timerId: number = 0;
+    timerHideId: number = 0;
 
     @Input() delay = 500;
 

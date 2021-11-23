@@ -1,7 +1,7 @@
 import { Injectable, Output, EventEmitter, Inject, Directive } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { IUserLogin } from '../../shared/interfaces';
@@ -12,7 +12,7 @@ export class AuthService {
     baseUrl = this.utilitiesService.getApiUrl();
     authUrl = this.baseUrl + '/api/auth';
     isAuthenticated = false;
-    redirectUrl: string;
+    redirectUrl: string = '';
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {  }
@@ -49,10 +49,10 @@ export class AuthService {
         console.error('server error:', error);
         if (error.error instanceof Error) {
           const errMessage = error.error.message;
-          return Observable.throw(errMessage);
+          return throwError(() => errMessage);
           // return Observable.throw(err.text() || 'backend server error');
         }
-        return Observable.throw(error || 'Server error');
+        return throwError(() => error || 'Server error');
     }
 
 }

@@ -1,9 +1,9 @@
 <main class="container">
     <cm-navbar></cm-navbar>
     <router-outlet></router-outlet>
-    <cm-growler position="top-right" timeout="2000"></cm-growler>
+    <cm-growler position="top-right" [timeout]="2000"></cm-growler>
     <cm-modal></cm-modal>
-    <cm-overlay delay="300">
+    <cm-overlay [delay]="300">
         <span class="spinner"></span>&nbsp;&nbsp;&nbsp;Loading
     </cm-overlay>
 </main>

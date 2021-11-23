@@ -11,12 +11,12 @@ import { DataService } from '../../core/services/data.service';
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  customer: ICustomer;
-  mapEnabled: boolean;
-  mapComponentRef: ComponentRef<any>;
+  customer: ICustomer | null = null;
+  mapEnabled: boolean = false;
+  mapComponentRef: ComponentRef<any> = {} as ComponentRef<any>;
 
   @ViewChild('mapsContainer', { read: ViewContainerRef }) 
-  private mapsViewContainerRef: ViewContainerRef;
+  private mapsViewContainerRef: ViewContainerRef = {} as ViewContainerRef;
 
   constructor(private route: ActivatedRoute, 
     private dataService: DataService,
@@ -24,7 +24,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   ngOnInit() {
     // Subscribe to params so if it changes we pick it up. Could use this.route.parent.snapshot.params["id"] to simplify it.
-    this.route.parent.params.subscribe((params: Params) => {
+    this.route.parent?.params.subscribe((params: Params) => {
       const id = +params['id'];
       if (id) {
         this.dataService.getCustomer(id)

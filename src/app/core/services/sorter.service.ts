@@ -7,7 +7,7 @@ import { PropertyResolver } from './property-resolver';
 })
 export class SorterService {
 
-    property: string;
+    property: string = '';
     direction = 1;
 
     sort(collection: any[], prop: any, reverseSort = true) {

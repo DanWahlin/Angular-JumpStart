@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../core/services/auth.service';
 import { ValidationService } from '../core/services/validation.service';
@@ -14,8 +14,11 @@ import { LoggerService } from '../core/services/logger.service';
     styleUrls: [ './login.component.css' ]
 })
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    errorMessage: string;
+    loginForm: FormGroup = {} as FormGroup;
+    errorMessage: string = '';
+    get f(): { [key: string]: AbstractControl } {
+        return this.loginForm.controls;
+    }
 
     constructor(private formBuilder: FormBuilder,
                 private router: Router,

@@ -28,11 +28,11 @@ export class CustomerEditComponent implements OnInit {
         name: ''
       }
     };
-  states: IState[];
-  errorMessage: string;
-  deleteMessageEnabled: boolean;
+  states: IState[] = [];
+  errorMessage: string = '';
+  deleteMessageEnabled: boolean = false;
   operationText = 'Insert';
-  @ViewChild('customerForm', { static: true }) customerForm: NgForm;
+  @ViewChild('customerForm', { static: true }) customerForm: NgForm = {} as NgForm;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -45,7 +45,7 @@ export class CustomerEditComponent implements OnInit {
     // Subscribe to params so if it changes we pick it up. Don't technically need that here
     // since param won't be changing while component is alive.
     // Could use this.route.parent.snapshot.params["id"] to simplify it.
-    this.route.parent.params.subscribe((params: Params) => {
+    this.route.parent?.params.subscribe((params: Params) => {
       const id = +params['id'];
       if (id !== 0) {
         this.operationText = 'Update';

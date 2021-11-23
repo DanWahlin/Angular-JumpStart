@@ -5,7 +5,7 @@ export class GrowlerService {
 
     constructor() { }
 
-    growl: (message: string, growlType: GrowlerMessageType) => number;
+    growl: (message: string, growlType: GrowlerMessageType) => number = () => 0;
 
 }
 

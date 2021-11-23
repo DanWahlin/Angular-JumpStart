@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" *ngIf="customer">
     <div class="col-md-2">
-      <img src="assets/images/{{customer.gender | lowercase}}.png" class="details-image" />
+      <img src="assets/images/{{customer.gender | lowercase}}.png" class="details-image" title="customer picture" />
     </div>
     <div class="col-md-10">
       <h4>    
@@ -10,7 +10,7 @@
       <br />
       {{ customer.address }}
       <br />
-      {{ customer.city }}, {{ customer.state.name }}
+      {{ customer.city }}, {{ customer.state?.name }}
     </div>
   </div>    
   <br /><br />

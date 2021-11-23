@@ -27,12 +27,12 @@ export class OverlayRequestResponseInterceptor implements HttpInterceptor {
             }),
             catchError(err => {
               this.eventBus.emit(new EmitEvent(Events.httpResponse));
-              return of(null);
+              return of({}) as Observable<HttpEvent<any>>;
             })
           );
   }
 
-  getRandomIntInclusive(min, max) {
+  getRandomIntInclusive(min: number, max: number) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive

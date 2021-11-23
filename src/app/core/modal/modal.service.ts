@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ModalComponent } from './modal.component';
 
 export interface IModalContent {
   header?: string;
@@ -13,7 +14,7 @@ export class ModalService {
 
     constructor() { }
 
-    show: (modalContent: IModalContent) => Promise<boolean>;
-    hide: () => void;
+    show: (modalContent: IModalContent) => Promise<boolean> = () => { return {} as Promise<boolean>; };
+    hide: () => void = () => {};
 
 }

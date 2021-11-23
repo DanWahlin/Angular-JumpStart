@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { ICustomer, IOrder, IState, IPagedResults, IApiResponse } from '../../shared/interfaces';
@@ -12,8 +12,8 @@ export class DataService {
     baseUrl = this.utilitiesService.getApiUrl();
     customersBaseUrl = this.baseUrl + '/api/customers';
     ordersBaseUrl = this.baseUrl + '/api/orders';
-    orders: IOrder[];
-    states: IState[];
+    orders: IOrder[] = [];
+    states: IState[] = [];
 
     constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {  }
 
@@ -23,7 +23,8 @@ export class DataService {
             { observe: 'response' })
             .pipe(
                 map(res => {
-                    const totalRecords = +res.headers.get('X-InlineCount');
+                    const xInlineCount = res.headers.get('X-InlineCount');
+                    const totalRecords = Number(xInlineCount);
                     const customers = res.body as ICustomer[];
                     this.calculateCustomersOrderTotal(customers);
                     return {
@@ -87,11 +88,11 @@ export class DataService {
         console.error('server error:', error);
         if (error.error instanceof Error) {
             const errMessage = error.error.message;
-            return Observable.throw(errMessage);
+            return throwError(() => errMessage);
             // Use the following instead if using lite-server
             // return Observable.throw(err.text() || 'backend server error');
         }
-        return Observable.throw(error || 'Node.js server error');
+        return throwError(() => error || 'Node.js server error');
     }
 
     calculateCustomersOrderTotal(customers: ICustomer[]) {

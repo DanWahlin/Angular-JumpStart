@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DialogService {
 
-  promise: Promise<boolean>;
+  promise: Promise<boolean> = {} as Promise<boolean>;
   message = 'Is it OK?';
 
   confirm(message?: string) {

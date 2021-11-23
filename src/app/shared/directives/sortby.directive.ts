@@ -5,7 +5,7 @@ import { Directive, Input, Output, EventEmitter, HostListener } from '@angular/c
 })
 export class SortByDirective {
 
-  private sortProperty: string;
+  private sortProperty: string = '';
 
   @Output()
   sorted: EventEmitter<string> = new EventEmitter<string>();
@@ -17,9 +17,9 @@ export class SortByDirective {
     this.sortProperty = value;
   }
 
-  @HostListener('click')
-  onClick() {
-    event.preventDefault();
+  @HostListener('click', ['$event'])
+  onClick(e: Event) {
+    e.preventDefault();
     this.sorted.next(this.sortProperty); // Raise clicked event
   }
 

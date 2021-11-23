@@ -16,7 +16,7 @@ export class CanDeactivateGuard implements CanDeactivate<CustomerEditComponent> 
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
 
-    this.logger.log(`CustomerId: ${route.parent.params['id']} URL: ${state.url}`);
+    this.logger.log(`CustomerId: ${route.parent?.params['id']} URL: ${state.url}`);
 
     // Check with component to see if we're able to deactivate
     return component.canDeactivate();

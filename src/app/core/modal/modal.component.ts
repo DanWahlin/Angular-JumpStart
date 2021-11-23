@@ -12,8 +12,8 @@ export class ModalComponent implements OnInit {
   modalVisible = false;
   modalVisibleAnimate = false;
   modalContent: IModalContent = {};
-  cancel: () => void;
-  ok: () => void;
+  cancel: () => void = () => {};
+  ok: () => void = () => {};
   defaultModalContent: IModalContent = {
     header: 'Please Confirm',
     body: 'Are you sure you want to continue?',

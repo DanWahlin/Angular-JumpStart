@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MapPointComponent implements OnInit {
 
-  @Input() longitude: number;
-  @Input() latitude: number;
-  @Input() markerText: string;
+  @Input() longitude: number = 0;
+  @Input() latitude: number = 0;
+  @Input() markerText: string = '';
 
   constructor() { }
 

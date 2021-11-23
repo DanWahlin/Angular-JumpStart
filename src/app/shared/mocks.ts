@@ -12,7 +12,7 @@ export class MockDataService {
         if (id === 1) {
             return of(customers.slice(0, 1)[0]);
         } else {
-            return of(null);
+            return of({} as ICustomer);
         }
     }
 
@@ -38,22 +38,22 @@ export class MockDataService {
 }
 
 export class MockActivatedRoute implements ActivatedRoute {
-    snapshot: ActivatedRouteSnapshot;
-    url: Observable<UrlSegment[]>;
-    params: Observable<Params>;
-    queryParams: Observable<Params>;
-    fragment: Observable<string>;
-    data: Observable<Data>;
-    outlet: string;
-    component: Type<any> | string;
-    routeConfig: Route;
-    root: ActivatedRoute;
-    parent: ActivatedRoute;
-    firstChild: ActivatedRoute;
-    children: ActivatedRoute[];
-    pathFromRoot: ActivatedRoute[];
-    paramMap: Observable<ParamMap>;
-    queryParamMap: Observable<ParamMap>;
+    snapshot: ActivatedRouteSnapshot = {} as ActivatedRouteSnapshot;
+    url: Observable<UrlSegment[]> = {} as Observable<UrlSegment[]>;
+    params: Observable<Params> = {} as Observable<Params>;
+    queryParams: Observable<Params> = {} as Observable<Params>;
+    fragment: Observable<string> = {} as Observable<string>;
+    data: Observable<Data> = {} as Observable<Data>;
+    outlet: string = '';
+    component: Type<any> | string = '';
+    routeConfig: Route = {} as Route;
+    root: ActivatedRoute = {} as ActivatedRoute;
+    parent: ActivatedRoute = {} as ActivatedRoute;
+    firstChild: ActivatedRoute = {} as ActivatedRoute;
+    children: ActivatedRoute[] = [];
+    pathFromRoot: ActivatedRoute[] = [];
+    paramMap: Observable<ParamMap> = {} as Observable<ParamMap>;
+    queryParamMap: Observable<ParamMap> = {} as Observable<ParamMap>;
     toString(): string {
         return '';
     }

@@ -4,7 +4,7 @@ import { AbstractControl } from '@angular/forms';
 export class ValidationService {
 
     static getValidatorErrorMessage(code: string) {
-        const config = {
+        const config: any = {
             'required': 'Required',
             'invalidCreditCard': 'Is invalid credit card number',
             'invalidEmailAddress': 'Invalid email address',

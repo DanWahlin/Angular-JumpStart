@@ -13,14 +13,14 @@ import { LoggerService } from '../core/services/logger.service';
 })
 export class CustomersComponent implements OnInit {
 
-  title: string;
-  filterText: string;
+  title: string = '';
+  filterText: string = '';
   customers: ICustomer[] = [];
-  displayMode: DisplayModeEnum;
+  displayMode: DisplayModeEnum = DisplayModeEnum.Card;
   displayModeEnum = DisplayModeEnum;
   totalRecords = 0;
   pageSize = 10;
-  mapComponentRef: ComponentRef<any>;
+  mapComponentRef: ComponentRef<any> = {} as ComponentRef<any>;
   _filteredCustomers: ICustomer[] = [];
 
   get filteredCustomers() {
@@ -33,7 +33,7 @@ export class CustomersComponent implements OnInit {
   }
 
   @ViewChild('mapsContainer', { read: ViewContainerRef }) 
-  private mapsViewContainerRef: ViewContainerRef;
+  private mapsViewContainerRef: ViewContainerRef = {} as ViewContainerRef;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
     private dataService: DataService,
@@ -91,7 +91,7 @@ export class CustomersComponent implements OnInit {
   }
 
   updateMapComponentDataPoints() {
-    if (this.mapComponentRef) {
+    if (this.mapComponentRef && this.mapComponentRef.instance) {
       this.mapComponentRef.instance.dataPoints = this.filteredCustomers;
     }
   }
