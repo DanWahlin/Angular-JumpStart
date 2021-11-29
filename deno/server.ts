@@ -29,7 +29,7 @@ app.use(async (ctx) => {
     }
     await ctx.send(options);
 });
-app.use(async (ctx, next) => {
+app.use(async (ctx: any, next: any) => {
     try {
         await next();
     } catch (err) {

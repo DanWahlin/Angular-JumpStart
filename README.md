@@ -58,6 +58,8 @@ Here are a few screenshots from the app:
 
 1. Install the latest version of Deno from https://deno.land
 
+1. If using VS Code install the Deno language server extension: https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno
+
 1. Run `npm install` to install the Angular dependencies
 
 1. Run `ng build` to build and bundle the code
