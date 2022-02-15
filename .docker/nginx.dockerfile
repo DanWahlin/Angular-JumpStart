@@ -3,7 +3,8 @@ FROM node:16.14.0 as node
 LABEL author="Dan Wahlin"
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install --no-optional COPY . .
+RUN npm install --no-optional 
+COPY . .
 RUN npm run build
 
 ##### Stage 2
