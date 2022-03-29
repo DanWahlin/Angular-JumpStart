@@ -14,8 +14,8 @@ export class OverlayComponent implements OnInit, OnDestroy {
     httpResponseSub: Subscription = {} as Subscription;
     enabled = false;
     queue: any[] = [];
-    timerId: number = 0;
-    timerHideId: number = 0;
+    timerId = 0;
+    timerHideId = 0;
 
     @Input() delay = 500;
 

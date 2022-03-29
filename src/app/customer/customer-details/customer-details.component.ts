@@ -12,7 +12,7 @@ import { DataService } from '../../core/services/data.service';
 export class CustomerDetailsComponent implements OnInit {
 
   customer: ICustomer | null = null;
-  mapEnabled: boolean = false;
+  mapEnabled = false;
   mapComponentRef: ComponentRef<any> = {} as ComponentRef<any>;
 
   @ViewChild('mapsContainer', { read: ViewContainerRef }) 

@@ -12,7 +12,7 @@ export class AuthService {
     baseUrl = this.utilitiesService.getApiUrl();
     authUrl = this.baseUrl + '/api/auth';
     isAuthenticated = false;
-    redirectUrl: string = '';
+    redirectUrl = '';
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {  }

@@ -1,19 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'cm-map-point',
-  template: ``
+   selector: 'cm-map-point',
+   template: ``
 })
-export class MapPointComponent implements OnInit {
+export class MapPointComponent {
 
-  @Input() longitude: number = 0;
-  @Input() latitude: number = 0;
-  @Input() markerText: string = '';
-
-  constructor() { }
-
-  ngOnInit() {
-
-  }
+   @Input() longitude = 0;
+   @Input() latitude = 0;
+   @Input() markerText = '';
 
 }

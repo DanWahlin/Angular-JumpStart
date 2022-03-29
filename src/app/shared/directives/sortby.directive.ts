@@ -5,7 +5,7 @@ import { Directive, Input, Output, EventEmitter, HostListener } from '@angular/c
 })
 export class SortByDirective {
 
-  private sortProperty: string = '';
+  private sortProperty = '';
 
   @Output()
   sorted: EventEmitter<string> = new EventEmitter<string>();

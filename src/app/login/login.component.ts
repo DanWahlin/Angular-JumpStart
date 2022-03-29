@@ -15,7 +15,7 @@ import { LoggerService } from '../core/services/logger.service';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup = {} as FormGroup;
-    errorMessage: string = '';
+    errorMessage = '';
     get f(): { [key: string]: AbstractControl } {
         return this.loginForm.controls;
     }

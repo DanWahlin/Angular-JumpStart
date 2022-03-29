@@ -13,8 +13,8 @@ import { LoggerService } from '../core/services/logger.service';
 })
 export class CustomersComponent implements OnInit {
 
-  title: string = '';
-  filterText: string = '';
+  title = '';
+  filterText = '';
   customers: ICustomer[] = [];
   displayMode: DisplayModeEnum = DisplayModeEnum.Card;
   displayModeEnum = DisplayModeEnum;

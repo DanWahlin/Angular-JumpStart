@@ -29,8 +29,8 @@ export class CustomerEditComponent implements OnInit {
       }
     };
   states: IState[] = [];
-  errorMessage: string = '';
-  deleteMessageEnabled: boolean = false;
+  errorMessage = '';
+  deleteMessageEnabled = false;
   operationText = 'Insert';
   @ViewChild('customerForm', { static: true }) customerForm: NgForm = {} as NgForm;
 

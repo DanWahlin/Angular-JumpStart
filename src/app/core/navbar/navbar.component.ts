@@ -13,7 +13,7 @@ import { LoggerService } from '../services/logger.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-    isCollapsed: boolean = false;
+    isCollapsed = false;
     loginLogoutText = 'Login';
     sub: Subscription = {} as Subscription;
 
