@@ -147,7 +147,6 @@
       }
     }
   },
-  "defaultProject": "angular-jumpstart",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "cm",
@@ -156,5 +155,6 @@
     "@schematics/angular:directive": {
       "prefix": "cm"
     }
-  }
+  },
+  "defaultProject": "angular-jumpstart"
 }

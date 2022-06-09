@@ -45,7 +45,7 @@ export class MockActivatedRoute implements ActivatedRoute {
     fragment: Observable<string> = {} as Observable<string>;
     data: Observable<Data> = {} as Observable<Data>;
     outlet: string = '';
-    component: Type<any> | string = '';
+    component: Type<any> | null = null;
     routeConfig: Route = {} as Route;
     root: ActivatedRoute = {} as ActivatedRoute;
     parent: ActivatedRoute = {} as ActivatedRoute;
@@ -61,7 +61,7 @@ export class MockActivatedRoute implements ActivatedRoute {
 
 export function getActivatedRouteWithParent(params: any[]) {
     const route = new MockActivatedRoute();
-    route.parent = new MockActivatedRoute();
+    route.parent = new MockActivatedRoute() as ActivatedRoute;
     if (params) {
         for (const param of params) {
             // var keyNames = Object.keys(param);
