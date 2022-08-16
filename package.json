@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "cypress": "concurrently \"npm start\" \"cypress open\"",
-    "cypress:headless": "concurrently \"npm start\" \"cypress run\"",
+    "cypress": "concurrently \"npm start\" \"npx cypress open\"",
+    "cypress:headless": "concurrently \"npm start\" \"npx cypress run\"",
     "playground": "angular-playground",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
@@ -55,9 +55,5 @@
     "opn": "^6.0.0",
     "ts-node": "~7.0.0",
     "typescript": "~4.7.3"
-  },
-  "optionalDependencies": {
-    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
-    "cypress": "^10.6.0"
   }
 }

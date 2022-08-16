@@ -1,3 +1,4 @@
+
 describe("Customers", () => {
     beforeEach(() => {
       cy.visit("/customers");
