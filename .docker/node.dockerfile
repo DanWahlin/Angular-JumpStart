@@ -1,4 +1,4 @@
-FROM node:16.13.2-alpine
+FROM node:16.17.0-alpine
 
 LABEL author="Dan Wahlin"
 
