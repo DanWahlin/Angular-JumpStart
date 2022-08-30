@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
+import { MapPointComponent } from 'src/app/shared/map/map-point.component';
 
 @Component({
   selector: 'cm-customer-details',
@@ -43,9 +44,8 @@ export class CustomerDetailsComponent implements OnInit {
     if (!this.mapsViewContainerRef.length) {
       // Lazy load MapComponent
       const { MapComponent } = await import('../../shared/map/map.component');
-      console.log('Lazy loaded map component!');
-      const component = this.componentFactoryResolver.resolveComponentFactory(MapComponent);
-      this.mapComponentRef = this.mapsViewContainerRef.createComponent(component);
+      console.log('Lazy loaded map component for customer!');
+      this.mapComponentRef = this.mapsViewContainerRef.createComponent(MapComponent);
       this.mapComponentRef.instance.zoom = 10;
       this.mapComponentRef.instance.customer = this.customer;
       this.mapComponentRef.instance.enabled = true;

@@ -82,8 +82,7 @@ export class CustomersComponent implements OnInit {
       // Lazy load MapComponent
       const { MapComponent } = await import('../shared/map/map.component');
       console.log('Lazy loaded map component!');
-      const component = this.componentFactoryResolver.resolveComponentFactory(MapComponent);
-      this.mapComponentRef = this.mapsViewContainerRef.createComponent(component);
+      this.mapComponentRef = this.mapsViewContainerRef.createComponent(MapComponent);
       this.mapComponentRef.instance.zoom = 2;
       this.mapComponentRef.instance.dataPoints = this.filteredCustomers;
       this.mapComponentRef.instance.enabled = true;
