@@ -317,13 +317,15 @@ Navigate to the FQDN value shown after running the previous command.
           - main
       ```
   
-  1. Change the `file` and `context` properties in each container apps workflow file to the following:
+  1. Make the following changes to each respective workflow file:
 
       ### angular-jumpstart-ui workflow
 
       ```yaml
       file: ./.docker/nginx.dockerfile
       context: ./
+      secrets: |
+        "NG_APP_API_URL=${{ secrets.NG_APP_API_URL }}"
       ```
 
       ### angular-jumpstart-api workflow
@@ -333,9 +335,9 @@ Navigate to the FQDN value shown after running the previous command.
       context: ./
       ```
 
-1. Go to your GitHub.com and navigate to your forked repo. Select Settings --> Secrets --> Actions from the toolbar.
+1. Go to your GitHub.com and navigate to your forked repo. Select `Settings --> Secrets --> Actions` from the toolbar.
 
-1. Add the following key/value into the repository secrets. This is needed for CI builds that generate the UI image.
+1. Add the following key/value into the repository secrets. This is needed for the CI build that generates the UI image.
 
     ```text
     NG_APP_API_URL=<FQDN_VALUE_FROM_YOUR_angular-jumpstart-api_CONTAINER_APP>
