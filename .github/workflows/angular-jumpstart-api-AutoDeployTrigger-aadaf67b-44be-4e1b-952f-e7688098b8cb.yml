@@ -2,10 +2,13 @@ name: Trigger auto deployment for angular-jumpstart-api
 
 # When this action will be executed
 on:
-  # Automatically trigger it when detected changes in repo
   push:
-    branches: 
-      [ main ]
+    branches:
+    - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+    - main
 
   # Allow mannually trigger 
   workflow_dispatch:      
