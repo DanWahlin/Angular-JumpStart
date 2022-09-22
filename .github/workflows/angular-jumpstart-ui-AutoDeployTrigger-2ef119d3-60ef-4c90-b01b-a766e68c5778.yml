@@ -57,5 +57,5 @@ jobs:
         with:
           inlineScript: |
             az config set extension.use_dynamic_install=yes_without_prompt
-            az containerapp registry set -n angular-jumpstart-ui -g Angular-Jumpstart-RG --server https://registry.hub.docker.com --username  ${{ secrets.ANGULARJUMPSTARTUI_REGISTRY_USERNAME }} --password ${{ secrets.ANGULARJUMPSTARTUI_REGISTRY_PASSWORD }}
-            az containerapp update -n angular-jumpstart-ui -g Angular-Jumpstart-RG --image https://registry.hub.docker.com/danwahlin/nginx-angular-jumpstart:${{ github.sha }}
+            az containerapp registry set -n angular-jumpstart-ui -g Angular-Jumpstart-RG --server docker.io --username  ${{ secrets.ANGULARJUMPSTARTUI_REGISTRY_USERNAME }} --password ${{ secrets.ANGULARJUMPSTARTUI_REGISTRY_PASSWORD }}
+            az containerapp update -n angular-jumpstart-ui -g Angular-Jumpstart-RG --image danwahlin/nginx-angular-jumpstart:${{ github.sha }}
