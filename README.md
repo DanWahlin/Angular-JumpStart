@@ -182,9 +182,11 @@ https://pluralsight.pxf.io/danwahlin
 
 ## Build API Image
 
-- Run `docker-compose build node` and push the image to docker hub (you'll need to add the repo name in docker-compose.yml).
-- Tag the image with your Docker Hub repo name: `docker tag node-service-jumpstart <your_docker_repo_name>/node-service-jumpstart`
-- `docker push <your_docker_repo_name>/node-service-jumpstart`
+1. Clone this repo.
+
+2. Run `docker-compose build node`.
+- Tag the image with your Docker Hub repo name: `docker tag node-service-jumpstart <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart`
+- `docker push <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart`
 
 ## Create environment
 
@@ -216,9 +218,9 @@ az containerapp create -n angular-jumpstart-api -g Angular-Jumpstart-RG \
 
 ## Build UI Image
 
-- Run `docker-compose build nginx` and push the image to docker hub (you'll need to add the repo name in docker-compose.yml).
-- Tag the image with your Docker Hub repo name: `docker tag nginx-angular-jumpstart <your_docker_repo_name>/nginx-angular-jumpstart`
-- `docker push <your_docker_repo_name>/nginx-angular-jumpstart`
+1. Run `docker-compose build nginx`.
+1. Tag the image with your Docker Hub repo name: `docker tag nginx-angular-jumpstart <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart`
+1. `docker push <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart`
 
 ## Deploy UI Container App
 
