@@ -38,6 +38,8 @@ jobs:
           tags: danwahlin/nginx-angular-jumpstart:${{ github.sha }}
           file: ./.docker/nginx.dockerfile
           context: ./
+          secrets: |
+            "NG_APP_API_URL=${{ secrets.NG_APP_API_URL }}"
 
 
   deploy:

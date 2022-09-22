@@ -199,7 +199,7 @@ az containerapp env create -n angular-jumpstart-env -g Angular-Jumpstart-RG \
 --location westus3
 ```
 
-## Deploy API Container App
+## Deploy the API Container App
 
 ```bash
 az containerapp create -n angular-jumpstart-api -g Angular-Jumpstart-RG \
@@ -212,23 +212,33 @@ az containerapp create -n angular-jumpstart-api -g Angular-Jumpstart-RG \
 
 ## Add an .env File
 
-1. Add a `.env` file to the project root.
+1. Create a `.env` file in the project root.
 
-1. Add the following value into the `.env` file. Replace `<fqdn_value_from_angular-jumpstart-api_container_app>` with your `angular-jumpstart-api` container app's fully qualified domain name (you saw this in the previous section or you can go to the Azure Portal and get the value).
+1. Add the following key/value to the `.env` file:
 
   ```text
-  NG_APP_API_URL=<fqdn_value_from_angular-jumpstart-api_container_app>
+  NG_APP_API_URL=<FQDN_VALUE_FROM_YOUR_angular-jumpstart-api_CONTAINER_APP>
   ```
 
-## Build UI Image
+## Build the UI Image
 
 1. Run `docker-compose build nginx`.
-1. Tag the image with your Docker Hub repo name: `docker tag nginx-angular-jumpstart <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart`
-1. `docker push <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart`
+
+1. Tag the image with your Docker Hub repo name: 
+
+    ```bash
+    docker tag nginx-angular-jumpstart <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart
+    ```
+
+1. Push the image to Docker Hub:
+
+    ```bash
+    docker push <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart
+    ```
 
 ## Deploy UI Container App
 
-Change the image name to match your tag as you build.
+Change the image name below to match your image tag from the previous step.
 
 ```bash
 az containerapp create -n angular-jumpstart-ui -g Angular-Jumpstart-RG \
@@ -245,69 +255,97 @@ Navigate to the FQDN value shown after running the previous command.
 
 1. Create a service principal:
 
-  ```bash
-  az ad sp create-for-rbac \
-    --name AngularJumpStartServicePrincipal \
-    --role "contributor" \
-    --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/Angular-Jumpstart-RG \
-    --sdk-auth
-  ```
+    ```bash
+    az ad sp create-for-rbac \
+      --name AngularJumpStartServicePrincipal \
+      --role "contributor" \
+      --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/Angular-Jumpstart-RG \
+      --sdk-auth
+    ```
 
 1. Add a GitHub action for the UI container app:
 
-  ```bash
-  az containerapp github-action add \
-    --repo-url "https://github.com/<OWNER>/<REPOSITORY_NAME>" \
-    --context-path "./.docker/nginx.dockerfile" \
-    --branch main \
-    --name angular-jumpstart-ui \
-    --image <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart
-    --resource-group Angular-Jumpstart-RG \
-    --registry-url docker.io \
-    --registry-username <REGISTRY_USER_NAME> \
-    --registry-password <REGISTRY_PASSWORD> \
-    --service-principal-client-id <CLIENT_ID> \
-    --service-principal-client-secret <CLIENT_SECRET> \
-    --service-principal-tenant-id <TENANT_ID> \
-    --login-with-github
-  ```
+    ```bash
+    az containerapp github-action add \
+      --repo-url "https://github.com/<OWNER>/<REPOSITORY_NAME>" \
+      --context-path "./.docker/nginx.dockerfile" \
+      --branch main \
+      --name angular-jumpstart-ui \
+      --image <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart
+      --resource-group Angular-Jumpstart-RG \
+      --registry-url docker.io \
+      --registry-username <REGISTRY_USER_NAME> \
+      --registry-password <REGISTRY_PASSWORD> \
+      --service-principal-client-id <CLIENT_ID> \
+      --service-principal-client-secret <CLIENT_SECRET> \
+      --service-principal-tenant-id <TENANT_ID> \
+      --login-with-github
+    ```
 
 1. Add a GitHub action for the API container app:
 
-  ```bash
-  az containerapp github-action add \
-    --repo-url "https://github.com/<OWNER>/<REPOSITORY_NAME>" \
-    --context-path "./.docker/node.dockerfile" \
-    --branch main \
-    --name angular-jumpstart-api \
-    --image <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart
-    --resource-group Angular-Jumpstart-RG \
-    --registry-url docker.io \
-    --registry-username <REGISTRY_USER_NAME> \
-    --registry-password <REGISTRY_PASSWORD> \
-    --service-principal-client-id <CLIENT_ID> \
-    --service-principal-client-secret <CLIENT_SECRET> \
-    --service-principal-tenant-id <TENANT_ID> \
-    --login-with-github
-  ```
-
-  1. IMPORTANT: Once the GitHub actions are added, pull the latest changes to your local repository. Open each action file in `.github/workflows` and change the `file` and `context` properties to the following:
-
-    ### angular-jumpstart-ui workflow
-
-    ```yaml
-    file: ./.docker/nginx.dockerfile
-    context: ./
+    ```bash
+    az containerapp github-action add \
+      --repo-url "https://github.com/<OWNER>/<REPOSITORY_NAME>" \
+      --context-path "./.docker/node.dockerfile" \
+      --branch main \
+      --name angular-jumpstart-api \
+      --image <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart
+      --resource-group Angular-Jumpstart-RG \
+      --registry-url docker.io \
+      --registry-username <REGISTRY_USER_NAME> \
+      --registry-password <REGISTRY_PASSWORD> \
+      --service-principal-client-id <CLIENT_ID> \
+      --service-principal-client-secret <CLIENT_SECRET> \
+      --service-principal-tenant-id <TENANT_ID> \
+      --login-with-github
     ```
 
-    ### angular-jumpstart-api workflow
+  1. IMPORTANT: Once the GitHub actions are added, pull the latest changes to your local repository. 
+
+  1. Open each action file in `.github/workflows` and change the properties under `on:` to the following (in both files):
+
+      ```yaml
+      # When this action will be executed
+      on:
+        push:
+          branches:
+          - main
+        pull_request:
+          types: [opened, synchronize, reopened, closed]
+          branches:
+          - main
+      ```
+  
+  1. Change the `file` and `context` properties in each container apps workflow file to the following:
+
+      ### angular-jumpstart-ui workflow
+
+      ```yaml
+      file: ./.docker/nginx.dockerfile
+      context: ./
+      ```
+
+      ### angular-jumpstart-api workflow
     
-    ```yaml
-    file: ./.docker/node.dockerfile
-    context: ./
+      ```yaml
+      file: ./.docker/node.dockerfile
+      context: ./
+      ```
+
+1. Go to your GitHub.com and navigate to your forked repo. Select Settings --> Secrets --> Actions from the toolbar.
+
+1. Add the following key/value into the repository secrets. This is needed for CI builds that generate the UI image.
+
+    ```text
+    NG_APP_API_URL=<FQDN_VALUE_FROM_YOUR_angular-jumpstart-api_CONTAINER_APP>
     ```
 
-1. Go to your GitHub repo 
+1. Push your changes up to your repo.
+
+1. Go to your GitHub repo on Github.com and select `Actions` from the toolbar. You should see the actions building (and hopefully deploy successfully).
+
+1. Go to the FQDN of your `angular-jumpstart-ui` container app in the browser. The app should load if your GitHub actions deployed successfully.
 
 
 
