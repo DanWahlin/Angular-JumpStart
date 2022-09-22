@@ -4,11 +4,12 @@ name: Trigger auto deployment for angular-jumpstart-ui
 on:
   # Automatically trigger it when detected changes in repo
   push:
-    branches: 
-      [ main ]
-    paths:
-    - '.docker/nginx.dockerfile/**'
-    - '.github/workflows/angular-jumpstart-ui-AutoDeployTrigger-2ef119d3-60ef-4c90-b01b-a766e68c5778.yml'
+    branches:
+    - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+    - main
 
   # Allow mannually trigger 
   workflow_dispatch:      
