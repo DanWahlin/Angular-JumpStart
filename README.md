@@ -235,7 +235,53 @@ az containerapp create -n angular-jumpstart-ui -g Angular-Jumpstart-RG \
 
 Navigate to the FQDN value shown after running the previous command.
 
-## Add GitHub Continuous Integration
+## Add GitHub Continuous Deployment
+
+1. Create a service principal:
+
+  ```bash
+  az ad sp create-for-rbac \
+    --name AngularJumpStartServicePrincipal \
+    --role "contributor" \
+    --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/Angular-Jumpstart-RG \
+    --sdk-auth
+  ```
+
+1. Add a GitHub action for the UI container app:
+
+  ```bash
+  az containerapp github-action add \
+    --repo-url "https://github.com/<OWNER>/<REPOSITORY_NAME>" \
+    --context-path "./.docker/nginx.dockerfile" \
+    --branch main \
+    --name angular-jumpstart-ui \
+    --resource-group Angular-Jumpstart-RG \
+    --registry-url https://registry.hub.docker.com \
+    --registry-username <REGISTRY_USER_NAME> \
+    --registry-password <REGISTRY_PASSWORD> \
+    --service-principal-client-id <CLIENT_ID> \
+    --service-principal-client-secret <CLIENT_SECRET> \
+    --service-principal-tenant-id <TENANT_ID> \
+    --login-with-github
+  ```
+
+1. Add a GitHub action for the API container app:
+
+  ```bash
+  az containerapp github-action add \
+    --repo-url "https://github.com/<OWNER>/<REPOSITORY_NAME>" \
+    --context-path "./.docker/node.dockerfile" \
+    --branch main \
+    --name angular-jumpstart-api \
+    --resource-group Angular-Jumpstart-RG \
+    --registry-url https://registry.hub.docker.com \
+    --registry-username <REGISTRY_USER_NAME> \
+    --registry-password <REGISTRY_PASSWORD> \
+    --service-principal-client-id <CLIENT_ID> \
+    --service-principal-client-secret <CLIENT_SECRET> \
+    --service-principal-tenant-id <TENANT_ID> \
+    --login-with-github
+  ```
 
 
 
