@@ -257,7 +257,7 @@ Navigate to the FQDN value shown after running the previous command.
     --name angular-jumpstart-ui \
     --image <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart
     --resource-group Angular-Jumpstart-RG \
-    --registry-url https://registry.hub.docker.com \
+    --registry-url docker.io \
     --registry-username <REGISTRY_USER_NAME> \
     --registry-password <REGISTRY_PASSWORD> \
     --service-principal-client-id <CLIENT_ID> \
@@ -276,7 +276,7 @@ Navigate to the FQDN value shown after running the previous command.
     --name angular-jumpstart-api \
     --image <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart
     --resource-group Angular-Jumpstart-RG \
-    --registry-url https://registry.hub.docker.com \
+    --registry-url docker.io \
     --registry-username <REGISTRY_USER_NAME> \
     --registry-password <REGISTRY_PASSWORD> \
     --service-principal-client-id <CLIENT_ID> \
