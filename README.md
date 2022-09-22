@@ -178,6 +178,67 @@ My Kubernetes for Developers video courses on Pluralsight.com:
 
 https://pluralsight.pxf.io/danwahlin
 
+# Azure Container Apps
+
+## Build API Image
+
+- Run `docker-compose build node` and push the image to docker hub (you'll need to add the repo name in docker-compose.yml).
+- Tag the image with your Docker Hub repo name: `docker tag node-service-jumpstart <your_docker_repo_name>/node-service-jumpstart`
+- `docker push <your_docker_repo_name>/node-service-jumpstart`
+
+## Create environment
+
+```bash
+az containerapp env create -n angular-jumpstart-env -g Angular-Jumpstart-RG \
+--location westus3
+```
+
+## Deploy API Container App
+
+```bash
+az containerapp create -n angular-jumpstart-api -g Angular-Jumpstart-RG \
+--environment angular-jumpstart-env \
+--image danwahlin/node-service-jumpstart \
+--ingress external --target-port 8080
+```
+
+> Note the fully qualified domain (fqdn) value assigned to the `angular-jumpstart-api` container app. You'll need this value in the next section.
+
+## Add an .env File
+
+1. Add a `.env` file to the project root.
+
+1. Add the following value into the `.env` file. Replace `<fqdn_value_from_angular-jumpstart-api_container_app>` with your `angular-jumpstart-api` container app's fully qualified domain name (you saw this in the previous section or you can go to the Azure Portal and get the value).
+
+  ```text
+  NG_APP_API_URL=<fqdn_value_from_angular-jumpstart-api_container_app>
+  ```
+
+## Build UI Image
+
+- Run `docker-compose build nginx` and push the image to docker hub (you'll need to add the repo name in docker-compose.yml).
+- Tag the image with your Docker Hub repo name: `docker tag nginx-angular-jumpstart <your_docker_repo_name>/nginx-angular-jumpstart`
+- `docker push <your_docker_repo_name>/nginx-angular-jumpstart`
+
+## Deploy UI Container App
+
+Change the image name to match your tag as you build.
+
+```bash
+az containerapp create -n angular-jumpstart-ui -g Angular-Jumpstart-RG \
+--environment angular-jumpstart-env \
+--image danwahlin/nginx-angular-jumpstart \
+--ingress external --target-port 80
+```
+
+## View the UI App
+
+Navigate to the FQDN value shown after running the previous command.
+
+## Add GitHub Continuous Integration
+
+
+
 
 
 
