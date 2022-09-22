@@ -198,7 +198,7 @@ az containerapp env create -n angular-jumpstart-env -g Angular-Jumpstart-RG \
 ```bash
 az containerapp create -n angular-jumpstart-api -g Angular-Jumpstart-RG \
 --environment angular-jumpstart-env \
---image danwahlin/node-service-jumpstart \
+--image <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart \
 --ingress external --target-port 8080
 ```
 
@@ -227,7 +227,7 @@ Change the image name to match your tag as you build.
 ```bash
 az containerapp create -n angular-jumpstart-ui -g Angular-Jumpstart-RG \
 --environment angular-jumpstart-env \
---image danwahlin/nginx-angular-jumpstart \
+--image <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart \
 --ingress external --target-port 80
 ```
 
@@ -255,6 +255,7 @@ Navigate to the FQDN value shown after running the previous command.
     --context-path "./.docker/nginx.dockerfile" \
     --branch main \
     --name angular-jumpstart-ui \
+    --image <YOUR_DOCKER_HUB_NAME>/nginx-angular-jumpstart
     --resource-group Angular-Jumpstart-RG \
     --registry-url https://registry.hub.docker.com \
     --registry-username <REGISTRY_USER_NAME> \
@@ -273,6 +274,7 @@ Navigate to the FQDN value shown after running the previous command.
     --context-path "./.docker/node.dockerfile" \
     --branch main \
     --name angular-jumpstart-api \
+    --image <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart
     --resource-group Angular-Jumpstart-RG \
     --registry-url https://registry.hub.docker.com \
     --registry-username <REGISTRY_USER_NAME> \
