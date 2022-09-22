@@ -1,6 +1,10 @@
 ##### Stage 1
 FROM node:16.17.0 as node
 LABEL author="Dan Wahlin"
+
+ARG NG_APP_API_URL
+ENV NG_APP_API_URL=$NG_APP_API_URL
+
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install --no-optional 

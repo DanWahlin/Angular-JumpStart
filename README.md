@@ -322,10 +322,9 @@ Navigate to the FQDN value shown after running the previous command.
       ### angular-jumpstart-ui workflow
 
       ```yaml
+      build-args: NG_APP_API_URL=${{ secrets.NG_APP_API_URL }}
       file: ./.docker/nginx.dockerfile
       context: ./
-      secrets: |
-        "NG_APP_API_URL=${{ secrets.NG_APP_API_URL }}"
       ```
 
       ### angular-jumpstart-api workflow
