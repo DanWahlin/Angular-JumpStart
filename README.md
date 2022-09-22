@@ -182,11 +182,15 @@ https://pluralsight.pxf.io/danwahlin
 
 ## Build API Image
 
-1. Clone this repo.
+1. Go to https://github.com/danwahlin/angular-jumpstart and fork the repo.
 
-2. Run `docker-compose build node`.
-- Tag the image with your Docker Hub repo name: `docker tag node-service-jumpstart <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart`
-- `docker push <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart`
+1. Clone the forked repo to your machine.
+
+1. Run `docker-compose build node`.
+
+1. Tag the image with your Docker Hub repo name: `docker tag node-service-jumpstart <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart`
+
+1. `docker push <YOUR_DOCKER_HUB_NAME>/node-service-jumpstart`
 
 ## Create environment
 
@@ -286,6 +290,24 @@ Navigate to the FQDN value shown after running the previous command.
     --service-principal-tenant-id <TENANT_ID> \
     --login-with-github
   ```
+
+  1. IMPORTANT: Once the GitHub actions are added, pull the latest changes to your local repository. Open each action file in `.github/workflows` and change the `file` and `context` properties to the following:
+
+    ### angular-jumpstart-ui workflow
+
+    ```yaml
+    file: ./.docker/nginx.dockerfile
+    context: ./
+    ```
+
+    ### angular-jumpstart-api workflow
+    
+    ```yaml
+    file: ./.docker/node.dockerfile
+    context: ./
+    ```
+
+1. Go to your GitHub repo 
 
 
 
