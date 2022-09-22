@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: https://registry.hub.docker.com/danwahlin/nginx-angular-jumpstart:${{ github.sha }}
+          tags: danwahlin/nginx-angular-jumpstart:${{ github.sha }}
           file: ./.docker/nginx.dockerfile
           context: ./
 
