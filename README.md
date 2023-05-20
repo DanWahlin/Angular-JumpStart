@@ -28,11 +28,13 @@ Looking for expert onsite Angular/TypeScript training? We've trained the biggest
 
 1. Run `npm install` to install app dependencies
 
-1. Run `ng build --watch` to build and bundle the code
+1. Run `ng build angular-jumpstart --watch` to build and bundle the code
 
 1. Run `npm start` in a separate terminal window to launch the web and RESTful API server
 
 1. Go to http://localhost:8080 in your browser 
+
+NOTE: You'll need to supply your own Google Maps API key in the `shared/map.component.ts` file to see a map. Update `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY` with your key.
 
 Simply clone the project or download and extract the .zip to get started. 
 
