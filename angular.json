@@ -138,6 +138,5 @@
     "@schematics/angular:directive": {
       "prefix": "cm"
     }
-  },
-  "defaultProject": "angular-jumpstart"
+  }
 }
