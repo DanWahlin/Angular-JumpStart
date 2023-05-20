@@ -34,7 +34,7 @@ Looking for expert onsite Angular/TypeScript training? We've trained the biggest
 
 1. Go to http://localhost:8080 in your browser 
 
-NOTE: You'll need to supply your own Google Maps API key in the `shared/map.component.ts` file to see a map. Update `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY` with your key.
+NOTE: You'll need to supply your own Google Maps API key in the `shared/map.component.ts` file to see the full map functionality. Update `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY` with your key.
 
 Simply clone the project or download and extract the .zip to get started. 
 
