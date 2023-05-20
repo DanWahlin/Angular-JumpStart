@@ -38,25 +38,27 @@ export class MockDataService {
 }
 
 export class MockActivatedRoute implements ActivatedRoute {
-    snapshot: ActivatedRouteSnapshot = {} as ActivatedRouteSnapshot;
-    url: Observable<UrlSegment[]> = {} as Observable<UrlSegment[]>;
-    params: Observable<Params> = {} as Observable<Params>;
-    queryParams: Observable<Params> = {} as Observable<Params>;
-    fragment: Observable<string> = {} as Observable<string>;
-    data: Observable<Data> = {} as Observable<Data>;
-    outlet: string = '';
+    outlet = '';
     component: Type<any> | null = null;
-    routeConfig: Route = {} as Route;
+    snapshot: ActivatedRouteSnapshot = {} as ActivatedRouteSnapshot;
+    title: Observable<string | undefined> = of('');
+    url: Observable<UrlSegment[]> = of([]);
+    params: Observable<Params> = of({});
+    queryParams: Observable<Params> = of({});
+    fragment: Observable<string | null> = of('');
+    data: Observable<Data> = of({});
+    routeConfig: Route | null = null;
     root: ActivatedRoute = {} as ActivatedRoute;
-    parent: ActivatedRoute = {} as ActivatedRoute;
-    firstChild: ActivatedRoute = {} as ActivatedRoute;
+    parent: ActivatedRoute | null = null;
+    firstChild: ActivatedRoute | null = null;
     children: ActivatedRoute[] = [];
     pathFromRoot: ActivatedRoute[] = [];
-    paramMap: Observable<ParamMap> = {} as Observable<ParamMap>;
-    queryParamMap: Observable<ParamMap> = {} as Observable<ParamMap>;
+    paramMap: Observable<ParamMap> = of({} as ParamMap);
+    queryParamMap: Observable<ParamMap> = of({} as ParamMap);
     toString(): string {
         return '';
     }
+
 }
 
 export function getActivatedRouteWithParent(params: any[]) {
