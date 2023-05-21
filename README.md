@@ -22,6 +22,10 @@ Looking for expert onsite Angular/TypeScript training? We've trained the biggest
 * Optional: Webpack functionality is available for module loading and more (see below for details)
 * Optional: Ahead-of-Time (AOT) functionality is available for a production build of the project (see below for details)
 
+## Standalone Components Example
+
+An example of this application that uses standalone components (no modules) can be found in the `standalone-components` branch.
+
 ## Running the Application with Node.js
 
 1. Install the latest LTS version of Node.js from https://nodejs.org. *IMPORTANT: The server uses ES2015 features AND the Angular CLI so you need a current version of Node.js.*
