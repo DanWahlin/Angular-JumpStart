@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ModalComponent } from './modal.component';
 
 export interface IModalContent {
   header?: string;
@@ -9,7 +8,7 @@ export interface IModalContent {
   cancelButtonVisible?: boolean;
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ModalService {
 
     constructor() { }

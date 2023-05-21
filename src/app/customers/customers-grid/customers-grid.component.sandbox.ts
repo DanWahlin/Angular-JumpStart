@@ -1,12 +1,10 @@
 import { sandboxOf } from 'angular-playground';
-import { SharedModule } from '../../shared/shared.module';
 import { CustomersGridComponent } from './customers-grid.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CoreModule } from '../../core/core.module';
 import { customers } from '../../shared/mocks';
 
 const sandboxConfig = {
-  imports: [ SharedModule, CoreModule, RouterTestingModule ],
+  imports: [ RouterTestingModule ],
   label: 'Customers Grid Component'
 };
 

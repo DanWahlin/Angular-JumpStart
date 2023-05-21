@@ -4,11 +4,15 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { MapPointComponent } from 'src/app/shared/map/map-point.component';
+import { CapitalizePipe } from '../../shared/pipes/capitalize.pipe';
+import { NgIf, LowerCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'cm-customer-details',
-  templateUrl: './customer-details.component.html',
-  styleUrls: ['./customer-details.component.css']
+    selector: 'cm-customer-details',
+    templateUrl: './customer-details.component.html',
+    styleUrls: ['./customer-details.component.css'],
+    standalone: true,
+    imports: [NgIf, LowerCasePipe, CapitalizePipe]
 })
 export class CustomerDetailsComponent implements OnInit {
 

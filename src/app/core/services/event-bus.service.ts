@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Subscription, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class EventBusService {
 
     subject = new Subject<any>();

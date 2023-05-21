@@ -7,7 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 import { IUserLogin } from '../../shared/interfaces';
 import { UtilitiesService } from './utilities.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
     baseUrl = this.utilitiesService.getApiUrl();
     authUrl = this.baseUrl + '/api/auth';

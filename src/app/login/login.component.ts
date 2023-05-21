@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from '../core/services/auth.service';
 import { ValidationService } from '../core/services/validation.service';
 import { IUserLogin } from '../shared/interfaces';
 import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
 import { LoggerService } from '../core/services/logger.service';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'cm-login',
     templateUrl: './login.component.html',
-    styleUrls: [ './login.component.css' ]
+    styleUrls: ['./login.component.css'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgIf]
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup = {} as FormGroup;

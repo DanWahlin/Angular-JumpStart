@@ -3,10 +3,14 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { DataService } from '../../core/services/data.service';
 import { ICustomer, IOrder, IOrderItem } from '../../shared/interfaces';
+import { CapitalizePipe } from '../../shared/pipes/capitalize.pipe';
+import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 
 @Component({
-  selector: 'cm-customer-orders',
-  templateUrl: './customer-orders.component.html'
+    selector: 'cm-customer-orders',
+    templateUrl: './customer-orders.component.html',
+    standalone: true,
+    imports: [NgIf, NgFor, CurrencyPipe, CapitalizePipe]
 })
 export class CustomerOrdersComponent implements OnInit {
 

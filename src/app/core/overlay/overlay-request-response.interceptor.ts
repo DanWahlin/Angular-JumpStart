@@ -6,7 +6,7 @@ import { tap, delay, catchError } from 'rxjs/operators';
 
 import { EventBusService, EmitEvent, Events } from '../services/event-bus.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class OverlayRequestResponseInterceptor implements HttpInterceptor {
 
   constructor(private eventBus: EventBusService) { }

@@ -1,12 +1,8 @@
-import { moduleMetadata } from '@storybook/angular';
+import { Meta, StoryFn, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/angular/types-6-0';
-
 import { TrackByService } from 'src/app/core/services/trackby.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { customers } from '../app/shared/mocks';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { CustomersCardComponent } from 'src/app/customers/customers-card/customers-card.component';
 
 export default {
@@ -14,13 +10,13 @@ export default {
   component: CustomersCardComponent,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, RouterTestingModule, SharedModule],
+      imports: [ CommonModule, RouterTestingModule ],
       providers: [ TrackByService ]
     }),
   ],
 } as Meta;
 
-const Template: Story<CustomersCardComponent> = (args: CustomersCardComponent) => ({
+const Template: StoryFn<CustomersCardComponent> = (args: CustomersCardComponent) => ({
   component: CustomersCardComponent,
   props: args,
 });

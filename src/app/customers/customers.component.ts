@@ -5,11 +5,18 @@ import { DataService } from '../core/services/data.service';
 import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { FilterService } from '../core/services/filter.service';
 import { LoggerService } from '../core/services/logger.service';
+import { PaginationComponent } from '../shared/pagination/pagination.component';
+import { CustomersGridComponent } from './customers-grid/customers-grid.component';
+import { CustomersCardComponent } from './customers-card/customers-card.component';
+import { FilterTextboxComponent } from '../shared/filter-textbox/filter-textbox.component';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
-  selector: 'cm-customers',
-  templateUrl: './customers.component.html'
+    selector: 'cm-customers',
+    templateUrl: './customers.component.html',
+    standalone: true,
+    imports: [RouterLink, FilterTextboxComponent, CustomersCardComponent, CustomersGridComponent, PaginationComponent]
 })
 export class CustomersComponent implements OnInit {
 

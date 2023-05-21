@@ -1,11 +1,14 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import { ModalService, IModalContent } from './modal.service';
+import { NgClass, NgStyle, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'cm-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: [ './modal.component.css' ]
+    selector: 'cm-modal',
+    templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.css'],
+    standalone: true,
+    imports: [NgClass, NgStyle, NgIf]
 })
 export class ModalComponent implements OnInit {
 

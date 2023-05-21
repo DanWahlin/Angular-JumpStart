@@ -5,7 +5,7 @@ import { PreloadingStrategy, Route } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { LoggerService } from '../services/logger.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PreloadModulesStrategy implements PreloadingStrategy {
 
   constructor(private logger: LoggerService) {}

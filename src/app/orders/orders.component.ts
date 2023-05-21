@@ -3,10 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../core/services/data.service';
 import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { TrackByService } from '../core/services/trackby.service';
+import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
+import { PaginationComponent } from '../shared/pagination/pagination.component';
+import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'cm-customers-orders',
-    templateUrl: './orders.component.html'
+    templateUrl: './orders.component.html',
+    standalone: true,
+    imports: [NgIf, NgFor, PaginationComponent, CurrencyPipe, CapitalizePipe]
 })
 export class OrdersComponent implements OnInit {
 

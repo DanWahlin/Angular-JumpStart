@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { PropertyResolver } from './property-resolver';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class SorterService {
 
     property: string = '';

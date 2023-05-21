@@ -1,7 +1,8 @@
 import { Directive, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[cmSortBy]'
+    selector: '[cmSortBy]',
+    standalone: true
 })
 export class SortByDirective {
 

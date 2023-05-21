@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'cm-overlay',
     templateUrl: './overlay.component.html',
-    styleUrls: ['./overlay.component.css']
+    styleUrls: ['./overlay.component.css'],
+    standalone: true
 })
 export class OverlayComponent implements OnInit, OnDestroy {
 

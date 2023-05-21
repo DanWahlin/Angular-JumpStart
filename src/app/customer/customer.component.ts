@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'cm-orders',
-  templateUrl: './customer.component.html'
+    selector: 'cm-orders',
+    templateUrl: './customer.component.html',
+    standalone: true,
+    imports: [RouterLink, RouterLinkActive, RouterOutlet]
 })
 export class CustomerComponent implements OnInit {
 

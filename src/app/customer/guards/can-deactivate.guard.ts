@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { CustomerEditComponent } from '../customer-edit/customer-edit.component';
 import { LoggerService } from '../../core/services/logger.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CanDeactivateGuard  {
 
   constructor(private logger: LoggerService) {}

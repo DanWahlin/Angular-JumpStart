@@ -2,10 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { GrowlerService, GrowlerMessageType } from './growler.service';
 import { LoggerService } from '../services/logger.service';
+import { NgClass, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'cm-growler',
-  template: `
+    selector: 'cm-growler',
+    template: `
     <div [ngClass]="position" class="growler">
       <div *ngFor="let growl of growls" [ngClass]="{active: growl.enabled}"
           class="growl alert {{ growl.messageType }}">
@@ -13,7 +14,9 @@ import { LoggerService } from '../services/logger.service';
       </div>
     </div>
   `,
-  styleUrls: ['growler.component.css']
+    styleUrls: ['growler.component.css'],
+    standalone: true,
+    imports: [NgClass, NgFor]
 })
 export class GrowlerComponent implements OnInit {
 

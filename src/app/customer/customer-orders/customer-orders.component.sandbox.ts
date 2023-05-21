@@ -1,13 +1,10 @@
 import { sandboxOf } from 'angular-playground';
-import { SharedModule } from '../../shared/shared.module';
-import { CoreModule } from '../../core/core.module';
 import { DataService } from '../../core/services/data.service';
 import { CustomerOrdersComponent } from './customer-orders.component';
 import { MockDataService, MockActivatedRoute, getActivatedRouteWithParent } from '../../shared/mocks';
 import { ActivatedRoute } from '@angular/router';
 
 const sandboxConfig = {
-  imports: [ SharedModule, CoreModule ],
   providers: [
       { provide: DataService, useClass: MockDataService },
       { provide: ActivatedRoute, useFactory: () => {

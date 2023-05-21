@@ -1,17 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule } from '@angular/forms';
 
 import { DataService } from '../../core/services/data.service';
 import { ModalService, IModalContent } from '../../core/modal/modal.service';
 import { ICustomer, IState } from '../../shared/interfaces';
 import { GrowlerService, GrowlerMessageType } from '../../core/growler/growler.service';
 import { LoggerService } from '../../core/services/logger.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'cm-customer-edit',
-  templateUrl: './customer-edit.component.html',
-  styleUrls: ['./customer-edit.component.css']
+    selector: 'cm-customer-edit',
+    templateUrl: './customer-edit.component.html',
+    styleUrls: ['./customer-edit.component.css'],
+    standalone: true,
+    imports: [FormsModule, NgFor, NgIf]
 })
 export class CustomerEditComponent implements OnInit {
 
