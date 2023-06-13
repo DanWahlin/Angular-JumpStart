@@ -11,7 +11,8 @@ import { OverlayRequestResponseInterceptor } from './app/core/overlay/overlay-re
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadModulesStrategy })),
+    importProvidersFrom(BrowserModule,
+      RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadModulesStrategy })),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
