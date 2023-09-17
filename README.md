@@ -65,6 +65,11 @@ entire application to see a given component. To run the playground run the follo
 
 Then open a browser and visit `http://localhost:4201` and follow the directions there (or visit their website for more information).
 
+## Running Cypress End to End Tests
+
+1. Run `npm install cypress --save-dev` to install Cypress.
+1. Run `npm run cypress` to start the Cypress test runner.
+
 ## Running in Kubernetes
 
 1. Install Docker Desktop from https://www.docker.com/get-started
