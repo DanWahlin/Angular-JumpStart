@@ -32,9 +32,9 @@ An example of this application that uses standalone components (no modules) can 
 
 1. Run `npm install` to install app dependencies
 
-1. Run `ng build angular-jumpstart --watch` to build and bundle the code
+1. Run `ng build angular-jumpstart` to build and bundle the code. If you'd like to build and watch the code (in case you plan to make changes) run `ng build angular-jumpstart --watch` instead.
 
-1. Run `npm start` in a separate terminal window to launch the web and RESTful API server
+1. Run `npm start` in a separate terminal window to launch the web and RESTful API server. This will server the APIs and the Angular app.
 
 1. Go to http://localhost:8080 in your browser 
 
