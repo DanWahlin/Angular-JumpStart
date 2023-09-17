@@ -28,7 +28,7 @@ An example of this application that uses standalone components (no modules) can 
 
 ## Running the Application with Node.js
 
-1. Install the latest LTS version of Node.js from https://nodejs.org. *IMPORTANT: The server uses ES2015 features AND the Angular CLI so you need a current version of Node.js.*
+1. Install the latest LTS version of Node.js from https://nodejs.org. *IMPORTANT: The server uses ES2015 features AND the Angular CLI so you need a modern version of Node.js.*
 
 1. Run `npm install` to install app dependencies
 
