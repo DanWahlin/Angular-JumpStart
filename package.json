@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build angular-jumpstart",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
