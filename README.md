@@ -60,30 +60,6 @@ Here are a few screenshots from the app:
 
 ![](src/assets/images/screenshots/details.png)
 
-## Running the Application with Deno
-
-1. Install the latest version of Deno from https://deno.land
-
-1. If using VS Code (Optional):
-  - Install the Deno language server extension: https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno
-  - Open `.vscode/settings.json` and add the following properties for Deno:
-
-    ``` json
-      "deno.enable": true,
-      "deno.lint": true,
-      "deno.unstable": false
-    ```
-
-1. Run `npm install` to install the Angular dependencies
-
-1. Run `ng build` to build and bundle the code
-
-1. `cd` into `./deno` and run the following command:
-
-    `deno run --allow-net --allow-read --unstable server.ts`
-    
-1. Go to http://localhost:8080 in your browser 
-
 ## Running Angular Playground
 
 This application includes Angular Playground (http://www.angularplayground.it) which provides a great way to isolate components in a sandbox rather than loading the 
@@ -92,6 +68,11 @@ entire application to see a given component. To run the playground run the follo
 `npm run playground`
 
 Then open a browser and visit `http://localhost:4201` and follow the directions there (or visit their website for more information).
+
+## Running Cypress End to End Tests
+
+1. Run `npm install cypress --save-dev` to install Cypress.
+1. Run `npm run cypress` to start the Cypress test runner.
 
 ## Running in Kubernetes
 
