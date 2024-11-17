@@ -7,11 +7,10 @@ ENV CONTAINER=true
 WORKDIR /var/www/node-service
 
 COPY package.json package-lock.json ./
-RUN npm install --only=prod --no-optional
+RUN npm install --omit=dev --omit=optional
 
 COPY ./server.js .
-COPY ./api .
-COPY ./public/data .
+COPY ./public ./public
 
 EXPOSE 8080
 

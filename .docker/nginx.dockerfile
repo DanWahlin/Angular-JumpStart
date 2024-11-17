@@ -7,14 +7,14 @@ ENV NG_APP_API_URL=$NG_APP_API_URL
 
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install --no-optional 
+RUN npm install
 COPY . .
 RUN npm run build
 
 ##### Stage 2
 FROM nginx:alpine
 VOLUME /var/cache/nginx
-COPY --from=node /app/dist /usr/share/nginx/html
+COPY --from=node /app/dist/angular-jumpstart /usr/share/nginx/html
 COPY ./.docker/config/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Run from project root

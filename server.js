@@ -1,4 +1,3 @@
-import open from 'open';
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -12,6 +11,10 @@ const app = express();
 const port = process.env.PORT || 8080;
 const inContainer = process.env.CONTAINER;
 const inAzure = process.env.WEBSITE_RESOURCE_GROUP;
+
+console.log('inContainer', inContainer);
+console.log('inAzure', inAzure);
+console.log('__dirname', __dirname);
 
 // Load data from JSON files
 const customers = JSON.parse(fs.readFileSync(path.join(__dirname, 'public/data/customers.json'), 'utf-8'));
@@ -122,5 +125,9 @@ app.listen(port, () => {
 
 // Open the browser (only if not in a container or Azure)
 if (!inContainer && !inAzure) {
-  open(`http://localhost:${port}`);
+  (async () => {
+    const { default: open } = await import('open');
+    open(`http://localhost:${port}`);
+  })();
 }
+
