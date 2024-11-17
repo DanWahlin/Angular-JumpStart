@@ -3,6 +3,7 @@
 node_modules
 npm-debug.log
 sandboxes.ts
+.angular
 
 # Code Editor Settings
 .idea
