@@ -1,9 +1,10 @@
 "use strict";
-var express     = require('express'),
+const express     = require('express'),
     fs          = require('fs'), 
+    path        = require('path'),
     app         = express(), 
-    customers   = JSON.parse(fs.readFileSync('data/customers.json', 'utf-8')),
-    states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8')),
+    customers   = JSON.parse(fs.readFileSync('public/data/customers.json', 'utf-8')),
+    states      = JSON.parse(fs.readFileSync('public/data/states.json', 'utf-8')),
     inContainer = process.env.CONTAINER,
     inAzure = process.env.WEBSITE_RESOURCE_GROUP,
     port = process.env.PORT || 8080;
@@ -22,7 +23,7 @@ app.use((req, res, next) => {
 
 //The dist folder has our static resources (index.html, css, images)
 if (!inContainer) {
-    app.use(express.static(__dirname + '/dist')); 
+    app.use(express.static(path.join(__dirname, 'dist/angular-jumpstart'))); 
     console.log(__dirname);
 }
 
@@ -129,8 +130,8 @@ app.post('/api/auth/logout', (req, res) => {
 
 if (!inContainer) {
     // redirect all others to the index (HTML5 history)
-    app.all('/*', function(req, res) {
-        res.sendFile(__dirname + '/dist/index.html');
+    app.all('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'dist/angular-jumpstart/index.html'));
     });
 }
 

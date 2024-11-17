@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
-import { MapPointComponent } from 'src/app/shared/map/map-point.component';
+import { MapPointComponent } from '../../../app/shared/map/map-point.component';
 
 @Component({
   selector: 'cm-customer-details',
