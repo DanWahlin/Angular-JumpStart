@@ -1,5 +1,5 @@
 ##### Stage 1
-FROM node:16.17.0 as node
+FROM node:22 AS node
 LABEL author="Dan Wahlin"
 
 ARG NG_APP_API_URL
