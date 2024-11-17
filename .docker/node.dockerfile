@@ -11,7 +11,7 @@ RUN npm install --only=prod --no-optional
 
 COPY ./server.js .
 COPY ./api .
-COPY ./data .
+COPY ./public/data .
 
 EXPOSE 8080
 

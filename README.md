@@ -80,7 +80,7 @@ Then open a browser and visit `http://localhost:4201` and follow the directions 
 
 1. Install Docker Desktop from https://www.docker.com/get-started
 1. Start Docker and enable Kubernetes in the Docker Desktop preferences/settings
-1. Run `docker-compose build` to create the images
+1. Run `docker compose build` to create the images
 1. Run `kubectl apply -f .k8s` to start Kubernetes
 1. Visit `http://localhost`
 1. Stop Kubernetes using `kubectl delete -f .k8s`
