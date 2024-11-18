@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
@@ -9,13 +9,13 @@ import { UtilitiesService } from './utilities.service';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
+    private http = inject(HttpClient);
+    private utilitiesService = inject(UtilitiesService);
     baseUrl = this.utilitiesService.getApiUrl();
     customersBaseUrl = this.baseUrl + '/api/customers';
     ordersBaseUrl = this.baseUrl + '/api/orders';
     orders: IOrder[] = [];
     states: IState[] = [];
-
-    constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {  }
 
     getCustomersPage(page: number, pageSize: number): Observable<IPagedResults<ICustomer[]>> {
         return this.http.get<ICustomer[]>(

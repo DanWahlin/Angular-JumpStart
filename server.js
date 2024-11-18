@@ -1,150 +1,132 @@
-"use strict";
-var express     = require('express'),
-    fs          = require('fs'), 
-    app         = express(), 
-    customers   = JSON.parse(fs.readFileSync('data/customers.json', 'utf-8')),
-    states      = JSON.parse(fs.readFileSync('data/states.json', 'utf-8')),
-    inContainer = process.env.CONTAINER,
-    inAzure = process.env.WEBSITE_RESOURCE_GROUP,
-    port = process.env.PORT || 8080;
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+// Resolve __dirname and __filename for ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const port = process.env.PORT || 8080;
+const inContainer = process.env.CONTAINER;
+const inAzure = process.env.WEBSITE_RESOURCE_GROUP;
+
+console.log('inContainer', inContainer);
+console.log('inAzure', inAzure);
+console.log('__dirname', __dirname);
+
+// Load data from JSON files
+const customers = JSON.parse(fs.readFileSync(path.join(__dirname, 'public/data/customers.json'), 'utf-8'));
+const states = JSON.parse(fs.readFileSync(path.join(__dirname, 'public/data/states.json'), 'utf-8'));
+
+// Middleware for parsing request bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//CORS
+// CORS middleware
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Headers", "Origin, Authorization, X-Requested-With, X-XSRF-TOKEN, X-InlineCount, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-    next();
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, Authorization, X-Requested-With, X-XSRF-TOKEN, X-InlineCount, Content-Type, Accept'
+  );
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+  next();
 });
 
-//The dist folder has our static resources (index.html, css, images)
+// Serve static files if not running in a container
 if (!inContainer) {
-    app.use(express.static(__dirname + '/dist')); 
-    console.log(__dirname);
+  app.use(express.static(path.join(__dirname, 'dist/angular-jumpstart')));
+  console.log(`Static files served from ${path.join(__dirname, 'dist/angular-jumpstart')}`);
 }
 
+// Helper function to safely fetch a customer by ID
+const getCustomerById = (id) => customers.find((customer) => customer.id === id);
+
+// Routes
 app.get('/api/customers/page/:skip/:top', (req, res) => {
-    const topVal = req.params.top,
-          skipVal = req.params.skip,
-          skip = (isNaN(skipVal)) ? 0 : +skipVal;  
-    let top = (isNaN(topVal)) ? 10 : skip + (+topVal);
+  const skip = parseInt(req.params.skip, 10) || 0;
+  const top = parseInt(req.params.top, 10) || 10;
 
-    if (top > customers.length) {
-        top = skip + (customers.length - skip);
-    }
-
-    console.log(`Skip: ${skip} Top: ${top}`);
-
-    var pagedCustomers = customers.slice(skip, top);
-    res.setHeader('X-InlineCount', customers.length);
-    res.json(pagedCustomers);
+  const pagedCustomers = customers.slice(skip, skip + top);
+  res.setHeader('X-InlineCount', customers.length);
+  res.json(pagedCustomers);
 });
 
-app.get('/api/customers', (req, res) => {
-    res.json(customers);
-});
+app.get('/api/customers', (req, res) => res.json(customers));
 
 app.get('/api/customers/:id', (req, res) => {
-    let customerId = +req.params.id;
-    let selectedCustomer = null;
-    for (let customer of customers) {
-        if (customer.id === customerId) {
-           // found customer to create one to send
-           selectedCustomer = {};
-           selectedCustomer = customer;
-           break;
-        }
-    }  
-    res.json(selectedCustomer);
+  const customerId = parseInt(req.params.id, 10);
+  const customer = getCustomerById(customerId);
+  res.json(customer || {});
 });
 
 app.post('/api/customers', (req, res) => {
-    let postedCustomer = req.body;
-    let maxId = Math.max.apply(Math,customers.map((cust) => cust.id));
-    postedCustomer.id = ++maxId;
-    postedCustomer.gender = (postedCustomer.id % 2 === 0) ? 'female' : 'male';
-    customers.push(postedCustomer);
-    res.json(postedCustomer);
+  const newCustomer = req.body;
+  newCustomer.id = Math.max(...customers.map((cust) => cust.id), 0) + 1;
+  newCustomer.gender = newCustomer.id % 2 === 0 ? 'female' : 'male';
+  customers.push(newCustomer);
+  res.json(newCustomer);
 });
 
 app.put('/api/customers/:id', (req, res) => {
-    let putCustomer = req.body;
-    let id = +req.params.id;
-    let status = false;
+  const customerId = parseInt(req.params.id, 10);
+  const updatedCustomer = req.body;
 
-    //Ensure state name is in sync with state abbreviation 
-    const filteredStates = states.filter((state) => state.abbreviation === putCustomer.state.abbreviation);
-    if (filteredStates && filteredStates.length) {
-        putCustomer.state.name = filteredStates[0].name;
-        console.log('Updated putCustomer state to ' + putCustomer.state.name);
-    }
+  const stateMatch = states.find((state) => state.abbreviation === updatedCustomer.state?.abbreviation);
+  if (stateMatch) {
+    updatedCustomer.state.name = stateMatch.name;
+  }
 
-    for (let i=0,len=customers.length;i<len;i++) {
-        if (customers[i].id === id) {
-            customers[i] = putCustomer;
-            status = true;
-            break;
-        }
-    }
-    res.json({ status: status });
-});
-
-app.delete('/api/customers/:id', function(req, res) {
-    let customerId = +req.params.id;
-    for (let i=0,len=customers.length;i<len;i++) {
-        if (customers[i].id === customerId) {
-           customers.splice(i,1);
-           break;
-        }
-    }  
+  const index = customers.findIndex((cust) => cust.id === customerId);
+  if (index !== -1) {
+    customers[index] = updatedCustomer;
     res.json({ status: true });
+  } else {
+    res.json({ status: false });
+  }
 });
 
-app.get('/api/orders/:id', function(req, res) {
-    let customerId = +req.params.id;
-    for (let cust of customers) {
-        if (cust.customerId === customerId) {
-            return res.json(cust);
-        }
-    }
-    res.json([]);
+app.delete('/api/customers/:id', (req, res) => {
+  const customerId = parseInt(req.params.id, 10);
+  const index = customers.findIndex((cust) => cust.id === customerId);
+  if (index !== -1) {
+    customers.splice(index, 1);
+    res.json({ status: true });
+  } else {
+    res.json({ status: false });
+  }
 });
 
-app.get('/api/states', (req, res) => {
-    res.json(states);
+app.get('/api/orders/:id', (req, res) => {
+  const customerId = parseInt(req.params.id, 10);
+  const orders = customers.find((cust) => cust.customerId === customerId)?.orders || [];
+  res.json(orders);
 });
 
-app.post('/api/auth/login', (req, res) => {
-    var userLogin = req.body;
-    //Add "real" auth here. Simulating it by returning a simple boolean.
-    res.json(true);
-});
+app.get('/api/states', (req, res) => res.json(states));
 
-app.post('/api/auth/logout', (req, res) => {
-    res.json(true);
-});
+app.post('/api/auth/login', (req, res) => res.json(true)); // Simulate login
+app.post('/api/auth/logout', (req, res) => res.json(true)); // Simulate logout
 
+// Catch-all route for HTML5 history
 if (!inContainer) {
-    // redirect all others to the index (HTML5 history)
-    app.all('/*', function(req, res) {
-        res.sendFile(__dirname + '/dist/index.html');
-    });
+  app.all('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/angular-jumpstart/index.html'));
+  });
 }
 
-app.listen(port);
+// Start the server
+app.listen(port, () => {
+  console.log(`Express server running on http://localhost:${port}`);
+});
 
-console.log('Express listening on port ' + port);
-
-// //Open browser
+// Open the browser (only if not in a container or Azure)
 if (!inContainer && !inAzure) {
-    var opn = require('opn');
-
-    opn('http://localhost:' + port).then(() => {
-        console.log('Browser closed.');
-    });
+  (async () => {
+    const { default: open } = await import('open');
+    open(`http://localhost:${port}`);
+  })();
 }
-
-

@@ -3,8 +3,6 @@
 # Visit http://localhost
 # Live long and prosper
 
-version: '3.7'
-
 services:
 
   nginx:

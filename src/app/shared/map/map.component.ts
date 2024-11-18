@@ -1,4 +1,4 @@
-/// <reference path="../../../../node_modules/@types/googlemaps/index.d.ts" />
+/// <reference path="../../../../node_modules/@types/google.maps/index.d.ts" />
 
 import {
   Component, OnInit, AfterContentInit, Input, ViewChild,
@@ -15,10 +15,10 @@ import { IMapDataPoint } from '../../shared/interfaces';
   // When using OnPush detectors, then the framework will check an OnPush
   // component when any of its input properties changes, when it fires
   // an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class MapComponent implements OnInit, AfterContentInit {
-
   private isEnabled: boolean = false;
   private loadingScript: boolean = false;
   private map: google.maps.Map = {} as google.maps.Map;
@@ -55,8 +55,6 @@ export class MapComponent implements OnInit, AfterContentInit {
 
   @ViewChild('mapContainer', { static: true }) mapDiv: ElementRef = {} as ElementRef;
   @ContentChildren(MapPointComponent) mapPoints: QueryList<MapPointComponent> = {} as QueryList<MapPointComponent>;
-
-  constructor() { }
 
   ngOnInit() {
     if (this.latitude && this.longitude) {

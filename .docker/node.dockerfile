@@ -1,4 +1,4 @@
-FROM node:16.17.0-alpine
+FROM node:22-alpine
 
 LABEL author="Dan Wahlin"
 
@@ -7,11 +7,10 @@ ENV CONTAINER=true
 WORKDIR /var/www/node-service
 
 COPY package.json package-lock.json ./
-RUN npm install --only=prod --no-optional
+RUN npm install --omit=dev --omit=optional
 
 COPY ./server.js .
-COPY ./api .
-COPY ./data .
+COPY ./public ./public
 
 EXPOSE 8080
 

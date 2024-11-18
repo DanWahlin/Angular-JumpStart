@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter, Inject, Directive } from '@angular/core';
+import { Injectable, Output, EventEmitter, Inject, Directive, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
@@ -9,13 +9,13 @@ import { UtilitiesService } from './utilities.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    private http = inject(HttpClient);
+    private utilitiesService = inject(UtilitiesService);
     baseUrl = this.utilitiesService.getApiUrl();
     authUrl = this.baseUrl + '/api/auth';
     isAuthenticated = false;
     redirectUrl: string = '';
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-    constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {  }
 
     private userAuthChanged(status: boolean) {
        this.authChanged.emit(status); // Raise changed event
