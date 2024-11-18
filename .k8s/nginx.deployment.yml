@@ -15,7 +15,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx-angular-jumpstart
+      - image: danwahlin/nginx-angular-jumpstart:latest
         imagePullPolicy: IfNotPresent
         name: nginx
         ports:

@@ -37,7 +37,7 @@ spec:
             configMapKeyRef:
               key: CONTAINER
               name: env-vars
-        image: node-service-jumpstart
+        image: danwahlin/node-service-jumpstart:latest
         imagePullPolicy: IfNotPresent
         name: node-service-jumpstart
         ports:

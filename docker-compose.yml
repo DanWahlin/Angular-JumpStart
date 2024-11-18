@@ -7,7 +7,7 @@ services:
 
   nginx:
     container_name: nginx-angular-jumpstart
-    image: nginx-angular-jumpstart
+    image: danwahlin/nginx-angular-jumpstart:latest
     build:
       context: .
       dockerfile: .docker/nginx.dockerfile
@@ -18,10 +18,11 @@ services:
       - node
     networks:
       - app-network
+    platform: linux/amd64
 
   node:
     container_name: node-service-jumpstart
-    image: node-service-jumpstart
+    image: danwahlin/node-service-jumpstart:latest
     build:
       context: .
       dockerfile: .docker/node.dockerfile
@@ -32,6 +33,7 @@ services:
       - "8080:8080"
     networks:
       - app-network
+    platform: linux/amd64
 
   # Can uncomment to get cAdvisor going on Mac/Linux. Not for Windows though. 
   # cadvisor:
