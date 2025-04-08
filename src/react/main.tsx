@@ -19,6 +19,7 @@ import CustomerDetails from './components/customer/CustomerDetails';
 import CustomerOrders from './components/customer/CustomerOrders';
 import CustomerEdit from './components/customer/CustomerEdit';
 import Orders from './components/orders/Orders';
+import { AuthProvider } from './hooks/useAuth';
 import './index.css';
 
 const rootRoute = new RootRoute({
@@ -119,7 +120,9 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );
