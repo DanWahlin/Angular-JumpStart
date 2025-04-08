@@ -12,15 +12,16 @@
     "cypress:headless": "concurrently \"npm start\" \"npx cypress run\""
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^5.15.12",
+    "@mui/material": "^5.17.1",
     "@tanstack/react-query": "^5.28.0",
     "@tanstack/react-router": "^1.16.6",
-    "@mui/material": "^5.15.12",
-    "@mui/icons-material": "^5.15.12",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.0",
     "express": "^4.21.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.55.0",
     "styled-components": "^6.1.8",
     "tslib": "^2.3.0"
   },

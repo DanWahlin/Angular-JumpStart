@@ -37,3 +37,8 @@ export interface IApiResponse {
   status: boolean;
   error?: string;
 }
+
+export interface IUserLogin {
+  email: string;
+  password: string;
+}
