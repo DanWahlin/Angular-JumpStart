@@ -1,41 +1,38 @@
 {
-  "name": "angular-jump-start",
+  "name": "react-jump-start",
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "ng": "ng",
     "start": "node server.js",
-    "build": "ng build angular-jumpstart",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "cypress": "concurrently \"npm start\" \"npx cypress open\"",
-    "cypress:headless": "concurrently \"npm start\" \"npx cypress run\"",
-    "playground": "angular-playground",
-    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "cypress:headless": "concurrently \"npm start\" \"npx cypress run\""
   },
   "dependencies": {
-    "@angular/animations": "^18.2.0",
-    "@angular/common": "^18.2.0",
-    "@angular/compiler": "^18.2.0",
-    "@angular/core": "^18.2.0",
-    "@angular/forms": "^18.2.0",
-    "@angular/platform-browser": "^18.2.0",
-    "@angular/platform-browser-dynamic": "^18.2.0",
-    "@angular/router": "^18.2.0",
-    "@ngx-env/builder": "^18.0.2",
+    "@tanstack/react-query": "^5.28.0",
+    "@tanstack/react-router": "^1.16.6",
+    "@mui/material": "^5.15.12",
+    "@mui/icons-material": "^5.15.12",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
     "express": "^4.21.1",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.10"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.8",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.12",
-    "@angular/cli": "^18.2.12",
-    "@angular/compiler-cli": "^18.2.0",
     "@types/google.maps": "^3.58.1",
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
     "open": "^10.1.0",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "vite": "^5.1.4"
   },
   "optionalDependencies": {
     "cypress": "^13.15.2"
