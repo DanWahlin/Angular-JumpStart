@@ -175,7 +175,7 @@ const Customers: React.FC = () => {
   const { log } = useLogger();
   const { filter } = useFilterService();
   
-  const { data, isLoading, error } = useQuery<IPagedResults<ICustomer[]>>({
+  const { data, isLoading, error } = useQuery<IPagedResults<ICustomer>>({
     queryKey: ['customers', currentPage, pageSize],
     queryFn: async () => {
       const response = await fetch(`/api/customers/page/${(currentPage - 1) * pageSize}/${pageSize}`);
@@ -286,7 +286,13 @@ const Customers: React.FC = () => {
               <Map 
                 zoom={2}
                 enabled={true}
-                dataPoints={filteredCustomers}
+                dataPoints={filteredCustomers.map(customer => ({
+                  latitude: customer.latitude || 0,
+                  longitude: customer.longitude || 0,
+                  firstName: customer.firstName,
+                  lastName: customer.lastName,
+                  markerText: `<h3>${customer.firstName} ${customer.lastName}</h3>`
+                }))}
               />
             </Suspense>
           </MapContainer>

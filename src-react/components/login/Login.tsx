@@ -212,7 +212,7 @@ const Login: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const { growl } = useGrowlerService();
-  const { login, redirectUrl } = useAuth();
+  const { login } = useAuth();
   
   const onSubmit = async (data: IUserLogin) => {
     try {
@@ -221,11 +221,7 @@ const Login: React.FC = () => {
       if (success) {
         growl('Logged in', GrowlerMessageType.Info);
         
-        if (redirectUrl) {
-          navigate({ to: redirectUrl });
-        } else {
-          navigate({ to: '/customers' });
-        }
+        navigate({ to: '/customers' });
       } else {
         const loginError = 'Unable to login';
         setErrorMessage(loginError);

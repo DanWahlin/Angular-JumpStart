@@ -200,7 +200,7 @@ const CustomerEdit: React.FC = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { growl } = useGrowlerService();
-  const { showModal } = useModalService();
+  const modalService = useModalService();
   const { log } = useLogger();
   
   const [operationText, setOperationText] = useState('Insert');
@@ -244,12 +244,15 @@ const CustomerEdit: React.FC = () => {
       }
       return response.json();
     },
-    enabled: customerId !== 0,
-    onSuccess: (data) => {
-      reset(data);
+    enabled: customerId !== 0
+  });
+  
+  useEffect(() => {
+    if (customer) {
+      reset(customer);
       setOperationText('Update');
     }
-  });
+  }, [customer, reset]);
   
   const insertCustomerMutation = useMutation({
     mutationFn: async (customer: ICustomer) => {
@@ -344,12 +347,12 @@ const CustomerEdit: React.FC = () => {
     event.preventDefault();
     
     if (isDirty) {
-      showModal({
+      modalService.show({
         header: 'Lose Unsaved Changes?',
         body: 'You have unsaved changes! Would you like to leave the page and lose them?',
         cancelButtonText: 'Cancel',
         OKButtonText: 'Leave'
-      }).then((result) => {
+      }).then((result: boolean) => {
         if (result) {
           navigate({ to: '/customers' });
         }
@@ -379,7 +382,7 @@ const CustomerEdit: React.FC = () => {
             title="first name"
             type="text"
             isValid={!errors.firstName}
-            isDirty={!!control._formValues.firstName}
+            isDirty={!!control._formValues['firstName']}
             {...register('firstName', { required: true })}
           />
           {errors.firstName && (
@@ -393,7 +396,7 @@ const CustomerEdit: React.FC = () => {
             title="last name"
             type="text"
             isValid={!errors.lastName}
-            isDirty={!!control._formValues.lastName}
+            isDirty={!!control._formValues['lastName']}
             {...register('lastName', { required: true })}
           />
           {errors.lastName && (
@@ -407,7 +410,7 @@ const CustomerEdit: React.FC = () => {
             title="address"
             type="text"
             isValid={!errors.address}
-            isDirty={!!control._formValues.address}
+            isDirty={!!control._formValues['address']}
             {...register('address', { required: true })}
           />
           {errors.address && (
@@ -421,7 +424,7 @@ const CustomerEdit: React.FC = () => {
             title="city"
             type="text"
             isValid={!errors.city}
-            isDirty={!!control._formValues.city}
+            isDirty={!!control._formValues['city']}
             {...register('city', { required: true })}
           />
           {errors.city && (
@@ -458,14 +461,14 @@ const CustomerEdit: React.FC = () => {
         
         {customer && (
           <>
-            {customer.id && deleteMessageEnabled ? (
+            {customer && 'id' in customer && customer.id && deleteMessageEnabled ? (
               <AlertWarning>
                 Delete Customer?&nbsp;&nbsp;
                 <DangerButton type="button" onClick={handleDelete}>Yes</DangerButton>&nbsp;&nbsp;
                 <DefaultButton type="button" onClick={() => setDeleteMessageEnabled(false)}>No</DefaultButton>
               </AlertWarning>
             ) : (
-              customer.id && (
+              customer && 'id' in customer && customer.id && (
                 <DangerButton 
                   type="button" 
                   onClick={() => setDeleteMessageEnabled(true)}

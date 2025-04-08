@@ -118,7 +118,7 @@ const Orders: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 5;
   
-  const { data, isLoading, error } = useQuery<IPagedResults<ICustomer[]>>({
+  const { data, isLoading, error } = useQuery<IPagedResults<ICustomer>>({
     queryKey: ['customers', 'orders', currentPage, pageSize],
     queryFn: async () => {
       const response = await fetch(`/api/customers/page/${(currentPage - 1) * pageSize}/${pageSize}`);
@@ -168,7 +168,7 @@ const Orders: React.FC = () => {
                   {customer.orders && customer.orders.length > 0 ? (
                     <OrdersTable className="table table-striped table-hover orders-table">
                       <tbody>
-                        {customer.orders.map((order, index) => (
+                        {customer.orders?.map((order: { productName: string; itemCost: number }, index: number) => (
                           <tr key={index}>
                             <td>{order.productName}</td>
                             <td className="text-right">{formatCurrency(order.itemCost)}</td>

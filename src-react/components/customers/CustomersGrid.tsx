@@ -208,7 +208,10 @@ const CustomersGrid: React.FC<CustomersGridProps> = ({ customers = [] }) => {
                       />
                     </TableCell>
                     <TableCell>
-                      <Link to={`/customers/${customer.id}/details`}>
+                      <Link 
+                        to="/customers/$id/details"
+                        params={{ id: customer.id.toString() }}
+                      >
                         {capitalize(customer.firstName)}
                       </Link>
                     </TableCell>
@@ -218,7 +221,10 @@ const CustomersGrid: React.FC<CustomersGridProps> = ({ customers = [] }) => {
                     <TableCell>{customer.state?.name}</TableCell>
                     <TableCell>{formatCurrency(customer.orderTotal || 0)}</TableCell>
                     <TableCell>
-                      <Link to={`/customers/${customer.id}/orders`}>
+                      <Link 
+                        to="/customers/$id/orders"
+                        params={{ id: customer.id.toString() }}
+                      >
                         View Orders
                       </Link>
                     </TableCell>

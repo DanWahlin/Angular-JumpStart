@@ -77,15 +77,6 @@ const CardHeader = styled.div`
   justify-content: space-between;
 `;
 
-const CardHeaderLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  
-  &:hover {
-    color: white;
-    text-decoration: underline;
-  }
-`;
 
 const EditIcon = styled.i`
   color: white;
@@ -126,13 +117,6 @@ const CardImage = styled.img`
   margin-top: 10px;
 `;
 
-const WhiteLink = styled(Link)`
-  color: white;
-  
-  &:hover {
-    color: white;
-  }
-`;
 
 const NoRecords = styled.div`
   padding: 10px;
@@ -160,18 +144,23 @@ const CustomersCard: React.FC<CustomersCardProps> = ({ customers = [] }) => {
           <CardColumn key={customer.id}>
             <Card className="card">
               <CardHeader className="card-header">
-                <CardHeaderLink 
-                  to={`/customers/${customer.id}/details`} 
+                <Link 
+                  to="/customers/$id/details"
+                  params={{ id: customer.id.toString() }}
                   className="white"
+                  style={{ color: 'white', textDecoration: 'none' }}
                 >
                   {capitalize(customer.firstName)} {capitalize(customer.lastName)}
-                </CardHeaderLink>
-                <WhiteLink to={`/customers/${customer.id}/edit`}>
+                </Link>
+                <Link 
+                  to="/customers/$id/edit"
+                  params={{ id: customer.id.toString() }}
+                  style={{ color: 'white' }}>
                   <EditIcon 
                     title="Edit" 
                     className="glyphicon glyphicon-edit edit-icon white"
                   />
-                </WhiteLink>
+                </Link>
               </CardHeader>
               <CardBody className="card-body">
                 <Clearfix className="clearfix">
@@ -188,7 +177,10 @@ const CustomersCard: React.FC<CustomersCardProps> = ({ customers = [] }) => {
                     <CardBodyContent className="card-body-content">
                       {trim(customer.city)}, {customer.state?.name}
                     </CardBodyContent>
-                    <Link to={`/customers/${customer.id}/orders`}>
+                    <Link 
+                      to="/customers/$id/orders"
+                      params={{ id: customer.id.toString() }}
+                    >
                       View Orders
                     </Link>
                   </CardBodyRight>
