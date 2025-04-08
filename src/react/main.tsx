@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { 
-  Router, 
+  createRootRoute,
+  createRoute,
+  createRouter,
   RouterProvider, 
-  Route, 
-  RootRoute,
   Link,
   Outlet
 } from '@tanstack/react-router';
@@ -22,11 +22,11 @@ import Orders from './components/orders/Orders';
 import { AuthProvider } from './hooks/useAuth';
 import './index.css';
 
-const rootRoute = new RootRoute({
+const rootRoute = createRootRoute({
   component: App,
 });
 
-const indexRoute = new Route({
+const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
   component: () => (
@@ -46,49 +46,49 @@ const indexRoute = new Route({
   ),
 });
 
-const aboutRoute = new Route({
+const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/about',
   component: About,
 });
 
-const loginRoute = new Route({
+const loginRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/login',
   component: Login,
 });
 
-const customersRoute = new Route({
+const customersRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/customers',
   component: Customers,
 });
 
-const ordersRoute = new Route({
+const ordersRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/orders',
   component: Orders,
 });
 
-const customerRoute = new Route({
+const customerRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/customers/$id',
   component: Customer,
 });
 
-const customerDetailsRoute = new Route({
+const customerDetailsRoute = createRoute({
   getParentRoute: () => customerRoute,
   path: '/details',
   component: CustomerDetails,
 });
 
-const customerOrdersRoute = new Route({
+const customerOrdersRoute = createRoute({
   getParentRoute: () => customerRoute,
   path: '/orders',
   component: CustomerOrders,
 });
 
-const customerEditRoute = new Route({
+const customerEditRoute = createRoute({
   getParentRoute: () => customerRoute,
   path: '/edit',
   component: CustomerEdit,
@@ -107,7 +107,7 @@ const routeTree = rootRoute.addChildren([
   ]),
 ]);
 
-const router = new Router({ routeTree });
+const router = createRouter({ routeTree });
 
 declare module '@tanstack/react-router' {
   interface Register {
