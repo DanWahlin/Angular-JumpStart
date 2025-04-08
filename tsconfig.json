@@ -25,6 +25,6 @@
       "dom"
     ]
   },
-  "include": ["src/react/**/*.ts", "src/react/**/*.tsx"],
+  "include": ["src-react/**/*.ts", "src-react/**/*.tsx"],
   "exclude": ["node_modules"]
 }
