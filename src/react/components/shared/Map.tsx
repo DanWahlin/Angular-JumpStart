@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { MapPoint } from './MapPoint';
+import MapPoint from './MapPoint';
 
 interface IMapDataPoint {
   latitude: number;
