@@ -15,7 +15,6 @@ import { NgClass, NgFor } from '@angular/common';
     </div>
   `,
     styleUrls: ['growler.component.css'],
-    standalone: true,
     imports: [NgClass, NgFor]
 })
 export class GrowlerComponent implements OnInit {

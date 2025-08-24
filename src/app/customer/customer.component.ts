@@ -4,7 +4,6 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 @Component({
     selector: 'cm-orders',
     templateUrl: './customer.component.html',
-    standalone: true,
     imports: [RouterLink, RouterLinkActive, RouterOutlet]
 })
 export class CustomerComponent implements OnInit {

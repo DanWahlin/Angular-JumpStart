@@ -15,7 +15,6 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'cm-customers',
     templateUrl: './customers.component.html',
-    standalone: true,
     imports: [RouterLink, FilterTextboxComponent, CustomersCardComponent, CustomersGridComponent, PaginationComponent]
 })
 export class CustomersComponent implements OnInit {

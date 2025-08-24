@@ -5,7 +5,6 @@ import { NgFor } from '@angular/common';
     selector: 'cm-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.css'],
-    standalone: true,
     imports: [NgFor]
 })
 

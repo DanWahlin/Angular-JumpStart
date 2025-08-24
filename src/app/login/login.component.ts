@@ -13,7 +13,6 @@ import { NgIf } from '@angular/common';
     selector: 'cm-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, NgIf]
 })
 export class LoginComponent implements OnInit {

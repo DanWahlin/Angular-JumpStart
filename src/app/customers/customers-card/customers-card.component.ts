@@ -15,7 +15,6 @@ import { NgFor, NgIf, LowerCasePipe } from '@angular/common';
     // component when any of its input properties changes, when it fires
     // an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NgFor, RouterLink, NgIf, LowerCasePipe, CapitalizePipe, TrimPipe]
 })
 export class CustomersCardComponent implements OnInit {

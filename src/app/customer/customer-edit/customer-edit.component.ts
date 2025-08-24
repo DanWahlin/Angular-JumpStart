@@ -13,7 +13,6 @@ import { NgFor, NgIf } from '@angular/common';
     selector: 'cm-customer-edit',
     templateUrl: './customer-edit.component.html',
     styleUrls: ['./customer-edit.component.css'],
-    standalone: true,
     imports: [FormsModule, NgFor, NgIf]
 })
 export class CustomerEditComponent implements OnInit {
