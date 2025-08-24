@@ -19,7 +19,7 @@ export class DataService {
 
     getCustomersPage(page: number, pageSize: number): Observable<IPagedResults<ICustomer[]>> {
         return this.http.get<ICustomer[]>(
-            `${this.customersBaseUrl}/page/${page}/${pageSize}`,
+            `${this.customersBaseUrl}/page?skip=${page}&top=${pageSize}`,
             { observe: 'response' })
             .pipe(
                 map(res => {

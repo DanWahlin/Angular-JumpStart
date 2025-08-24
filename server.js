@@ -46,9 +46,9 @@ if (!inContainer) {
 const getCustomerById = (id) => customers.find((customer) => customer.id === id);
 
 // Routes
-app.get('/api/customers/page/:skip/:top', (req, res) => {
-  const skip = parseInt(req.params.skip, 10) || 0;
-  const top = parseInt(req.params.top, 10) || 10;
+app.get('/api/customers/page', (req, res) => {
+  const skip = parseInt(req.query.skip, 10) || 0;
+  const top = parseInt(req.query.top, 10) || 10;
 
   const pagedCustomers = customers.slice(skip, skip + top);
   res.setHeader('X-InlineCount', customers.length);
@@ -113,7 +113,7 @@ app.post('/api/auth/logout', (req, res) => res.json(true)); // Simulate logout
 
 // Catch-all route for HTML5 history
 if (!inContainer) {
-  app.all('*', (req, res) => {
+  app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'dist/angular-jumpstart/index.html'));
   });
 }
