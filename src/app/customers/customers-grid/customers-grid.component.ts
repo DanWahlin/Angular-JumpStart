@@ -17,7 +17,6 @@ import { SortByDirective } from '../../shared/directives/sortby.directive';
     // component when any of its input properties changes, when it fires
     // an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [SortByDirective, NgFor, RouterLink, NgIf, LowerCasePipe, CurrencyPipe, CapitalizePipe, TrimPipe]
 })
 export class CustomersGridComponent implements OnInit {

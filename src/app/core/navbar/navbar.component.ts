@@ -10,7 +10,6 @@ import { LoggerService } from '../services/logger.service';
 @Component({
     selector: 'cm-navbar',
     templateUrl: './navbar.component.html',
-    standalone: true,
     imports: [RouterLink, RouterLinkActive]
 })
 export class NavbarComponent implements OnInit, OnDestroy {

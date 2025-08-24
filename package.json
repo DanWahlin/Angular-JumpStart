@@ -15,24 +15,24 @@
     "build-storybook": "npm run docs:json && build-storybook"
   },
   "dependencies": {
-    "@angular/animations": "^18.2.0",
-    "@angular/common": "^18.2.0",
-    "@angular/compiler": "^18.2.0",
-    "@angular/core": "^18.2.0",
-    "@angular/forms": "^18.2.0",
-    "@angular/platform-browser": "^18.2.0",
-    "@angular/platform-browser-dynamic": "^18.2.0",
-    "@angular/router": "^18.2.0",
-    "@ngx-env/builder": "^18.0.2",
+    "@angular/animations": "^19.2.14",
+    "@angular/common": "^19.2.14",
+    "@angular/compiler": "^19.2.14",
+    "@angular/core": "^19.2.14",
+    "@angular/forms": "^19.2.14",
+    "@angular/platform-browser": "^19.2.14",
+    "@angular/platform-browser-dynamic": "^19.2.14",
+    "@angular/router": "^19.2.14",
+    "@ngx-env/builder": "^19.1.0",
     "express": "^4.21.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.10"
+    "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.12",
-    "@angular/cli": "^18.2.12",
-    "@angular/compiler-cli": "^18.2.0",
+    "@angular-devkit/build-angular": "^19.2.15",
+    "@angular/cli": "^19.2.15",
+    "@angular/compiler-cli": "^19.2.14",
     "@types/google.maps": "^3.58.1",
     "open": "^10.1.0",
     "typescript": "~5.5.2"

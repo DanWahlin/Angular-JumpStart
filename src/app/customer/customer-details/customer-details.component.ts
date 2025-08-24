@@ -11,7 +11,6 @@ import { NgIf, LowerCasePipe } from '@angular/common';
     selector: 'cm-customer-details',
     templateUrl: './customer-details.component.html',
     styleUrls: ['./customer-details.component.css'],
-    standalone: true,
     imports: [NgIf, LowerCasePipe, CapitalizePipe]
 })
 export class CustomerDetailsComponent implements OnInit {

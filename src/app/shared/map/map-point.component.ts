@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cm-map-point',
-  template: ``
+    selector: 'cm-map-point',
+    template: ``,
+    standalone: false
 })
 export class MapPointComponent implements OnInit {
 

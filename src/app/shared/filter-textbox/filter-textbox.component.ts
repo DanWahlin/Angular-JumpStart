@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'cm-filter-textbox',
     templateUrl: './filter-textbox.component.html',
     styleUrls: ['./filter-textbox.component.css'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class FilterTextboxComponent {

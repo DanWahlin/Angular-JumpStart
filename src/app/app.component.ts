@@ -8,7 +8,6 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 @Component({
     selector: 'cm-app-component',
     templateUrl: './app.component.html',
-    standalone: true,
     imports: [NavbarComponent, RouterOutlet, GrowlerComponent, ModalComponent, OverlayComponent]
 })
 export class AppComponent {

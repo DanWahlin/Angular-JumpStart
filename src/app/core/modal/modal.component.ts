@@ -7,7 +7,6 @@ import { NgClass, NgStyle, NgIf } from '@angular/common';
     selector: 'cm-modal',
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.css'],
-    standalone: true,
     imports: [NgClass, NgStyle, NgIf]
 })
 export class ModalComponent implements OnInit {
