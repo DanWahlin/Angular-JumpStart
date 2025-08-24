@@ -7,7 +7,7 @@ ENV CONTAINER=true
 WORKDIR /var/www/node-service
 
 COPY package.json package-lock.json ./
-RUN npm install --omit=dev --omit=optional
+RUN npm config set strict-ssl false && npm install express --no-audit --no-fund
 
 COPY ./server.js .
 COPY ./public ./public
