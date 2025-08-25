@@ -93,6 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-title {
   font-size: 1.875rem;
   font-weight: 700;
+  margin: 10px 0px 20px 0px;
   color: var(--text-primary);
   margin-bottom: var(--spacing-xs);
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);

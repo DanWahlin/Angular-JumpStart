@@ -89,13 +89,12 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--border-radius);
   color: white;
   text-decoration: none;
   transition: all var(--transition-fast);
-  backdrop-filter: blur(10px);
 }
 
 .action-btn:hover {
@@ -191,9 +190,10 @@
 
 /* Delete button */
 .delete-btn {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: var(--danger-color);
+  background: rgba(239, 68, 68, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  margin-left: 3px;
 }
 
 .delete-btn:hover {
