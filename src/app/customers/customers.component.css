@@ -56,43 +56,45 @@
 
 .view-options {
   display: flex;
-  gap: var(--spacing-xs);
-  background: var(--background-tertiary);
-  padding: var(--spacing-xs);
-  border-radius: var(--border-radius);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .view-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
   background: transparent;
   border: none;
-  border-radius: var(--border-radius);
+  border-bottom: 3px solid transparent;
   color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   white-space: nowrap;
+  flex: 1;
+  text-decoration: none;
 }
 
 .view-btn:hover {
-  background: white;
+  background-color: var(--primary-ultra-light);
   color: var(--primary-color);
-  box-shadow: var(--shadow-xs);
 }
 
 .view-btn.active {
-  background: var(--primary-color);
-  color: white;
-  box-shadow: var(--shadow-sm);
+  color: var(--primary-color);
+  background-color: var(--primary-ultra-light);
+  border-bottom-color: var(--primary-color);
 }
 
 .view-btn.active:hover {
-  background: var(--primary-hover);
-  color: white;
+  background-color: var(--primary-ultra-light);
+  color: var(--primary-color);
 }
 
 .toolbar-search {

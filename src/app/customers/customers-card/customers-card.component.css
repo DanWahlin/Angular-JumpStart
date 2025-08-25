@@ -28,7 +28,7 @@
 }
 
 .card-header {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #0052A3 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, #4A90E2 100%);
   color: white;
   padding: var(--spacing-md);
   position: relative;
