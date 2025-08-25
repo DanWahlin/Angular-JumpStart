@@ -1,0 +1,115 @@
+.customer-orders {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.orders-header {
+  padding: var(--spacing-xl);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--background-secondary);
+}
+
+.orders-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #0052A3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.orders-content {
+  padding: var(--spacing-xl);
+}
+
+.orders-table {
+  width: 100%;
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+}
+
+.orders-table td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  font-size: 0.875rem;
+}
+
+.orders-table tr:hover {
+  background-color: var(--background-secondary);
+}
+
+.orders-table tr:last-child td {
+  border-bottom: none;
+}
+
+.summary-border {
+  border-top: 2px solid var(--primary-color) !important;
+  background-color: var(--primary-ultra-light) !important;
+}
+
+.summary-border td {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.text-right {
+  text-align: right;
+}
+
+.product-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.order-cost {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.total-cost {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--text-secondary);
+}
+
+.empty-state h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .orders-header {
+    padding: var(--spacing-lg);
+  }
+  
+  .orders-content {
+    padding: var(--spacing-lg);
+  }
+  
+  .orders-title {
+    font-size: 1.25rem;
+  }
+  
+  .orders-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

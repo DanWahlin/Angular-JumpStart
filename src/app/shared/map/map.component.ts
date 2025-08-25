@@ -58,13 +58,13 @@ export class MapComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {
     if (this.latitude && this.longitude) {
-      if (this.mapHeight && this.mapWidth) {
+      if (this.height && this.width) {
         this.mapHeight = this.height + 'px';
         this.mapWidth = this.width + 'px';
       } else {
         const hw = this.getWindowHeightWidth(this.mapDiv.nativeElement.ownerDocument);
         this.mapHeight = hw.height / 2 + 'px';
-        this.mapWidth = hw.width + 'px';
+        this.mapWidth = '100%';
       }
     }
   }

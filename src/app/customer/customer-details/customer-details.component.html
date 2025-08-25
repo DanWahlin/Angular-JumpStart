@@ -1,34 +1,33 @@
-<div class="container">
-  <div class="row" *ngIf="customer">
-    <div class="col-md-2">
-      <img src="images/{{customer.gender | lowercase}}.png" class="details-image" title="customer picture" />
-    </div>
-    <div class="col-md-10">
-      <h4>    
-          {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}&nbsp;          
-      </h4>
-      <br />
-      {{ customer.address }}
-      <br />
-      {{ customer.city }}, {{ customer.state.name }}
-    </div>
-  </div>    
-  <br /><br />
-  <div class="row">
-    <div class="col-md-12">
-      <!-- <cm-map [latitude]="customer.latitude" 
-           [longitude]="customer.longitude" 
-           [zoom]="10" 
-           [enabled]="mapEnabled"
-           [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map> -->
-          
-      <!-- lazy load the map component -->
-      <div>
-          <ng-container #mapsContainer></ng-container>
+<div class="customer-details" *ngIf="customer">
+  <div class="customer-info">
+    <div class="customer-header">
+      <img src="images/{{customer.gender | lowercase}}.png" 
+           class="details-image" 
+           [alt]="customer.firstName + ' ' + customer.lastName + ' picture'" />
+      <div class="customer-info-text">
+        <h1 class="customer-name">
+          {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}
+        </h1>
+        <div class="customer-address">
+          {{ customer.address }}
+        </div>
+        <div class="customer-location">
+          {{ customer.city }}, {{ customer.state.name }}
+        </div>
       </div>
     </div>
   </div>
-</div>   
-<div *ngIf="!customer" class="container">
-   No customer found
+  
+  <div class="map-section">
+    <ng-container #mapsContainer></ng-container>
+  </div>
+</div>
+
+<div class="customer-details" *ngIf="!customer">
+  <div class="customer-info">
+    <div class="text-center">
+      <h2>No customer found</h2>
+      <p class="text-muted">The requested customer could not be located.</p>
+    </div>
+  </div>
 </div>  

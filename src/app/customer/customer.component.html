@@ -1,35 +1,43 @@
-<div class="orders view">
-    <div class="container">
-        <header>
-            <h3><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Customer Information</h3>
-        </header>
-        <br />
+<div class="customer-page">
+    <div class="page-header">
+        <h3>
+            <span class="glyphicon glyphicon-user"></span>
+            Customer Information
+        </h3>
+    </div>
+    
+    <div class="customer-tabs">
         <div class="navbar">
-            <ul class="nav navbar-nav">
+            <ul class="nav">
                 <li class="toolbar-item">
                     <a routerLink="details" routerLinkActive="active">
-                       <span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Customer Details
+                       <span class="glyphicon glyphicon-list"></span>
+                       Customer Details
                     </a>
                 </li>
                 <li class="toolbar-item">
                     <a routerLink="orders" routerLinkActive="active">
-                        <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Customer Orders
+                        <span class="glyphicon glyphicon-tags"></span>
+                        Customer Orders
                     </a>
                 </li>
                 <li class="toolbar-item">
                     <a routerLink="edit" routerLinkActive="active">
-                        <span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit Customer
+                        <span class="glyphicon glyphicon-edit"></span>
+                        Edit Customer
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="container">
-            <router-outlet></router-outlet>
-            <br />
-            <br />
-            <a routerLink="/customers">View all Customers</a>
-        </div>
     </div>
+    
+    <div class="content-section">
+        <router-outlet></router-outlet>
+    </div>
+    
+    <a routerLink="/customers" class="back-link">
+        ← View all Customers
+    </a>
 </div>
 
 

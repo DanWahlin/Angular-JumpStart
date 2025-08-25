@@ -19,8 +19,8 @@ export class CustomerDetailsComponent implements OnInit {
   mapEnabled: boolean = false;
   mapComponentRef: ComponentRef<any> = {} as ComponentRef<any>;
 
-  @ViewChild('mapsContainer', { read: ViewContainerRef }) 
-  private mapsViewContainerRef: ViewContainerRef = {} as ViewContainerRef;
+  @ViewChild('mapsContainer', { read: ViewContainerRef, static: false }) 
+  private mapsViewContainerRef!: ViewContainerRef;
 
   constructor(private route: ActivatedRoute, 
     private dataService: DataService,
@@ -35,7 +35,10 @@ export class CustomerDetailsComponent implements OnInit {
           .subscribe((customer: ICustomer) => {
             this.customer = customer;
             if (this.customer && this.customer.latitude) {
-              this.lazyLoadMapComponent();
+              // Add a small delay to ensure the view is rendered
+              setTimeout(() => {
+                this.lazyLoadMapComponent();
+              }, 100);
               // this.mapEnabled = true; // For eager loading map
             }
           });
@@ -44,14 +47,39 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   async lazyLoadMapComponent() {
-    if (!this.mapsViewContainerRef.length) {
+    console.log('lazyLoadMapComponent called', this.customer);
+    
+    if (!this.mapsViewContainerRef) {
+      console.error('ViewContainerRef is not available');
+      return;
+    }
+    
+    console.log('ViewContainerRef length:', this.mapsViewContainerRef.length);
+    
+    // Clear any existing components and create new one
+    this.mapsViewContainerRef.clear();
+    
+    try {
       // Lazy load MapComponent
       const { MapComponent } = await import('../../shared/map/map.component');
-      console.log('Lazy loaded map component for customer!');
+      console.log('Lazy loaded map component for customer!', MapComponent);
+      
       this.mapComponentRef = this.mapsViewContainerRef.createComponent(MapComponent);
+      console.log('Map component created:', this.mapComponentRef);
+      
+      this.mapComponentRef.instance.latitude = this.customer!.latitude;
+      this.mapComponentRef.instance.longitude = this.customer!.longitude;
       this.mapComponentRef.instance.zoom = 10;
-      this.mapComponentRef.instance.customer = this.customer;
+      this.mapComponentRef.instance.markerText = `<h3>${this.customer!.firstName} ${this.customer!.lastName}</h3>${this.customer!.city}, ${this.customer!.state.name}`;
       this.mapComponentRef.instance.enabled = true;
+      
+      console.log('Map properties set:', {
+        latitude: this.mapComponentRef.instance.latitude,
+        longitude: this.mapComponentRef.instance.longitude,
+        enabled: this.mapComponentRef.instance.enabled
+      });
+    } catch (error) {
+      console.error('Error loading map component:', error);
     }
   }
 

@@ -1,6 +1,8 @@
 <main class="container">
     <cm-navbar></cm-navbar>
-    <router-outlet></router-outlet>
+    <div class="content-container">
+        <router-outlet></router-outlet>
+    </div>
     <cm-growler position="top-right" [timeout]="2000"></cm-growler>
     <cm-modal></cm-modal>
     <cm-overlay [delay]="300">

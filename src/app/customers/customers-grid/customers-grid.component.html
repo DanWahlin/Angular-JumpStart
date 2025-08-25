@@ -1,40 +1,71 @@
-<div class="container">
-    <div class="row grid-container">
-        <div class="col-md-10">
-            <div class="table">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th cmSortBy="firstName" (sorted)="sort($event)">First Name</th>
-                            <th cmSortBy="lastName" (sorted)="sort($event)">Last Name</th>
-                            <th cmSortBy="address" (sorted)="sort($event)">Address</th>
-                            <th cmSortBy="city" (sorted)="sort($event)">City</th>
-                            <th cmSortBy="state.name" (sorted)="sort($event)">State</th>
-                            <!-- Or you can do this directly rather than using sort-by directive -->
-                            <th (click)="sort('orderTotal')">Order Total</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let customer of customers;trackBy:trackbyService.customer">
-                            <td><img src="images/{{ customer.gender | lowercase }}.png"
-                                    class="grid-image" alt="Customer Image" /></td>
-                            <td><a [routerLink]="['/customers',customer.id,'details']">{{ customer.firstName | capitalize }}</a></td>
-                            <td>{{ customer.lastName | capitalize }}</td>
-                            <td>{{ customer.address }}</td>
-                            <td>{{ customer.city | trim }}</td>
-                            <td>{{ customer.state.name }}</td>
-                            <td>{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
-                            <td><a [routerLink]="['/customers',customer.id,'orders']">View Orders</a></td>
-                        </tr>
-                        <tr *ngIf="!customers.length">
-                            <td>&nbsp;</td>
-                            <td colspan="7">No Records Found</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="grid-container">
+    <table class="customers-table">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th class="sortable" cmSortBy="firstName" (sorted)="sort($event)">First Name</th>
+                <th class="sortable" cmSortBy="lastName" (sorted)="sort($event)">Last Name</th>
+                <th class="sortable" cmSortBy="address" (sorted)="sort($event)">Address</th>
+                <th class="sortable" cmSortBy="city" (sorted)="sort($event)">City</th>
+                <th class="sortable" cmSortBy="state.name" (sorted)="sort($event)">State</th>
+                <th class="sortable" (click)="sort('orderTotal')">Order Total</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers;trackBy:trackbyService.customer" 
+                [routerLink]="['/customers',customer.id,'details']">
+                <!-- <td data-label="Avatar">
+                    <img src="images/{{ customer.gender | lowercase }}.png"
+                         class="customer-image" 
+                         alt="{{customer.firstName}} {{customer.lastName}}" />
+                </td> -->
+                <td data-label="First Name">
+                    <a [routerLink]="['/customers',customer.id,'details']" class="customer-link">
+                        {{ customer.firstName | capitalize }}
+                    </a>
+                </td>
+                <td data-label="Last Name">{{ customer.lastName | capitalize }}</td>
+                <td data-label="Address">{{ customer.address }}</td>
+                <td data-label="City">{{ customer.city | trim }}</td>
+                <td data-label="State">{{ customer.state.name }}</td>
+                <td data-label="Order Total">{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
+                <td data-label="Actions" (click)="$event.stopPropagation()">
+                    <div class="table-actions">
+                        <a [routerLink]="['/customers',customer.id,'details']" 
+                           class="action-btn view" 
+                           title="View Details">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </a>
+                        <a [routerLink]="['/customers',customer.id,'edit']" 
+                           class="action-btn edit" 
+                           title="Edit Customer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </a>
+                        <a [routerLink]="['/customers',customer.id,'orders']" 
+                           class="action-btn orders" 
+                           title="View Orders">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="m22 2-3 3-2-2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="no-records" *ngIf="!customers.length">
+        <div class="no-records-icon">📋</div>
+        <h3>No customers found</h3>
+        <p>Try adjusting your search criteria or add a new customer.</p>
     </div>
 </div>

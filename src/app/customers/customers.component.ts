@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'cm-customers',
     templateUrl: './customers.component.html',
+    styleUrls: ['./customers.component.css'],
     imports: [RouterLink, FilterTextboxComponent, CustomersCardComponent, CustomersGridComponent, PaginationComponent]
 })
 export class CustomersComponent implements OnInit {
@@ -98,6 +99,20 @@ export class CustomersComponent implements OnInit {
   updateMapComponentDataPoints() {
     if (this.mapComponentRef && this.mapComponentRef.instance) {
       this.mapComponentRef.instance.dataPoints = this.filteredCustomers;
+    }
+  }
+
+  deleteCustomer(customer: ICustomer) {
+    if (this.dataService) {
+      this.dataService.deleteCustomer(customer.id).subscribe(() => {
+        // Remove from local arrays
+        const index = this.customers.findIndex(c => c.id === customer.id);
+        if (index > -1) {
+          this.customers.splice(index, 1);
+        }
+        this.filterChanged(this.filterText);
+        this.updateMapComponentDataPoints();
+      });
     }
   }
 

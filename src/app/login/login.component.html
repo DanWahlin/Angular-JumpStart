@@ -1,49 +1,96 @@
-<div class="view">
-    <div class="container">
-        <header>
-            <h3><span class="glyphicon glyphicon-lock"></span> Login</h3>
-        </header>
-        <br />
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h1 class="login-title">Welcome back</h1>
+            <p class="login-subtitle">Sign in to your account to continue</p>
+        </div>
+
+        <div class="demo-info">
+            <h4>Demo Login</h4>
+            <p>Use any email address with a password that's at least 6 characters and contains 1 digit</p>
+        </div>
+
         <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm)" class="login-form" novalidate>
-            <div class="login">
-                <div class="row">
-                    <div class="col-md-2">
-                        Email:
-                    </div>
-                    <div class="col-md-10">
-                        <input title="email" type="email" name="email" class="form-control" formControlName="email" />
-                        <div class="alert alert-danger" data-cy="email-error" [hidden]="f['email'].untouched || f['email'].valid">
-                            A valid email address is required
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <div class="input-group">
+                    <input 
+                        id="email"
+                        type="email" 
+                        name="email" 
+                        class="form-control" 
+                        formControlName="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email" />
+                    <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
                 </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        Password:
-                    </div>
-                    <div class="col-md-10">
-                        <input title="password" type="password" name="password" class="form-control" formControlName="password" />
-                        <div class="alert alert-danger" data-cy="password-error" [hidden]="f['password'].untouched || f['password'].valid">
-                            Password is required (6 or more characters with at least one number)
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
-                    </div>
-                </div>
-                <br />
-                <div class="statusRow">
-                    <br />
-                    <div class="label label-important" *ngIf="errorMessage">
-                        <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;Error: {{ errorMessage }}
-                    </div>
+                <div class="error-message" 
+                     data-cy="email-error" 
+                     *ngIf="f['email'].touched && f['email'].invalid">
+                    <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                    A valid email address is required
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-group">
+                    <input 
+                        id="password"
+                        type="password" 
+                        name="password" 
+                        class="form-control" 
+                        formControlName="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password" />
+                    <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <circle cx="12" cy="16" r="1"/>
+                        <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </div>
+                <div class="error-message" 
+                     data-cy="password-error" 
+                     *ngIf="f['password'].touched && f['password'].invalid">
+                    <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                    Password is required (6+ characters with at least one number)
+                </div>
+            </div>
+
+            <button 
+                type="submit" 
+                class="login-submit" 
+                [disabled]="!loginForm.valid">
+                <span class="login-loading" *ngIf="isLoading">
+                    <span class="loading-spinner"></span>
+                    Signing in...
+                </span>
+                <span *ngIf="!isLoading">Sign In</span>
+            </button>
+
+            <div class="forgot-password">
+                <a href="#" onclick="return false;">Forgot your password?</a>
+            </div>
+
+            <div class="error-message" *ngIf="errorMessage" style="margin-top: var(--spacing-lg); justify-content: center;">
+                <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="15" y1="9" x2="9" y2="15"/>
+                    <line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+                {{ errorMessage }}
+            </div>
         </form>
-        
     </div>
 </div>

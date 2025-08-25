@@ -18,6 +18,7 @@ import { NgIf } from '@angular/common';
 export class LoginComponent implements OnInit {
     loginForm: FormGroup = {} as FormGroup;
     errorMessage: string = '';
+    isLoading: boolean = false;
     get f(): { [key: string]: AbstractControl } {
         return this.loginForm.controls;
     }
@@ -40,8 +41,11 @@ export class LoginComponent implements OnInit {
     }
 
     submit({ value, valid }: { value: IUserLogin, valid: boolean }) {
+        this.isLoading = true;
+        this.errorMessage = '';
         this.authService.login(value)
             .subscribe((status: boolean) => {
+                this.isLoading = false;
                 if (status) {
                     this.growler.growl('Logged in', GrowlerMessageType.Info);
                     if (this.authService.redirectUrl) {
@@ -57,7 +61,10 @@ export class LoginComponent implements OnInit {
                     this.growler.growl(loginError, GrowlerMessageType.Danger);
                 }
             },
-            (err: any) => this.logger.log(err));
+            (err: any) => {
+                this.isLoading = false;
+                this.logger.log(err);
+            });
     }
 
 }

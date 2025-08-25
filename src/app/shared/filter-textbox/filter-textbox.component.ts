@@ -18,4 +18,9 @@ export class FilterTextboxComponent {
       event.preventDefault();
       this.changed.emit(this.model.filter); // Raise changed event
     }
+
+    clearFilter() {
+      this.model.filter = '';
+      this.changed.emit(this.model.filter);
+    }
 }

@@ -9,6 +9,7 @@ import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 @Component({
     selector: 'cm-customer-orders',
     templateUrl: './customer-orders.component.html',
+    styleUrl: './customer-orders.component.css',
     imports: [NgIf, NgFor, CurrencyPipe, CapitalizePipe]
 })
 export class CustomerOrdersComponent implements OnInit {

@@ -1,22 +1,33 @@
-<div class="container">
-    <div class="row" *ngIf="customer && customer.orders">
-        <h4>Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
-        <br />
-        <table class="table table-striped table-hover orders-table">
+<div class="customer-orders" *ngIf="customer && customer.orders">
+    <div class="orders-header">
+        <h2 class="orders-title">
+            Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}
+        </h2>
+    </div>
+    <div class="orders-content">
+        <table class="orders-table">
             <tr *ngFor="let order of customer.orders;trackBy:ordersTrackBy">
-                <td>{{ order.productName }}</td>
-                <td class="text-right">{{ order.itemCost | currency:'USD':'symbol' }}</td>    
+                <td class="product-name">{{ order.productName }}</td>
+                <td class="text-right order-cost">{{ order.itemCost | currency:'USD':'symbol' }}</td>    
             </tr>
             <tr class="summary-border">
-                <td>&nbsp;</td>
-                <td class="text-right">{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
+                <td><strong>Total</strong></td>
+                <td class="text-right total-cost">{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
             </tr>
         </table>
     </div>
-    <div *ngIf="customer && !customer.orders" class="row">
-        No orders found
-    </div> 
-    <div *ngIf="!customer" class="row">
-        No customer found
-    </div>  
+</div>
+
+<div class="customer-orders" *ngIf="customer && !customer.orders">
+    <div class="empty-state">
+        <h3>No Orders Found</h3>
+        <p>This customer hasn't placed any orders yet.</p>
+    </div>
+</div> 
+
+<div class="customer-orders" *ngIf="!customer">
+    <div class="empty-state">
+        <h3>Customer Not Found</h3>
+        <p>The requested customer could not be located.</p>
+    </div>
 </div>

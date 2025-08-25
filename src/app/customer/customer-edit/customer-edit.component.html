@@ -1,47 +1,65 @@
-<div>
-  <form (ngSubmit)="submit()" #customerForm="ngForm" class="customer-form" novalidate>
-    <div class="form-group">
-      <label>First Name</label>
-      <input title="first name" type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required>
-      <div class="alert alert-danger" [hidden]="firstName.pristine || firstName.valid">First Name is required</div>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input title="last name" type="text" class="form-control" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel" required>
-      <div class="alert alert-danger" [hidden]="lastName.pristine || lastName.valid">Last Name is required</div>
-    </div>
-    <div class="form-group">
-      <label>Address</label>
-      <input title="address" type="text" class="form-control" name="address" [(ngModel)]="customer.address" #address="ngModel" required>
-      <div class="alert alert-danger" [hidden]="address.pristine || address.valid">Address is required</div>
-    </div>
-    <div class="form-group">
-      <label>City</label>
-      <input title="city" type="text" class="form-control" name="city" [(ngModel)]="customer.city" #city="ngModel" required>
-      <div class="alert alert-danger" [hidden]="city.pristine || city.valid">City is required</div>
-    </div>
-    <div class="form-group">
-      <label>State</label>
-      <select class="form-control" title="states"
-              [(ngModel)]="customer.state.abbreviation"
-              name="state" 
-              required>
-          <option *ngFor="let state of states" [ngValue]="state.abbreviation">{{state.name}}</option>
-      </select>
-    </div>
-    <div *ngIf="customer">
+<div class="customer-edit">
+  <div class="edit-header">
+    <h2 class="edit-title">
+      {{ customer.id ? 'Edit Customer' : 'Add New Customer' }}
+    </h2>
+  </div>
+  
+  <div class="edit-content">
+    <form (ngSubmit)="submit()" #customerForm="ngForm" class="customer-form" novalidate>
+      <div class="form-group">
+        <label>First Name</label>
+        <input title="first name" type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required>
+        <div class="alert alert-danger" [hidden]="firstName.pristine || firstName.valid">First Name is required</div>
+      </div>
+      
+      <div class="form-group">
+        <label>Last Name</label>
+        <input title="last name" type="text" class="form-control" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel" required>
+        <div class="alert alert-danger" [hidden]="lastName.pristine || lastName.valid">Last Name is required</div>
+      </div>
+      
+      <div class="form-group">
+        <label>Address</label>
+        <input title="address" type="text" class="form-control" name="address" [(ngModel)]="customer.address" #address="ngModel" required>
+        <div class="alert alert-danger" [hidden]="address.pristine || address.valid">Address is required</div>
+      </div>
+      
+      <div class="form-group">
+        <label>City</label>
+        <input title="city" type="text" class="form-control" name="city" [(ngModel)]="customer.city" #city="ngModel" required>
+        <div class="alert alert-danger" [hidden]="city.pristine || city.valid">City is required</div>
+      </div>
+      
+      <div class="form-group">
+        <label>State</label>
+        <select class="form-control" title="states"
+                [(ngModel)]="customer.state.abbreviation"
+                name="state" 
+                required>
+            <option *ngFor="let state of states" [ngValue]="state.abbreviation">{{state.name}}</option>
+        </select>
+      </div>
+      
       <div class="alert alert-warning" *ngIf="customer.id && deleteMessageEnabled">
-         Delete Customer?&nbsp;&nbsp;<button class="btn btn-danger" (click)="delete($event)">Yes</button>&nbsp;&nbsp;
-         <button class="btn btn-default" (click)="deleteMessageEnabled = false">No</button>
+        Delete Customer?
+        <div class="button-group" style="margin-top: var(--spacing-sm);">
+          <button class="btn btn-danger" (click)="delete($event)">Yes</button>
+          <button class="btn btn-default" (click)="deleteMessageEnabled = false">No</button>
+        </div>
       </div>
-      <button class="btn btn-danger" *ngIf="customer.id && !deleteMessageEnabled" (click)="deleteMessageEnabled = true">Delete</button>&nbsp;&nbsp;
-
-      <div class="pull-right" *ngIf="!deleteMessageEnabled">
-        <button class="btn btn-default" (click)="cancel($event)">Cancel</button>&nbsp;&nbsp;
-        <button type="submit" class="btn btn-success" [disabled]="customerForm.pristine || !customerForm.valid">{{ operationText }}</button>
+      
+      <div class="form-actions" *ngIf="customer && !deleteMessageEnabled">
+        <div class="delete-section">
+          <button type="button" class="btn btn-danger" *ngIf="customer.id" (click)="deleteMessageEnabled = true">Delete</button>
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn btn-default" (click)="cancel($event)">Cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="customerForm.pristine || !customerForm.valid">{{ operationText }}</button>
+        </div>
       </div>
-    </div>
-    <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
-  </form>
-  <br />
+      
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+  </div>
 </div>

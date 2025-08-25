@@ -1,54 +1,258 @@
 .card-container {
-    width:85%;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
 }
 
-.card {
-    background-color:#fff;
-    border: 1px solid #d4d4d4;
-    height:120px;
-    margin-bottom: 20px;
-    position: relative;
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.customer-card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.customer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .card-header {
-    background-color:#027FF4;
-    font-size:14pt;
-    color:white;
-    padding:5px;
-    width:100%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #0052A3 100%);
+  color: white;
+  padding: var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
 }
 
-.card-close {
-    color: white;
-    font-weight:bold;
-    margin-right:5px;
+.card-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+  transition: transform var(--transition-slow);
+  opacity: 0;
+}
+
+.customer-card:hover .card-header::before {
+  transform: translateX(-100%);
+  opacity: 1;
+}
+
+.card-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.customer-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.customer-name a {
+  color: white;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.customer-name a:hover {
+  opacity: 0.9;
+}
+
+.card-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-left: var(--spacing-md);
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius);
+  color: white;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  transform: scale(1.1);
 }
 
 .card-body {
-    padding-left: 5px;
+  padding: var(--spacing-lg);
 }
 
-.card-body-left {
-    margin-top: -5px;
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
-.card-body-right {
-    margin-left: 20px;
-    margin-top: 2px;
+.customer-avatar {
+  position: relative;
+  flex-shrink: 0;
 }
 
-.card-body-content {
-    width: 100px;
+.customer-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color);
+  transition: border-color var(--transition-fast);
 }
 
-.card-image {
-    height:50px;width:50px;margin-top:10px;
+.customer-card:hover .customer-image {
+  border-color: var(--primary-color);
 }
 
-.white {
-    color: white;
+.customer-info {
+  flex: 1;
+  min-width: 0;
 }
 
-.white:hover {
-    color: white;
+.customer-location {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+}
+
+.customer-actions {
+  margin-top: var(--spacing-sm);
+}
+
+.view-orders-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.view-orders-link:hover {
+  color: var(--primary-hover);
+  border-bottom-color: var(--primary-hover);
+}
+
+.view-orders-link::after {
+  content: '→';
+  transition: transform var(--transition-fast);
+}
+
+.view-orders-link:hover::after {
+  transform: translateX(2px);
+}
+
+.no-records {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.no-records-icon {
+  font-size: 3rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Delete button */
+.delete-btn {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--danger-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 3;
+  opacity: 0;
+}
+
+.customer-card:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background: var(--danger-color);
+  border-color: var(--danger-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .card-container {
+    padding: var(--spacing-md);
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .card-header {
+    padding: var(--spacing-md);
+  }
+  
+  .card-body {
+    padding: var(--spacing-md);
+  }
+  
+  .customer-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-header-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+  
+  .card-actions {
+    align-self: flex-end;
+    margin-left: 0;
+  }
 }

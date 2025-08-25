@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ICustomer } from '../../shared/interfaces';
 import { TrackByService } from '../../core/services/trackby.service';
@@ -20,11 +20,20 @@ import { NgFor, NgIf, LowerCasePipe } from '@angular/common';
 export class CustomersCardComponent implements OnInit {
 
   @Input() customers: ICustomer[] = [];
+  @Output() customerDeleted = new EventEmitter<ICustomer>();
 
   constructor(public trackbyService: TrackByService) { }
 
   ngOnInit() {
 
+  }
+
+  deleteCustomer(customer: ICustomer, event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+    if (confirm(`Are you sure you want to delete ${customer.firstName} ${customer.lastName}?`)) {
+      this.customerDeleted.emit(customer);
+    }
   }
 
 }

@@ -1,45 +1,72 @@
-<div class="customers view indent">
-    <div class="container">
-        <header>
-            <h3>
-                <span class="glyphicon glyphicon-user"></span>
-                {{ title }}
-            </h3>
-        </header>
-        <br />
-        <div class="row">
-            <div class="col-md-10">
-                <div class="navbar">
-                    <ul class="nav navbar-nav">
-                        <li class="toolbar-item">
-                            <a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">
-                                <span class="glyphicon glyphicon-th-large"></span> Card View
-                            </a>
-                        </li>
-                        <li class="toolbar-item">
-                            <a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">
-                                <span class="glyphicon glyphicon-align-justify"></span> List View
-                            </a>
-                        </li>
-                        <li class="toolbar-item">
-                            <a (click)="lazyLoadMapComponent()" [class.active]="displayMode === displayModeEnum.Map">
-                                <span class="glyphicon glyphicon-map-marker"></span> Map View
-                            </a>
-                        </li>
-                        <li class="toolbar-item">
-                            <a routerLink="/customers/0/edit">
-                                <span class="glyphicon glyphicon-plus"></span> New Customer
-                            </a>
-                        </li>
-                    </ul>
-                    <cm-filter-textbox class="navbar-right"
-                     (changed)="filterChanged($event)"></cm-filter-textbox>
-                </div>
+<div class="customers-page">
+        <div class="page-header">
+            <div class="header-content">
+                <h1 class="page-title">{{ title }}</h1>
+                <p class="page-subtitle">Manage your customer relationships</p>
+            </div>
+            <div class="header-actions">
+                <a routerLink="/customers/0/edit" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="16"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                    New Customer
+                </a>
+            </div>
+        </div>
+
+        <div class="page-toolbar">
+            <div class="view-options">
+                <button 
+                    class="view-btn"
+                    [class.active]="displayMode === displayModeEnum.Card"
+                    (click)="changeDisplayMode(displayModeEnum.Card)"
+                    title="Card View">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    Cards
+                </button>
+                <button 
+                    class="view-btn"
+                    [class.active]="displayMode === displayModeEnum.Grid"
+                    (click)="changeDisplayMode(displayModeEnum.Grid)"
+                    title="List View">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6"/>
+                        <line x1="8" y1="12" x2="21" y2="12"/>
+                        <line x1="8" y1="18" x2="21" y2="18"/>
+                        <line x1="3" y1="6" x2="3.01" y2="6"/>
+                        <line x1="3" y1="12" x2="3.01" y2="12"/>
+                        <line x1="3" y1="18" x2="3.01" y2="18"/>
+                    </svg>
+                    List
+                </button>
+                <button 
+                    class="view-btn"
+                    [class.active]="displayMode === displayModeEnum.Map"
+                    (click)="lazyLoadMapComponent()"
+                    title="Map View">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="1,6 1,22 8,18 16,22 23,18 23,2 16,6 8,2"/>
+                        <line x1="8" y1="2" x2="8" y2="18"/>
+                        <line x1="16" y1="6" x2="16" y2="22"/>
+                    </svg>
+                    Map
+                </button>
+            </div>
+            <div class="toolbar-search">
+                <cm-filter-textbox (changed)="filterChanged($event)"></cm-filter-textbox>
             </div>
         </div>
         
         <cm-customers-card 
           [customers]="filteredCustomers" 
+          (customerDeleted)="deleteCustomer($event)"
           [hidden]="displayMode !== displayModeEnum.Card"></cm-customers-card>
     
         <cm-customers-grid 
@@ -72,5 +99,4 @@
             [pageSize]="pageSize" 
             (pageChanged)="pageChanged($event)"></cm-pagination>
           
-    </div>
 </div>

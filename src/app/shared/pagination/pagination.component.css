@@ -1,13 +1,84 @@
-.pagination>.active>a, 
-.pagination>.active>a:focus, 
-.pagination>.active>a:hover, 
-.pagination>.active>span, 
-.pagination>.active>span:focus, 
-.pagination>.active>span:hover {
-  background-color: #027FF4;
-  border-color: #027FF4;
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  list-style: none;
+  margin: var(--spacing-xl) 0;
+  padding: 0;
 }
 
-.pagination a {
-    cursor: pointer;
+.pagination li {
+  margin: 0;
+}
+
+.pagination li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: white;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pagination li a:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--primary-ultra-light);
+}
+
+.pagination li.active a {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.pagination li.disabled a {
+  color: var(--text-light);
+  background-color: var(--background-tertiary);
+  border-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+.pagination li.disabled a:hover {
+  color: var(--text-light);
+  background-color: var(--background-tertiary);
+  border-color: var(--border-color);
+}
+
+/* Arrow buttons styling */
+.pagination li:first-child a,
+.pagination li:last-child a {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.pagination li:first-child a:hover,
+.pagination li:last-child a:hover {
+  background-color: var(--primary-ultra-light);
+  color: var(--primary-hover);
+}
+
+.pagination li:first-child.disabled a,
+.pagination li:last-child.disabled a {
+  color: var(--text-light);
+  background: transparent;
+}
+
+.pagination li:first-child.disabled a:hover,
+.pagination li:last-child.disabled a:hover {
+  background: transparent;
+  color: var(--text-light);
 }

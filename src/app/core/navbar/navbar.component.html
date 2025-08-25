@@ -1,6 +1,6 @@
 <nav class="navbar navbar-inner navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header" style="">
+        <div class="navbar-header">
             <button type="button" class="navbar-toggle" 
                     (click)="isCollapsed = !isCollapsed">
                 <span class="sr-only">Toggle navigation</span>
@@ -9,7 +9,6 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" routerLink="/customers">
-                <img src="images/people.png" alt="logo" />
                 <span class="app-title">Customer Manager</span>
             </a>
             <span class="navbar-collapse" [attr.data-collapse]="isCollapsed">

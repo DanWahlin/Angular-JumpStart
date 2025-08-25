@@ -6,7 +6,7 @@ import { ICustomer } from '../../shared/interfaces';
 import { TrimPipe } from '../../shared/pipes/trim.pipe';
 import { CapitalizePipe } from '../../shared/pipes/capitalize.pipe';
 import { RouterLink } from '@angular/router';
-import { NgFor, NgIf, LowerCasePipe, CurrencyPipe } from '@angular/common';
+import { NgFor, NgIf, CurrencyPipe } from '@angular/common';
 import { SortByDirective } from '../../shared/directives/sortby.directive';
 
 @Component({
@@ -17,7 +17,7 @@ import { SortByDirective } from '../../shared/directives/sortby.directive';
     // component when any of its input properties changes, when it fires
     // an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [SortByDirective, NgFor, RouterLink, NgIf, LowerCasePipe, CurrencyPipe, CapitalizePipe, TrimPipe]
+    imports: [SortByDirective, NgFor, RouterLink, NgIf, CurrencyPipe, CapitalizePipe, TrimPipe]
 })
 export class CustomersGridComponent implements OnInit {
 
