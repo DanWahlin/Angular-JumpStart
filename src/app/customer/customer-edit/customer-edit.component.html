@@ -34,11 +34,11 @@
       <div class="form-group">
         <label>State</label>
         <select class="form-control" title="states"
-                [(ngModel)]="customer.state.abbreviation"
+                [(ngModel)]="customer.state"
                 name="state" 
                 required>
             @for (state of states; track state.abbreviation) {
-                <option [ngValue]="state.abbreviation">{{state.name}}</option>
+                <option [ngValue]="state">{{state.name}}</option>
             }
         </select>
       </div>
@@ -46,7 +46,7 @@
       @if (customer.id && deleteMessageEnabled) {
           <div class="alert alert-warning">
             Delete Customer?
-            <div class="button-group" style="margin-top: var(--spacing-sm);">
+            <div class="button-group delete-actions">
               <button class="btn btn-danger" (click)="delete($event)">Yes</button>
               <button class="btn btn-default" (click)="deleteMessageEnabled = false">No</button>
             </div>

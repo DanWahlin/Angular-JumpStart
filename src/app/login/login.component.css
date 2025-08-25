@@ -90,21 +90,25 @@
 
 /* Validation States */
 .form-control.ng-invalid.ng-touched {
+  border-left: 5px solid var(--danger-color);
   border-color: var(--danger-color);
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .form-control.ng-valid.ng-touched {
+  border-left: 5px solid var(--success-color);
   border-color: var(--success-color);
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
 .form-control.ng-invalid.ng-touched:focus {
+  border-left: 5px solid var(--danger-color);
   border-color: var(--danger-color);
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
 .form-control.ng-valid.ng-touched:focus {
+  border-left: 5px solid var(--success-color);
   border-color: var(--success-color);
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
@@ -125,7 +129,7 @@
 }
 
 .input-group .form-control {
-  padding-left: var(--spacing-2xl);
+  padding-left: var(--spacing-sm);
 }
 
 .input-group .form-control:focus + .input-icon {
@@ -189,6 +193,11 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+}
+
+.error-centered {
+  margin-top: var(--spacing-lg);
+  justify-content: center;
 }
 
 .error-icon {

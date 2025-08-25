@@ -43,9 +43,6 @@ export class CustomerEditComponent implements OnInit {
     private logger: LoggerService) { }
 
   ngOnInit() {
-    // Subscribe to params so if it changes we pick it up. Don't technically need that here
-    // since param won't be changing while component is alive.
-    // Could use this.route.parent.snapshot.params["id"] to simplify it.
     this.route.parent?.params.subscribe((params: Params) => {
       const id = +params['id'];
       if (id !== 0) {
@@ -56,6 +53,7 @@ export class CustomerEditComponent implements OnInit {
 
     this.dataService.getStates().subscribe((states: IState[]) => this.states = states);
   }
+
 
   getCustomer(id: number) {
     this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
@@ -114,6 +112,7 @@ export class CustomerEditComponent implements OnInit {
       },
         (err) => this.logger.log(err));
   }
+
 
   canDeactivate(): Promise<boolean> | boolean {
     if (!this.customerForm.dirty) {

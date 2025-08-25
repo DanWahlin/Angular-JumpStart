@@ -28,6 +28,7 @@
 
 .customer-form {
   width: 100%;
+  max-width: 600px;
 }
 
 .form-group {
@@ -44,7 +45,7 @@
 
 .form-control {
   width: 100%;
-  padding: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-sm);
   font-size: 0.875rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
@@ -65,21 +66,25 @@
 
 /* Validation States */
 .form-control.ng-invalid.ng-touched {
+  border-left: 3px solid var(--danger-color);
   border-color: var(--danger-color);
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .form-control.ng-valid.ng-touched {
+  border-left: 3px solid var(--success-color);
   border-color: var(--success-color);
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
 .form-control.ng-invalid.ng-touched:focus {
+  border-left: 3px solid var(--danger-color);
   border-color: var(--danger-color);
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
 .form-control.ng-valid.ng-touched:focus {
+  border-left: 3px solid var(--success-color);
   border-color: var(--success-color);
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
@@ -125,6 +130,10 @@
 .button-group {
   display: flex;
   gap: var(--spacing-sm);
+}
+
+.delete-actions {
+  margin-top: var(--spacing-sm);
 }
 
 /* Button Overrides */
