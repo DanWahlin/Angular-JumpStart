@@ -38,8 +38,8 @@ app.use((req, res, next) => {
 
 // Serve static files if not running in a container
 if (!inContainer) {
-  app.use(express.static(path.join(__dirname, 'dist/angular-jumpstart')));
-  console.log(`Static files served from ${path.join(__dirname, 'dist/angular-jumpstart')}`);
+  app.use(express.static(path.join(__dirname, 'dist/angular-jumpstart/browser')));
+  console.log(`Static files served from ${path.join(__dirname, 'dist/angular-jumpstart/browser')}`);
 }
 
 // Helper function to safely fetch a customer by ID
@@ -114,7 +114,7 @@ app.post('/api/auth/logout', (req, res) => res.json(true)); // Simulate logout
 // Catch-all route for HTML5 history
 if (!inContainer) {
   app.use((req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/angular-jumpstart/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/angular-jumpstart/browser/index.html'));
   });
 }
 
