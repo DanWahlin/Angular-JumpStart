@@ -4,13 +4,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
 import { ICustomer, IOrder, IOrderItem } from '../../shared/interfaces';
 import { CapitalizePipe } from '../../shared/pipes/capitalize.pipe';
-import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'cm-customer-orders',
     templateUrl: './customer-orders.component.html',
     styleUrl: './customer-orders.component.css',
-    imports: [NgIf, NgFor, CurrencyPipe, CapitalizePipe]
+    imports: [CurrencyPipe, CapitalizePipe]
 })
 export class CustomerOrdersComponent implements OnInit {
 

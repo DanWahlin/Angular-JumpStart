@@ -10,7 +10,9 @@
                 {{ modalContent.body }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" (click)="cancel()" *ngIf="modalContent.cancelButtonVisible">{{ modalContent.cancelButtonText }}</button>
+                @if (modalContent.cancelButtonVisible) {
+                    <button type="button" class="btn btn-default" (click)="cancel()">{{ modalContent.cancelButtonText }}</button>
+                }
                 <button type="button" class="btn btn-primary" (click)="ok()">{{ modalContent.OKButtonText }}</button>
             </div>
         </div>

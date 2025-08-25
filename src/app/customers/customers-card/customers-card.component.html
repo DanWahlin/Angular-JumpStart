@@ -1,6 +1,7 @@
 <div class="card-container">
     <div class="cards-grid">
-        <div class="customer-card" *ngFor="let customer of customers;trackBy:trackbyService.customer">
+        @for (customer of customers; track trackbyService.customer($index, customer)) {
+            <div class="customer-card">
             <div class="card-header">
                 <div class="card-header-content">
                     <h3 class="customer-name">
@@ -50,12 +51,15 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+        }
     </div>
     
-    <div class="no-records" *ngIf="!customers.length">
-        <div class="no-records-icon">👥</div>
-        <h3>No customers found</h3>
-        <p>Try adjusting your search criteria or add a new customer.</p>
-    </div>
+    @if (!customers.length) {
+        <div class="no-records">
+            <div class="no-records-icon">👥</div>
+            <h3>No customers found</h3>
+            <p>Try adjusting your search criteria or add a new customer.</p>
+        </div>
+    }
 </div>

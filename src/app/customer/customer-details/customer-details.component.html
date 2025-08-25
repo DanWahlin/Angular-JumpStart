@@ -1,33 +1,35 @@
-<div class="customer-details" *ngIf="customer">
-  <div class="customer-info">
-    <div class="customer-header">
-      <img src="images/{{customer.gender | lowercase}}.png" 
-           class="details-image" 
-           [alt]="customer.firstName + ' ' + customer.lastName + ' picture'" />
-      <div class="customer-info-text">
-        <h1 class="customer-name">
-          {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}
-        </h1>
-        <div class="customer-address">
-          {{ customer.address }}
-        </div>
-        <div class="customer-location">
-          {{ customer.city }}, {{ customer.state.name }}
+@if (customer) {
+  <div class="customer-details">
+    <div class="customer-info">
+      <div class="customer-header">
+        <img src="images/{{customer.gender | lowercase}}.png" 
+             class="details-image" 
+             [alt]="customer.firstName + ' ' + customer.lastName + ' picture'" />
+        <div class="customer-info-text">
+          <h1 class="customer-name">
+            {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}
+          </h1>
+          <div class="customer-address">
+            {{ customer.address }}
+          </div>
+          <div class="customer-location">
+            {{ customer.city }}, {{ customer.state.name }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="map-section">
-    <ng-container #mapsContainer></ng-container>
-  </div>
-</div>
-
-<div class="customer-details" *ngIf="!customer">
-  <div class="customer-info">
-    <div class="text-center">
-      <h2>No customer found</h2>
-      <p class="text-muted">The requested customer could not be located.</p>
+    
+    <div class="map-section">
+      <ng-container #mapsContainer></ng-container>
     </div>
   </div>
-</div>  
+} @else {
+  <div class="customer-details">
+    <div class="customer-info">
+      <div class="text-center">
+        <h2>No customer found</h2>
+        <p class="text-muted">The requested customer could not be located.</p>
+      </div>
+    </div>
+  </div>
+}  

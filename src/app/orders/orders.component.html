@@ -5,35 +5,43 @@
 
     <div class="content-section">
         <div class="container">
-            <div *ngIf="customers && customers.length">
+            @if (customers && customers.length) {
 
-                <div class="row" *ngFor="let customer of customers;trackBy:trackbyService.customer">
-                    <h4>{{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
-                    <br />
-                    <table *ngIf="customer.orders && customer.orders.length" class="table table-striped table-hover orders-table">
-                        <tr *ngFor="let order of customer.orders;trackBy:trackbyService.order">
-                            <td>{{order.productName}}</td>
-                            <td class="text-right">{{ order.itemCost | currency:'USD':'symbol' }}</td>    
-                        </tr>
-                        <tr class="summary-border">
-                            <td>&nbsp;</td>
-                            <td class="text-right">{{ customer.orderTotal | currency:'USD':'symbol' }}
-                        </tr>
-                    </table>
-                    <div *ngIf="!customer.orders || !customer.orders.length">
-                        No orders found
-                    </div> 
-                </div>
+                @for (customer of customers; track trackbyService.customer($index, customer)) {
+                    <div class="row">
+                        <h4>{{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}</h4>
+                        <br />
+                        @if (customer.orders && customer.orders.length) {
+                            <table class="table table-striped table-hover orders-table">
+                                @for (order of customer.orders; track trackbyService.order($index, order)) {
+                                    <tr>
+                                        <td>{{order.productName}}</td>
+                                        <td class="text-right">{{ order.itemCost | currency:'USD':'symbol' }}</td>    
+                                    </tr>
+                                }
+                                <tr class="summary-border">
+                                    <td>&nbsp;</td>
+                                    <td class="text-right">{{ customer.orderTotal | currency:'USD':'symbol' }}
+                                </tr>
+                            </table>
+                        } @else {
+                            <div>
+                                No orders found
+                            </div> 
+                        }
+                    </div>
+                }
 
                 <cm-pagination [hidden]="!customers || !customers.length"
                     [totalItems]="totalRecords" 
                     [pageSize]="pageSize" 
                     (pageChanged)="pageChanged($event)"></cm-pagination>
 
-            </div>
-            <div *ngIf="!customers || !customers.length">
-                No customers found
-            </div>
+            } @else {
+                <div>
+                    No customers found
+                </div>
+            }
         </div>
     </div>
 </div>

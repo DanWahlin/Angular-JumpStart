@@ -7,13 +7,12 @@ import { ModalService, IModalContent } from '../../core/modal/modal.service';
 import { ICustomer, IState } from '../../shared/interfaces';
 import { GrowlerService, GrowlerMessageType } from '../../core/growler/growler.service';
 import { LoggerService } from '../../core/services/logger.service';
-import { NgFor, NgIf } from '@angular/common';
 
 @Component({
     selector: 'cm-customer-edit',
     templateUrl: './customer-edit.component.html',
     styleUrls: ['./customer-edit.component.css'],
-    imports: [FormsModule, NgFor, NgIf]
+    imports: [FormsModule]
 })
 export class CustomerEditComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { TrackByService } from '../../core/services/trackby.service';
 import { TrimPipe } from '../../shared/pipes/trim.pipe';
 import { CapitalizePipe } from '../../shared/pipes/capitalize.pipe';
 import { RouterLink } from '@angular/router';
-import { NgFor, NgIf, LowerCasePipe } from '@angular/common';
+import { LowerCasePipe } from '@angular/common';
 
 @Component({
     selector: 'cm-customers-card',
@@ -15,7 +15,7 @@ import { NgFor, NgIf, LowerCasePipe } from '@angular/common';
     // component when any of its input properties changes, when it fires
     // an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgFor, RouterLink, NgIf, LowerCasePipe, CapitalizePipe, TrimPipe]
+    imports: [RouterLink, LowerCasePipe, CapitalizePipe, TrimPipe]
 })
 export class CustomersCardComponent implements OnInit {
 

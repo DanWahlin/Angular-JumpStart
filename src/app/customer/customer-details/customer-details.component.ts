@@ -5,13 +5,13 @@ import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { MapPointComponent } from '../../shared/map/map-point.component';
 import { CapitalizePipe } from '../../shared/pipes/capitalize.pipe';
-import { NgIf, LowerCasePipe } from '@angular/common';
+import { LowerCasePipe } from '@angular/common';
 
 @Component({
     selector: 'cm-customer-details',
     templateUrl: './customer-details.component.html',
     styleUrls: ['./customer-details.component.css'],
-    imports: [NgIf, LowerCasePipe, CapitalizePipe]
+    imports: [LowerCasePipe, CapitalizePipe]
 })
 export class CustomerDetailsComponent implements OnInit {
 

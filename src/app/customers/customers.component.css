@@ -9,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
   border-bottom: none;
   margin-bottom: 0;
   border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
@@ -38,10 +38,10 @@
   justify-content: space-between;
   align-items: center;
   background: white;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0;
 }
 
 .view-options {

@@ -13,8 +13,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let customer of customers;trackBy:trackbyService.customer" 
-                [routerLink]="['/customers',customer.id,'details']">
+            @for (customer of customers; track trackbyService.customer($index, customer)) {
+                <tr [routerLink]="['/customers',customer.id,'details']">
                 <!-- <td data-label="Avatar">
                     <img src="images/{{ customer.gender | lowercase }}.png"
                          class="customer-image" 
@@ -59,13 +59,16 @@
                         </a>
                     </div>
                 </td>
-            </tr>
+                </tr>
+            }
         </tbody>
     </table>
     
-    <div class="no-records" *ngIf="!customers.length">
-        <div class="no-records-icon">📋</div>
-        <h3>No customers found</h3>
-        <p>Try adjusting your search criteria or add a new customer.</p>
-    </div>
+    @if (!customers.length) {
+        <div class="no-records">
+            <div class="no-records-icon">📋</div>
+            <h3>No customers found</h3>
+            <p>Try adjusting your search criteria or add a new customer.</p>
+        </div>
+    }
 </div>

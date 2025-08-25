@@ -83,16 +83,18 @@
             Would need to import MapModule into either SharedModule (and export it) or 
             into CustomersModule to use it this way.
         -->
-        <!-- <cm-map *ngIf="filteredCustomers.length" 
-            [zoom]="2" 
-            [enabled]="displayMode === displayModeEnum.Map" 
-            [hidden]="displayMode !== displayModeEnum.Map">
-          <cm-map-point 
-            *ngFor="let customer of filteredCustomers" 
-            [latitude]="customer.latitude" 
-            [longitude]="customer.longitude"
-            [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map-point>
-        </cm-map> -->
+        <!-- @if (filteredCustomers.length) {
+            <cm-map [zoom]="2" 
+                [enabled]="displayMode === displayModeEnum.Map" 
+                [hidden]="displayMode !== displayModeEnum.Map">
+              @for (customer of filteredCustomers; track customer.id) {
+                <cm-map-point 
+                  [latitude]="customer.latitude" 
+                  [longitude]="customer.longitude"
+                  [markerText]="'<h3>' + customer.firstName + ' ' + customer.lastName + '</h3>' + customer.city + ', ' + customer.state.name"></cm-map-point>
+              }
+            </cm-map>
+        } -->
 
         <cm-pagination
             [totalItems]="totalRecords" 

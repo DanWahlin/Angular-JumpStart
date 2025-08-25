@@ -5,13 +5,13 @@ import { ICustomer, IPagedResults } from '../shared/interfaces';
 import { TrackByService } from '../core/services/trackby.service';
 import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
 import { PaginationComponent } from '../shared/pagination/pagination.component';
-import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
     selector: 'cm-customers-orders',
     templateUrl: './orders.component.html',
     styleUrls: ['./orders.component.css'],
-    imports: [NgIf, NgFor, PaginationComponent, CurrencyPipe, CapitalizePipe]
+    imports: [PaginationComponent, CurrencyPipe, CapitalizePipe]
 })
 export class OrdersComponent implements OnInit {
 

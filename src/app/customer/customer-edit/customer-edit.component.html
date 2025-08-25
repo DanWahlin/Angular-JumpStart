@@ -37,29 +37,39 @@
                 [(ngModel)]="customer.state.abbreviation"
                 name="state" 
                 required>
-            <option *ngFor="let state of states" [ngValue]="state.abbreviation">{{state.name}}</option>
+            @for (state of states; track state.abbreviation) {
+                <option [ngValue]="state.abbreviation">{{state.name}}</option>
+            }
         </select>
       </div>
       
-      <div class="alert alert-warning" *ngIf="customer.id && deleteMessageEnabled">
-        Delete Customer?
-        <div class="button-group" style="margin-top: var(--spacing-sm);">
-          <button class="btn btn-danger" (click)="delete($event)">Yes</button>
-          <button class="btn btn-default" (click)="deleteMessageEnabled = false">No</button>
-        </div>
-      </div>
+      @if (customer.id && deleteMessageEnabled) {
+          <div class="alert alert-warning">
+            Delete Customer?
+            <div class="button-group" style="margin-top: var(--spacing-sm);">
+              <button class="btn btn-danger" (click)="delete($event)">Yes</button>
+              <button class="btn btn-default" (click)="deleteMessageEnabled = false">No</button>
+            </div>
+          </div>
+      }
       
-      <div class="form-actions" *ngIf="customer && !deleteMessageEnabled">
-        <div class="delete-section">
-          <button type="button" class="btn btn-danger" *ngIf="customer.id" (click)="deleteMessageEnabled = true">Delete</button>
-        </div>
-        <div class="button-group">
-          <button type="button" class="btn btn-default" (click)="cancel($event)">Cancel</button>
-          <button type="submit" class="btn btn-success" [disabled]="customerForm.pristine || !customerForm.valid">{{ operationText }}</button>
-        </div>
-      </div>
+      @if (customer && !deleteMessageEnabled) {
+          <div class="form-actions">
+            <div class="delete-section">
+              @if (customer.id) {
+                  <button type="button" class="btn btn-danger" (click)="deleteMessageEnabled = true">Delete</button>
+              }
+            </div>
+            <div class="button-group">
+              <button type="button" class="btn btn-default" (click)="cancel($event)">Cancel</button>
+              <button type="submit" class="btn btn-success" [disabled]="customerForm.pristine || !customerForm.valid">{{ operationText }}</button>
+            </div>
+          </div>
+      }
       
-      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      @if (errorMessage) {
+          <div class="error-message">{{ errorMessage }}</div>
+      }
     </form>
   </div>
 </div>

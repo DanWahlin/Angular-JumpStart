@@ -7,13 +7,12 @@ import { ValidationService } from '../core/services/validation.service';
 import { IUserLogin } from '../shared/interfaces';
 import { GrowlerService, GrowlerMessageType } from '../core/growler/growler.service';
 import { LoggerService } from '../core/services/logger.service';
-import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'cm-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
-    imports: [FormsModule, ReactiveFormsModule, NgIf]
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup = {} as FormGroup;

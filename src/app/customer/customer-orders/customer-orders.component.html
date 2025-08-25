@@ -1,33 +1,37 @@
-<div class="customer-orders" *ngIf="customer && customer.orders">
-    <div class="orders-header">
-        <h2 class="orders-title">
-            Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}
-        </h2>
+@if (customer && customer.orders) {
+    <div class="customer-orders">
+        <div class="orders-header">
+            <h2 class="orders-title">
+                Orders for {{ customer.firstName | capitalize }} {{ customer.lastName | capitalize }}
+            </h2>
+        </div>
+        <div class="orders-content">
+            <table class="orders-table">
+                @for (order of customer.orders; track ordersTrackBy($index, order)) {
+                    <tr>
+                        <td class="product-name">{{ order.productName }}</td>
+                        <td class="text-right order-cost">{{ order.itemCost | currency:'USD':'symbol' }}</td>    
+                    </tr>
+                }
+                <tr class="summary-border">
+                    <td><strong>Total</strong></td>
+                    <td class="text-right total-cost">{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="orders-content">
-        <table class="orders-table">
-            <tr *ngFor="let order of customer.orders;trackBy:ordersTrackBy">
-                <td class="product-name">{{ order.productName }}</td>
-                <td class="text-right order-cost">{{ order.itemCost | currency:'USD':'symbol' }}</td>    
-            </tr>
-            <tr class="summary-border">
-                <td><strong>Total</strong></td>
-                <td class="text-right total-cost">{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
-            </tr>
-        </table>
+} @else if (customer && !customer.orders) {
+    <div class="customer-orders">
+        <div class="empty-state">
+            <h3>No Orders Found</h3>
+            <p>This customer hasn't placed any orders yet.</p>
+        </div>
+    </div> 
+} @else {
+    <div class="customer-orders">
+        <div class="empty-state">
+            <h3>Customer Not Found</h3>
+            <p>The requested customer could not be located.</p>
+        </div>
     </div>
-</div>
-
-<div class="customer-orders" *ngIf="customer && !customer.orders">
-    <div class="empty-state">
-        <h3>No Orders Found</h3>
-        <p>This customer hasn't placed any orders yet.</p>
-    </div>
-</div> 
-
-<div class="customer-orders" *ngIf="!customer">
-    <div class="empty-state">
-        <h3>Customer Not Found</h3>
-        <p>The requested customer could not be located.</p>
-    </div>
-</div>
+}

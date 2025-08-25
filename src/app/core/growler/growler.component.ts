@@ -2,20 +2,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { GrowlerService, GrowlerMessageType } from './growler.service';
 import { LoggerService } from '../services/logger.service';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'cm-growler',
     template: `
     <div [ngClass]="position" class="growler">
-      <div *ngFor="let growl of growls" [ngClass]="{active: growl.enabled}"
-          class="growl alert {{ growl.messageType }}">
-          <span class="growl-message">{{ growl.message }}</span>
-      </div>
+      @for (growl of growls; track growl.id) {
+          <div [ngClass]="{active: growl.enabled}"
+              class="growl alert {{ growl.messageType }}">
+              <span class="growl-message">{{ growl.message }}</span>
+          </div>
+      }
     </div>
   `,
     styleUrls: ['growler.component.css'],
-    imports: [NgClass, NgFor]
+    imports: [NgClass]
 })
 export class GrowlerComponent implements OnInit {
 
