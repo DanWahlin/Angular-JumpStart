@@ -1,14 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UtilitiesService {    
     constructor(@Inject('Window') private window: Window) { }
 
     getApiUrl() {
-        const port = this.getPort();
-        if (import.meta.env.NG_APP_API_URL) {
-            return import.meta.env.NG_APP_API_URL;
+        if (environment.apiUrl) {
+            return environment.apiUrl;
         }
+        const port = this.getPort();
         return `${this.window.location.protocol}//${this.window.location.hostname}${port}`;
     }
 
