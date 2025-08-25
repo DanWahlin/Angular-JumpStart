@@ -117,14 +117,16 @@ a:hover {
 }
 
 /* Navigation Bar */
-.navbar {
-  position: fixed;
+.navbar.navbar-fixed-top {
+  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, #334155 0%, #475569 100%) !important;
   backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15) !important;
+  border-bottom: 1px solid rgba(0, 102, 204, 0.15) !important;
+  border: none !important;
   z-index: 1000;
   min-height: 72px;
   transition: all var(--transition-base);
@@ -152,7 +154,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  color: var(--text-primary);
+  color: white !important;
   font-size: 1.25rem;
   font-weight: 600;
   transition: transform var(--transition-fast);
@@ -160,7 +162,7 @@ a:hover {
 
 .navbar-brand:hover {
   transform: translateY(-1px);
-  color: var(--primary-color);
+  color: #60a5fa !important;
 }
 
 .navbar-brand img {
@@ -171,7 +173,7 @@ a:hover {
 .app-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: white !important;
   line-height: normal;
 }
 
@@ -193,11 +195,11 @@ a:hover {
   margin: 0;
 }
 
-.nav li a {
+.navbar-fixed-top .nav li a {
   display: inline-flex;
   align-items: center;
   padding: var(--spacing-sm) var(--spacing-md);
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.8) !important;
   font-weight: 500;
   border-radius: var(--border-radius);
   transition: all var(--transition-fast);
@@ -205,14 +207,14 @@ a:hover {
   cursor: pointer;
 }
 
-.nav li a:hover {
-  color: var(--primary-color);
-  background-color: var(--primary-ultra-light);
+.navbar-fixed-top .nav li a:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.nav li.active a {
-  color: var(--primary-color);
-  background-color: var(--primary-light);
+.navbar-fixed-top .nav li.active a {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .navbar-toggle {

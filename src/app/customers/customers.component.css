@@ -1,6 +1,7 @@
 .customers-page {
   min-height: calc(100vh - 72px);
   background: var(--background-secondary);
+  padding-top: 0;
 }
 
 .page-header {
@@ -8,9 +9,11 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  padding: 0 10px;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: none;
+  margin-bottom: 0;
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  box-shadow: var(--shadow-sm);
 }
 
 .header-content {
@@ -46,9 +49,9 @@
   align-items: center;
   background: white;
   padding: var(--spacing-lg);
-  border-radius: var(--border-radius-lg);
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
 }
 
 .view-options {

@@ -30,7 +30,7 @@
 .card-header {
   background: linear-gradient(135deg, var(--primary-color) 0%, #0052A3 100%);
   color: white;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   position: relative;
   overflow: hidden;
 }
@@ -55,7 +55,7 @@
 .card-header-content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   z-index: 2;
 }
@@ -79,16 +79,16 @@
 
 .card-actions {
   display: flex;
-  gap: var(--spacing-md);
-  margin-left: var(--spacing-md);
+  gap: var(--spacing-xs);
+  align-items: center;
 }
 
 .action-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--border-radius);
@@ -191,26 +191,9 @@
 
 /* Delete button */
 .delete-btn {
-  position: absolute;
-  top: var(--spacing-sm);
-  right: var(--spacing-sm);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: var(--danger-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  z-index: 3;
-  opacity: 0;
-}
-
-.customer-card:hover .delete-btn {
-  opacity: 1;
 }
 
 .delete-btn:hover {
