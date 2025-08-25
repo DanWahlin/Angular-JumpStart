@@ -10,6 +10,7 @@ import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 @Component({
     selector: 'cm-customers-orders',
     templateUrl: './orders.component.html',
+    styleUrls: ['./orders.component.css'],
     imports: [NgIf, NgFor, PaginationComponent, CurrencyPipe, CapitalizePipe]
 })
 export class OrdersComponent implements OnInit {

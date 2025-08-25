@@ -20,16 +20,6 @@
   flex: 1;
 }
 
-.page-title {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-xs);
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
 .page-subtitle {
   color: var(--text-secondary);
@@ -133,10 +123,6 @@
   
   .toolbar-search {
     width: 100%;
-  }
-  
-  .page-title {
-    font-size: 1.875rem;
   }
   
   .page-subtitle {

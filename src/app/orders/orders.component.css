@@ -1,0 +1,21 @@
+.orders-page {
+  background: transparent;
+  padding: 0;
+}
+
+.page-header {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-header .glyphicon {
+  color: var(--primary-color);
+  -webkit-text-fill-color: var(--primary-color);
+}
+
+.content-section {
+  margin-bottom: var(--spacing-xl);
+}

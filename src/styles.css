@@ -90,6 +90,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--spacing-md);
 }
 
+.page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 h1 { font-size: 2.5rem; font-weight: 700; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.75rem; }
@@ -178,6 +189,7 @@ a:hover {
   font-weight: 600;
   color: white !important;
   line-height: normal;
+  margin-right: var(--spacing-2xl);
 }
 
 .navbar-collapse {

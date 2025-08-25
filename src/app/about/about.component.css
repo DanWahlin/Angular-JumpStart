@@ -1,0 +1,17 @@
+.about-page {
+  background: transparent;
+  padding: 0;
+}
+
+.page-header {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+
+.content-section {
+  margin-bottom: var(--spacing-xl);
+}

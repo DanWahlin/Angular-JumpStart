@@ -1,12 +1,9 @@
-<div class="customers view indent">
-    <div class="container">
-        <header>
-            <h3>
-                <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Orders
-            </h3>
-        </header>
-        <br />
+<div class="orders-page">
+    <div class="page-header">
+        <h1 class="page-title">Orders</h1>
+    </div>
 
+    <div class="content-section">
         <div class="container">
             <div *ngIf="customers && customers.length">
 
@@ -38,6 +35,5 @@
                 No customers found
             </div>
         </div>
-
     </div>
 </div>
