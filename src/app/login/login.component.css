@@ -25,7 +25,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color) 0%, #0052A3 100%);
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
 }
 
 .login-header {
@@ -138,7 +138,7 @@
   padding: var(--spacing-md) var(--spacing-lg);
   font-size: 1rem;
   font-weight: 600;
-  background: linear-gradient(135deg, var(--primary-color) 0%, #0052A3 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
   color: white;
   border: none;
   border-radius: var(--border-radius);

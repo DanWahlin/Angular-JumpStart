@@ -30,30 +30,24 @@
     .growler.top-center {
       top: 12px;
       left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-              transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
     }
     
     .growler.bottom-center {
       bottom: 12px;
       left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-              transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
     }
     
     .growl {
       cursor: pointer;
-      padding: 5;
+      padding: 5px;
       width: 285px;
       height: 65px; 
       opacity: 0;      
       display: flex;
       align-items: center;
       justify-content: center;
-      
-      -webkit-transition: opacity 1s;
-      -moz-transition: opacity 1s; 
-      -o-transition: opacity 1s;
       transition: opacity 1s;        
     }   
     
@@ -61,6 +55,3 @@
       opacity: 1;
     } 
     
-    .growl-message {
-
-    }

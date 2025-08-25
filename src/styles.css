@@ -13,9 +13,13 @@
   --text-light: #9CA3AF;
   
   --success-color: #10B981;
+  --success-hover: #059669;
   --warning-color: #F59E0B;
   --danger-color: #EF4444;
+  --danger-hover: #DC2626;
   --info-color: #3B82F6;
+  --accent-blue: #4A90E2;
+  --accent-light-blue: #60a5fa;
   
   --background: #FFFFFF;
   --background-secondary: #F9FAFB;
@@ -161,7 +165,7 @@ a:hover {
 
 .navbar-brand:hover {
   transform: translateY(-1px);
-  color: #60a5fa !important;
+  color: var(--accent-light-blue) !important;
 }
 
 .navbar-brand img {
@@ -286,7 +290,7 @@ a:hover {
 }
 
 .btn-danger:hover {
-  background-color: #DC2626;
+  background-color: var(--danger-hover);
   box-shadow: var(--shadow-md);
 }
 
@@ -296,7 +300,7 @@ a:hover {
 }
 
 .btn-success:hover {
-  background-color: #059669;
+  background-color: var(--success-hover);
   box-shadow: var(--shadow-md);
 }
 

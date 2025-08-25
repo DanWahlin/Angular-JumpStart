@@ -21,30 +21,19 @@
 }
 
 .overlay-content {
-
-}
-
-.overlay-content {
   position: fixed;
   z-index: 999999;
   top: 50%;
   left: 50%;
   background-color: white;
   border: 1px solid rgb(94, 94, 94);
-  -webkit-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
-
+  transform: translate(-50%, -50%);
   cursor: pointer;
-  padding: 5;
+  padding: 5px;
   width: 285px;
   height: 100px;    
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
-  -webkit-transition: opacity 1s;
-  -moz-transition: opacity 1s; 
-  -o-transition: opacity 1s;
   transition: opacity 1s;        
 } 
