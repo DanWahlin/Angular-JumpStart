@@ -43,26 +43,28 @@ export class LoginComponent implements OnInit {
         this.isLoading = true;
         this.errorMessage = '';
         this.authService.login(value)
-            .subscribe((status: boolean) => {
-                this.isLoading = false;
-                if (status) {
-                    this.growler.growl('Logged in', GrowlerMessageType.Info);
-                    if (this.authService.redirectUrl) {
-                        const redirectUrl = this.authService.redirectUrl;
-                        this.authService.redirectUrl = '';
-                        this.router.navigate([redirectUrl]);
+            .subscribe({
+                next: (status: boolean) => {
+                    this.isLoading = false;
+                    if (status) {
+                        this.growler.growl('Logged in', GrowlerMessageType.Info);
+                        if (this.authService.redirectUrl) {
+                            const redirectUrl = this.authService.redirectUrl;
+                            this.authService.redirectUrl = '';
+                            this.router.navigate([redirectUrl]);
+                        } else {
+                            this.router.navigate(['/customers']);
+                        }
                     } else {
-                        this.router.navigate(['/customers']);
+                        const loginError = 'Unable to login';
+                        this.errorMessage = loginError;
+                        this.growler.growl(loginError, GrowlerMessageType.Danger);
                     }
-                } else {
-                    const loginError = 'Unable to login';
-                    this.errorMessage = loginError;
-                    this.growler.growl(loginError, GrowlerMessageType.Danger);
+                },
+                error: (err: any) => {
+                    this.isLoading = false;
+                    this.logger.log(err);
                 }
-            },
-            (err: any) => {
-                this.isLoading = false;
-                this.logger.log(err);
             });
     }
 

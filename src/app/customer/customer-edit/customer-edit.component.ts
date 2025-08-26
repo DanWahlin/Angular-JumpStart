@@ -64,33 +64,37 @@ export class CustomerEditComponent implements OnInit {
   submit() {
     if (this.customer.id === 0) {
       this.dataService.insertCustomer(this.customer)
-        .subscribe((insertedCustomer: ICustomer) => {
-          if (insertedCustomer) {
-            // Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
-            this.customerForm.form.markAsPristine();
-            this.router.navigate(['/customers']);
-          } else {
-            const msg = 'Unable to insert customer';
-            this.growler.growl(msg, GrowlerMessageType.Danger);
-            this.errorMessage = msg;
-          }
-        },
-          (err: any) => this.logger.log(err));
+        .subscribe({
+          next: (insertedCustomer: ICustomer) => {
+            if (insertedCustomer) {
+              // Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
+              this.customerForm.form.markAsPristine();
+              this.router.navigate(['/customers']);
+            } else {
+              const msg = 'Unable to insert customer';
+              this.growler.growl(msg, GrowlerMessageType.Danger);
+              this.errorMessage = msg;
+            }
+          },
+          error: (err: any) => this.logger.log(err)
+        });
     } else {
       this.dataService.updateCustomer(this.customer)
-        .subscribe((status: boolean) => {
-          if (status) {
-            // Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
-            this.customerForm.form.markAsPristine();
-            this.growler.growl('Operation performed successfully.', GrowlerMessageType.Success);
-            // this.router.navigate(['/customers']);
-          } else {
-            const msg = 'Unable to update customer';
-            this.growler.growl(msg, GrowlerMessageType.Danger);
-            this.errorMessage = msg;
-          }
-        },
-          (err: any) => this.logger.log(err));
+        .subscribe({
+          next: (status: boolean) => {
+            if (status) {
+              // Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
+              this.customerForm.form.markAsPristine();
+              this.growler.growl('Operation performed successfully.', GrowlerMessageType.Success);
+              // this.router.navigate(['/customers']);
+            } else {
+              const msg = 'Unable to update customer';
+              this.growler.growl(msg, GrowlerMessageType.Danger);
+              this.errorMessage = msg;
+            }
+          },
+          error: (err: any) => this.logger.log(err)
+        });
     }
   }
 
@@ -103,14 +107,16 @@ export class CustomerEditComponent implements OnInit {
   delete(event: Event) {
     event.preventDefault();
     this.dataService.deleteCustomer(this.customer.id)
-      .subscribe((status: boolean) => {
-        if (status) {
-          this.router.navigate(['/customers']);
-        } else {
-          this.errorMessage = 'Unable to delete customer';
-        }
-      },
-        (err) => this.logger.log(err));
+      .subscribe({
+        next: (status: boolean) => {
+          if (status) {
+            this.router.navigate(['/customers']);
+          } else {
+            this.errorMessage = 'Unable to delete customer';
+          }
+        },
+        error: (err) => this.logger.log(err)
+      });
   }
 
 

@@ -65,12 +65,14 @@ export class CustomersComponent implements OnInit {
 
   getCustomersPage(page: number) {
     this.dataService.getCustomersPage((page - 1) * this.pageSize, this.pageSize)
-        .subscribe((response: IPagedResults<ICustomer[]>) => {
-          this.customers = this.filteredCustomers = response.results;
-          this.totalRecords = response.totalRecords;
-        },
-        (err: any) => this.logger.log(err),
-        () => this.logger.log('getCustomersPage() retrieved customers for page: ' + page));
+        .subscribe({
+          next: (response: IPagedResults<ICustomer[]>) => {
+            this.customers = this.filteredCustomers = response.results;
+            this.totalRecords = response.totalRecords;
+          },
+          error: (err: any) => this.logger.log(err),
+          complete: () => this.logger.log('getCustomersPage() retrieved customers for page: ' + page)
+        });
   }
 
   filterChanged(data: string) {

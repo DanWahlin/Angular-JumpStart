@@ -25,10 +25,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.authservice.authChanged
-            .subscribe((loggedIn: boolean) => {
-                this.setLoginLogoutText();
-            },
-            (err: any) => this.logger.log(err));
+            .subscribe({
+                next: (loggedIn: boolean) => {
+                    this.setLoginLogoutText();
+                },
+                error: (err: any) => this.logger.log(err)
+            });
     }
 
     ngOnDestroy() {
@@ -39,13 +41,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
         const isAuthenticated = this.authservice.isAuthenticated;
         if (isAuthenticated) {
             this.authservice.logout()
-                .subscribe((status: boolean) => {
-                    this.setLoginLogoutText();
-                    this.growler.growl('Logged Out', GrowlerMessageType.Info);
-                    this.router.navigate(['/customers']);
-                    return;
-                },
-                (err: any) => this.logger.log(err));
+                .subscribe({
+                    next: (status: boolean) => {
+                        this.setLoginLogoutText();
+                        this.growler.growl('Logged Out', GrowlerMessageType.Info);
+                        this.router.navigate(['/customers']);
+                        return;
+                    },
+                    error: (err: any) => this.logger.log(err)
+                });
         }
         this.redirectToLogin();
     }

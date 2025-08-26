@@ -33,12 +33,13 @@
       
       <div class="form-group">
         <label>State</label>
-        <select class="form-control" title="states"
-                [(ngModel)]="customer.state"
-                name="state" 
-                required>
+        <select
+          name="state" 
+          [(ngModel)]="customer.state.abbreviation" 
+          title="states" 
+          required>
             @for (state of states; track state.abbreviation) {
-                <option [ngValue]="state">{{state.name}}</option>
+                <option [ngValue]="state.abbreviation">{{state.name}}</option>
             }
         </select>
       </div>
