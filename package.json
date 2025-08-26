@@ -36,7 +36,7 @@
     "@angular/compiler-cli": "^20.2.1",
     "@types/google.maps": "^3.58.1",
     "open": "^10.2.0",
-    "typescript": "~5.8.3"
+    "typescript": "~5.9.2"
   },
   "optionalDependencies": {
     "cypress": "^15.0.0"
