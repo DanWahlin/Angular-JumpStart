@@ -15,106 +15,57 @@ Always reference these instructions first and fallback to search or bash command
 ### Running the Application
 - ALWAYS run the development build first: `npx ng build angular-jumpstart --configuration development`
 - ALWAYS start the server: `npm start` 
-- Access the application at http://localhost:8080
-- The server combines Angular frontend and Express REST API backend in a single process
+````instructions
+# Angular JumpStart — quick AI agent guide
 
-### Testing and Validation
-- **Manual testing required**: Always test complete user scenarios after making changes
-- **Login scenario**: Use any email address with any password that's at least 6 characters and contains 1 digit (e.g., `test@example.com` / `password123`)
-- **Core user flows to test**:
-  1. Login → Customer list → Customer details → Edit customer → Customer orders
-  2. Navigate between different views (Customers, Orders, About)
-  3. Test logout functionality
-- **Cypress E2E tests**: `npm install cypress --save-dev` -- FAILS due to network restrictions (download.cypress.io blocked). Document this failure.
-- **Unit tests**: No unit testing framework is configured. Do not attempt to run unit tests.
+This repository is an Angular 20 app with a small Node/Express API (served from `server.js`). The frontend (Angular) and a simple REST API (reads/writes JSON in `public/data/`) run together in dev. Use this file as the single source of truth for quick, actionable guidance.
 
-### Build Constraints and Network Limitations
-- **External dependencies fail**: fonts.googleapis.com, Google Maps API, download.cypress.io are blocked
-- **Use development builds only**: Production builds fail due to font inlining from external sources
-- **Maps won't work**: Google Maps API key required and network restrictions prevent loading
-- **Storybook**: Dependencies not installed by default, requires additional setup
+Essential commands
+- Install deps (repo root): `npm install` — allow 60–90s.
+- Dev build (required before running server): `npx ng build angular-jumpstart --configuration development`.
+- Start server: `npm start` (serves frontend + API at http://localhost:8080).
+- Docker: `docker compose build node && docker compose build nginx` and `docker compose up` (see `.docker/`).
 
-## Docker and Containerization
-- **Docker available**: `docker compose version` shows v2.38.2
-- **Docker build**: `docker compose build node` -- builds Node.js API container
-- **Docker build**: `docker compose build nginx` -- builds Nginx frontend container  
-- **Full stack**: `docker compose up` -- runs complete containerized application
-- **Docker files**: Located in `.docker/` directory
-- **Container ports**: Nginx on 80, Node.js API on 8080
+Why this structure
+- Single-process dev: `server.js` serves static Angular files and exposes API endpoints that read from `public/data/*.json`. Edits to JSON are in-memory when using the Express server; the server persists changes in memory only.
 
-## Validation Requirements
-- **ALWAYS manually validate changes** by running through complete end-to-end scenarios
-- **Required test scenario**: Login → browse customers → view details → edit customer → view orders
-- **Screenshot verification**: Take screenshots of UI changes to confirm functionality
-- **API validation**: Test REST endpoints via browser network tab or manual API calls
+Key files & locations (quick map)
+- Frontend: `src/` (main app in `src/app/`).
+- API (express): `server.js` (root) — endpoints: `/api/customers`, `/api/customers/:id`, `/api/orders/:id`, `/api/states`, `/api/auth/*`.
+- Static data: `public/data/customers.json`, `public/data/states.json` (source of truth for mock data).
+- Azure Functions alternative API: `api/` (folder with individual function handlers) — used in some deployments.
 
-## Project Structure and Key Areas
+Project-specific patterns an AI should follow
+- State shape: customer records in the production-like API store `state` as an abbreviation string (e.g., "AZ"); some mock sources return `state` as an object {abbreviation,name}. Normalize when reading or writing to avoid select/ngModel mismatches. See `src/app/customer/customer-edit/customer-edit.component.ts` and `src/app/shared/mocks.ts` for examples.
+- Template loops: the codebase uses a micro-template-style `@for (...) { ... }` pattern in HTML files. Treat these as Angular template loops and inspect local usages (e.g., `@for (state of states; track state.abbreviation)` in `customer-edit.component.html`).
+- Forms: template-driven forms are used across the app (FormsModule imported in components). Bindings are often primitive (strings). Prefer `(ngModel)` with primitive types for selects/options (use `ngValue` when binding objects).
+- Change detection: some list components use OnPush (e.g., `CustomersGridComponent`), so avoid mutating arrays in-place when expecting automatic UI refresh — replace arrays when sorting/filtering or call the helper services used in the repo.
 
-### Frontend (Angular 18)
-```
-src/
-  app/
-    core/                 # Core services, guards, interceptors
-    customers/            # Customer management components
-    login/               # Authentication components  
-    orders/              # Order management components
-    shared/              # Shared components, pipes, directives
-```
+Developer workflows & gotchas
+- Always run the development build before `npm start`. Production build often fails here because external fonts are blocked by the environment.
+- E2E: Cypress tests exist but cannot be installed here due to network restrictions (download.cypress.io). Treat E2E as manual verification in this environment.
+- Maps/External APIs: Google Maps integration is present but disabled by default (API key + network required). Don’t attempt to fetch external map assets in a restricted environment.
 
-### Backend (Node.js Express)
-- `server.js` - Main Express server with REST API endpoints
-- `public/data/` - JSON data files (customers.json, states.json)
-- API endpoints: `/api/customers`, `/api/orders`, `/api/auth/login`, `/api/states`
+Data & API contracts (important)
+- Customer JSON shape (public/data/customers.json): id, firstName, lastName, gender, address, city, state (abbreviation string in runtime API), orders, latitude, longitude.
+- State JSON shape (public/data/states.json): { id, name, abbreviation } — components expect `abbreviation` when populating selects.
 
-### Configuration Files
-- `angular.json` - Angular CLI configuration
-- `package.json` - Dependencies and npm scripts
-- `tsconfig.json` - TypeScript configuration
-- `cypress.config.ts` - Cypress E2E test configuration (tests can't run due to network restrictions)
+Where to look when things break
+- Forms/selects: `src/app/customer/customer-edit/` (TS + HTML) — common source of bugs when state is object vs string.
+- Data fetching: `src/app/core/services/data.service.ts` (all API calls live here).
+- Server behavior: `server.js` (root) — see how in-memory updates work and how the express endpoints transform data (note: PUT handler expects a particular shape).
 
-## Common Tasks
+Small, safe edits AI agents can make autonomously
+- Normalize `customer.state` to abbreviation on read (safe, local change) — example already in `customer-edit.component.ts`.
+- Use `[ngValue]` for option binding when model values are primitives, and add a disabled placeholder option.
 
-### Repository Root Structure
-```
-.
-├── README.md
-├── angular.json
-├── package.json  
-├── server.js
-├── docker-compose.yml
-├── .docker/
-├── .github/
-├── api/                 # Azure Functions alternative API
-├── cypress/             # E2E tests (can't install due to network)
-├── src/                 # Angular application source
-└── public/              # Static assets and data files
-```
+What to never change without human consent
+- Production build scripts and network/CDN references (these fail locally and require network changes).
+- Anything in `.docker/` or Azure deployment scripts unless you confirm deployment target and credentials.
 
-### Package.json Scripts
-```json
-{
-  "start": "node server.js",
-  "build": "ng build angular-jumpstart", 
-  "cypress": "concurrently \"npm start\" \"npx cypress open\"",
-  "storybook": "npm run docs:json && start-storybook -p 6006"
-}
-```
+If you need more context
+- Inspect `src/app/shared/interfaces.ts` to understand types used across the app.
+- Search for `getStates()` and `getCustomer()` in the codebase to see calling sites and shape expectations.
 
-### Known Issues and Workarounds
-- **Production builds fail**: Use development builds only due to external font dependencies
-- **Cypress installation fails**: Cannot install due to network restrictions on download.cypress.io
-- **Google Maps not working**: API key required and external API blocked
-- **No linting configured**: No ESLint, TSLint, or similar linting tools configured
-- **No unit tests**: No testing framework (Jest, Karma) configured in the project
-
-### Azure Deployment Options
-- **Azure Container Apps**: Instructions provided in README.md for containerized deployment
-- **Azure Functions**: Alternative API implementation in `/api` folder using Azure Functions
-- **Azure Static Web Apps**: Supported deployment option mentioned in README.md
-
-## Important Notes for Development
-- **Always use development configuration** for builds to avoid external dependency failures
-- **Test authentication flows** - the app has login/logout state management that affects navigation
-- **Customer data is in-memory** - changes reset when server restarts
-- **REST API is embedded** - single Node.js process serves both frontend and API
-- **Network restrictions apply** - external CDNs and APIs are blocked in this environment
+Feedback request
+- If any section is unclear or you want more examples (e.g., exact component files to edit for a specific task), tell me which area and I’ll expand this file.

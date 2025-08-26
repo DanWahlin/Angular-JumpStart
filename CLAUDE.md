@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Angular JumpStart is an Angular 19 TypeScript application with a Node.js Express server backend that demonstrates key Angular concepts including routing, components, services, forms, and HTTP client usage.
+Angular JumpStart is an Angular 19 TypeScript application with a Node.js Express server backend that demonstrates key Angular concepts including routing, components, services, forms, and HTTP client usage. The project has been optimized with a custom CSS architecture using CSS Grid (Bootstrap-free) and utility classes for consistent design patterns.
 
 ## Essential Commands
 
