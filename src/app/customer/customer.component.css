@@ -3,12 +3,9 @@
   padding: 0;
 }
 
+/* Extend base page-header with custom margin-top */
 .page-header {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  margin-bottom: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
+  margin-top: var(--spacing-lg);
 }
 
 .page-header h3 {
@@ -25,10 +22,7 @@
   background-clip: text;
 }
 
-.page-header .glyphicon {
-  color: var(--primary-color);
-  -webkit-text-fill-color: var(--primary-color);
-}
+/* glyphicon styles now handled by global CSS */
 
 .customer-tabs {
   background: white;

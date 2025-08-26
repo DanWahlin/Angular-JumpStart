@@ -4,16 +4,14 @@
   padding-top: 0;
 }
 
+/* Extend base page-header with flexbox layout */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  padding: var(--spacing-sm) var(--spacing-lg);
   border-bottom: none;
   margin-bottom: 0;
   border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
-  box-shadow: var(--shadow-sm);
 }
 
 .header-content {

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Bootstrap Replacement Styles */
+@import 'app/shared/styles/bootstrap-replacement.css';
+
 :root {
   /* Color System */
   --primary-color: #0066CC;
@@ -586,6 +589,21 @@ html {
 ::selection {
   background-color: var(--primary-light);
   color: var(--text-primary);
+}
+
+/* Page Header - Base Styles */
+.page-header {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  margin-top: 20px;
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-header .glyphicon {
+  color: var(--primary-color);
+  -webkit-text-fill-color: var(--primary-color);
 }
 
 /* Footer */

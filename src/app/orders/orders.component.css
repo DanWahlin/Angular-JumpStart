@@ -3,18 +3,7 @@
   padding: 0;
 }
 
-.page-header {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  margin-bottom: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
-}
-
-.page-header .glyphicon {
-  color: var(--primary-color);
-  -webkit-text-fill-color: var(--primary-color);
-}
+/* Page header now uses global base styles */
 
 .content-section {
   margin-bottom: var(--spacing-xl);

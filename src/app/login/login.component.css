@@ -129,7 +129,7 @@
 }
 
 .input-group .form-control {
-  padding-left: var(--spacing-sm);
+  padding-left: calc(var(--spacing-md) + 24px);
 }
 
 .input-group .form-control:focus + .input-icon {

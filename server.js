@@ -2,6 +2,8 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 
 // Resolve __dirname and __filename for ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -118,10 +120,70 @@ if (!inContainer) {
   });
 }
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Express server running on http://localhost:${port}`);
-});
+// Helper function to check if port is in use
+const checkPortInUse = (port) => {
+  return new Promise((resolve) => {
+    const execAsync = promisify(exec);
+    execAsync(`lsof -i :${port}`)
+      .then((result) => {
+        // Port is in use if lsof returns results
+        resolve(result.stdout.trim().length > 0);
+      })
+      .catch(() => {
+        // lsof command failed, assume port is free
+        resolve(false);
+      });
+  });
+};
+
+// Helper function to kill processes on port
+const killPortProcesses = (port) => {
+  return new Promise((resolve) => {
+    const execAsync = promisify(exec);
+    execAsync(`lsof -t -i :${port}`)
+      .then((result) => {
+        const pids = result.stdout.trim().split('\n').filter(pid => pid);
+        if (pids.length > 0) {
+          console.log(`Found existing processes on port ${port}: ${pids.join(', ')}`);
+          return execAsync(`kill ${pids.join(' ')}`);
+        }
+      })
+      .then(() => {
+        console.log(`Cleared port ${port}`);
+        resolve();
+      })
+      .catch(() => {
+        // Kill command failed, continue anyway
+        resolve();
+      });
+  });
+};
+
+// Start the server with port cleanup
+const startServer = async () => {
+  const portInUse = await checkPortInUse(port);
+  
+  if (portInUse) {
+    console.log(`Port ${port} is already in use. Attempting to clear it...`);
+    await killPortProcesses(port);
+    // Wait a moment for the port to be freed
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+
+  app.listen(port, () => {
+    console.log(`Express server running on http://localhost:${port}`);
+  }).on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`Port ${port} is still in use. Please manually stop other processes or use a different port.`);
+      process.exit(1);
+    } else {
+      console.error('Server error:', err);
+      process.exit(1);
+    }
+  });
+};
+
+startServer();
 
 // Open the browser (only if not in a container or Azure)
 if (!inContainer && !inAzure) {
