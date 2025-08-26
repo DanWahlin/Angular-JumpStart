@@ -21,7 +21,7 @@ import { RouterLink } from '@angular/router';
 export class CustomersComponent implements OnInit {
 
   title: string = '';
-  filterText: string = '';
+  currentFilter: string = '';  // Track the actual filter value
   customers: ICustomer[] = [];
   displayMode: DisplayModeEnum = DisplayModeEnum.Card;
   displayModeEnum = DisplayModeEnum;
@@ -48,8 +48,9 @@ export class CustomersComponent implements OnInit {
     private logger: LoggerService) { }
 
   ngOnInit() {
+    console.log('CustomersComponent ngOnInit called');
     this.title = 'Customers';
-    this.filterText = 'Filter Customers:';
+    this.currentFilter = '';
     this.displayMode = DisplayModeEnum.Card;
 
     this.getCustomersPage(1);
@@ -64,24 +65,37 @@ export class CustomersComponent implements OnInit {
   }
 
   getCustomersPage(page: number) {
+    console.log('getCustomersPage called with page:', page);
     this.dataService.getCustomersPage((page - 1) * this.pageSize, this.pageSize)
         .subscribe({
           next: (response: IPagedResults<ICustomer[]>) => {
+            console.log('Response received:', response);
             this.customers = this.filteredCustomers = response.results;
             this.totalRecords = response.totalRecords;
+            console.log('Customers set to:', this.customers);
+            console.log('Total records:', this.totalRecords);
           },
-          error: (err: any) => this.logger.log(err),
+          error: (err: any) => {
+            console.error('Error in getCustomersPage:', err);
+            this.logger.log(err);
+          },
           complete: () => this.logger.log('getCustomersPage() retrieved customers for page: ' + page)
         });
   }
 
   filterChanged(data: string) {
+    console.log('filterChanged called with data:', data);
+    console.log('Current customers array:', this.customers);
+    this.currentFilter = data; // Store the current filter value
     if (data && this.customers) {
         data = data.toUpperCase();
         const props = ['firstName', 'lastName', 'city', 'state.name'];
         this.filteredCustomers = this.filterService.filter<ICustomer>(this.customers, data, props);
+        console.log('Filtered customers:', this.filteredCustomers);
     } else {
-      this.filteredCustomers = this.customers;
+      // Create new array reference to trigger OnPush change detection
+      this.filteredCustomers = [...this.customers];
+      console.log('No filter, using all customers:', this.filteredCustomers);
     }
   }
 
@@ -105,15 +119,33 @@ export class CustomersComponent implements OnInit {
   }
 
   deleteCustomer(customer: ICustomer) {
+    console.log('deleteCustomer called for:', customer);
     if (this.dataService) {
-      this.dataService.deleteCustomer(customer.id).subscribe(() => {
-        // Remove from local arrays
-        const index = this.customers.findIndex(c => c.id === customer.id);
-        if (index > -1) {
-          this.customers.splice(index, 1);
+      this.dataService.deleteCustomer(customer.id).subscribe({
+        next: (result) => {
+          console.log('Delete result from server:', result);
+          if (result) {
+            console.log('Customer deleted from server successfully');
+            // Remove from local arrays
+            const index = this.customers.findIndex(c => c.id === customer.id);
+            console.log('Found customer at index:', index);
+            if (index > -1) {
+              this.customers.splice(index, 1);
+              console.log('Customer removed from array, new length:', this.customers.length);
+            }
+            // Create new array reference to trigger OnPush change detection
+            this.customers = [...this.customers];
+            console.log('Calling filterChanged with:', this.currentFilter);
+            this.filterChanged(this.currentFilter);
+            console.log('After filterChanged, filteredCustomers:', this.filteredCustomers);
+            this.updateMapComponentDataPoints();
+          } else {
+            console.error('Server returned false for delete operation');
+          }
+        },
+        error: (err) => {
+          console.error('Error deleting customer:', err);
         }
-        this.filterChanged(this.filterText);
-        this.updateMapComponentDataPoints();
       });
     }
   }

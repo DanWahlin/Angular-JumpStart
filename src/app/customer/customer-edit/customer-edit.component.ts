@@ -56,8 +56,16 @@ export class CustomerEditComponent implements OnInit {
 
 
   getCustomer(id: number) {
-    this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
+    this.dataService.getCustomer(id).subscribe((customer: any) => {
       this.customer = customer;
+      // If customer.state is a string (like "AZ"), convert it to a state object
+      if (typeof this.customer.state === 'string' && this.states.length > 0) {
+        const stateAbbr = this.customer.state as string;
+        const matchingState = this.states.find(s => s.abbreviation === stateAbbr);
+        if (matchingState) {
+          this.customer.state = matchingState;
+        }
+      }
     });
   }
 
