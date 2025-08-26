@@ -1,9 +1,4 @@
-.grid-container {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: var(--spacing-lg);
-}
+/* Using global container-grid utility class */
 
 .customers-table {
   width: 100%;
@@ -19,7 +14,7 @@
 }
 
 .customers-table th {
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-md);
   text-align: left;
   font-weight: 600;
   color: var(--text-primary);
@@ -27,6 +22,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   transition: all var(--transition-fast);
   position: relative;
@@ -73,18 +69,6 @@
 
 .customers-table tbody tr:hover {
   background: var(--background-secondary);
-}
-
-.customers-table tbody tr::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--primary-color);
-  opacity: 0;
-  transition: opacity var(--transition-fast);
 }
 
 .customers-table tbody tr:hover::before {
@@ -158,48 +142,7 @@
   gap: var(--spacing-sm);
 }
 
-.action-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--border-radius);
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: all var(--transition-fast);
-  cursor: pointer;
-}
-
-.action-btn:hover {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
-  transform: scale(1.1);
-}
-
-.action-btn.view {
-  color: var(--info-color);
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.action-btn.view:hover {
-  background: var(--info-color);
-  border-color: var(--info-color);
-}
-
-.action-btn.edit {
-  color: var(--warning-color);
-  border-color: rgba(245, 158, 11, 0.3);
-}
-
-.action-btn.edit:hover {
-  background: var(--warning-color);
-  border-color: var(--warning-color);
-}
-
+/* Action button styles now use global utility classes */
 .action-btn.orders {
   color: var(--success-color);
   border-color: rgba(16, 185, 129, 0.3);
@@ -210,16 +153,9 @@
   border-color: var(--success-color);
 }
 
-.no-records {
-  text-align: center;
-  padding: var(--spacing-3xl);
-  color: var(--text-secondary);
-}
-
+/* No-records styles now use global utility classes */
 .no-records-icon {
-  font-size: 4rem;
-  color: var(--text-light);
-  margin-bottom: var(--spacing-lg);
+  font-size: 4rem; /* Override for larger icon in grid view */
 }
 
 /* Loading state */
@@ -230,12 +166,8 @@
   padding: var(--spacing-3xl);
 }
 
-/* Responsive design */
+/* Responsive design - container padding handled by global CSS */
 @media (max-width: 768px) {
-  .grid-container {
-    padding: var(--spacing-md);
-  }
-  
   .customers-table {
     font-size: 0.8125rem;
   }

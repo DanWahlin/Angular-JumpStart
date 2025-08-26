@@ -1,8 +1,7 @@
-<div class="grid-container">
+<div class="container-grid">
     <table class="customers-table">
         <thead>
             <tr>
-                <th>&nbsp;</th>
                 <th class="sortable" cmSortBy="firstName" (sorted)="sort($event)">First Name</th>
                 <th class="sortable" cmSortBy="lastName" (sorted)="sort($event)">Last Name</th>
                 <th class="sortable" cmSortBy="address" (sorted)="sort($event)">Address</th>
@@ -14,12 +13,7 @@
         </thead>
         <tbody>
             @for (customer of customers; track trackbyService.customer($index, customer)) {
-                <tr [routerLink]="['/customers',customer.id,'details']">
-                <!-- <td data-label="Avatar">
-                    <img src="images/{{ customer.gender | lowercase }}.png"
-                         class="customer-image" 
-                         alt="{{customer.firstName}} {{customer.lastName}}" />
-                </td> -->
+            <tr [routerLink]="['/customers',customer.id,'details']">
                 <td data-label="First Name">
                     <a [routerLink]="['/customers',customer.id,'details']" class="customer-link">
                         {{ customer.firstName | capitalize }}
@@ -32,43 +26,43 @@
                 <td data-label="Order Total">{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
                 <td data-label="Actions" (click)="$event.stopPropagation()">
                     <div class="table-actions">
-                        <a [routerLink]="['/customers',customer.id,'details']" 
-                           class="action-btn view" 
-                           title="View Details">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                <circle cx="12" cy="12" r="3"/>
+                        <a [routerLink]="['/customers',customer.id,'details']" class="action-btn action-btn--view"
+                            title="View Details">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
                             </svg>
                         </a>
-                        <a [routerLink]="['/customers',customer.id,'edit']" 
-                           class="action-btn edit" 
-                           title="Edit Customer">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                                <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        <a [routerLink]="['/customers',customer.id,'edit']" class="action-btn action-btn--edit"
+                            title="Edit Customer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                             </svg>
                         </a>
-                        <a [routerLink]="['/customers',customer.id,'orders']" 
-                           class="action-btn orders" 
-                           title="View Orders">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="m22 2-3 3-2-2"/>
+                        <a [routerLink]="['/customers',customer.id,'orders']" class="action-btn orders"
+                            title="View Orders">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="m22 2-3 3-2-2" />
                             </svg>
                         </a>
                     </div>
                 </td>
-                </tr>
+            </tr>
             }
         </tbody>
     </table>
-    
+
     @if (!customers.length) {
-        <div class="no-records">
-            <div class="no-records-icon">📋</div>
-            <h3>No customers found</h3>
-            <p>Try adjusting your search criteria or add a new customer.</p>
-        </div>
+    <div class="no-records">
+        <div class="no-records-icon">📋</div>
+        <h3>No customers found</h3>
+        <p>Try adjusting your search criteria or add a new customer.</p>
+    </div>
     }
 </div>

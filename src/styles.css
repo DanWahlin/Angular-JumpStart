@@ -468,7 +468,7 @@ textarea::placeholder {
 
 @keyframes rotation {
   from { transform: rotate(0deg); }
-  to { transform: rotate(359deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Utility Classes */
@@ -494,7 +494,27 @@ textarea::placeholder {
 .p-4 { padding: var(--spacing-lg); }
 .p-5 { padding: var(--spacing-xl); }
 
-/* Responsive */
+/* Responsive Utility Classes */
+.container-grid,
+.container-card {
+  padding: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .container-grid,
+  .container-card {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .action-btn.action-btn--small {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Global Responsive Styles */
 @media (max-width: 768px) {
   .navbar-toggle {
     display: block;
@@ -565,6 +585,126 @@ html {
 }
 
 /* Glyphicon styles removed - rarely used (only 3 occurrences in 1 file) */
+
+/* Common Utility Patterns */
+
+/* Action Buttons - Used across multiple components */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--border-radius);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.action-btn.action-btn--small {
+  width: 28px;
+  height: 28px;
+}
+
+.action-btn.action-btn--view {
+  color: var(--info-color);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.action-btn.action-btn--view:hover {
+  background: var(--info-color);
+  border-color: var(--info-color);
+}
+
+.action-btn.action-btn--edit {
+  color: var(--warning-color);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.action-btn.action-btn--edit:hover {
+  background: var(--warning-color);
+  border-color: var(--warning-color);
+}
+
+.action-btn.action-btn--delete {
+  color: var(--danger-color);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.action-btn.action-btn--delete:hover {
+  background: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+/* No Records Display - Common pattern */
+.no-records {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--text-secondary);
+}
+
+.no-records-icon {
+  font-size: 3rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.no-records h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.no-records p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* Container Patterns */
+.container-grid {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.container-card {
+  width: 100%;
+  max-width: 1280px;
+  margin: 20px auto;
+  padding: var(--spacing-md);
+}
+
+/* Card Base Styles */
+.card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  padding: var(--spacing-md);
+  background: var(--background-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-body {
+  padding: var(--spacing-lg);
+}
 
 /* Footer */
 .app-footer {

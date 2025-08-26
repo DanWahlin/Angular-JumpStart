@@ -1,9 +1,4 @@
-.card-container {
-  width: 100%;
-  max-width: 1280px;
-  margin: 20px auto;
-  padding: var(--spacing-md);
-}
+/* Using global container-card utility class */
 
 .cards-grid {
   display: grid;
@@ -12,19 +7,15 @@
   margin-top: 0;
 }
 
+/* Using global card utility class with extensions */
 .customer-card {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-base);
-  overflow: hidden;
   position: relative;
   cursor: pointer;
+  transition: box-shadow var(--transition-fast);
 }
 
 .customer-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  /* Simplified hover - just shadow change for better performance */
 }
 
 .card-header {
@@ -35,29 +26,12 @@
   overflow: hidden;
 }
 
-.card-header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 200%;
-  background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, transparent 50%);
-  transition: transform var(--transition-slow);
-  opacity: 0;
-}
-
-.customer-card:hover .card-header::before {
-  transform: translateX(-100%);
-  opacity: 1;
-}
+/* Removed complex pseudo-element animation for better performance */
 
 .card-header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 2;
 }
 
 .customer-name {
@@ -175,18 +149,7 @@
   transform: translateX(2px);
 }
 
-.no-records {
-  text-align: center;
-  padding: var(--spacing-3xl) var(--spacing-lg);
-  color: var(--text-secondary);
-  font-size: 1rem;
-}
-
-.no-records-icon {
-  font-size: 3rem;
-  color: var(--text-light);
-  margin-bottom: var(--spacing-md);
-}
+/* No-records styles now use global utility classes */
 
 /* Delete button */
 .delete-btn {
@@ -203,21 +166,14 @@
   transform: scale(1.1);
 }
 
-/* Responsive design */
+/* Responsive design - container padding handled by global CSS */
 @media (max-width: 768px) {
-  .card-container {
-    padding: var(--spacing-md);
-  }
-  
   .cards-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
   
-  .card-header {
-    padding: var(--spacing-md);
-  }
-  
+  .card-header,
   .card-body {
     padding: var(--spacing-md);
   }
@@ -236,6 +192,5 @@
   
   .card-actions {
     align-self: flex-end;
-    margin-left: 0;
   }
 }
