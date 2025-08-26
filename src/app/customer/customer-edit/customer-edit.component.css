@@ -43,26 +43,7 @@
   font-size: 0.875rem;
 }
 
-.form-control {
-  width: 100%;
-  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-sm);
-  font-size: 0.875rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  background-color: white;
-  transition: all var(--transition-fast);
-  font-family: inherit;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-}
-
-.form-control::placeholder {
-  color: var(--text-light);
-}
+/* Form control base styles now handled by global CSS - only keep Angular-specific validation states */
 
 /* Validation States */
 .form-control.ng-invalid.ng-touched {
@@ -89,25 +70,8 @@
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
-/* Alert Messages */
-.alert {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius);
-  margin-top: var(--spacing-sm);
-  border: 1px solid;
-  font-size: 0.875rem;
-}
-
-.alert-danger {
-  background-color: #FEE2E2;
-  border-color: #FECACA;
-  color: #991B1B;
-}
-
+/* Alert styles now use global CSS - only keep component-specific overrides */
 .alert-warning {
-  background-color: #FEF3C7;
-  border-color: #FDE68A;
-  color: #92400E;
   margin-bottom: var(--spacing-lg);
 }
 
@@ -136,57 +100,7 @@
   margin-top: var(--spacing-sm);
 }
 
-/* Button Overrides */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: var(--border-radius);
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.btn-success {
-  background-color: var(--success-color);
-  color: white;
-}
-
-.btn-success:hover:not(:disabled) {
-  background-color: #059669;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-success:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.btn-danger {
-  background-color: var(--danger-color);
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #DC2626;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-default {
-  background-color: white;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-}
-
-.btn-default:hover {
-  background-color: var(--background-tertiary);
-  border-color: var(--text-light);
-}
+/* Button styles now use global CSS from styles.css and bootstrap-replacement.css */
 
 /* Utility Classes */
 .pull-right {

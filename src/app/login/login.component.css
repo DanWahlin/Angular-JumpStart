@@ -64,28 +64,10 @@
   letter-spacing: 0.05em;
 }
 
+/* Form control styles use global CSS - only keep login-specific overrides */
 .form-control {
-  width: 100%;
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 1rem;
   border: 2px solid var(--border-color);
-  border-radius: var(--border-radius);
-  background-color: var(--background);
-  transition: all var(--transition-fast);
-  font-family: inherit;
-  position: relative;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-  background-color: white;
-}
-
-.form-control::placeholder {
-  color: var(--text-light);
-  font-weight: 400;
+  font-size: 1rem;
 }
 
 /* Validation States */

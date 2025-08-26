@@ -419,44 +419,7 @@ textarea::placeholder {
   background-color: var(--background-secondary);
 }
 
-/* Pagination */
-.pagination {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  margin-top: var(--spacing-xl);
-  justify-content: center;
-}
-
-.pagination a,
-.pagination span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 36px;
-  height: 36px;
-  padding: 0 var(--spacing-sm);
-  border-radius: var(--border-radius);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background-color: white;
-  border: 1px solid var(--border-color);
-  transition: all var(--transition-fast);
-  cursor: pointer;
-}
-
-.pagination a:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  background-color: var(--primary-ultra-light);
-}
-
-.pagination .active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
+/* Pagination styles removed - now handled by pagination.component.css */
 
 /* Alerts */
 .alert {
@@ -601,10 +564,7 @@ html {
   box-shadow: var(--shadow-sm);
 }
 
-.page-header .glyphicon {
-  color: var(--primary-color);
-  -webkit-text-fill-color: var(--primary-color);
-}
+/* Glyphicon styles removed - rarely used (only 3 occurrences in 1 file) */
 
 /* Footer */
 .app-footer {
