@@ -19,7 +19,7 @@
     "@angular/animations": "^20.2.1",
     "@angular/common": "^20.2.1",
     "@angular/compiler": "^20.2.1",
-    "@angular/core": "^20.2.1",
+    "@angular/core": "^20.3.16",
     "@angular/forms": "^20.2.1",
     "@angular/platform-browser": "^20.2.1",
     "@angular/platform-browser-dynamic": "^20.2.1",
