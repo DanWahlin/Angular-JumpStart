@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@angular/build": "^20.2.0",
-    "@angular/cli": "^20.2.0",
+    "@angular/cli": "^21.1.0",
     "@angular/compiler-cli": "^20.2.1",
     "@types/google.maps": "^3.58.1",
     "open": "^10.2.0",
